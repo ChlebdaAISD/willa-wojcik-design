@@ -16,7 +16,7 @@ export function About() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <section data-screen-label="03 O obiekcie" className="relative bg-cream pt-20 md:pt-32 pb-24 md:pb-40">
+    <section data-screen-label="03 O obiekcie" className="relative bg-cream pt-20 md:pt-32 pb-24 md:pb-40 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-20 items-center">
         <div className="lg:col-span-5 reveal">
           <div className="flex items-center gap-3 mb-6">

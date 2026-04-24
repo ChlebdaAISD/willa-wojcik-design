@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { PHOTOS } from '../data/content.js'
 import { IconChevL, IconChevR, IconClose } from './Icons.jsx'
 
 export function Gallery() {
   const [open, setOpen] = useState(null)
+  const [touchStartX, setTouchStartX] = useState(null)
+  const swipedRef = useRef(false)
   const photos = [
     { src: PHOTOS.roomBirch, label: 'Pokój brzozowy · 2 os.', span: 'row-span-2 col-span-2' },
     { src: PHOTOS.livingRoom, label: 'Salon apartamentu' },
@@ -29,6 +31,18 @@ export function Gallery() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [open, photos.length])
+
+  const onTouchStart = (e) => setTouchStartX(e.touches[0].clientX)
+  const onTouchEnd = (e) => {
+    if (touchStartX === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX
+    if (Math.abs(dx) > 60) {
+      swipedRef.current = true
+      if (dx < 0) setOpen((o) => (o + 1) % photos.length)
+      else setOpen((o) => (o - 1 + photos.length) % photos.length)
+    }
+    setTouchStartX(null)
+  }
 
   return (
     <section id="galeria" data-screen-label="06 Galeria" className="relative bg-charcoal text-cream py-24 md:py-40">
@@ -69,7 +83,12 @@ export function Gallery() {
 
       {open !== null && (
         <div className="fixed inset-0 z-[100] bg-charcoal/95 backdrop-blur-md flex items-center justify-center p-6"
-             onClick={() => setOpen(null)}>
+             onClick={() => {
+               if (swipedRef.current) { swipedRef.current = false; return }
+               setOpen(null)
+             }}
+             onTouchStart={onTouchStart}
+             onTouchEnd={onTouchEnd}>
           <button onClick={(e) => { e.stopPropagation(); setOpen(null) }}
                   className="absolute top-6 right-6 w-11 h-11 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
             <IconClose size={18} />

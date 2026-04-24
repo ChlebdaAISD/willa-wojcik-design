@@ -70,20 +70,20 @@ export function Reviews() {
               ))}
             </div>
 
-            <div className="mt-8 flex items-center gap-6">
-              <div className="flex gap-2">
+            <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
+              <div className="flex gap-2 order-2 sm:order-1">
                 {r.map((_, k) => (
                   <button key={k} onClick={() => setI(k)}
-                          className="h-px w-12 bg-cream/20 relative overflow-hidden">
+                          className="h-px w-8 sm:w-12 bg-cream/20 relative overflow-hidden">
                     <div className="absolute inset-y-0 left-0 bg-gold transition-all duration-700"
                          style={{ width: k === i ? '100%' : '0%' }} />
                   </button>
                 ))}
               </div>
-              <div className="eyebrow text-cream/50">
+              <div className="eyebrow text-cream/50 order-3 sm:order-2">
                 {String(i + 1).padStart(2, '0')} / {String(r.length).padStart(2, '0')}
               </div>
-              <div className="ml-auto flex gap-2">
+              <div className="flex gap-2 order-1 sm:order-3 ml-auto">
                 <button onClick={() => setI((x) => (x - 1 + r.length) % r.length)}
                         className="w-10 h-10 rounded-full border border-cream/25 hover:bg-cream/10 flex items-center justify-center">
                   <IconChevL size={16}/>
