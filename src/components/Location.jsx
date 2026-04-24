@@ -57,23 +57,23 @@ export function Location() {
 
             <div className="mt-12">
               <div className="eyebrow text-charcoal/55 mb-5">W 20 minut dojedziesz do…</div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-2 md:gap-4">
                 {nearby.map((n, i) => {
                   const I = ICONS[n.icon]
                   return (
-                    <div key={n.title} className="reveal card-lift relative overflow-hidden rounded-sm aspect-[4/5] group cursor-pointer"
+                    <div key={n.title} className="reveal card-lift relative overflow-hidden rounded-sm aspect-[3/4] md:aspect-[4/5] group cursor-pointer"
                          style={{ transitionDelay: `${i * 80}ms` }}>
                       <div className="absolute inset-0 zoom-img bg-cover bg-center"
                            style={{ backgroundImage: `url(${n.img})` }} />
                       <div className="absolute inset-0" style={{
                         background: 'linear-gradient(180deg, rgba(28,28,28,0.25) 0%, rgba(28,28,28,0.7) 55%, rgba(28,28,28,0.95) 100%)'
                       }}/>
-                      <div className="absolute top-4 left-4 text-cream/80">
-                        <I size={20} stroke={1.3} />
+                      <div className="absolute top-3 left-3 md:top-4 md:left-4 text-cream/80">
+                        <I size={18} stroke={1.3} />
                       </div>
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="font-serif text-cream text-xl leading-tight">{n.title}</div>
-                        <div className="text-cream/70 text-[12px] mt-1">{n.sub}</div>
+                      <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4">
+                        <div className="font-serif text-cream text-[15px] md:text-xl leading-tight">{n.title}</div>
+                        <div className="text-cream/70 text-[10px] md:text-[12px] mt-1 leading-snug">{n.sub}</div>
                       </div>
                     </div>
                   )

@@ -9,13 +9,6 @@ export function Footer() {
                style={{ fontSize: 'clamp(60px, 11vw, 180px)', fontWeight: 380 }}>
             Willa <span className="italic font-[340]">Wójcik</span>
           </div>
-          <div className="mt-4 eyebrow text-cream/50 flex items-center gap-4">
-            <span>Apartamenty i Pokoje</span>
-            <span className="w-1 h-1 rounded-full bg-gold"></span>
-            <span>Sromowce Niżne · Pieniny</span>
-            <span className="w-1 h-1 rounded-full bg-gold"></span>
-            <span>Est. 2019</span>
-          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pt-14 pb-12">

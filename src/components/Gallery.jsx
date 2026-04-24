@@ -94,11 +94,11 @@ export function Gallery() {
             <IconClose size={18} />
           </button>
           <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o - 1 + photos.length) % photos.length) }}
-                  className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
+                  className="hidden sm:flex absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 items-center justify-center">
             <IconChevL size={20} />
           </button>
           <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o + 1) % photos.length) }}
-                  className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
+                  className="hidden sm:flex absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 items-center justify-center">
             <IconChevR size={20} />
           </button>
           <figure className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
@@ -106,10 +106,22 @@ export function Gallery() {
               <div className="absolute inset-0 bg-cover bg-center"
                    style={{ backgroundImage: `url(${photos[open].src})` }} />
             </div>
-            <figcaption className="mt-5 flex items-center justify-between">
-              <div className="font-serif text-cream text-xl">{photos[open].label}</div>
-              <div className="eyebrow text-cream/50">
-                {String(open + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}
+            <figcaption className="mt-5 flex items-center justify-between gap-4">
+              <div className="font-serif text-cream text-lg sm:text-xl min-w-0 truncate">{photos[open].label}</div>
+              <div className="flex items-center gap-3 shrink-0">
+                <div className="eyebrow text-cream/50">
+                  {String(open + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}
+                </div>
+                <div className="flex gap-2 sm:hidden">
+                  <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o - 1 + photos.length) % photos.length) }}
+                          className="w-9 h-9 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
+                    <IconChevL size={16} />
+                  </button>
+                  <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o + 1) % photos.length) }}
+                          className="w-9 h-9 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
+                    <IconChevR size={16} />
+                  </button>
+                </div>
               </div>
             </figcaption>
           </figure>
