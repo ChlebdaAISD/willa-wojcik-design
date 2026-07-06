@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "willa-wojcik-design",
+  "compatibility_date": "2026-07-06",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "./dist/public",
+    // Strona prerenderowana (SSG) bez client-side routera — każda ścieżka ma
+    // własny statyczny plik. "none" = prawdziwe 404 dla nieistniejących ścieżek
+    // (unika soft-404). Przy dodaniu client-side routingu rozważ "404-page".
+    "not_found_handling": "none"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}

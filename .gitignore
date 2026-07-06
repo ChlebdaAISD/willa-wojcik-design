@@ -3,3 +3,8 @@ dist
 .DS_Store
 .vite
 *.log
+
+# Cloudflare
+.wrangler
+.dev.vars
+.dev.vars.*
