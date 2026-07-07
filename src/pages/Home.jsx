@@ -1,5 +1,4 @@
 import { Hero } from '../components/Hero.jsx'
-import { WelcomeStrip } from '../components/WelcomeStrip.jsx'
 import { About } from '../components/About.jsx'
 import { Apartments } from '../components/Apartments.jsx'
 import { Amenities } from '../components/Amenities.jsx'
@@ -12,7 +11,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <WelcomeStrip />
       <About />
       <Apartments />
       <Amenities />

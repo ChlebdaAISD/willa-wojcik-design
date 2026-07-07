@@ -1,6 +1,6 @@
 import { Link } from 'wouter'
 import { Container } from './ui/Container.jsx'
-import { IconFacebook, IconInstagram } from './Icons.jsx'
+import { IconInstagram } from './Icons.jsx'
 import { SITE } from '../data/site.js'
 
 export function Footer() {
@@ -44,11 +44,8 @@ export function Footer() {
           <div>
             <div className="eyebrow text-cream/50 mb-5">Śledź nas</div>
             <div className="flex gap-3">
-              <a href={SITE.instagram} aria-label="Instagram" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center transition-colors">
+              <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center transition-colors">
                 <IconInstagram size={18} stroke={1.3} />
-              </a>
-              <a href={SITE.facebook} aria-label="Facebook" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center transition-colors">
-                <IconFacebook size={18} stroke={1.3} />
               </a>
             </div>
           </div>
@@ -57,8 +54,8 @@ export function Footer() {
         <div className="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-cream/45">
           <div>© 2026 Willa Wójcik · {SITE.city}</div>
           <div className="flex gap-6">
+            <Link href="/polityka-prywatnosci" className="hover:text-cream/80 transition-colors">Polityka prywatności</Link>
             <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-cream/80 transition-colors">Mapa dojazdu</a>
-            <span>49°23′48″N · 20°24′32″E</span>
           </div>
         </div>
       </Container>

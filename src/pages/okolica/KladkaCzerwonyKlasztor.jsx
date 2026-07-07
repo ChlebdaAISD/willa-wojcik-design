@@ -56,7 +56,7 @@ export default function KladkaCzerwonyKlasztor() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7">
-              <p className="font-serif text-charcoal text-2xl md:text-3xl leading-[1.4] text-balance">
+              <p className="text-charcoal text-lg md:text-xl leading-[1.7] text-pretty font-medium">
                 Kładka pieszo-rowerowa na Dunajcu łączy Sromowce Niżne z Czerwonym Klasztorem na Słowacji. Leży około 250 metrów od Willi Wójcik — na Słowację wychodzi się więc dosłownie na spacer, bez samochodu.
               </p>
               <div className="mt-8 space-y-4 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">

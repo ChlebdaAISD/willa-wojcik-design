@@ -94,6 +94,12 @@ const routesMeta = {
     canonical: `${DOMAIN}/kontakt`,
     breadcrumb: [crumbHome, { name: 'Kontakt', url: `${DOMAIN}/kontakt` }],
   },
+  '/polityka-prywatnosci': {
+    title: 'Polityka prywatności — Willa Wójcik',
+    description: 'Jak Willa Wójcik przetwarza dane osobowe z formularza kontaktowego — administrator, cele, dostawcy (Cloudflare, Resend, Google Maps) i Państwa prawa.',
+    canonical: `${DOMAIN}/polityka-prywatnosci`,
+    breadcrumb: [crumbHome, { name: 'Polityka prywatności', url: `${DOMAIN}/polityka-prywatnosci` }],
+  },
 }
 
 export function getRoutes() {

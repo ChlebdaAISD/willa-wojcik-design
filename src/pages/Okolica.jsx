@@ -73,7 +73,7 @@ export default function Okolica() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featured.map((a) => (
-              <ImageCard key={a.href} {...a} arrow aspect="aspect-[3/4]" className="reveal-lg" />
+              <ImageCard key={a.href} {...a} cta="Zobacz szczegóły" aspect="aspect-[3/4]" />
             ))}
           </div>
         </Container>
@@ -106,32 +106,31 @@ export default function Okolica() {
       </section>
 
       {/* Tabela odległości */}
-      <section className="relative bg-forest text-cream py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 grain opacity-50 pointer-events-none" />
-        <Container className="relative">
+      <section className="relative bg-stone py-20 md:py-28">
+        <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             <div className="lg:col-span-4">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-px bg-gold" />
-                <span className="eyebrow text-cream/60">Odległości od obiektu</span>
+                <span className="eyebrow text-charcoal/60">Odległości od obiektu</span>
               </div>
-              <h2 className="font-serif text-cream leading-[1.05]" style={{ fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 440 }}>
+              <h2 className="font-serif text-charcoal leading-[1.05]" style={{ fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 440 }}>
                 Ile stąd <span className="italic font-[380]">dokąd</span>.
               </h2>
-              <p className="mt-5 text-cream/70 text-[15px] leading-relaxed max-w-xs">
+              <p className="mt-5 text-charcoal/65 text-[15px] leading-relaxed max-w-xs">
                 Wszystko liczone od naszego progu przy Sobczańskiej 9a. Dwie najbliższe atrakcje osiągną Państwo pieszo.
               </p>
             </div>
             <div className="lg:col-span-7 lg:col-start-6">
-              <ul className="divide-y divide-cream/15">
+              <ul className="divide-y divide-charcoal/15">
                 {distances.map(([place, dist]) => (
-                  <li key={place} className="reveal flex items-center justify-between gap-6 py-4">
-                    <span className="text-cream/90 text-[15px] md:text-lg">{place}</span>
-                    <span className="font-mono text-gold text-[13px] md:text-[15px] whitespace-nowrap">{dist}</span>
+                  <li key={place} className="flex items-center justify-between gap-6 py-4">
+                    <span className="text-charcoal/85 text-[15px] md:text-lg">{place}</span>
+                    <span className="font-mono text-gold-2 text-[13px] md:text-[15px] whitespace-nowrap">{dist}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-cream/45 text-[12px]">Odległości drogowe orientacyjne — przez ukształtowanie doliny bywają dłuższe niż w linii prostej.</p>
+              <p className="mt-6 text-charcoal/45 text-[12px]">Odległości drogowe orientacyjne — przez ukształtowanie doliny bywają dłuższe niż w linii prostej.</p>
             </div>
           </div>
         </Container>

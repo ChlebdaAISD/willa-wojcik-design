@@ -12,7 +12,7 @@ function Logo({ dark }) {
       </svg>
       <div className="leading-tight">
         <div className={`font-serif text-lg ${dark ? 'text-charcoal' : 'text-cream'}`} style={{ fontWeight: 500 }}>Willa Wójcik</div>
-        <div className={`eyebrow ${dark ? 'text-charcoal/55' : 'text-cream/70'}`} style={{ fontSize: 9, letterSpacing: '0.25em' }}>Apartamenty · Pokoje</div>
+        <div className={`hidden lg:block eyebrow ${dark ? 'text-charcoal/55' : 'text-cream/70'}`} style={{ fontSize: 9, letterSpacing: '0.25em' }}>Apartamenty · Pokoje</div>
       </div>
     </Link>
   )
@@ -88,7 +88,7 @@ export function Nav() {
             {/* Hamburger — tylko mobile/tablet */}
             <button onClick={() => setMenuOpen(true)}
                     aria-label="Otwórz menu" aria-expanded={menuOpen}
-                    className={`lg:hidden w-11 h-11 -mr-2 flex flex-col items-center justify-center gap-[5px] ${dark ? 'text-charcoal' : 'text-cream'}`}>
+                    className={`lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-[5px] ${dark ? 'text-charcoal' : 'text-cream'}`}>
               <span className="block w-6 h-[2px] bg-current rounded-full" />
               <span className="block w-6 h-[2px] bg-current rounded-full" />
               <span className="block w-4 h-[2px] bg-current rounded-full self-start ml-2.5" />
@@ -112,7 +112,7 @@ export function Nav() {
               </button>
             </div>
 
-            <nav className="flex-1 flex flex-col justify-center gap-1 -mt-10">
+            <nav className="flex-1 flex flex-col justify-start gap-1 pt-6">
               {NAV_LINKS.map(({ label, href }, i) => {
                 const active = isActive(href)
                 return (

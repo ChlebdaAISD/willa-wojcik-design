@@ -57,7 +57,7 @@ export default function SplywDunajcem() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7">
-              <p className="font-serif text-charcoal text-2xl md:text-3xl leading-[1.4] text-balance">
+              <p className="text-charcoal text-lg md:text-xl leading-[1.7] text-pretty font-medium">
                 Spływ Dunajcem tratwą flisacką prowadzi przez Przełom Dunajca w Pienińskim Parku Narodowym, u stóp Trzech Koron. Trwa od około 1 h 40 min do 2 h 45 min, zależnie od trasy, a kosztuje od 111 zł za dorosłego.
               </p>
               <div className="mt-8 space-y-4 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">

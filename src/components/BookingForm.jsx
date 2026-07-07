@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IconArrow, IconArrowUp, IconCheck, IconGlobe, IconMail, IconMapPin, IconPhone } from './Icons.jsx'
+import { IconArrow, IconCheck, IconGlobe, IconMail, IconMapPin, IconPhone } from './Icons.jsx'
 
 export function BookingForm() {
   const [f, setF] = useState({
@@ -135,19 +135,12 @@ export function BookingForm() {
                 <div className="hairline-cream my-8"></div>
 
                 <div className="space-y-3">
-                  <a href="#" className="flex items-center justify-between p-4 rounded-sm bg-cream/5 hover:bg-cream/10 transition-colors border border-cream/10">
-                    <div>
-                      <div className="eyebrow text-cream/60 text-[10px]">Rezerwuj bezpośrednio</div>
-                      <div className="text-cream text-[15px] mt-0.5">Booking.com · 9.6 / 10</div>
-                    </div>
-                    <IconArrowUp size={18} className="text-gold" />
-                  </a>
-                  <div className="flex items-center gap-3 pt-2">
-                    <div className="text-cream/55 text-[12px]">Check-in</div>
-                    <div className="text-cream text-[13px]">15:00</div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-cream/55 text-[12px]">Zameldowanie</div>
+                    <div className="text-cream text-[13px]">od 14:00</div>
                     <div className="w-px h-4 bg-cream/20"></div>
-                    <div className="text-cream/55 text-[12px]">Check-out</div>
-                    <div className="text-cream text-[13px]">10:00</div>
+                    <div className="text-cream/55 text-[12px]">Wymeldowanie</div>
+                    <div className="text-cream text-[13px]">do 10:00</div>
                   </div>
                 </div>
               </div>

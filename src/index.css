@@ -76,19 +76,8 @@
 }
 .mountain-layer { transition: transform 0.1s linear; }
 
-/* Reveal animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);
-}
-.reveal.in { opacity: 1; transform: none; }
-.reveal-lg {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 1.4s cubic-bezier(.2,.7,.2,1), transform 1.4s cubic-bezier(.2,.7,.2,1);
-}
-.reveal-lg.in { opacity: 1; transform: none; }
+/* Reveal wyłączone — cała strona widoczna od razu (bez pojawiania się na scroll) */
+.reveal, .reveal-lg { opacity: 1; transform: none; }
 
 /* Magnetic primary button */
 .btn-prim {
@@ -153,13 +142,8 @@
 @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 .marquee { animation: marquee 40s linear infinite; }
 
-/* Draw-in line */
-.line-in {
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 1.2s cubic-bezier(.2,.7,.2,1) .15s;
-}
-.line-in.in { transform: scaleX(1); }
+/* Draw-in line — wyłączone (bez animacji na scroll) */
+.line-in { transform: none; }
 
 /* Slow drift for clouds */
 @keyframes drift { 0% { transform: translateX(-5%); } 100% { transform: translateX(5%); } }

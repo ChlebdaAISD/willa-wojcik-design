@@ -1,13 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { PHOTOS } from '../data/content.js'
-import { useMagnetic } from '../lib/useMagnetic.js'
 import { IconArrow } from './Icons.jsx'
 
 export function Hero() {
   const sceneRef = useRef(null)
   const heroImgRef = useRef(null)
-  const ctaRef = useRef(null)
-  useMagnetic(ctaRef, 10)
 
   useEffect(() => {
     const onScroll = () => {
@@ -64,13 +61,11 @@ export function Hero() {
           </p>
 
           <div className="reveal mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <div className="inline-block">
-              <a ref={ctaRef} href="#kontakt"
-                 className="inline-flex shrink-0 items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap bg-cream text-forest hover:bg-white transition-colors duration-300 shadow-xl shadow-charcoal/30">
-                Sprawdź dostępność
-                <IconArrow size={16} />
-              </a>
-            </div>
+            <a href="#kontakt"
+               className="inline-flex shrink-0 items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap bg-cream text-forest hover:bg-white transition-colors duration-300 shadow-lg shadow-charcoal/20">
+              Sprawdź dostępność
+              <IconArrow size={16} />
+            </a>
             <a href="#apartamenty"
                className="inline-flex shrink-0 items-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap text-cream border border-cream/70 bg-charcoal/25 backdrop-blur-sm hover:bg-cream/10 transition-colors duration-300">
               Zobacz apartamenty

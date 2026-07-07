@@ -62,7 +62,7 @@ export default function TrzyKorony() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-7">
-              <p className="font-serif text-charcoal text-2xl md:text-3xl leading-[1.4] text-balance">
+              <p className="text-charcoal text-lg md:text-xl leading-[1.7] text-pretty font-medium">
                 Na taras na Okrąglicy (982 m) wchodzi się ze Sromowiec Niżnych w około 1 h 45 min – 2 h. To najkrótsze i najłatwiejsze wejście na Trzy Korony — a jego początek leży niecały kilometr od naszego obiektu.
               </p>
               <div className="mt-8 space-y-4 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">

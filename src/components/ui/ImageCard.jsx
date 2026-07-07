@@ -4,7 +4,7 @@ import { IconArrow } from '../Icons.jsx'
 // Karta ze zdjęciem + gradientem + tytułem. Klikalna (Link/anchor) lub statyczna.
 // Używana m.in. w sekcji „Okolica" i kartach atrakcji.
 export function ImageCard({
-  image, eyebrow, title, note, href,
+  image, eyebrow, title, note, href, cta,
   aspect = 'aspect-[4/5]', arrow = false, className = '',
 }) {
   const inner = (
@@ -20,6 +20,11 @@ export function ImageCard({
           {arrow && <IconArrow size={18} className="text-gold shrink-0 mb-1 transition-transform group-hover:translate-x-1" />}
         </div>
         {note && <div className="text-cream/70 text-[13px] mt-2 leading-snug">{note}</div>}
+        {cta && (
+          <div className="mt-4 inline-flex items-center gap-1.5 text-gold text-[13px] font-semibold border-b border-gold/40 pb-0.5">
+            {cta} <IconArrow size={14} className="transition-transform group-hover:translate-x-1" />
+          </div>
+        )}
       </div>
     </>
   )

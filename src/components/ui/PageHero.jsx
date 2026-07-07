@@ -14,8 +14,7 @@ export function PageHero({ eyebrow, title, subtitle, image, crumbs, children }) 
         : <div className="absolute inset-0 bg-forest" />}
       <div className="absolute inset-0 grain opacity-50 pointer-events-none" />
       <Container className="relative pt-36 md:pt-44 pb-16 md:pb-24">
-        {crumbs && <Breadcrumbs items={crumbs} tone="light" className="mb-8" />}
-        {eyebrow && <div className="eyebrow text-gold mb-5">{eyebrow}</div>}
+        {crumbs && <Breadcrumbs items={crumbs} tone="light" className="mb-6" />}
         <h1 className="font-serif text-cream leading-[1.02] text-balance"
             style={{ fontSize: 'clamp(38px, 6vw, 82px)', fontWeight: 420 }}>
           {title}

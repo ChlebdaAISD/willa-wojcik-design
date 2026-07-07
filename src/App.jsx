@@ -12,6 +12,7 @@ import SplywDunajcem from './pages/okolica/SplywDunajcem.jsx'
 import TrzyKorony from './pages/okolica/TrzyKorony.jsx'
 import KladkaCzerwonyKlasztor from './pages/okolica/KladkaCzerwonyKlasztor.jsx'
 import Kontakt from './pages/Kontakt.jsx'
+import PolitykaPrywatnosci from './pages/PolitykaPrywatnosci.jsx'
 
 function ScrollToTop() {
   const [location] = useLocation()
@@ -38,6 +39,7 @@ export default function App({ ssrPath }) {
             <Route path="/okolica/trzy-korony" component={TrzyKorony} />
             <Route path="/okolica/kladka-czerwony-klasztor" component={KladkaCzerwonyKlasztor} />
             <Route path="/kontakt" component={Kontakt} />
+            <Route path="/polityka-prywatnosci" component={PolitykaPrywatnosci} />
             {/* 404 → strona główna */}
             <Route component={Home} />
           </Switch>

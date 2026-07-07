@@ -37,9 +37,8 @@ export const SITE = {
   ratingBooking: '9.8',
   ratingNocowanie: '10',
 
-  // Social (do uzupełnienia realnymi linkami)
-  instagram: '#',
-  facebook: '#',
+  // Social
+  instagram: 'https://www.instagram.com/willawojcik/',
 
   domain: 'https://www.willawojcik.pl',
 }
