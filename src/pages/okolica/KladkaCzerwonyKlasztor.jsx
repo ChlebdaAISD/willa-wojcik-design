@@ -154,7 +154,7 @@ export default function KladkaCzerwonyKlasztor() {
 
       <CTASection
         title="Śniadanie w Polsce, obiad na Słowacji?"
-        text="Z Willi Wójcik to kwestia krótkiego spaceru przez kładkę. Sprawdzimy wolny termin."
+        text="Z Willi Wójcik dzieli je tylko krótki spacer przez kładkę na Dunajcu."
       />
     </>
   )

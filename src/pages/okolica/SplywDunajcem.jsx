@@ -152,8 +152,8 @@ export default function SplywDunajcem() {
       />
 
       <CTASection
-        title="Chcą Państwo mieć spływ za rogiem?"
-        text="Zatrzymają się Państwo w Sromowcach Niżnych, przy przystani. Sprawdzimy wolny termin."
+        title="Spływ Dunajcem zaczyna się w naszej wsi."
+        text="Zatrzymają się Państwo w Sromowcach Niżnych, kilka minut od przystani flisackiej."
       />
     </>
   )

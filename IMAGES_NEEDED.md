@@ -4,7 +4,7 @@ Strona używa **zdjęć poglądowych** (istniejące pliki z `src/assets/`) jako 
 Poniżej lista, co warto dostać od właściciela i gdzie trafi. Docelowo: WebP, ≤200 KB, z `width/height`.
 
 ## Priorytet 1 — obiekt i jednostki (od właściciela)
-- **Hero / strona główna** — najlepsze ujęcie obiektu z widokiem na Trzy Korony (poziome, szerokie).
+- **Hero / strona główna** — obecnie prawdziwe zimowe ujęcie z drona (`src/assets/screenshot-15-40-31.webp`, klucz `PHOTOS.exteriorWinter`). Mile widziane analogiczne ujęcie letnie (poziome, szerokie, budynek + Trzy Korony) — podmiana 1:1 w `src/data/content.js`. OG image (`public/opengraph.jpg`) wygenerowany z tego samego kadru — podmienić razem z hero.
 - **Apartamenty** (`/pokoje-i-apartamenty`) — 3–5 zdjęć apartamentu 4–6 os.: salon, sypialnia, aneks kuchenny, balkon z widokiem.
 - **Pokoje** — 3–5 zdjęć pokoju 2–3 os.: wnętrze, łazienka, balkon/taras.
 - **Części wspólne** — wspólna kuchnia 45 m², altana z grillem, plac zabaw, ogród, taras, parking.

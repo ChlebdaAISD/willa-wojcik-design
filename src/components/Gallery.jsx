@@ -51,11 +51,11 @@ export function Gallery() {
           <div className="reveal max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold"></span>
-              <span className="eyebrow text-cream/60">Galeria</span>
+              <span className="eyebrow text-cream/60">04 — Galeria</span>
             </div>
             <h2 className="font-serif text-cream leading-[1.05]"
-                style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 450 }}>
-              Willa <span className="italic font-[380]">w obrazach</span>.
+                style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 500 }}>
+              Willa <span className="italic font-normal">w obrazach</span>.
             </h2>
           </div>
           <div className="reveal eyebrow text-cream/50">
@@ -67,12 +67,15 @@ export function Gallery() {
           {photos.map((p, i) => (
             <button key={i}
                     onClick={() => setOpen(i)}
+                    aria-label={`Powiększ zdjęcie: ${p.label}`}
                     className={`reveal relative group overflow-hidden cursor-plus ${p.span || ''}`}
-                    style={{ transitionDelay: `${(i % 4) * 60}ms` }}>
-              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[1200ms] group-hover:scale-110"
-                   style={{ backgroundImage: `url(${p.src})` }} />
-              <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-500" />
-              <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                    style={{ '--d': `${(i % 4) * 0.06}s` }}>
+              <img src={p.src} alt={p.label} loading="lazy" decoding="async"
+                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
+              {/* mobile: stały gradient pod podpisem; desktop: przyciemnienie na hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent md:hidden" />
+              <div className="absolute inset-0 hidden md:block bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-500" />
+              <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 text-left">
                 <div className="eyebrow text-cream/80 text-[10px]">0{i + 1}</div>
                 <div className="font-serif text-cream text-lg leading-tight mt-1">{p.label}</div>
               </div>
@@ -103,8 +106,8 @@ export function Gallery() {
           </button>
           <figure className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
             <div className="relative w-full" style={{ aspectRatio: '16/10' }}>
-              <div className="absolute inset-0 bg-cover bg-center"
-                   style={{ backgroundImage: `url(${photos[open].src})` }} />
+              <img src={photos[open].src} alt={photos[open].label} decoding="async"
+                   className="absolute inset-0 w-full h-full object-cover" />
             </div>
             <figcaption className="mt-5 flex items-center justify-between gap-4">
               <div className="font-serif text-cream text-lg sm:text-xl min-w-0 truncate">{photos[open].label}</div>

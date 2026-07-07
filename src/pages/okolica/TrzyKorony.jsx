@@ -122,8 +122,8 @@ export default function TrzyKorony() {
       />
 
       <CTASection
-        title="Chcą Państwo mieć szlak za progiem?"
-        text="Z Willi Wójcik na Trzy Korony wychodzi się pieszo, bez dojazdu. Sprawdzimy wolny termin."
+        title="Na Trzy Korony wychodzi się spod progu."
+        text="Najkrótszy szlak zaczyna się przy tej samej ulicy — bez dojazdu i bez opłaty za parking."
       />
     </>
   )

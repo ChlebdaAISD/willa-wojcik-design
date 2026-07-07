@@ -9,8 +9,8 @@ export function Footer() {
       <Container>
         <div className="reveal pb-16 border-b border-cream/10">
           <div className="font-serif leading-[0.9] text-cream text-balance"
-               style={{ fontSize: 'clamp(56px, 11vw, 170px)', fontWeight: 380 }}>
-            Willa <span className="italic font-[340]">Wójcik</span>
+               style={{ fontSize: 'clamp(56px, 11vw, 170px)', fontWeight: 400 }}>
+            Willa <span className="italic">Wójcik</span>
           </div>
         </div>
 

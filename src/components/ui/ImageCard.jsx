@@ -21,8 +21,8 @@ export function ImageCard({
         </div>
         {note && <div className="text-cream/70 text-[13px] mt-2 leading-snug">{note}</div>}
         {cta && (
-          <div className="mt-4 inline-flex items-center gap-1.5 text-gold text-[13px] font-semibold border-b border-gold/40 pb-0.5">
-            {cta} <IconArrow size={14} className="transition-transform group-hover:translate-x-1" />
+          <div className="mt-4 inline-flex shrink-0 items-center gap-2 px-4 py-2 rounded-full text-[12.5px] font-semibold text-cream border border-cream/60 bg-charcoal/25 backdrop-blur-sm group-hover:bg-cream/15 transition-colors duration-300">
+            {cta} <IconArrow size={13} className="transition-transform group-hover:translate-x-0.5" />
           </div>
         )}
       </div>

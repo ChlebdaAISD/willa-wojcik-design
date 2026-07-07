@@ -1,82 +1,116 @@
 import { useEffect, useState } from 'react'
 import { REVIEWS } from '../data/content.js'
-import { IconChevL, IconChevR, IconStar } from './Icons.jsx'
+import { SITE } from '../data/site.js'
+import { IconChevL, IconChevR, IconStarFill } from './Icons.jsx'
 
+// Opinie: prowadzi Google (4,9/5, 135 opinii — najmocniejszy, policzalny dowód),
+// Booking i nocowanie jako chipy. Cytaty w stosie grid (wysokość = najwyższy
+// cytat, zero martwej przestrzeni po starym absolute+min-height).
 export function Reviews() {
   const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
   const r = REVIEWS
+
   useEffect(() => {
+    if (paused) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const t = setInterval(() => setI((x) => (x + 1) % r.length), 7000)
     return () => clearInterval(t)
-  }, [r.length])
+  }, [r.length, paused, i])
 
   return (
-    <section id="opinie" data-screen-label="08 Opinie" className="relative bg-forest text-cream py-24 md:py-40 overflow-hidden">
+    <section id="opinie" data-screen-label="08 Opinie" className="relative bg-forest text-cream py-24 md:py-36 overflow-hidden">
       <div className="absolute inset-0 grain pointer-events-none opacity-60" />
       <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full"
-           style={{ background: 'radial-gradient(circle, rgba(184,134,75,0.25), transparent 70%)' }} />
+           style={{ background: 'radial-gradient(circle, rgba(184,134,75,0.22), transparent 70%)' }} />
 
       <div className="relative max-w-[1440px] mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Lewa kolumna — liczby */}
           <div className="lg:col-span-5 reveal">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-8 h-px bg-gold"></span>
-              <span className="eyebrow text-cream/60">Opinie gości</span>
+            <div className="flex items-center gap-3 mb-8">
+              <span className="w-8 h-px bg-gold" />
+              <span className="eyebrow text-cream/60">06 — Opinie gości</span>
             </div>
-            <div className="flex items-baseline gap-4 mb-2">
-              <div className="font-serif leading-[0.85]" style={{ fontSize: 'clamp(120px, 18vw, 260px)', fontWeight: 350 }}>
-                9.8
+
+            <div className="flex items-baseline gap-4">
+              <div className="font-serif leading-[0.8] text-cream" style={{ fontSize: 'clamp(110px, 14vw, 200px)', fontWeight: 500 }}>
+                4,9
               </div>
-              <div className="eyebrow text-cream/60">/ 10</div>
+              <div className="font-serif text-cream/60 text-3xl">/ 5</div>
             </div>
-            <div className="flex items-center gap-1.5 text-gold mb-5">
-              {Array.from({ length: 5 }).map((_, k) => <IconStar key={k} size={18} stroke={1.2} />)}
+
+            <div className="mt-6 flex items-center gap-4">
+              <div className="flex items-center gap-1 text-gold" aria-hidden="true">
+                {Array.from({ length: 5 }).map((_, k) => <IconStarFill key={k} size={17} />)}
+              </div>
+              <div className="eyebrow text-cream/70 text-[11px]">Google · {SITE.reviewsGoogle} opinii</div>
             </div>
-            <div className="eyebrow text-cream/70 mb-3">Wyjątkowe opinie na</div>
-            <div className="font-serif text-cream text-3xl italic">Booking.com</div>
-            <div className="hairline-cream my-8"></div>
-            <div className="text-cream/70 text-[15px] leading-relaxed max-w-sm">
-              Ponad 130 opinii na Booking.com i 4,9 na 5 w Google. Średnia, którą bronimy codziennie — serdecznością, czystością i widokiem, dla którego warto wstać wcześniej.
+
+            <div className="hairline-cream my-9" />
+
+            <div className="flex flex-wrap gap-x-10 gap-y-5">
+              <div className="flex items-baseline gap-2.5">
+                <span className="font-serif text-cream text-3xl leading-none">9,8</span>
+                <span className="eyebrow text-cream/65 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10 · Booking.com<br/>„Guest Choice"</span>
+              </div>
+              <div className="flex items-baseline gap-2.5">
+                <span className="font-serif text-cream text-3xl leading-none">10</span>
+                <span className="eyebrow text-cream/65 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10<br/>nocowanie.pl</span>
+              </div>
             </div>
+
+            <p className="mt-9 text-cream/70 text-[15px] leading-relaxed max-w-sm text-pretty">
+              Takiej średniej nie da się wykłamać. Bronimy jej codziennie —
+              czystością, ciszą i widokiem, dla którego warto wstać wcześniej.
+            </p>
           </div>
 
-          <div className="lg:col-span-7 lg:col-start-6 reveal-lg">
-            <div className="relative min-h-[380px]">
-              {r.map((rv, idx) => (
-                <blockquote key={idx}
-                            className="absolute inset-0 transition-all duration-1000"
-                            style={{
-                              opacity: idx === i ? 1 : 0,
-                              transform: idx === i ? 'translateY(0)' : 'translateY(20px)',
-                              pointerEvents: idx === i ? 'auto' : 'none',
-                            }}>
-                  <div className="font-serif text-gold text-7xl leading-none mb-4" style={{ fontWeight: 350 }}>"</div>
-                  <div className="font-serif text-cream text-2xl md:text-3xl lg:text-[34px] leading-[1.35] text-balance italic" style={{ fontWeight: 380 }}>
-                    {rv.q}
-                  </div>
-                  <footer className="mt-10 flex items-center gap-5">
-                    <div className="w-12 h-12 rounded-full bg-cream/10 border border-cream/20 flex items-center justify-center font-serif text-cream text-lg">
-                      {rv.a[0]}
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-cream text-[15px]">{rv.a}</div>
-                      <div className="text-cream/55 text-[13px]">{rv.origin} · {rv.date}</div>
-                    </div>
-                    <div className="eyebrow text-cream/60 text-[11px]">
-                      {rv.stars}/10
-                    </div>
-                  </footer>
-                </blockquote>
-              ))}
+          {/* Prawa kolumna — cytaty */}
+          <div className="lg:col-span-7 reveal-lg"
+               onMouseEnter={() => setPaused(true)}
+               onMouseLeave={() => setPaused(false)}>
+            <div className="grid" aria-live="polite">
+              {r.map((rv, idx) => {
+                const active = idx === i
+                return (
+                  <blockquote key={idx}
+                              aria-hidden={!active}
+                              className="col-start-1 row-start-1 transition-all duration-700"
+                              style={{
+                                opacity: active ? 1 : 0,
+                                transform: active ? 'translateY(0)' : 'translateY(14px)',
+                                pointerEvents: active ? 'auto' : 'none',
+                              }}>
+                    {/* „ ma tusz przy linii bazowej — ciasny line-height + margines zamiast height-hacka, żeby nie nachodził na cytat */}
+                    <div className="font-serif text-gold select-none" style={{ fontSize: '84px', fontWeight: 500, lineHeight: 0.35, marginBottom: '18px' }} aria-hidden="true">„</div>
+                    <p className="font-serif text-cream text-[24px] md:text-[30px] lg:text-[33px] leading-[1.4] text-pretty" style={{ fontWeight: 500 }}>
+                      {rv.q}
+                    </p>
+                    <footer className="mt-9 flex items-center gap-5">
+                      <div className="w-12 h-12 rounded-full bg-cream/10 border border-cream/20 flex items-center justify-center font-serif text-cream text-lg shrink-0" aria-hidden="true">
+                        {rv.a[0]}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-cream text-[15px] font-medium">{rv.a}</div>
+                        <div className="text-cream/55 text-[13px]">{rv.origin} · {rv.date}</div>
+                      </div>
+                      <div className="eyebrow text-gold/90 text-[11px] shrink-0">{rv.stars}/10</div>
+                    </footer>
+                  </blockquote>
+                )
+              })}
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4 sm:gap-6">
-              <div className="flex gap-2 order-2 sm:order-1">
+            <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
+              <div className="flex gap-2 order-2 sm:order-1" role="tablist" aria-label="Wybór opinii">
                 {r.map((_, k) => (
                   <button key={k} onClick={() => setI(k)}
-                          className="h-px w-8 sm:w-12 bg-cream/20 relative overflow-hidden">
-                    <div className="absolute inset-y-0 left-0 bg-gold transition-all duration-700"
-                         style={{ width: k === i ? '100%' : '0%' }} />
+                          role="tab" aria-selected={k === i} aria-label={`Opinia ${k + 1}`}
+                          className="h-6 w-8 sm:w-12 relative group/bar">
+                    <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-cream/25 group-hover/bar:bg-cream/40 transition-colors" />
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-gold transition-all duration-700"
+                          style={{ width: k === i ? '100%' : '0%' }} />
                   </button>
                 ))}
               </div>
@@ -85,11 +119,13 @@ export function Reviews() {
               </div>
               <div className="flex gap-2 order-1 sm:order-3 ml-auto">
                 <button onClick={() => setI((x) => (x - 1 + r.length) % r.length)}
-                        className="w-10 h-10 rounded-full border border-cream/25 hover:bg-cream/10 flex items-center justify-center">
+                        aria-label="Poprzednia opinia"
+                        className="w-11 h-11 rounded-full border border-cream/25 hover:bg-cream/10 flex items-center justify-center transition-colors">
                   <IconChevL size={16}/>
                 </button>
                 <button onClick={() => setI((x) => (x + 1) % r.length)}
-                        className="w-10 h-10 rounded-full border border-cream/25 hover:bg-cream/10 flex items-center justify-center">
+                        aria-label="Następna opinia"
+                        className="w-11 h-11 rounded-full border border-cream/25 hover:bg-cream/10 flex items-center justify-center transition-colors">
                   <IconChevR size={16}/>
                 </button>
               </div>

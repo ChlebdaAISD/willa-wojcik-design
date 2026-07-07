@@ -20,7 +20,8 @@ export function BookingForm() {
       {children}
     </label>
   )
-  const inp = "w-full bg-transparent border-b border-charcoal/25 focus:border-forest outline-none pb-3 text-charcoal text-[15px] placeholder:text-charcoal/35 transition-colors"
+  // 16px — poniżej iOS przybliża stronę przy focusie; focus = zielony underline (box-shadow, bez skoku layoutu)
+  const inp = "w-full bg-transparent border-b border-charcoal/25 focus:border-forest focus:shadow-[0_1px_0_0_var(--color-forest)] outline-none pb-3 text-charcoal text-[16px] placeholder:text-charcoal/35 transition-[border-color,box-shadow] caret-forest rounded-none"
 
   return (
     <section id="kontakt" data-screen-label="09 Rezerwacja" className="relative bg-cream py-24 md:py-40">
@@ -29,11 +30,11 @@ export function BookingForm() {
           <div className="lg:col-span-7 reveal">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold"></span>
-              <span className="eyebrow text-charcoal/60">Rezerwacja</span>
+              <span className="eyebrow text-charcoal/60">07 — Rezerwacja</span>
             </div>
             <h2 className="font-serif text-charcoal leading-[1.05]"
-                style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 450 }}>
-              Zapraszamy<br/><span className="italic font-[380]">w Pieniny</span>.
+                style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 500 }}>
+              Zapraszamy<br/><span className="italic font-normal">w Pieniny</span>.
             </h2>
             <p className="mt-6 text-charcoal/70 text-[17px] leading-[1.8] max-w-xl text-pretty">
               Prosimy o kontakt — odpowiemy tego samego dnia. Potwierdzenie po wpłacie zaliczki,
@@ -42,19 +43,19 @@ export function BookingForm() {
 
             <form onSubmit={onSubmit} className="mt-14 space-y-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
-                {fld('Imię i nazwisko',
-                  <input required className={inp} placeholder="Jan Kowalski"
+                {fld('Imię i nazwisko *',
+                  <input required autoComplete="name" className={inp} placeholder="Jan Kowalski"
                          value={f.name} onChange={e => setF({...f, name: e.target.value})} />)}
-                {fld('E-mail',
-                  <input type="email" required className={inp} placeholder="jan@example.com"
+                {fld('E-mail *',
+                  <input type="email" required autoComplete="email" className={inp} placeholder="jan@example.com"
                          value={f.email} onChange={e => setF({...f, email: e.target.value})} />)}
                 {fld('Telefon',
-                  <input className={inp} placeholder="+48 600 000 000"
+                  <input type="tel" autoComplete="tel" className={inp} placeholder="+48 600 000 000"
                          value={f.phone} onChange={e => setF({...f, phone: e.target.value})} />)}
                 {fld('Typ zakwaterowania',
-                  <select className={inp + ' appearance-none'}
+                  <select className={inp + ' inp-select'}
                           value={f.type} onChange={e => setF({...f, type: e.target.value})}>
-                    <option>Apartament 4–5 os.</option>
+                    <option>Apartament 4–6 os.</option>
                     <option>Pokój 2–3 os.</option>
                     <option>Nie wiem jeszcze</option>
                   </select>)}
@@ -69,11 +70,12 @@ export function BookingForm() {
               {fld('Liczba gości: ' + f.guests,
                 <div className="flex items-center gap-4 pt-1">
                   <input type="range" min="1" max="6" value={f.guests}
+                         aria-label="Liczba gości"
                          onChange={e => setF({...f, guests: +e.target.value})}
-                         className="flex-1 accent-forest" />
-                  <div className="flex gap-1.5">
+                         className="inp-range flex-1" />
+                  <div className="flex gap-1.5" aria-hidden="true">
                     {Array.from({length: 6}).map((_, k) => (
-                      <div key={k} className={`w-2 h-2 rounded-full ${k < f.guests ? 'bg-forest' : 'bg-charcoal/15'}`} />
+                      <div key={k} className={`w-2 h-2 rounded-full transition-colors ${k < f.guests ? 'bg-forest' : 'bg-charcoal/15'}`} />
                     ))}
                   </div>
                 </div>)}
@@ -84,7 +86,7 @@ export function BookingForm() {
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-4">
                 <button type="submit"
-                        className="btn-prim inline-flex items-center gap-3 px-8 py-4 rounded-full text-[14px] tracking-wide whitespace-nowrap shrink-0">
+                        className="btn-prim inline-flex items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap shrink-0">
                   {sent ? 'Dziękujemy — odezwiemy się!' : 'Wyślij zapytanie'}
                   {!sent && <IconArrow size={16} />}
                   {sent && <IconCheck size={16} />}

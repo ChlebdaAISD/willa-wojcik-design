@@ -8,6 +8,9 @@ export function useReveal() {
       document.querySelectorAll(SELECTOR).forEach((el) => el.classList.add('in'))
       return
     }
+    // Aktywuje style ukrywające (html[data-anim] w index.css) dopiero gdy JS
+    // faktycznie działa — prerender i no-JS pokazują całą treść od razu.
+    document.documentElement.setAttribute('data-anim', '')
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {

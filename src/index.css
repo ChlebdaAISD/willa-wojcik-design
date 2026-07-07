@@ -15,6 +15,8 @@
   --font-serif: "Cormorant Garamond", "Fraunces", serif;
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -33,6 +35,12 @@
   ::selection {
     background: var(--color-forest);
     color: var(--color-cream);
+  }
+  /* Widoczny focus dla klawiatury — złota obwódka, nie wycinamy default bez zamiennika */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
@@ -68,16 +76,64 @@
   mix-blend-mode: overlay;
 }
 
-/* Hero sky illustration — abstract layered mountains */
-.hero-sky {
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(255,230,190,0.45) 0%, rgba(255,230,190,0) 55%),
-    linear-gradient(180deg, #c9b79a 0%, #d7c4a4 25%, #c1a07a 55%, #6d5a44 100%);
-}
-.mountain-layer { transition: transform 0.1s linear; }
+/* ============================================================
+   MOTION — aktywny tylko gdy JS ustawi <html data-anim>.
+   Prerender / no-JS / reduced-motion: wszystko widoczne od razu.
+   Easing: quint-out; czasy 0.8–1.0 s; delay przez --d (inline).
+   ============================================================ */
 
-/* Reveal wyłączone — cała strona widoczna od razu (bez pojawiania się na scroll) */
-.reveal, .reveal-lg { opacity: 1; transform: none; }
+html[data-anim] .reveal,
+html[data-anim] .reveal-lg {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.9s var(--ease-out) var(--d, 0s),
+    transform 0.9s var(--ease-out) var(--d, 0s);
+}
+html[data-anim] .reveal-lg { transform: translateY(36px); }
+html[data-anim] .reveal.in,
+html[data-anim] .reveal-lg.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Linia rysująca się od lewej */
+.line-in { transform-origin: left center; }
+html[data-anim] .line-in {
+  transform: scaleX(0);
+  transition: transform 1.1s var(--ease-out) var(--d, 0.15s);
+}
+html[data-anim] .line-in.in { transform: scaleX(1); }
+
+/* Choreografia hero — sterowana klasą .on dodawaną po mount */
+html[data-anim] .hero-photo { transform: scale(1.06); }
+html[data-anim] .hero-stage.on .hero-photo {
+  transform: scale(1);
+  transition: transform 2.6s var(--ease-out);
+}
+html[data-anim] .hero-el {
+  opacity: 0;
+  transform: translateY(26px);
+}
+html[data-anim] .hero-stage.on .hero-el {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 1s var(--ease-out) var(--d, 0s),
+    transform 1s var(--ease-out) var(--d, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-anim] .reveal,
+  html[data-anim] .reveal-lg,
+  html[data-anim] .line-in,
+  html[data-anim] .hero-el,
+  html[data-anim] .hero-photo {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
 
 /* Magnetic primary button */
 .btn-prim {
@@ -86,7 +142,7 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s;
+  transition: transform .35s var(--ease-out), box-shadow .35s;
 }
 .btn-prim::after {
   content: '';
@@ -122,12 +178,12 @@
 }
 
 /* Card hover */
-.card-lift { transition: transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s; }
+.card-lift { transition: transform .6s var(--ease-out), box-shadow .6s; }
 .card-lift:hover { transform: translateY(-6px); box-shadow: 0 40px 60px -30px rgba(31,58,46,.25); }
-.card-lift .zoom-img { transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.card-lift .zoom-img { transition: transform 1.2s var(--ease-out); }
 .card-lift:hover .zoom-img { transform: scale(1.06); }
 
-/* Ken Burns */
+/* Ken Burns (podstrony — PageHero) */
 @keyframes kenburns {
   0%   { transform: scale(1.05) translate(0,0); }
   100% { transform: scale(1.18) translate(-1.5%, -1.5%); }
@@ -138,29 +194,39 @@
 .hairline { height: 1px; background: linear-gradient(90deg, transparent, rgba(28,28,28,0.18), transparent); }
 .hairline-cream { height: 1px; background: linear-gradient(90deg, transparent, rgba(245,241,232,0.25), transparent); }
 
-/* Marquee */
-@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.marquee { animation: marquee 40s linear infinite; }
-
-/* Draw-in line — wyłączone (bez animacji na scroll) */
-.line-in { transform: none; }
-
-/* Slow drift for clouds */
-@keyframes drift { 0% { transform: translateX(-5%); } 100% { transform: translateX(5%); } }
-.drift { animation: drift 40s ease-in-out infinite alternate; }
-
 /* Cursor for interactive cards */
 .cursor-plus {
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.5'><line x1='12' y1='5' x2='12' y2='19'/><line x1='5' y1='12' x2='19' y2='12'/></svg>") 12 12, pointer;
 }
 
-/* Scroll indicator keyframes (used inline in Hero) */
-@keyframes scrollDot { 0% { transform: translateY(-100%); } 60%, 100% { transform: translateY(200%); } }
+/* Formularz — natywne pola w charakterze linii */
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 1.9em;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0.55;
+  cursor: pointer;
+}
+input[type="date"]::-webkit-datetime-edit { color: inherit; }
+select.inp-select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.55'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  padding-right: 26px;
+  cursor: pointer;
+}
+input[type="range"].inp-range { accent-color: var(--color-forest); cursor: pointer; }
 
 /* FOUC prevention */
 .fouc { opacity: 0; }
 .fouc.ready { opacity: 1; transition: opacity .6s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .kenburns, .marquee, .drift { animation: none; }
+  .kenburns { animation: none; }
+  .fouc { opacity: 1; }
+  .fouc.ready { transition: none; }
 }

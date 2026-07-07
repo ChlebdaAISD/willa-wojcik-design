@@ -12,6 +12,8 @@ import balconyView from '../assets/screenshot-15-40-31.webp'
 
 export const PHOTOS = {
   heroMountain,
+  // Prawdziwe ujęcie z drona: budynek + Trzy Korony w tle (zima) — hero strony głównej
+  exteriorWinter: balconyView,
   buildingDusk,
   buildingWinter,
   apartment,
@@ -47,7 +49,7 @@ export const AMENITIES = [
 
 export const ATTRACTIONS = [
   { title: 'Pieniński Park Narodowy', dist: '1,1 km', time: '15 min pieszo' },
-  { title: 'Kładka pieszo-rowerowa na Słowację', dist: '0,8 km', time: '10 min pieszo' },
+  { title: 'Kładka pieszo-rowerowa na Słowację', dist: '250 m', time: '3 min pieszo' },
   { title: 'Spływ Dunajcem — przystań', dist: '2,5 km', time: '5 min autem' },
   { title: 'Zamek w Niedzicy', dist: '11 km', time: '15 min autem' },
   { title: 'Stok Polana Sosny', dist: '4 km', time: '5 min autem' },

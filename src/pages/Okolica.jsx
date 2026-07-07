@@ -137,8 +137,8 @@ export default function Okolica() {
       </section>
 
       <CTASection
-        title="Zrobią Państwo z tego bazę wypadową?"
-        text="Najlepiej zwiedza się Pieniny, wracając wieczorem w to samo miejsce. Sprawdzimy wolny termin."
+        title="Willa Wójcik jako baza wypadowa?"
+        text="Najlepiej zwiedza się Pieniny, wracając wieczorem w to samo miejsce — kilka minut od spływu, szlaku i kładki."
       />
     </>
   )

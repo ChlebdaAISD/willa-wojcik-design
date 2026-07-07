@@ -1,105 +1,98 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { PHOTOS } from '../data/content.js'
 import { IconArrow } from './Icons.jsx'
 
+// Hero: prawdziwe zdjęcie z drona (budynek + Trzy Korony), grade ku zieleni lasu
+// na dole dla czytelności typografii. Choreografia wejścia sterowana klasą .on
+// (style w index.css pod html[data-anim] — prerender/no-JS widzi wszystko od razu).
 export function Hero() {
-  const sceneRef = useRef(null)
-  const heroImgRef = useRef(null)
+  const [on, setOn] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY
-      if (heroImgRef.current) heroImgRef.current.style.transform = `translate3d(0, ${y * 0.35}px, 0) scale(${1 + y * 0.0003})`
-      const tx1 = document.getElementById('hero-text')
-      if (tx1) tx1.style.transform = `translate3d(0, ${y * 0.2}px, 0)`
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const id = requestAnimationFrame(() => setOn(true))
+    return () => cancelAnimationFrame(id)
   }, [])
 
   return (
-    <section ref={sceneRef} data-screen-label="01 Hero" className="relative overflow-hidden" style={{ minHeight: '100vh' }}>
-      <div ref={heroImgRef} className="absolute inset-0 will-change-transform">
-        <div
-          className="absolute inset-0 kenburns bg-cover bg-center"
-          style={{ backgroundImage: `url(${PHOTOS.heroMountain})` }}
-        />
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(180deg, rgba(28,28,28,0.55) 0%, rgba(28,28,28,0.25) 35%, rgba(28,28,28,0.55) 70%, rgba(28,28,28,0.92) 100%)'
-        }} />
-        <div className="absolute inset-0" style={{
-          background: 'linear-gradient(90deg, rgba(31,58,46,0.55) 0%, rgba(31,58,46,0.25) 35%, rgba(28,28,28,0.0) 70%)'
-        }} />
-        <div className="absolute inset-0" style={{
-          background: 'radial-gradient(ellipse at 70% 40%, rgba(184,134,75,0.15), transparent 55%)'
-        }} />
-      </div>
+    <section className={`hero-stage relative overflow-hidden bg-charcoal ${on ? 'on' : ''}`}
+             style={{ minHeight: '100svh' }}>
+      {/* Zdjęcie */}
+      <img
+        src={PHOTOS.exteriorWinter}
+        alt="Willa Wójcik z lotu ptaka — w tle skalne szczyty Trzech Koron nad Sromowcami Niżnymi"
+        width="1920" height="1278"
+        fetchPriority="high" decoding="async"
+        className="hero-photo absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: '62% 30%' }}
+      />
 
-      <div className="absolute inset-0 grain pointer-events-none" />
+      {/* Grade: scrim pod nawigację, zejście w zieleń lasu na dole, delikatny tint marki */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(12,17,11,0.52) 0%, rgba(12,17,11,0.14) 18%, transparent 32%)' }} />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 30%, rgba(13,20,16,0.42) 56%, rgba(10,16,12,0.95) 100%)' }} />
+      {/* Winieta pod kolumną tekstu — czytelność na jasnych dachach */}
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(115% 85% at 16% 86%, rgba(10,16,12,0.62) 0%, rgba(10,16,12,0.3) 42%, transparent 66%)' }} />
+      <div className="absolute inset-0" style={{ background: 'rgba(31,58,46,0.10)' }} />
+      <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
 
-      <div className="absolute top-0 left-0 right-0 h-px bg-cream/10 z-10" />
-
-      <div className="hidden md:block absolute right-6 top-1/2 -translate-y-1/2 z-10">
-        <div className="eyebrow text-cream/50" style={{ writingMode: 'vertical-rl' }}>
-          49°24′N · 20°22′E
-        </div>
-      </div>
-
-      <div id="hero-text" className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 pt-40 md:pt-48 pb-32 min-h-screen flex flex-col justify-end">
+      {/* Treść */}
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 pt-40 md:pt-48 pb-16 md:pb-20 min-h-[100svh] flex flex-col justify-end">
         <div className="max-w-4xl">
-          <h1 className="reveal font-serif text-cream text-balance leading-[0.95] font-[450]"
-              style={{ fontSize: 'clamp(52px, 8.2vw, 112px)' }}>
-            Twój balkon<br/>
-            <span className="italic font-[350]" style={{ color: '#EADFC7' }}>z widokiem na</span><br/>
-            Trzy Korony.
+          <div className="hero-el flex items-center gap-3 mb-7" style={{ '--d': '.05s' }}>
+            <span className="w-8 h-px bg-gold" />
+            <span className="eyebrow text-cream/80 text-[11px]">Sromowce Niżne · Pieniny</span>
+          </div>
+
+          <h1 className="font-serif text-cream text-balance leading-[0.98] font-medium"
+              style={{ fontSize: 'clamp(46px, 7.6vw, 106px)' }}>
+            <span className="hero-el block" style={{ '--d': '.12s' }}>Balkon z widokiem</span>
+            <span className="hero-el block italic font-normal" style={{ '--d': '.2s', color: '#EADFC7' }}>
+              na Trzy Korony.
+            </span>
           </h1>
 
-          <p className="reveal mt-8 max-w-xl text-cream text-lg md:text-xl leading-relaxed text-pretty">
-            Kameralny pensjonat w sercu Pienin. Apartamenty i pokoje
-            dla par, rodzin i odkrywców gór — u stóp Trzech Koron,
-            pięć kroków od Dunajca.
+          <p className="hero-el mt-7 text-cream/85 text-[16px] md:text-[17px] leading-[1.75] max-w-xl text-pretty"
+             style={{ '--d': '.28s' }}>
+            Rodzinny pensjonat w Sromowcach Niżnych. Najkrótszy szlak na szczyt zaczyna się
+            15 minut pieszo od furtki, kładka do Czerwonego Klasztoru — 250 metrów.
           </p>
 
-          <div className="reveal mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="hero-el mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+               style={{ '--d': '.36s' }}>
             <a href="#kontakt"
-               className="inline-flex shrink-0 items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap bg-cream text-forest hover:bg-white transition-colors duration-300 shadow-lg shadow-charcoal/20">
+               className="inline-flex shrink-0 items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap bg-cream text-forest hover:bg-white transition-colors duration-300 shadow-lg shadow-charcoal/30">
               Sprawdź dostępność
               <IconArrow size={16} />
             </a>
             <a href="#apartamenty"
-               className="inline-flex shrink-0 items-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap text-cream border border-cream/70 bg-charcoal/25 backdrop-blur-sm hover:bg-cream/10 transition-colors duration-300">
+               className="btn-ghost inline-flex shrink-0 items-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap backdrop-blur-sm">
               Zobacz apartamenty
             </a>
           </div>
 
-          <div className="reveal mt-16 flex flex-wrap items-center gap-8 pt-8 border-t border-cream/15 max-w-2xl">
-            <div className="flex items-center gap-3">
-              <div className="flex items-baseline gap-1.5">
-                <span className="font-serif text-cream text-3xl">9.8</span>
-                <span className="text-cream text-sm">/ 10</span>
-              </div>
-              <div className="eyebrow text-cream text-[11px]">
-                Booking<br/>Wyjątkowe opinie
-              </div>
+          <div className="hero-el mt-12 flex flex-wrap items-center gap-x-8 gap-y-5 pt-7 border-t border-cream/20 max-w-2xl"
+               style={{ '--d': '.44s' }}>
+            <div className="flex items-baseline gap-2.5">
+              <span className="font-serif text-cream text-3xl leading-none">4,9</span>
+              <span className="eyebrow text-cream/75 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 5 · Google<br/>135 opinii</span>
             </div>
-            <div className="h-10 w-px bg-cream/30"></div>
-            <div>
-              <div className="eyebrow text-cream text-[11px]">Park narodowy</div>
-              <div className="text-cream text-sm mt-1">1,1 km od obiektu</div>
+            <div className="h-9 w-px bg-cream/25" />
+            <div className="flex items-baseline gap-2.5">
+              <span className="font-serif text-cream text-3xl leading-none">9,8</span>
+              <span className="eyebrow text-cream/75 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10<br/>Booking.com</span>
             </div>
-            <div className="h-10 w-px bg-cream/30 hidden sm:block"></div>
-            <div>
-              <div className="eyebrow text-cream text-[11px]">Otwarte</div>
-              <div className="text-cream text-sm mt-1">Cały rok</div>
+            <div className="h-9 w-px bg-cream/25 hidden sm:block" />
+            <div className="hidden sm:flex items-baseline gap-2.5">
+              <span className="font-serif text-cream text-3xl leading-none">10</span>
+              <span className="eyebrow text-cream/75 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10<br/>nocowanie.pl</span>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-10 right-12 hidden md:flex flex-col items-center gap-3">
-          <div className="eyebrow text-cream/60">Przewiń</div>
-          <div className="relative h-16 w-px bg-cream/30 overflow-hidden">
-            <div className="absolute top-0 left-0 w-px bg-gold h-1/2" style={{ animation: 'scrollDot 2.2s ease-in-out infinite' }} />
-          </div>
+        {/* Podpis zdjęcia — sygnał autentyczności */}
+        <div className="hero-el absolute bottom-7 right-12 hidden lg:flex items-center gap-3"
+             style={{ '--d': '.55s' }}>
+          <span className="w-8 h-px bg-cream/30" />
+          <span className="eyebrow text-cream/55 text-[10px]">Willa Wójcik i Trzy Korony — ujęcie z drona</span>
         </div>
       </div>
     </section>
