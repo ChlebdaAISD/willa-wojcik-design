@@ -1,32 +1,49 @@
 import { useEffect } from 'react'
-import { About } from './components/About.jsx'
-import { Amenities } from './components/Amenities.jsx'
-import { Apartments } from './components/Apartments.jsx'
-import { BookingForm } from './components/BookingForm.jsx'
-import { Footer } from './components/Footer.jsx'
-import { Gallery } from './components/Gallery.jsx'
-import { Hero } from './components/Hero.jsx'
-import { Location } from './components/Location.jsx'
+import { Router, Route, Switch, useLocation } from 'wouter'
 import { Nav } from './components/Nav.jsx'
-import { Reviews } from './components/Reviews.jsx'
+import { Footer } from './components/Footer.jsx'
 import { useReveal } from './lib/useReveal.js'
 
-export default function App() {
+import Home from './pages/Home.jsx'
+import PokojeApartamenty from './pages/PokojeApartamenty.jsx'
+import Galeria from './pages/Galeria.jsx'
+import Okolica from './pages/Okolica.jsx'
+import SplywDunajcem from './pages/okolica/SplywDunajcem.jsx'
+import TrzyKorony from './pages/okolica/TrzyKorony.jsx'
+import KladkaCzerwonyKlasztor from './pages/okolica/KladkaCzerwonyKlasztor.jsx'
+import Kontakt from './pages/Kontakt.jsx'
+
+function ScrollToTop() {
+  const [location] = useLocation()
+  useEffect(() => { if (typeof window !== 'undefined') window.scrollTo(0, 0) }, [location])
+  return null
+}
+
+export default function App({ ssrPath }) {
   useReveal()
   useEffect(() => { document.body.classList.add('ready') }, [])
 
   return (
-    <div className="fouc ready">
-      <Nav />
-      <Hero />
-      <About />
-      <Apartments />
-      <Amenities />
-      <Gallery />
-      <Location />
-      <Reviews />
-      <BookingForm />
-      <Footer />
-    </div>
+    <Router ssrPath={ssrPath}>
+      <div className="fouc ready">
+        <ScrollToTop />
+        <Nav />
+        <main>
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/pokoje-i-apartamenty" component={PokojeApartamenty} />
+            <Route path="/galeria" component={Galeria} />
+            <Route path="/okolica" component={Okolica} />
+            <Route path="/okolica/splyw-dunajcem" component={SplywDunajcem} />
+            <Route path="/okolica/trzy-korony" component={TrzyKorony} />
+            <Route path="/okolica/kladka-czerwony-klasztor" component={KladkaCzerwonyKlasztor} />
+            <Route path="/kontakt" component={Kontakt} />
+            {/* 404 → strona główna */}
+            <Route component={Home} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   )
 }

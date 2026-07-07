@@ -25,7 +25,7 @@ export function Reviews() {
             </div>
             <div className="flex items-baseline gap-4 mb-2">
               <div className="font-serif leading-[0.85]" style={{ fontSize: 'clamp(120px, 18vw, 260px)', fontWeight: 350 }}>
-                9.6
+                9.8
               </div>
               <div className="eyebrow text-cream/60">/ 10</div>
             </div>
@@ -36,7 +36,7 @@ export function Reviews() {
             <div className="font-serif text-cream text-3xl italic">Booking.com</div>
             <div className="hairline-cream my-8"></div>
             <div className="text-cream/70 text-[15px] leading-relaxed max-w-sm">
-              Ponad 140 opinii z lat 2022–2026. Średnia, którą bronimy codziennie — serdecznością, świeżą pościelą i filiżanką kawy na tarasie.
+              Ponad 130 opinii na Booking.com i 4,9 na 5 w Google. Średnia, którą bronimy codziennie — serdecznością, czystością i widokiem, dla którego warto wstać wcześniej.
             </div>
           </div>
 

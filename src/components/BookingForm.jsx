@@ -105,15 +105,15 @@ export function BookingForm() {
                   <li className="flex items-start gap-4">
                     <IconMapPin size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
-                      <div className="text-cream text-[15px]">ul. Pod Brzegami 18</div>
+                      <div className="text-cream text-[15px]">Sobczańska 9a</div>
                       <div className="text-cream/65 text-[14px]">34-443 Sromowce Niżne, Polska</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconPhone size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
-                      <div className="text-cream text-[15px]">+48 604 12 34 56</div>
-                      <div className="text-cream/65 text-[14px]">Pn–Nd · 8:00–21:00</div>
+                      <a href="tel:+48537446036" className="text-cream text-[15px] hover:text-gold transition-colors">+48 537 446 036</a>
+                      <div className="text-cream/65 text-[14px]">Kontakt codziennie 8:00–22:00</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">

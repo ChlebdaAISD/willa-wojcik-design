@@ -28,7 +28,7 @@ export function Location() {
             <div className="mt-10 rounded-sm overflow-hidden aspect-[4/3] relative border border-charcoal/10">
               <iframe
                 title="Mapa — Willa Wójcik, Sromowce Niżne"
-                src="https://www.google.com/maps?q=Sromowce+Ni%C5%BCne+Pod+Brzegami+18&output=embed&z=13"
+                src={`https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_EMBED_KEY}&q=Willa+Wójcik+Sobczańska+9a+Sromowce+Niżne&zoom=14`}
                 className="absolute inset-0 w-full h-full"
                 style={{ border: 0 }}
                 loading="lazy"

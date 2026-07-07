@@ -1,12 +1,15 @@
+import { Link } from 'wouter'
+import { Container } from './ui/Container.jsx'
 import { IconFacebook, IconInstagram } from './Icons.jsx'
+import { SITE } from '../data/site.js'
 
 export function Footer() {
   return (
     <footer className="relative bg-charcoal text-cream/80 pt-20 pb-10 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12">
+      <Container>
         <div className="reveal pb-16 border-b border-cream/10">
           <div className="font-serif leading-[0.9] text-cream text-balance"
-               style={{ fontSize: 'clamp(60px, 11vw, 180px)', fontWeight: 380 }}>
+               style={{ fontSize: 'clamp(56px, 11vw, 170px)', fontWeight: 380 }}>
             Willa <span className="italic font-[340]">Wójcik</span>
           </div>
         </div>
@@ -15,37 +18,36 @@ export function Footer() {
           <div>
             <div className="eyebrow text-cream/50 mb-5">Nocleg</div>
             <ul className="space-y-3 text-[14px]">
-              <li><a href="#apartamenty" className="hover:text-cream">Apartamenty 4–5 os.</a></li>
-              <li><a href="#apartamenty" className="hover:text-cream">Pokoje 2–3 os.</a></li>
-              <li><a href="#udogodnienia" className="hover:text-cream">Udogodnienia</a></li>
-              <li><a href="#galeria" className="hover:text-cream">Galeria</a></li>
+              <li><Link href="/pokoje-i-apartamenty" className="hover:text-cream transition-colors">Pokoje i apartamenty</Link></li>
+              <li><Link href="/galeria" className="hover:text-cream transition-colors">Galeria</Link></li>
+              <li><Link href="/kontakt" className="hover:text-cream transition-colors">Rezerwacja</Link></li>
             </ul>
           </div>
           <div>
             <div className="eyebrow text-cream/50 mb-5">Okolica</div>
             <ul className="space-y-3 text-[14px]">
-              <li><a href="#lokalizacja" className="hover:text-cream">Pieniny</a></li>
-              <li><a href="#lokalizacja" className="hover:text-cream">Spływ Dunajcem</a></li>
-              <li><a href="#lokalizacja" className="hover:text-cream">Zamek w Niedzicy</a></li>
-              <li><a href="#lokalizacja" className="hover:text-cream">Termy Bania</a></li>
+              <li><Link href="/okolica/splyw-dunajcem" className="hover:text-cream transition-colors">Spływ Dunajcem</Link></li>
+              <li><Link href="/okolica/trzy-korony" className="hover:text-cream transition-colors">Trzy Korony</Link></li>
+              <li><Link href="/okolica/kladka-czerwony-klasztor" className="hover:text-cream transition-colors">Czerwony Klasztor</Link></li>
+              <li><Link href="/okolica" className="hover:text-cream transition-colors">Wszystkie atrakcje</Link></li>
             </ul>
           </div>
           <div>
             <div className="eyebrow text-cream/50 mb-5">Kontakt</div>
             <ul className="space-y-3 text-[14px]">
-              <li>ul. Pod Brzegami 18</li>
-              <li>34-443 Sromowce Niżne</li>
-              <li>+48 604 12 34 56</li>
-              <li>rezerwacja@willawojcik.pl</li>
+              <li>{SITE.street}</li>
+              <li>{SITE.postal} {SITE.city}</li>
+              <li><a href={SITE.phoneHref} className="hover:text-cream transition-colors">{SITE.phone}</a></li>
+              <li><a href={SITE.emailHref} className="hover:text-cream transition-colors">{SITE.email}</a></li>
             </ul>
           </div>
           <div>
             <div className="eyebrow text-cream/50 mb-5">Śledź nas</div>
             <div className="flex gap-3">
-              <a href="#" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center">
+              <a href={SITE.instagram} aria-label="Instagram" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center transition-colors">
                 <IconInstagram size={18} stroke={1.3} />
               </a>
-              <a href="#" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center">
+              <a href={SITE.facebook} aria-label="Facebook" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center transition-colors">
                 <IconFacebook size={18} stroke={1.3} />
               </a>
             </div>
@@ -53,14 +55,13 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-cream/45">
-          <div>© 2026 Willa Wójcik · Wszystkie prawa zastrzeżone</div>
+          <div>© 2026 Willa Wójcik · {SITE.city}</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-cream/80">Polityka prywatności</a>
-            <a href="#" className="hover:text-cream/80">Regulamin</a>
-            <a href="#" className="hover:text-cream/80">49°24′N · 20°22′E</a>
+            <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-cream/80 transition-colors">Mapa dojazdu</a>
+            <span>49°23′48″N · 20°24′32″E</span>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   )
 }

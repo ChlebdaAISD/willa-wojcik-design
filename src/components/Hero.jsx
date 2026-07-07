@@ -50,11 +50,6 @@ export function Hero() {
 
       <div id="hero-text" className="relative z-10 max-w-[1440px] mx-auto px-6 md:px-12 pt-40 md:pt-48 pb-32 min-h-screen flex flex-col justify-end">
         <div className="max-w-4xl">
-          <div className="reveal flex items-center gap-3 mb-6">
-            <span className="w-10 h-px bg-gold"></span>
-            <span className="eyebrow text-cream">Sromowce Niżne · Pieniny</span>
-          </div>
-
           <h1 className="reveal font-serif text-cream text-balance leading-[0.95] font-[450]"
               style={{ fontSize: 'clamp(52px, 8.2vw, 112px)' }}>
             Twój balkon<br/>
@@ -71,13 +66,13 @@ export function Hero() {
           <div className="reveal mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <div className="inline-block">
               <a ref={ctaRef} href="#kontakt"
-                 className="btn-prim inline-flex items-center gap-3 px-8 py-4 rounded-full text-[14px] tracking-wide whitespace-nowrap shrink-0">
+                 className="inline-flex shrink-0 items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap bg-cream text-forest hover:bg-white transition-colors duration-300 shadow-xl shadow-charcoal/30">
                 Sprawdź dostępność
                 <IconArrow size={16} />
               </a>
             </div>
             <a href="#apartamenty"
-               className="btn-ghost inline-flex items-center gap-2 px-7 py-4 rounded-full text-[14px] tracking-wide whitespace-nowrap shrink-0">
+               className="inline-flex shrink-0 items-center gap-2 px-7 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap text-cream border border-cream/70 bg-charcoal/25 backdrop-blur-sm hover:bg-cream/10 transition-colors duration-300">
               Zobacz apartamenty
             </a>
           </div>
@@ -85,7 +80,7 @@ export function Hero() {
           <div className="reveal mt-16 flex flex-wrap items-center gap-8 pt-8 border-t border-cream/15 max-w-2xl">
             <div className="flex items-center gap-3">
               <div className="flex items-baseline gap-1.5">
-                <span className="font-serif text-cream text-3xl">9.6</span>
+                <span className="font-serif text-cream text-3xl">9.8</span>
                 <span className="text-cream text-sm">/ 10</span>
               </div>
               <div className="eyebrow text-cream text-[11px]">

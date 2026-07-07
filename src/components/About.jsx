@@ -64,14 +64,14 @@ export function About() {
               }} />
             </div>
             <div className="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-xs bg-cream/95 backdrop-blur-sm p-5 rounded-sm">
-              <div className="eyebrow text-charcoal/50 mb-1">ul. Pod Brzegami 18</div>
+              <div className="eyebrow text-charcoal/50 mb-1">Sobczańska 9a</div>
               <div className="font-serif text-charcoal text-lg leading-tight">Sromowce Niżne, 34-443</div>
               <div className="text-charcoal/60 text-sm mt-1">Powiat nowotarski · Małopolska</div>
             </div>
             <div className="absolute -top-6 -right-6 md:-right-10 w-28 h-28 rounded-full bg-forest text-cream flex items-center justify-center rotate-[-12deg]">
               <div className="text-center">
-                <div className="font-serif text-3xl leading-none">9.6</div>
-                <div className="eyebrow text-cream/70 mt-1" style={{ fontSize: 9 }}>Booking</div>
+                <div className="font-serif text-3xl leading-none">4.9</div>
+                <div className="eyebrow text-cream/70 mt-1" style={{ fontSize: 9 }}>Google</div>
               </div>
             </div>
           </div>

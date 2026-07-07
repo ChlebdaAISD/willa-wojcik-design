@@ -2,9 +2,9 @@ import { ICONS } from './Icons.jsx'
 
 export function WelcomeStrip() {
   const items = [
-    { icon: 'IconMountain', t: 'Widok na Trzy Korony', s: 'Panorama z każdego balkonu' },
-    { icon: 'IconMapPin', t: '1 km od PPN', s: 'U wrót Pienińskiego Parku' },
-    { icon: 'IconHome', t: 'Obiekt z 2019 r.', s: 'Nowoczesny, w autorskim stylu' },
+    { icon: 'IconMountain', t: 'Widok na Trzy Korony', s: 'Panorama z balkonów apartamentów' },
+    { icon: 'IconMapPin', t: '~15 minut pieszo na szlak', s: 'Najkrótsze wejście na Trzy Korony zaczyna się przy naszej ulicy' },
+    { icon: 'IconRaft', t: '250 m do kładki na Słowację', s: 'Spacerem lub rowerem do Czerwonego Klasztoru' },
   ]
   return (
     <section className="relative bg-cream py-20 md:py-24">

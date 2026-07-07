@@ -17,4 +17,8 @@ export default defineConfig({
       },
     },
   },
+  // wouter musi być zbundlowany do outputu SSR (prerender importuje entry-server.js).
+  ssr: {
+    noExternal: ['wouter'],
+  },
 })
