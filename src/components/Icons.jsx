@@ -1,8 +1,9 @@
 // Minimal inline icon set — stroke-based, lucide-style
+// Ikony są zawsze dekoracyjne (obok widocznego tekstu/aria-label) → aria-hidden domyślnie
 const Icon = ({ d, size = 22, stroke = 1.5, className = '', children }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24"
        fill="none" stroke="currentColor" strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round"
-       className={className}>
+       aria-hidden="true" className={className}>
     {children || <path d={d} />}
   </svg>
 )

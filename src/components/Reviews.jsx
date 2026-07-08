@@ -16,6 +16,7 @@ export function Reviews() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const t = setInterval(() => setI((x) => (x + 1) % r.length), 7000)
     return () => clearInterval(t)
+    // `i` w deps celowo: ręczna nawigacja resetuje 7-sekundowy zegar auto-przewijania
   }, [r.length, paused, i])
 
   return (
@@ -30,14 +31,14 @@ export function Reviews() {
           <div className="lg:col-span-5 reveal">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-8 h-px bg-gold" />
-              <span className="eyebrow text-cream/60">06 — Opinie gości</span>
+              <span className="eyebrow text-cream/75">06 — Opinie gości</span>
             </div>
 
             <div className="flex items-baseline gap-4">
               <div className="font-serif leading-[0.8] text-cream" style={{ fontSize: 'clamp(110px, 14vw, 200px)', fontWeight: 500 }}>
                 4,9
               </div>
-              <div className="font-serif text-cream/60 text-3xl">/ 5</div>
+              <div className="font-serif text-cream/75 text-3xl">/ 5</div>
             </div>
 
             <div className="mt-6 flex items-center gap-4">
@@ -52,11 +53,11 @@ export function Reviews() {
             <div className="flex flex-wrap gap-x-10 gap-y-5">
               <div className="flex items-baseline gap-2.5">
                 <span className="font-serif text-cream text-3xl leading-none">9,8</span>
-                <span className="eyebrow text-cream/65 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10 · Booking.com<br/>„Guest Choice"</span>
+                <span className="eyebrow text-cream/75 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10 · Booking.com<br/>„Guest Choice"</span>
               </div>
               <div className="flex items-baseline gap-2.5">
                 <span className="font-serif text-cream text-3xl leading-none">10</span>
-                <span className="eyebrow text-cream/65 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10<br/>nocowanie.pl</span>
+                <span className="eyebrow text-cream/75 text-[10.5px] leading-snug normal-case tracking-[0.14em]">/ 10<br/>nocowanie.pl</span>
               </div>
             </div>
 
@@ -69,8 +70,10 @@ export function Reviews() {
           {/* Prawa kolumna — cytaty */}
           <div className="lg:col-span-7 reveal-lg"
                onMouseEnter={() => setPaused(true)}
-               onMouseLeave={() => setPaused(false)}>
-            <div className="grid" aria-live="polite">
+               onMouseLeave={() => setPaused(false)}
+               onFocusCapture={() => setPaused(true)}
+               onBlurCapture={() => setPaused(false)}>
+            <div className="grid">
               {r.map((rv, idx) => {
                 const active = idx === i
                 return (
@@ -93,9 +96,9 @@ export function Reviews() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-cream text-[15px] font-medium">{rv.a}</div>
-                        <div className="text-cream/55 text-[13px]">{rv.origin} · {rv.date}</div>
+                        <div className="text-cream/70 text-[13px]">{rv.origin} · {rv.date}</div>
                       </div>
-                      <div className="eyebrow text-gold/90 text-[11px] shrink-0">{rv.stars}/10</div>
+                      <div className="eyebrow text-cream/75 text-[11px] shrink-0">{rv.stars}/10</div>
                     </footer>
                   </blockquote>
                 )
@@ -103,10 +106,10 @@ export function Reviews() {
             </div>
 
             <div className="mt-10 flex flex-wrap items-center gap-4 sm:gap-6">
-              <div className="flex gap-2 order-2 sm:order-1" role="tablist" aria-label="Wybór opinii">
+              <div className="flex gap-2 order-2 sm:order-1" aria-label="Wybór opinii">
                 {r.map((_, k) => (
                   <button key={k} onClick={() => setI(k)}
-                          role="tab" aria-selected={k === i} aria-label={`Opinia ${k + 1}`}
+                          aria-current={k === i} aria-label={`Opinia ${k + 1} z ${r.length}`}
                           className="h-6 w-8 sm:w-12 relative group/bar">
                     <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-cream/25 group-hover/bar:bg-cream/40 transition-colors" />
                     <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-gold transition-all duration-700"
@@ -114,7 +117,7 @@ export function Reviews() {
                   </button>
                 ))}
               </div>
-              <div className="eyebrow text-cream/50 order-3 sm:order-2">
+              <div className="eyebrow text-cream/70 order-3 sm:order-2">
                 {String(i + 1).padStart(2, '0')} / {String(r.length).padStart(2, '0')}
               </div>
               <div className="flex gap-2 order-1 sm:order-3 ml-auto">

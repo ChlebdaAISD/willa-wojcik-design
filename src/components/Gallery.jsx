@@ -1,49 +1,22 @@
-import { useEffect, useRef, useState } from 'react'
 import { PHOTOS } from '../data/content.js'
-import { IconChevL, IconChevR, IconClose } from './Icons.jsx'
+import { GalleryGrid } from './ui/GalleryGrid.jsx'
+
+// Stała lista — bez duplikatów plików (garden==terrace usunięte; ujęcie z drona
+// podpisane zgodnie z prawdą). Podmiana na docelowe zdjęcia: IMAGES_NEEDED.md.
+const GALLERY_PHOTOS = [
+  { src: PHOTOS.roomBirch, label: 'Pokój brzozowy · 2 os.', span: 'row-span-2 col-span-2' },
+  { src: PHOTOS.livingRoom, label: 'Salon apartamentu' },
+  { src: PHOTOS.balconyView, label: 'Willa i Trzy Korony z lotu ptaka' },
+  { src: PHOTOS.kitchen, label: 'Aneks kuchenny', span: 'row-span-1 col-span-2' },
+  { src: PHOTOS.bathroom, label: 'Łazienka' },
+  { src: PHOTOS.buildingDusk, label: 'Altana i ogród' },
+  { src: PHOTOS.terrace, label: 'Taras wspólny', span: 'row-span-2 col-span-1' },
+  { src: PHOTOS.apartment, label: 'Apartament rodzinny' },
+  { src: PHOTOS.livingRoom2, label: 'Strefa wypoczynkowa' },
+  { src: PHOTOS.buildingWinter, label: 'Willa zimą' },
+]
 
 export function Gallery() {
-  const [open, setOpen] = useState(null)
-  const [touchStartX, setTouchStartX] = useState(null)
-  const swipedRef = useRef(false)
-  const photos = [
-    { src: PHOTOS.roomBirch, label: 'Pokój brzozowy · 2 os.', span: 'row-span-2 col-span-2' },
-    { src: PHOTOS.livingRoom, label: 'Salon apartamentu' },
-    { src: PHOTOS.balconyView, label: 'Widok z balkonu' },
-    { src: PHOTOS.kitchen, label: 'Aneks kuchenny', span: 'row-span-1 col-span-2' },
-    { src: PHOTOS.bathroom, label: 'Łazienka' },
-    { src: PHOTOS.buildingDusk, label: 'Obiekt o zmierzchu' },
-    { src: PHOTOS.garden, label: 'Ogród i altana', span: 'row-span-2 col-span-1' },
-    { src: PHOTOS.terrace, label: 'Taras wspólny' },
-    { src: PHOTOS.apartment, label: 'Apartament rodzinny' },
-    { src: PHOTOS.livingRoom2, label: 'Strefa wypoczynkowa' },
-    { src: PHOTOS.buildingWinter, label: 'Willa zimą' },
-  ]
-
-  useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape') setOpen(null)
-      if (open !== null) {
-        if (e.key === 'ArrowRight') setOpen((o) => (o + 1) % photos.length)
-        if (e.key === 'ArrowLeft') setOpen((o) => (o - 1 + photos.length) % photos.length)
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [open, photos.length])
-
-  const onTouchStart = (e) => setTouchStartX(e.touches[0].clientX)
-  const onTouchEnd = (e) => {
-    if (touchStartX === null) return
-    const dx = e.changedTouches[0].clientX - touchStartX
-    if (Math.abs(dx) > 60) {
-      swipedRef.current = true
-      if (dx < 0) setOpen((o) => (o + 1) % photos.length)
-      else setOpen((o) => (o - 1 + photos.length) % photos.length)
-    }
-    setTouchStartX(null)
-  }
-
   return (
     <section id="galeria" data-screen-label="06 Galeria" className="relative bg-charcoal text-cream py-24 md:py-40">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
@@ -51,85 +24,20 @@ export function Gallery() {
           <div className="reveal max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold"></span>
-              <span className="eyebrow text-cream/60">04 — Galeria</span>
+              <span className="eyebrow text-cream/75">04 — Galeria</span>
             </div>
             <h2 className="font-serif text-cream leading-[1.05]"
                 style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 500 }}>
               Willa <span className="italic font-normal">w obrazach</span>.
             </h2>
           </div>
-          <div className="reveal eyebrow text-cream/50">
-            {photos.length} zdjęć · kliknij, aby powiększyć
+          <div className="reveal eyebrow text-cream/70">
+            {GALLERY_PHOTOS.length} zdjęć · kliknij, aby powiększyć
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
-          {photos.map((p, i) => (
-            <button key={i}
-                    onClick={() => setOpen(i)}
-                    aria-label={`Powiększ zdjęcie: ${p.label}`}
-                    className={`reveal relative group overflow-hidden cursor-plus ${p.span || ''}`}
-                    style={{ '--d': `${(i % 4) * 0.06}s` }}>
-              <img src={p.src} alt={p.label} loading="lazy" decoding="async"
-                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
-              {/* mobile: stały gradient pod podpisem; desktop: przyciemnienie na hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent md:hidden" />
-              <div className="absolute inset-0 hidden md:block bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-500" />
-              <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 text-left">
-                <div className="eyebrow text-cream/80 text-[10px]">0{i + 1}</div>
-                <div className="font-serif text-cream text-lg leading-tight mt-1">{p.label}</div>
-              </div>
-            </button>
-          ))}
-        </div>
+        <GalleryGrid photos={GALLERY_PHOTOS} />
       </div>
-
-      {open !== null && (
-        <div className="fixed inset-0 z-[100] bg-charcoal/95 backdrop-blur-md flex items-center justify-center p-6"
-             onClick={() => {
-               if (swipedRef.current) { swipedRef.current = false; return }
-               setOpen(null)
-             }}
-             onTouchStart={onTouchStart}
-             onTouchEnd={onTouchEnd}>
-          <button onClick={(e) => { e.stopPropagation(); setOpen(null) }}
-                  className="absolute top-6 right-6 w-11 h-11 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
-            <IconClose size={18} />
-          </button>
-          <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o - 1 + photos.length) % photos.length) }}
-                  className="hidden sm:flex absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 items-center justify-center">
-            <IconChevL size={20} />
-          </button>
-          <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o + 1) % photos.length) }}
-                  className="hidden sm:flex absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 items-center justify-center">
-            <IconChevR size={20} />
-          </button>
-          <figure className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="relative w-full" style={{ aspectRatio: '16/10' }}>
-              <img src={photos[open].src} alt={photos[open].label} decoding="async"
-                   className="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <figcaption className="mt-5 flex items-center justify-between gap-4">
-              <div className="font-serif text-cream text-lg sm:text-xl min-w-0 truncate">{photos[open].label}</div>
-              <div className="flex items-center gap-3 shrink-0">
-                <div className="eyebrow text-cream/50">
-                  {String(open + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}
-                </div>
-                <div className="flex gap-2 sm:hidden">
-                  <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o - 1 + photos.length) % photos.length) }}
-                          className="w-9 h-9 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
-                    <IconChevL size={16} />
-                  </button>
-                  <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o + 1) % photos.length) }}
-                          className="w-9 h-9 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
-                    <IconChevR size={16} />
-                  </button>
-                </div>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-      )}
     </section>
   )
 }

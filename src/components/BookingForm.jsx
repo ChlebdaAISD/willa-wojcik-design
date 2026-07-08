@@ -1,27 +1,36 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IconArrow, IconCheck, IconGlobe, IconMail, IconMapPin, IconPhone } from './Icons.jsx'
 
-export function BookingForm() {
+export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
   const [f, setF] = useState({
     name: '', email: '', phone: '',
     arrive: '', depart: '',
-    guests: 2, type: 'Apartament',
+    guests: 2, type: 'Apartament 4–6 os.',
     message: ''
   })
   const [sent, setSent] = useState(false)
+  const sentTimerRef = useRef(null)
+  const today = new Date().toISOString().slice(0, 10)
+
+  useEffect(() => () => clearTimeout(sentTimerRef.current), [])
+
+  // TODO(PRZED PUBLIKACJĄ — krytyczne): formularz to STUB — nic nie wysyła!
+  // Docelowo: POST na webhook n8n → Resend (wzorzec klimaTY/centrala/Bawisz).
+  // Do tego czasu strona nie może sugerować gościowi, że zapytanie dotarło.
   const onSubmit = (e) => {
     e.preventDefault()
     setSent(true)
-    setTimeout(() => setSent(false), 4500)
+    clearTimeout(sentTimerRef.current)
+    sentTimerRef.current = setTimeout(() => setSent(false), 4500)
   }
   const fld = (label, children) => (
     <label className="block">
-      <span className="eyebrow text-charcoal/55 mb-2 block">{label}</span>
+      <span className="eyebrow text-charcoal/70 mb-2 block">{label}</span>
       {children}
     </label>
   )
   // 16px — poniżej iOS przybliża stronę przy focusie; focus = zielony underline (box-shadow, bez skoku layoutu)
-  const inp = "w-full bg-transparent border-b border-charcoal/25 focus:border-forest focus:shadow-[0_1px_0_0_var(--color-forest)] outline-none pb-3 text-charcoal text-[16px] placeholder:text-charcoal/35 transition-[border-color,box-shadow] caret-forest rounded-none"
+  const inp = "w-full bg-transparent border-b border-charcoal/25 focus:border-forest focus:shadow-[0_1px_0_0_var(--color-forest)] outline-none pb-3 text-charcoal text-[16px] placeholder:text-charcoal/50 transition-[border-color,box-shadow] caret-forest rounded-none"
 
   return (
     <section id="kontakt" data-screen-label="09 Rezerwacja" className="relative bg-cream py-24 md:py-40">
@@ -30,7 +39,7 @@ export function BookingForm() {
           <div className="lg:col-span-7 reveal">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold"></span>
-              <span className="eyebrow text-charcoal/60">07 — Rezerwacja</span>
+              <span className="eyebrow text-charcoal/70">{eyebrow}</span>
             </div>
             <h2 className="font-serif text-charcoal leading-[1.05]"
                 style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 500 }}>
@@ -60,17 +69,16 @@ export function BookingForm() {
                     <option>Nie wiem jeszcze</option>
                   </select>)}
                 {fld('Przyjazd',
-                  <input type="date" className={inp}
+                  <input type="date" className={inp} min={today}
                          value={f.arrive} onChange={e => setF({...f, arrive: e.target.value})} />)}
                 {fld('Wyjazd',
-                  <input type="date" className={inp}
+                  <input type="date" className={inp} min={f.arrive || today}
                          value={f.depart} onChange={e => setF({...f, depart: e.target.value})} />)}
               </div>
 
               {fld('Liczba gości: ' + f.guests,
                 <div className="flex items-center gap-4 pt-1">
                   <input type="range" min="1" max="6" value={f.guests}
-                         aria-label="Liczba gości"
                          onChange={e => setF({...f, guests: +e.target.value})}
                          className="inp-range flex-1" />
                   <div className="flex gap-1.5" aria-hidden="true">
@@ -91,7 +99,7 @@ export function BookingForm() {
                   {!sent && <IconArrow size={16} />}
                   {sent && <IconCheck size={16} />}
                 </button>
-                <div className="text-charcoal/55 text-[13px]">
+                <div className="text-charcoal/70 text-[13px]">
                   Płatność w dniu przyjazdu · Pobyt bez prowizji
                 </div>
               </div>
@@ -102,34 +110,34 @@ export function BookingForm() {
             <div className="bg-forest text-cream p-8 md:p-10 rounded-sm relative overflow-hidden">
               <div className="absolute inset-0 grain opacity-50 pointer-events-none"/>
               <div className="relative">
-                <div className="eyebrow text-cream/60 mb-6">Dane kontaktowe</div>
+                <div className="eyebrow text-cream/75 mb-6">Dane kontaktowe</div>
                 <ul className="space-y-6">
                   <li className="flex items-start gap-4">
                     <IconMapPin size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
                       <div className="text-cream text-[15px]">Sobczańska 9a</div>
-                      <div className="text-cream/65 text-[14px]">34-443 Sromowce Niżne, Polska</div>
+                      <div className="text-cream/75 text-[14px]">34-443 Sromowce Niżne, Polska</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconPhone size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
                       <a href="tel:+48537446036" className="text-cream text-[15px] hover:text-gold transition-colors">+48 537 446 036</a>
-                      <div className="text-cream/65 text-[14px]">Kontakt codziennie 8:00–22:00</div>
+                      <div className="text-cream/75 text-[14px]">Kontakt codziennie 8:00–22:00</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconMail size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
                       <div className="text-cream text-[15px]">rezerwacja@willawojcik.pl</div>
-                      <div className="text-cream/65 text-[14px]">Odpowiadamy tego samego dnia</div>
+                      <div className="text-cream/75 text-[14px]">Odpowiadamy tego samego dnia</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconGlobe size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
                       <div className="text-cream text-[15px]">Polski · English</div>
-                      <div className="text-cream/65 text-[14px]">Mówimy również po czesku</div>
+                      <div className="text-cream/75 text-[14px]">Mówimy również po czesku</div>
                     </div>
                   </li>
                 </ul>
@@ -138,17 +146,17 @@ export function BookingForm() {
 
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="text-cream/55 text-[12px]">Zameldowanie</div>
+                    <div className="text-cream/70 text-[12px]">Zameldowanie</div>
                     <div className="text-cream text-[13px]">od 14:00</div>
                     <div className="w-px h-4 bg-cream/20"></div>
-                    <div className="text-cream/55 text-[12px]">Wymeldowanie</div>
+                    <div className="text-cream/70 text-[12px]">Wymeldowanie</div>
                     <div className="text-cream text-[13px]">do 10:00</div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 text-charcoal/55 text-[13px] leading-relaxed">
+            <div className="mt-6 text-charcoal/70 text-[13px] leading-relaxed">
               Zaliczka 30% w terminie 3 dni od potwierdzenia.
               Bezpłatne anulowanie do 7 dni przed przyjazdem.
             </div>

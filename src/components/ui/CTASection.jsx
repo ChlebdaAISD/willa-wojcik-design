@@ -15,7 +15,7 @@ export function CTASection({
            style={{ background: 'radial-gradient(circle, rgba(184,134,75,0.22), transparent 70%)' }} />
       <Container className="relative text-center flex flex-col items-center">
         <h2 className="font-serif text-cream leading-[1.05] text-balance max-w-3xl"
-            style={{ fontSize: 'clamp(30px, 4.4vw, 54px)', fontWeight: 440 }}>
+            style={{ fontSize: 'clamp(30px, 4.4vw, 54px)', fontWeight: 500 }}>
           {title}
         </h2>
         {text && <p className="mt-5 text-cream/75 text-lg max-w-xl text-pretty">{text}</p>}

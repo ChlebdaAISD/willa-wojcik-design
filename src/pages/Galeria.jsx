@@ -12,9 +12,8 @@ const CATEGORIES = [
     label: 'Na zewnątrz',
     desc: 'Obiekt, ogród i taras o różnych porach roku — z widokiem na Pieniny.',
     photos: [
-      { src: PHOTOS.buildingDusk, label: 'Obiekt o zmierzchu', span: 'row-span-2 col-span-2' },
+      { src: PHOTOS.buildingDusk, label: 'Altana z grillem i ogród', span: 'row-span-2 col-span-2' },
       { src: PHOTOS.buildingWinter, label: 'Willa zimą' },
-      { src: PHOTOS.garden, label: 'Ogród i altana z grillem' },
       { src: PHOTOS.terrace, label: 'Wspólny taras' },
     ],
   },
@@ -25,7 +24,7 @@ const CATEGORIES = [
     photos: [
       { src: PHOTOS.apartment, label: 'Apartament rodzinny', span: 'row-span-2 col-span-2' },
       { src: PHOTOS.livingRoom, label: 'Salon apartamentu' },
-      { src: PHOTOS.balconyView, label: 'Widok z balkonu na Trzy Korony' },
+      { src: PHOTOS.balconyView, label: 'Willa i Trzy Korony z lotu ptaka' },
       { src: PHOTOS.livingRoom2, label: 'Strefa wypoczynkowa', span: 'col-span-2' },
     ],
   },
@@ -44,7 +43,6 @@ const CATEGORIES = [
     desc: 'Wspólna kuchnia 45 m² połączona z jadalnią — serce obiektu w duchu „jak u siebie”.',
     photos: [
       { src: PHOTOS.commonArea, label: 'Wspólna kuchnia 45 m²', span: 'col-span-2' },
-      { src: PHOTOS.kitchen, label: 'Aneks kuchenny' },
     ],
   },
 ]
@@ -55,26 +53,27 @@ export default function Galeria() {
       <PageHero
         title="Willa w obrazach"
         subtitle="Jasne wnętrza, zapach drewna i ten jeden widok na Trzy Korony. Zobaczą Państwo, zanim przyjadą."
-        image={PHOTOS.balconyView}
+        image={PHOTOS.heroGaleria}
+        imageAlt="Ilustracja: rozświetlony pensjonat wśród domów Sromowiec Niżnych, w tle skalna korona Trzech Koron"
         crumbs={[{ label: 'Strona główna', href: '/' }, { label: 'Galeria' }]}
       />
 
       <section className="relative bg-charcoal text-cream py-20 md:py-28">
         <Container>
           <div className="space-y-16 md:space-y-20">
-            {CATEGORIES.map((c) => (
+            {CATEGORIES.map((c, i) => (
               <div key={c.id}>
-                <div className="flex items-center gap-3 mb-3">
+                <div className="reveal flex items-center gap-3 mb-3">
                   <span className="w-8 h-px bg-gold" />
-                  <span className="eyebrow text-cream/60">{c.label}</span>
+                  <span className="eyebrow text-cream/75">{String(i + 1).padStart(2, '0')} — {c.label}</span>
                 </div>
-                <p className="text-cream/70 text-[16px] leading-relaxed max-w-2xl mb-8">{c.desc}</p>
+                <p className="reveal text-cream/70 text-[16px] leading-relaxed max-w-2xl mb-8">{c.desc}</p>
                 <GalleryGrid photos={c.photos} />
               </div>
             ))}
           </div>
 
-          <p className="mt-16 text-cream/45 text-[13px] max-w-xl">
+          <p className="mt-16 text-cream/75 text-[13px] max-w-xl">
             Zdjęcia poglądowe, podział na kategorie jest wstępny. Uzupełnimy galerię o aktualne fotografie i finalne kategorie.
           </p>
         </Container>

@@ -16,7 +16,7 @@ export function Footer() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pt-14 pb-12">
           <div>
-            <div className="eyebrow text-cream/50 mb-5">Nocleg</div>
+            <div className="eyebrow text-cream/70 mb-5">Nocleg</div>
             <ul className="space-y-3 text-[14px]">
               <li><Link href="/pokoje-i-apartamenty" className="hover:text-cream transition-colors">Pokoje i apartamenty</Link></li>
               <li><Link href="/galeria" className="hover:text-cream transition-colors">Galeria</Link></li>
@@ -24,7 +24,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <div className="eyebrow text-cream/50 mb-5">Okolica</div>
+            <div className="eyebrow text-cream/70 mb-5">Okolica</div>
             <ul className="space-y-3 text-[14px]">
               <li><Link href="/okolica/splyw-dunajcem" className="hover:text-cream transition-colors">Spływ Dunajcem</Link></li>
               <li><Link href="/okolica/trzy-korony" className="hover:text-cream transition-colors">Trzy Korony</Link></li>
@@ -33,7 +33,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <div className="eyebrow text-cream/50 mb-5">Kontakt</div>
+            <div className="eyebrow text-cream/70 mb-5">Kontakt</div>
             <ul className="space-y-3 text-[14px]">
               <li>{SITE.street}</li>
               <li>{SITE.postal} {SITE.city}</li>
@@ -42,7 +42,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <div className="eyebrow text-cream/50 mb-5">Śledź nas</div>
+            <div className="eyebrow text-cream/70 mb-5">Śledź nas</div>
             <div className="flex gap-3">
               <a href={SITE.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-11 h-11 rounded-full border border-cream/20 hover:bg-cream/10 flex items-center justify-center transition-colors">
                 <IconInstagram size={18} stroke={1.3} />
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-cream/45">
+        <div className="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-cream/75">
           <div>© 2026 Willa Wójcik · {SITE.city}</div>
           <div className="flex gap-6">
             <Link href="/polityka-prywatnosci" className="hover:text-cream/80 transition-colors">Polityka prywatności</Link>

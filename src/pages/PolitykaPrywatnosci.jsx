@@ -3,7 +3,7 @@ import { Container } from '../components/ui/Container.jsx'
 import { SITE } from '../data/site.js'
 
 function H2({ children }) {
-  return <h2 className="font-serif text-charcoal text-2xl md:text-3xl leading-tight mt-12 mb-4" style={{ fontWeight: 460 }}>{children}</h2>
+  return <h2 className="font-serif text-charcoal text-2xl md:text-3xl leading-tight mt-12 mb-4" style={{ fontWeight: 500 }}>{children}</h2>
 }
 function P({ children }) {
   return <p className="text-charcoal/75 text-[16px] leading-[1.8] mb-4 text-pretty">{children}</p>
@@ -101,7 +101,7 @@ export default function PolitykaPrywatnosci() {
               {' '}<a className="text-gold-2 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a> lub zadzwonić.
             </P>
 
-            <P className="mt-10 text-charcoal/50 text-[13.5px]">
+            <P className="mt-10 text-charcoal/65 text-[13.5px]">
               Podanie danych jest dobrowolne, ale niezbędne, aby odpowiedzieć na zapytanie i przygotować rezerwację.
             </P>
           </div>

@@ -12,7 +12,7 @@ function Logo({ dark }) {
       </svg>
       <div className="leading-tight">
         <div className={`font-serif text-lg ${dark ? 'text-charcoal' : 'text-cream'}`} style={{ fontWeight: 500 }}>Willa Wójcik</div>
-        <div className={`hidden lg:block eyebrow ${dark ? 'text-charcoal/55' : 'text-cream/70'}`} style={{ fontSize: 9, letterSpacing: '0.25em' }}>Apartamenty · Pokoje</div>
+        <div className={`hidden lg:block eyebrow ${dark ? 'text-charcoal/70' : 'text-cream/70'}`} style={{ fontSize: 9, letterSpacing: '0.25em' }}>Apartamenty · Pokoje</div>
       </div>
     </Link>
   )
@@ -133,7 +133,7 @@ export function Nav() {
                 <IconPhone size={20} className="text-gold" />
                 <span className="text-lg" style={{ fontWeight: 500 }}>{SITE.phone}</span>
               </a>
-              <div className="text-cream/60 text-sm">{SITE.street} · {SITE.city}</div>
+              <div className="text-cream/75 text-sm">{SITE.street} · {SITE.city}</div>
             </div>
           </div>
         </div>

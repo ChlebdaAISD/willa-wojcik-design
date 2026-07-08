@@ -4,12 +4,13 @@ import { IconArrow } from '../Icons.jsx'
 // Karta ze zdjęciem + gradientem + tytułem. Klikalna (Link/anchor) lub statyczna.
 // Używana m.in. w sekcji „Okolica" i kartach atrakcji.
 export function ImageCard({
-  image, eyebrow, title, note, href, cta,
+  image, imageAlt = '', eyebrow, title, note, href, cta,
   aspect = 'aspect-[4/5]', arrow = false, className = '',
 }) {
   const inner = (
     <>
-      <div className="absolute inset-0 zoom-img bg-cover bg-center" style={{ backgroundImage: `url(${image})` }} />
+      <img src={image} alt={imageAlt} loading="lazy" decoding="async"
+           className="absolute inset-0 w-full h-full object-cover zoom-img" />
       <div className="absolute inset-0" style={{
         background: 'linear-gradient(180deg, rgba(28,28,28,0.10) 0%, rgba(28,28,28,0.5) 55%, rgba(28,28,28,0.92) 100%)',
       }} />

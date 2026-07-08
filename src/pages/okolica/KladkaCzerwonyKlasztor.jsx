@@ -48,7 +48,8 @@ export default function KladkaCzerwonyKlasztor() {
         eyebrow="Atrakcje · granica polsko-słowacka"
         title="Kładka na Dunajcu i Czerwony Klasztor"
         subtitle="250 metrów od naszego progu do kładki, a stamtąd kilka minut na Słowację — pieszo lub rowerem, bez kontroli granicznych. To najbliższa i najbardziej niecodzienna atrakcja Sromowiec Niżnych."
-        image={PHOTOS.buildingWinter}
+        image={PHOTOS.heroKladka}
+        imageAlt="Ilustracja: kładka pieszo-rowerowa nad Dunajcem, na drugim brzegu Czerwony Klasztor pod skałami Pienin"
         crumbs={[{ label: 'Strona główna', href: '/' }, { label: 'Okolica', href: '/okolica' }, { label: 'Kładka i Czerwony Klasztor' }]}
       />
 
@@ -69,7 +70,7 @@ export default function KladkaCzerwonyKlasztor() {
               </div>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <div className="eyebrow text-charcoal/50 mb-4">Kładka w liczbach</div>
+              <div className="eyebrow text-charcoal/65 mb-4">Kładka w liczbach</div>
               <FactTable rows={kladka} />
             </div>
           </div>
@@ -81,7 +82,7 @@ export default function KladkaCzerwonyKlasztor() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5">
-              <SectionHeading eyebrow="Za kładką · Słowacja" title={<>Czerwony <span className="italic font-[380]">Klasztor</span>.</>} />
+              <SectionHeading eyebrow="01 — Za kładką · Słowacja" title={<>Czerwony <span className="italic font-normal">Klasztor</span>.</>} />
               <div className="mt-6 space-y-4 text-charcoal/75 text-[16.5px] leading-[1.8] text-pretty">
                 <p>
                   Dawny klasztor Kartuzów, założony w 1330 roku, później zamieszkany przez Kamedułów. Dziś to muzeum z audioprzewodnikiem w cenie — i miejsce, w którym żył legendarny brat Cyprian, zielarz, który miał przelecieć na skrzydłach z Trzech Koron.
@@ -95,9 +96,9 @@ export default function KladkaCzerwonyKlasztor() {
               </InfoNote>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
-              <div className="eyebrow text-charcoal/50 mb-4">Muzeum — bilety i godziny 2026</div>
+              <div className="eyebrow text-charcoal/65 mb-4">Muzeum — bilety i godziny 2026</div>
               <FactTable rows={muzeum} />
-              <p className="mt-5 text-charcoal/60 text-[14px] leading-relaxed">
+              <p className="mt-5 text-charcoal/70 text-[14px] leading-relaxed">
                 Muzeum czynne przez cały rok, siedem dni w tygodniu. Ceny i godziny według oficjalnych danych na 2026 rok — prosimy potwierdzić przed wizytą.
               </p>
             </div>
@@ -113,10 +114,10 @@ export default function KladkaCzerwonyKlasztor() {
             <div className="lg:col-span-7">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-8 h-px bg-gold" />
-                <span className="eyebrow text-cream/60">Droga Pienińska rowerem</span>
+                <span className="eyebrow text-cream/75">Droga Pienińska rowerem</span>
               </div>
-              <h2 className="font-serif text-cream leading-[1.1]" style={{ fontSize: 'clamp(26px, 3.2vw, 42px)', fontWeight: 440 }}>
-                Dziesięć kilometrów wzdłuż <span className="italic font-[380]">przełomu</span>.
+              <h2 className="font-serif text-cream leading-[1.1]" style={{ fontSize: 'clamp(26px, 3.2vw, 42px)', fontWeight: 500 }}>
+                Dziesięć kilometrów wzdłuż <span className="italic font-normal">przełomu</span>.
               </h2>
               <p className="mt-5 text-cream/75 text-[16.5px] leading-[1.8] text-pretty max-w-xl">
                 Za kładką zaczyna się słowacka Droga Pienińska — płaska, szutrowa trasa wzdłuż Przełomu Dunajca do Szczawnicy. Bez ruchu aut, z widokiem na pionowe skały. Rodzina z dziećmi przejedzie ją w 30–60 minut w jedną stronę, wracając tą samą drogą lub przez kładkę.
@@ -126,8 +127,8 @@ export default function KladkaCzerwonyKlasztor() {
               <div className="grid grid-cols-2 gap-6">
                 {[['~10 km', 'wzdłuż przełomu'], ['0', 'ruchu samochodów'], ['30–60', 'minut rowerem'], ['tak', 'z dziećmi']].map(([n, l]) => (
                   <div key={l}>
-                    <div className="font-serif text-cream leading-none" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', fontWeight: 420 }}>{n}</div>
-                    <div className="eyebrow text-cream/55 mt-2 text-[10px]">{l}</div>
+                    <div className="font-serif text-cream leading-none" style={{ fontSize: 'clamp(28px, 3.4vw, 40px)', fontWeight: 500 }}>{n}</div>
+                    <div className="eyebrow text-cream/70 mt-2 text-[10px]">{l}</div>
                   </div>
                 ))}
               </div>
@@ -139,7 +140,7 @@ export default function KladkaCzerwonyKlasztor() {
       {/* FAQ */}
       <section className="relative bg-cream py-20 md:py-28">
         <Container>
-          <SectionHeading eyebrow="Najczęstsze pytania" title="Kładka i Słowacja — w skrócie" className="max-w-2xl mb-12" />
+          <SectionHeading eyebrow="02 — Najczęstsze pytania" title="Kładka i Słowacja — w skrócie" className="max-w-2xl mb-12" />
           <FAQ items={faq} />
         </Container>
       </section>

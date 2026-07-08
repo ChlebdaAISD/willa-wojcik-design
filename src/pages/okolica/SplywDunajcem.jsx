@@ -49,7 +49,8 @@ export default function SplywDunajcem() {
         eyebrow="Atrakcje · Sromowce Niżne"
         title="Spływ Dunajcem — prosto z naszej wsi"
         subtitle="Symbol Pienin i najlepszy sposób, żeby zobaczyć Przełom Dunajca od dołu. Willa Wójcik leży w Sromowcach Niżnych, przy jednej z dwóch przystani."
-        image={PHOTOS.balconyView}
+        image={PHOTOS.heroSplyw}
+        imageAlt="Ilustracja: tratwa flisacka z dwoma flisakami na szmaragdowym Dunajcu, między wapiennymi ścianami przełomu"
         crumbs={[{ label: 'Strona główna', href: '/' }, { label: 'Okolica', href: '/okolica' }, { label: 'Spływ Dunajcem' }]}
       />
 
@@ -70,9 +71,9 @@ export default function SplywDunajcem() {
               </div>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <div className="eyebrow text-charcoal/50 mb-4">Trasy i czas</div>
+              <div className="eyebrow text-charcoal/65 mb-4">Trasy i czas</div>
               <FactTable rows={trasy} />
-              <div className="mt-6 text-charcoal/55 text-[13px]">Trasa wiedzie obok Trzech Koron; klasa wody II (spokojna).</div>
+              <div className="mt-6 text-charcoal/70 text-[13px]">Trasa wiedzie obok Trzech Koron; klasa wody II (spokojna).</div>
             </div>
           </div>
         </Container>
@@ -83,7 +84,7 @@ export default function SplywDunajcem() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5">
-              <SectionHeading eyebrow="Cennik 2026" title={<>Ile to <span className="italic font-[380]">kosztuje</span>.</>} />
+              <SectionHeading eyebrow="01 — Cennik 2026" title={<>Ile to <span className="italic font-normal">kosztuje</span>.</>} />
               <p className="mt-6 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">
                 Flisacy mają dwa progi cenowe: normalny i ulgowy (dziecko do 10 lat). Stawka zależy od trasy i sezonu — poniżej ceny wyjściowe na 2026 rok. Rower lub duży bagaż to dopłata 50 zł; mały pies na kolanach płynie za darmo.
               </p>
@@ -93,7 +94,7 @@ export default function SplywDunajcem() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <FactTable rows={ceny} />
-              <p className="mt-5 text-charcoal/55 text-[13px] leading-relaxed">
+              <p className="mt-5 text-charcoal/70 text-[13px] leading-relaxed">
                 Ceny orientacyjne, według cennika flisaków na 2026 rok — prosimy potwierdzić przed wyjściem. Bilety kupuje się w kasie na miejscu; rezerwacja z wyprzedzeniem nie jest potrzebna (poza grupami).
               </p>
             </div>
@@ -104,7 +105,7 @@ export default function SplywDunajcem() {
       {/* Alternatywa: kajaki */}
       <section className="relative bg-cream py-20 md:py-28">
         <Container>
-          <SectionHeading eyebrow="Alternatywa" title={<>Wolą Państwo <span className="italic font-[380]">wiosłować</span>?</>} className="max-w-2xl mb-10" />
+          <SectionHeading eyebrow="02 — Alternatywa" title={<>Wolą Państwo <span className="italic font-normal">wiosłować</span>?</>} className="max-w-2xl mb-10" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-charcoal/75 text-[16.5px] leading-[1.8] text-pretty">
             <p>
               Zamiast tratwy można popłynąć pontonem lub kajakiem z lokalną wypożyczalnią. To bardziej aktywna wersja tej samej przygody — z transportem na start w Sromowcach i szkoleniem w cenie. Warianty zaczynają się od 85 zł za dorosłego i od 18 km trasy.
@@ -122,7 +123,7 @@ export default function SplywDunajcem() {
         <Container className="relative">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-8 h-px bg-gold" />
-            <span className="eyebrow text-cream/60">Co zabrać na spływ</span>
+            <span className="eyebrow text-cream/75">Co zabrać na spływ</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-4 text-cream/85 text-[15px]">
             {['Butelka wody i nakrycie głowy', 'Kurtka przeciwdeszczowa (łodzie są odkryte)', 'Krem z filtrem', 'Coś ciepłego na zmianę pogody', 'Dokument dziecka do biletu ulgowego', 'Aparat na Przełom Dunajca'].map((x) => (
@@ -138,7 +139,7 @@ export default function SplywDunajcem() {
       {/* FAQ */}
       <section className="relative bg-cream py-20 md:py-28">
         <Container>
-          <SectionHeading eyebrow="Najczęstsze pytania" title="Spływ Dunajcem — w skrócie" className="max-w-2xl mb-12" />
+          <SectionHeading eyebrow="03 — Najczęstsze pytania" title="Spływ Dunajcem — w skrócie" className="max-w-2xl mb-12" />
           <FAQ items={faq} />
         </Container>
       </section>

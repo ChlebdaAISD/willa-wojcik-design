@@ -54,7 +54,8 @@ export default function TrzyKorony() {
         eyebrow="Atrakcje · Pieniński Park Narodowy"
         title="Trzy Korony — szlak spod naszego progu"
         subtitle="Najkrótsze wejście na najsłynniejszy szczyt Pienin zaczyna się przy tej samej ulicy co Willa Wójcik. Około 15 minut pieszo i są Państwo na szlaku — bez dojazdu autem."
-        image={PHOTOS.snow}
+        image={PHOTOS.heroTrzyKorony}
+        imageAlt="Ilustracja: wapienne turnie Trzech Koron w złotym świetle, nad lasem i poranną mgłą"
         crumbs={[{ label: 'Strona główna', href: '/' }, { label: 'Okolica', href: '/okolica' }, { label: 'Trzy Korony' }]}
       />
 
@@ -75,7 +76,7 @@ export default function TrzyKorony() {
               </div>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
-              <div className="eyebrow text-charcoal/50 mb-4">Szlak w liczbach</div>
+              <div className="eyebrow text-charcoal/65 mb-4">Szlak w liczbach</div>
               <FactTable rows={szlak} />
             </div>
           </div>
@@ -87,7 +88,7 @@ export default function TrzyKorony() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5">
-              <SectionHeading eyebrow="Taras widokowy" title={<>Wejście na <span className="italic font-[380]">szczyt</span>.</>} />
+              <SectionHeading eyebrow="01 — Taras widokowy" title={<>Wejście na <span className="italic font-normal">szczyt</span>.</>} />
               <p className="mt-6 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">
                 Sam szlak i wstęp do Pienińskiego Parku Narodowego są bezpłatne. Opłatę pobiera się tylko za wejście na platformę widokową na samym szczycie — od 1 kwietnia do 15 listopada.
               </p>
@@ -97,7 +98,7 @@ export default function TrzyKorony() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <FactTable rows={taras} />
-              <p className="mt-5 text-charcoal/60 text-[14px] leading-relaxed">
+              <p className="mt-5 text-charcoal/70 text-[14px] leading-relaxed">
                 Bilet z Trzech Koron jest ważny tego samego dnia także na Sokolicy (747 m) — sąsiednim tarasie, znanym z reliktowych sosen „wiszących” nad przepaścią. W jeden dzień można zaliczyć oba widoki.
               </p>
             </div>
@@ -108,7 +109,7 @@ export default function TrzyKorony() {
       {/* FAQ */}
       <section className="relative bg-cream py-20 md:py-28">
         <Container>
-          <SectionHeading eyebrow="Najczęstsze pytania" title="Trzy Korony — w skrócie" className="max-w-2xl mb-12" />
+          <SectionHeading eyebrow="02 — Najczęstsze pytania" title="Trzy Korony — w skrócie" className="max-w-2xl mb-12" />
           <FAQ items={faq} />
         </Container>
       </section>

@@ -9,7 +9,7 @@ export function SectionHeading({ eyebrow, title, tone = 'dark', as: Tag = 'h2', 
     <div className={`flex flex-col ${alignCls} ${className}`}>
       {eyebrow && <Eyebrow tone={tone} className="mb-6">{eyebrow}</Eyebrow>}
       <Tag className={`font-serif ${color} leading-[1.05] text-balance`}
-           style={{ fontSize: 'clamp(34px, 4.6vw, 60px)', fontWeight: 450 }}>
+           style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 500 }}>
         {title}
       </Tag>
     </div>

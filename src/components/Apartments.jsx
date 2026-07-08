@@ -43,7 +43,7 @@ export function Apartments() {
           <div className="max-w-2xl reveal">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-gold"></span>
-              <span className="eyebrow text-charcoal/60">02 — Nocleg</span>
+              <span className="eyebrow text-charcoal/70">02 — Nocleg</span>
             </div>
             <h2 className="font-serif text-charcoal leading-[1.05]"
                 style={{ fontSize: 'clamp(36px, 4.6vw, 62px)', fontWeight: 500 }}>
@@ -51,10 +51,10 @@ export function Apartments() {
             </h2>
             <p className="mt-6 text-charcoal/70 text-[17px] leading-[1.8] text-pretty max-w-lg">
               Dziesięć jednostek, 35 miejsc — każda z balkonem albo tarasem i własną łazienką.
-              Wybór zależy od tego, ilu Państwa przyjeżdża i czy gotują na miejscu.
+              Wybór zależy od liczby osób i od tego, czy gotują Państwo na miejscu.
             </p>
           </div>
-          <div className="reveal eyebrow text-charcoal/45 hidden md:block" style={{ '--d': '.15s' }}>
+          <div className="reveal eyebrow text-charcoal/65 hidden md:block" style={{ '--d': '.15s' }}>
             2 apartamenty · 8 pokoi
           </div>
         </div>
@@ -69,7 +69,7 @@ export function Apartments() {
                      className="absolute inset-0 w-full h-full object-cover zoom-img" />
               </div>
               <div className="p-8 md:p-10 flex flex-col flex-1">
-                <div className="eyebrow text-charcoal/45 mb-2.5">{c.kind} · {c.sqm}</div>
+                <div className="eyebrow text-charcoal/65 mb-2.5">{c.kind} · {c.sqm}</div>
                 <h3 className="font-serif text-charcoal text-3xl md:text-4xl leading-tight" style={{ fontWeight: 500 }}>{c.title}</h3>
                 <ul className="mt-6 flex flex-col gap-y-3">
                   {c.features.map((f) => (
@@ -85,7 +85,7 @@ export function Apartments() {
                     <div className="font-serif text-forest leading-none" style={{ fontSize: 'clamp(30px, 3.4vw, 44px)', fontWeight: 500 }}>
                       {c.price}
                     </div>
-                    <div className="eyebrow text-charcoal/45 mt-1.5 text-[10px]">za dobę</div>
+                    <div className="eyebrow text-charcoal/65 mt-1.5 text-[10px]">za dobę</div>
                   </div>
                   <div className="flex items-center gap-4">
                     <a href="#kontakt"
@@ -102,7 +102,7 @@ export function Apartments() {
             </article>
           ))}
         </div>
-        <p className="reveal mt-8 text-charcoal/50 text-[13px]">
+        <p className="reveal mt-8 text-charcoal/65 text-[13px]">
           Ceny orientacyjne, zależne od sezonu i długości pobytu — stawkę potwierdzimy przy rezerwacji. Zaliczka 30%.
         </p>
       </div>

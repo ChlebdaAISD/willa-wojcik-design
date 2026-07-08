@@ -1,4 +1,12 @@
 import heroMountain from '../assets/hero.webp'
+import heroIllustration from '../assets/hero-trzy-korony-illustration.webp'
+import heroPokoje from '../assets/hero-pokoje-illustration.webp'
+import heroGaleria from '../assets/hero-galeria-illustration.webp'
+import heroOkolica from '../assets/hero-okolica-illustration.webp'
+import heroSplyw from '../assets/hero-splyw-illustration.webp'
+import heroTrzyKorony from '../assets/hero-3-korony-illustration.webp'
+import heroKladka from '../assets/hero-kladka-illustration.webp'
+import heroKontakt from '../assets/hero-kontakt-illustration.webp'
 import buildingDusk from '../assets/screenshot-16-10-09.webp'
 import buildingWinter from '../assets/screenshot-15-40-49.webp'
 import apartment from '../assets/screenshot-15-41-20.webp'
@@ -12,7 +20,19 @@ import balconyView from '../assets/screenshot-15-40-31.webp'
 
 export const PHOTOS = {
   heroMountain,
-  // Prawdziwe ujęcie z drona: budynek + Trzy Korony w tle (zima) — hero strony głównej
+  // Hero strony głównej: ilustracja vintage Trzech Koron (wybrana przez klienta 2026-07-07);
+  // źródło: public/images/hero/, zoptymalizowana kopia w src/assets/
+  heroIllustration,
+  // Hero /pokoje-i-apartamenty: pokój brzozowy jako ilustracja (Seedream, styl willawojcik)
+  heroPokoje,
+  // Heroes podstron — ilustracje w stylu willawojcik (źródła: public/images/hero/)
+  heroGaleria,
+  heroOkolica,
+  heroSplyw,
+  heroTrzyKorony,
+  heroKladka,
+  heroKontakt,
+  // Prawdziwe ujęcie z drona: budynek + Trzy Korony w tle (zima)
   exteriorWinter: balconyView,
   buildingDusk,
   buildingWinter,
@@ -50,7 +70,7 @@ export const AMENITIES = [
 export const ATTRACTIONS = [
   { title: 'Pieniński Park Narodowy', dist: '1,1 km', time: '15 min pieszo' },
   { title: 'Kładka pieszo-rowerowa na Słowację', dist: '250 m', time: '3 min pieszo' },
-  { title: 'Spływ Dunajcem — przystań', dist: '2,5 km', time: '5 min autem' },
+  { title: 'Przystań spływu — Kąty', dist: '~4–5 km', time: '5–7 min autem' },
   { title: 'Zamek w Niedzicy', dist: '11 km', time: '15 min autem' },
   { title: 'Stok Polana Sosny', dist: '4 km', time: '5 min autem' },
   { title: 'Termy Bania (Białka Tatrzańska)', dist: '22 km', time: '20 min autem' },

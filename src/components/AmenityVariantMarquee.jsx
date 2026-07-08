@@ -7,7 +7,7 @@ export function AmenityVariantMarquee() {
         <div className="lg:sticky lg:top-28">
           <div className="flex items-center gap-3 mb-5">
             <span className="w-8 h-px bg-gold"></span>
-            <span className="eyebrow text-charcoal/60">03 — Udogodnienia</span>
+            <span className="eyebrow text-charcoal/70">03 — Udogodnienia</span>
           </div>
           <div className="font-serif text-charcoal italic leading-[0.95]"
                style={{ fontSize: 'clamp(64px, 8vw, 120px)', fontWeight: 400 }}>
@@ -24,7 +24,7 @@ export function AmenityVariantMarquee() {
                    loading="lazy" decoding="async" width="1920" height="1441"
                    className="absolute inset-0 w-full h-full object-cover" />
             </div>
-            <figcaption className="mt-3 text-charcoal/50 text-[12.5px]">
+            <figcaption className="mt-3 text-charcoal/65 text-[12.5px]">
               Altana z grillem i plac zabaw — w głębi ogrodu
             </figcaption>
           </figure>
@@ -45,7 +45,7 @@ export function AmenityVariantMarquee() {
                      style={{ fontSize: 'clamp(22px, 2.4vw, 32px)', fontWeight: 500 }}>
                   {a.title}
                 </div>
-                <div className="text-charcoal/55 text-[13.5px] mt-1.5 leading-relaxed max-w-md">
+                <div className="text-charcoal/70 text-[13.5px] mt-1.5 leading-relaxed max-w-md">
                   {a.note}
                 </div>
               </div>
