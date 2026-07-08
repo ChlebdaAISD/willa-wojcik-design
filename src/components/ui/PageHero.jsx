@@ -25,23 +25,20 @@ export function PageHero({ title, subtitle, image, imageAlt = '', crumbs, childr
       <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 46%, rgba(9,15,12,0.4) 72%, rgba(7,13,10,0.84) 100%)' }} />
       <div className={`absolute inset-0 grain pointer-events-none ${image ? 'opacity-20' : 'opacity-50'}`} />
 
-      <Container className="relative min-h-[56svh] md:min-h-[62svh] flex flex-col justify-end pt-36 md:pt-44 pb-12 md:pb-16">
+      {/* Decyzja 2026-07-08: hero podstron = tylko okruszki + H1 przy samym dole
+          (najciemniejsza strefa gradu). `subtitle`/`children` przyjmujemy dla
+          kompatybilności, ale NIE renderujemy — treść wprowadzająca żyje w intro
+          sekcji pod hero. */}
+      <Container className="relative min-h-[56svh] md:min-h-[62svh] flex flex-col justify-end pt-36 md:pt-44 pb-9 md:pb-12">
         {crumbs && (
           <div className="hero-el" style={{ '--d': '.05s' }}>
-            <Breadcrumbs items={crumbs} tone="light" className="mb-6" />
+            <Breadcrumbs items={crumbs} tone="light" className="mb-5" />
           </div>
         )}
         <h1 className="hero-el font-serif text-cream leading-[1.0] text-balance max-w-4xl"
             style={{ fontSize: 'clamp(40px, 5.8vw, 84px)', fontWeight: 500, '--d': '.12s' }}>
           {title}
         </h1>
-        {subtitle && (
-          <p className="hero-el mt-6 text-cream/85 text-[16px] md:text-lg leading-[1.75] max-w-2xl text-pretty"
-             style={{ '--d': '.2s' }}>
-            {subtitle}
-          </p>
-        )}
-        {children && <div className="hero-el mt-8" style={{ '--d': '.28s' }}>{children}</div>}
       </Container>
     </section>
   )

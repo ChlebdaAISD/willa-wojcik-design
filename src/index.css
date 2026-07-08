@@ -105,11 +105,15 @@ html[data-anim] .line-in {
 }
 html[data-anim] .line-in.in { transform: scaleX(1); }
 
-/* Choreografia hero — sterowana klasą .on dodawaną po mount */
-html[data-anim] .hero-photo { transform: scale(1.06); }
-html[data-anim] .hero-stage.on .hero-photo {
-  transform: scale(1);
-  transition: transform 2.6s var(--ease-out);
+/* Choreografia hero — sterowana klasą .on dodawaną po mount.
+   Settle skali zdjęcia TYLKO na md+: animowanie transformu dużej bitmapy pod
+   nakładką grain (mix-blend-mode) zacina się na słabszych GPU telefonów. */
+@media (min-width: 768px) {
+  html[data-anim] .hero-photo { transform: scale(1.06); }
+  html[data-anim] .hero-stage.on .hero-photo {
+    transform: scale(1);
+    transition: transform 2.6s var(--ease-out);
+  }
 }
 html[data-anim] .hero-el {
   opacity: 0;
@@ -215,8 +219,8 @@ select.inp-select {
   appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231C1C1C' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' opacity='0.55'><path d='M6 9l6 6 6-6'/></svg>");
   background-repeat: no-repeat;
-  background-position: right 2px center;
-  padding-right: 26px;
+  background-position: right 14px center;
+  padding-right: 42px;
   cursor: pointer;
 }
 input[type="range"].inp-range { accent-color: var(--color-forest); cursor: pointer; }

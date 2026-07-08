@@ -30,7 +30,8 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
     </label>
   )
   // 16px — poniżej iOS przybliża stronę przy focusie; focus = zielony underline (box-shadow, bez skoku layoutu)
-  const inp = "w-full bg-transparent border-b border-charcoal/25 focus:border-forest focus:shadow-[0_1px_0_0_var(--color-forest)] outline-none pb-3 text-charcoal text-[16px] placeholder:text-charcoal/50 transition-[border-color,box-shadow] caret-forest rounded-none"
+  // Pola jako wyraźne boxy (decyzja 2026-07-08): jasne wypełnienie + obrys, focus = zielona ramka.
+  const inp = "w-full bg-white/70 border border-charcoal/20 rounded-sm px-4 py-3.5 text-charcoal text-[16px] placeholder:text-charcoal/45 outline-none focus:bg-white focus:border-forest focus:shadow-[0_0_0_1px_var(--color-forest)] transition-[border-color,box-shadow,background-color] caret-forest"
 
   return (
     <section id="kontakt" data-screen-label="09 Rezerwacja" className="relative bg-cream py-24 md:py-40">
@@ -142,17 +143,6 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
                   </li>
                 </ul>
 
-                <div className="hairline-cream my-8"></div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="text-cream/70 text-[12px]">Zameldowanie</div>
-                    <div className="text-cream text-[13px]">od 14:00</div>
-                    <div className="w-px h-4 bg-cream/20"></div>
-                    <div className="text-cream/70 text-[12px]">Wymeldowanie</div>
-                    <div className="text-cream text-[13px]">do 10:00</div>
-                  </div>
-                </div>
               </div>
             </div>
 

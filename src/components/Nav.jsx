@@ -3,9 +3,16 @@ import { Link, useLocation } from 'wouter'
 import { NAV_LINKS, SITE } from '../data/site.js'
 import { IconClose, IconPhone } from './Icons.jsx'
 
-function Logo({ dark }) {
+function Logo({ dark, onClick }) {
+  const [location] = useLocation()
+  // Logo = powrót na home; gdy już jesteśmy na home, płynny scroll na górę
+  // (zmianę trasy scrolluje ScrollToTop w App).
+  const handleClick = () => {
+    onClick?.()
+    if (location === '/') window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
   return (
-    <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="Willa Wójcik — strona główna">
+    <Link href="/" onClick={handleClick} className="flex items-center gap-3 group shrink-0" aria-label="Willa Wójcik — strona główna">
       <svg width="30" height="30" viewBox="0 0 40 40" className={dark ? 'text-forest' : 'text-cream'} aria-hidden="true">
         <path d="M4 32 L14 14 L20 22 L26 12 L36 32 Z" fill="currentColor" />
         <circle cx="26" cy="10" r="2" fill="var(--color-gold)" />
@@ -105,7 +112,7 @@ export function Nav() {
           <div className="absolute inset-0 grain opacity-40 pointer-events-none" />
           <div className="relative h-full flex flex-col max-w-[1440px] mx-auto px-6">
             <div className="h-20 flex items-center justify-between">
-              <span className="font-serif text-cream text-lg" style={{ fontWeight: 500 }}>Willa Wójcik</span>
+              <Logo dark={false} onClick={() => setMenuOpen(false)} />
               <button onClick={() => setMenuOpen(false)} aria-label="Zamknij menu"
                       className="w-11 h-11 -mr-2 flex items-center justify-center text-cream">
                 <IconClose size={24} />
