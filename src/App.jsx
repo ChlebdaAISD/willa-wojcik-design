@@ -5,7 +5,8 @@ import { Footer } from './components/Footer.jsx'
 import { useReveal } from './lib/useReveal.js'
 
 import Home from './pages/Home.jsx'
-import PokojeApartamenty from './pages/PokojeApartamenty.jsx'
+import Apartamenty from './pages/Apartamenty.jsx'
+import Pokoje from './pages/Pokoje.jsx'
 import Galeria from './pages/Galeria.jsx'
 import Okolica from './pages/Okolica.jsx'
 import SplywDunajcem from './pages/okolica/SplywDunajcem.jsx'
@@ -32,7 +33,8 @@ export default function App({ ssrPath }) {
         <main>
           <Switch>
             <Route path="/" component={Home} />
-            <Route path="/pokoje-i-apartamenty" component={PokojeApartamenty} />
+            <Route path="/apartamenty" component={Apartamenty} />
+            <Route path="/pokoje" component={Pokoje} />
             <Route path="/galeria" component={Galeria} />
             <Route path="/okolica" component={Okolica} />
             <Route path="/okolica/splyw-dunajcem" component={SplywDunajcem} />

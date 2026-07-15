@@ -52,11 +52,17 @@ const routesMeta = {
     breadcrumb: [],
     additionalSchema: lodgingSchema,
   },
-  '/pokoje-i-apartamenty': {
-    title: 'Apartamenty i pokoje — Sromowce Niżne | Willa Wójcik',
-    description: 'Apartamenty 4–6 os. i pokoje 2–3 os. w Sromowcach Niżnych, u podnóża Trzech Koron. Balkon z widokiem, aneks kuchenny, parking. Rezerwacja bez prowizji.',
-    canonical: `${DOMAIN}/pokoje-i-apartamenty`,
-    breadcrumb: [crumbHome, { name: 'Pokoje i apartamenty', url: `${DOMAIN}/pokoje-i-apartamenty` }],
+  '/apartamenty': {
+    title: 'Apartamenty Sromowce Niżne z balkonem na Trzy Korony',
+    description: 'Dwa apartamenty w Sromowcach Niżnych: 38 m² dla 4 osób i wolnostojący 60 m² dla 6 osób. Aneks kuchenny, balkon z widokiem na Trzy Korony. Bez prowizji.',
+    canonical: `${DOMAIN}/apartamenty`,
+    breadcrumb: [crumbHome, { name: 'Apartamenty', url: `${DOMAIN}/apartamenty` }],
+  },
+  '/pokoje': {
+    title: 'Pokoje Sromowce Niżne od 210 zł — Willa Wójcik',
+    description: 'Osiem pokoi 2–3 osobowych w Sromowcach Niżnych — 21 m², własna łazienka, balkon lub taras. Wspólna kuchnia 45 m² do gotowania. Od 210 zł za dobę, bez prowizji.',
+    canonical: `${DOMAIN}/pokoje`,
+    breadcrumb: [crumbHome, { name: 'Pokoje', url: `${DOMAIN}/pokoje` }],
   },
   '/galeria': {
     title: 'Galeria zdjęć — Willa Wójcik, Sromowce Niżne',

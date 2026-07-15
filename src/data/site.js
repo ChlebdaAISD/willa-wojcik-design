@@ -46,7 +46,8 @@ export const SITE = {
 // Nawigacja główna (route-based)
 export const NAV_LINKS = [
   { label: 'Strona główna', href: '/' },
-  { label: 'Pokoje i apartamenty', href: '/pokoje-i-apartamenty' },
+  { label: 'Apartamenty', href: '/apartamenty' },
+  { label: 'Pokoje', href: '/pokoje' },
   { label: 'Galeria', href: '/galeria' },
   { label: 'Okolica', href: '/okolica' },
   { label: 'Kontakt', href: '/kontakt' },

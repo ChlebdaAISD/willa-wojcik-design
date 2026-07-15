@@ -18,7 +18,8 @@ export function Footer() {
           <div>
             <div className="eyebrow text-cream/70 mb-5">Nocleg</div>
             <ul className="space-y-3 text-[14px]">
-              <li><Link href="/pokoje-i-apartamenty" className="hover:text-cream transition-colors">Pokoje i apartamenty</Link></li>
+              <li><Link href="/apartamenty" className="hover:text-cream transition-colors">Apartamenty</Link></li>
+              <li><Link href="/pokoje" className="hover:text-cream transition-colors">Pokoje</Link></li>
               <li><Link href="/galeria" className="hover:text-cream transition-colors">Galeria</Link></li>
               <li><Link href="/kontakt" className="hover:text-cream transition-colors">Rezerwacja</Link></li>
             </ul>

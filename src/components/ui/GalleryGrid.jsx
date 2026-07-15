@@ -4,7 +4,9 @@ import { IconChevL, IconChevR, IconClose } from '../Icons.jsx'
 // Siatka zdjęć (masonry) + lightbox: klawiatura, swipe, focus-trap, blokada
 // scrolla, powrót fokusa. photos: [{ src, label, span? }]. Reużywana na home
 // i na /galeria. SSR-safe: dostęp do window/document tylko w useEffect.
-export function GalleryGrid({ photos, className = '' }) {
+// hideThumbLabels: ukrywa podpisy na miniaturach (opisy pokazujemy dopiero w
+// lightboxie). Alt text zostaje na <img> — a11y/SEO bez zmian.
+export function GalleryGrid({ photos, className = '', hideThumbLabels = false }) {
   const [open, setOpen] = useState(null)
   const [touchStartX, setTouchStartX] = useState(null)
   const swipedRef = useRef(false)
@@ -74,13 +76,20 @@ export function GalleryGrid({ photos, className = '' }) {
                   style={{ '--d': `${(i % 4) * 0.06}s` }}>
             <img src={p.src} alt={p.label} loading="lazy" decoding="async"
                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
-            {/* mobile: stały gradient pod podpisem; desktop: przyciemnienie na hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent md:hidden" />
-            <div className="absolute inset-0 hidden md:block bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-500" />
-            <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 text-left">
-              <div className="eyebrow text-cream/80 text-[10px]">{String(i + 1).padStart(2, '0')}</div>
-              <div className="font-serif text-cream text-lg leading-tight mt-1">{p.label}</div>
-            </div>
+            {hideThumbLabels ? (
+              // Bez podpisu — sam delikatny cień na hover (desktop) dla afordancji klikalności
+              <div className="absolute inset-0 hidden md:block bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-500" />
+            ) : (
+              <>
+                {/* mobile: stały gradient pod podpisem; desktop: przyciemnienie na hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent md:hidden" />
+                <div className="absolute inset-0 hidden md:block bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-500" />
+                <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 text-left">
+                  <div className="eyebrow text-cream/80 text-[10px]">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="font-serif text-cream text-lg leading-tight mt-1">{p.label}</div>
+                </div>
+              </>
+            )}
           </button>
         ))}
       </div>
@@ -113,8 +122,8 @@ export function GalleryGrid({ photos, className = '' }) {
               <img src={photos[open].src} alt={photos[open].label} decoding="async"
                    className="absolute inset-0 w-full h-full object-cover" />
             </div>
-            <figcaption className="mt-5 flex items-center justify-between gap-4">
-              <div className="font-serif text-cream text-lg sm:text-xl min-w-0 truncate">{photos[open].label}</div>
+            <figcaption className="mt-5 flex items-start justify-between gap-4">
+              <div className="font-serif text-cream text-base sm:text-xl min-w-0 leading-snug text-pretty">{photos[open].label}</div>
               <div className="flex items-center gap-3 shrink-0">
                 <div className="eyebrow text-cream/70">{String(open + 1).padStart(2, '0')} / {String(n).padStart(2, '0')}</div>
                 <div className="flex gap-2 sm:hidden">

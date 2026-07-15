@@ -1,28 +1,31 @@
-import { PHOTOS } from '../data/content.js'
-import { IconArrow, IconArrowUp } from './Icons.jsx'
+import { PHOTOS, APARTMENTS } from '../data/content.js'
+import { Button } from './ui/Button.jsx'
 
-// Liczby (metraże, pojemność, ceny „od") zgodne z references/stats.md —
-// nie zmieniać bez potwierdzenia właściciela.
+// Liczby (metraże, pojemność) zgodne z references/stats.md i realnymi opisami
+// apartamentów od właściciela (2026-07). Ceny apartamentów = placeholder „od XXXX zł"
+// (właściciel nie podał stawek). Pokoje „od 210 zł" ze stats.md.
 export function Apartments() {
   const cards = [
     {
       kind: 'Apartament',
-      title: 'Apartamenty 4–6 osobowe',
-      price: 'od 350 zł',
-      sqm: '35–39 m²',
-      img: PHOTOS.apartment,
-      alt: 'Salon apartamentu z aneksem kuchennym i oknami dachowymi — Willa Wójcik',
+      title: 'Apartamenty',
+      href: '/apartamenty',
+      price: 'od XXXX zł',
+      sqm: '38–60 m²',
+      img: APARTMENTS[1].cover,
+      alt: 'Wnętrze wolnostojącego apartamentu z antresolą i ścianką z brzozowych pni — Willa Wójcik',
       features: [
-        'Salon i osobna sypialnia',
-        'Aneks kuchenny z lodówką',
+        'Dwa apartamenty: 38 m² i wolnostojący 60 m²',
+        'W pełni wyposażony aneks kuchenny',
         'Balkon z widokiem na Trzy Korony',
-        'Własna łazienka',
-        'TV-SAT, szybkie WiFi',
+        'Własna łazienka, TV-SAT, WiFi',
+        'Większy apartament — miejsca dla 6 osób',
       ],
     },
     {
       kind: 'Pokój',
       title: 'Pokoje 2–3 osobowe',
+      href: '/pokoje',
       price: 'od 210 zł',
       sqm: '21 m²',
       img: PHOTOS.roomBirch,
@@ -61,7 +64,7 @@ export function Apartments() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
           {cards.map((c, i) => (
-            <article key={i} className="reveal-lg card-lift group bg-cream rounded-sm overflow-hidden flex flex-col"
+            <article key={c.href} className="reveal-lg card-lift group bg-cream rounded-sm overflow-hidden flex flex-col"
                      style={{ '--d': `${i * 0.12}s` }}>
               <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                 <img src={c.img} alt={c.alt} loading="lazy" decoding="async"
@@ -87,15 +90,9 @@ export function Apartments() {
                     </div>
                     <div className="eyebrow text-charcoal/65 mt-1.5 text-[10px]">za dobę</div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <a href="#kontakt"
-                       className="btn-prim inline-flex items-center gap-2 px-6 py-3 rounded-full text-[13px] font-semibold tracking-wide whitespace-nowrap shrink-0">
-                      Zarezerwuj <IconArrow size={14} />
-                    </a>
-                    <a href="#galeria" className="inline-flex items-center gap-1.5 text-charcoal/70 text-[13px] group/l whitespace-nowrap hover:text-forest transition-colors">
-                      Zobacz wnętrza
-                      <IconArrowUp size={14} className="transition-transform group-hover/l:translate-x-0.5 group-hover/l:-translate-y-0.5" />
-                    </a>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <Button href="#kontakt" size="sm">Zarezerwuj</Button>
+                    <Button href={c.href} size="sm" variant="ghostDark">Szczegóły</Button>
                   </div>
                 </div>
               </div>

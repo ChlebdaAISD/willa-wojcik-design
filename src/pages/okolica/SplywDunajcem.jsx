@@ -148,7 +148,7 @@ export default function SplywDunajcem() {
         items={[
           { href: '/okolica/trzy-korony', title: 'Trzy Korony', note: 'Najkrótszy szlak zaczyna się przy naszej ulicy' },
           { href: '/okolica/kladka-czerwony-klasztor', title: 'Kładka i Czerwony Klasztor', note: '250 m spacerem na Słowację' },
-          { href: '/pokoje-i-apartamenty', title: 'Pokoje i apartamenty', note: 'Nocleg u podnóża Pienin' },
+          { href: '/pokoje', title: 'Pokoje 2–3 osobowe', note: 'Nocleg przy przystani spływu, od 210 zł' },
         ]}
       />
 

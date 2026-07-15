@@ -118,7 +118,7 @@ export default function TrzyKorony() {
         items={[
           { href: '/okolica/splyw-dunajcem', title: 'Spływ Dunajcem', note: 'Przełom Dunajca od dołu, tratwą flisacką' },
           { href: '/okolica/kladka-czerwony-klasztor', title: 'Kładka i Czerwony Klasztor', note: '250 m spacerem na Słowację' },
-          { href: '/pokoje-i-apartamenty', title: 'Pokoje i apartamenty', note: 'Nocleg u podnóża Trzech Koron' },
+          { href: '/apartamenty', title: 'Apartamenty z balkonem na Trzy Korony', note: 'Nocleg u podnóża szczytu, aneks kuchenny' },
         ]}
       />
 

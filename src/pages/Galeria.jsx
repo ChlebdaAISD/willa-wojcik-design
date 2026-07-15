@@ -2,10 +2,12 @@ import { PageHero } from '../components/ui/PageHero.jsx'
 import { Container } from '../components/ui/Container.jsx'
 import { GalleryGrid } from '../components/ui/GalleryGrid.jsx'
 import { CTASection } from '../components/ui/CTASection.jsx'
-import { PHOTOS } from '../data/content.js'
+import { PHOTOS, APARTMENTS } from '../data/content.js'
 
-// Galeria tematyczna — wszystkie zdjęcia na stronie, każda kategoria jako osobna sekcja.
-// Kategorie i zdjęcia PLACEHOLDER (istniejące webp) — podział i finalne foto poda klient (IMAGES_NEEDED.md).
+// Apartamenty = realne zdjęcia (content.js). Pozostałe kategorie wciąż poglądowe.
+const AP1 = APARTMENTS.find((a) => a.id === 'apartament-1')
+const AP3 = APARTMENTS.find((a) => a.id === 'apartament-3')
+
 const CATEGORIES = [
   {
     id: 'zewnatrz',
@@ -20,12 +22,16 @@ const CATEGORIES = [
   {
     id: 'apartamenty',
     label: 'Apartamenty',
-    desc: 'Przestronne apartamenty 4–6 osobowe z balkonem i w pełni wyposażonym aneksem kuchennym.',
+    desc: 'Dwa apartamenty z balkonem na Trzy Korony — kameralny 38 m² i przestronny, wolnostojący 60 m² dla sześciu osób.',
+    // Spany ustawiane jawnie (nie dziedziczone ze spreadu) — inaczej AP1.photos[0]
+    // wnosi 'col-span-2 row-span-2' z content.js i robi dziurę w siatce.
     photos: [
-      { src: PHOTOS.apartment, label: 'Apartament rodzinny', span: 'row-span-2 col-span-2' },
-      { src: PHOTOS.livingRoom, label: 'Salon apartamentu' },
-      { src: PHOTOS.balconyView, label: 'Willa i Trzy Korony z lotu ptaka' },
-      { src: PHOTOS.livingRoom2, label: 'Strefa wypoczynkowa', span: 'col-span-2' },
+      { src: AP3.photos[0].src, label: AP3.photos[0].label, span: 'row-span-2 col-span-2' }, // AP3: wnętrze/antresola (hero)
+      { src: AP3.photos[1].src, label: AP3.photos[1].label, span: 'col-span-2' },             // AP3: widok na Trzy Korony
+      { src: AP1.photos[0].src, label: AP1.photos[0].label },                                  // AP1: salon z aneksem
+      { src: AP3.photos[2].src, label: AP3.photos[2].label },                                  // AP3: sypialnia góralska
+      { src: AP3.photos[5].src, label: AP3.photos[5].label },                                  // AP3: łazienka
+      { src: AP1.photos[2].src, label: AP1.photos[2].label },                                  // AP1: sypialnia
     ],
   },
   {
@@ -68,13 +74,13 @@ export default function Galeria() {
                   <span className="eyebrow text-cream/75">{String(i + 1).padStart(2, '0')} — {c.label}</span>
                 </div>
                 <p className="reveal text-cream/70 text-[16px] leading-relaxed max-w-2xl mb-8">{c.desc}</p>
-                <GalleryGrid photos={c.photos} />
+                <GalleryGrid photos={c.photos} hideThumbLabels />
               </div>
             ))}
           </div>
 
           <p className="mt-16 text-cream/75 text-[13px] max-w-xl">
-            Zdjęcia poglądowe, podział na kategorie jest wstępny. Uzupełnimy galerię o aktualne fotografie i finalne kategorie.
+            Zdjęcia apartamentów są aktualne. Fotografie części wspólnych i obiektu z zewnątrz uzupełnimy wkrótce.
           </p>
         </Container>
       </section>
