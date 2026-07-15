@@ -51,57 +51,51 @@ export default function Apartamenty() {
         </Container>
       </section>
 
-      {/* Apartamenty — każdy we własnej sekcji z naprzemiennym tłem (wyraźna granica).
-          Jedna kolumna, oszczędny nagłówek (sam numer) — szczegóły niesie intro i cechy. */}
-      {APARTMENTS.map((apt, i) => {
-        const dark = i % 2 === 1
-        return (
-          <section key={apt.id} id={apt.id}
-                   className={`relative scroll-mt-24 py-24 md:py-36 ${dark ? 'bg-charcoal text-cream' : 'bg-cream-2'}`}>
-            <Container>
-              <div className="max-w-3xl reveal">
-                <SectionHeading
-                  tone={dark ? 'light' : 'dark'}
-                  eyebrow={`0${i + 2}`}
-                  title={apt.name}
-                />
-                <p className={`mt-7 text-[17px] leading-[1.85] text-pretty ${dark ? 'text-cream/75' : 'text-charcoal/75'}`}>
-                  {apt.intro}
-                </p>
-              </div>
+      {/* Apartamenty — każdy we własnej sekcji z naprzemiennym beżowym tłem jak na
+          pozostałych stronach (cream-2 → stone). Jedna kolumna, oszczędny nagłówek
+          (sam numer) — szczegóły niesie intro i cechy. */}
+      {APARTMENTS.map((apt, i) => (
+        <section key={apt.id} id={apt.id}
+                 className={`relative scroll-mt-24 py-24 md:py-36 ${i % 2 === 1 ? 'bg-stone' : 'bg-cream-2'}`}>
+          <Container>
+            <div className="max-w-3xl reveal">
+              <SectionHeading eyebrow={`0${i + 2}`} title={apt.name} />
+              <p className="mt-7 text-[17px] leading-[1.85] text-pretty text-charcoal/75">
+                {apt.intro}
+              </p>
+            </div>
 
-              <ul className="reveal mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 max-w-3xl" style={{ '--d': '.08s' }}>
-                {apt.features.map((f) => (
-                  <li key={f} className={`flex items-baseline gap-3 text-[14.5px] leading-snug ${dark ? 'text-cream/80' : 'text-charcoal/80'}`}>
-                    <span className="w-3 h-px bg-gold/70 shrink-0 translate-y-[-3px]" aria-hidden="true" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
+            <ul className="reveal mt-10 md:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-4 max-w-3xl" style={{ '--d': '.08s' }}>
+              {apt.features.map((f) => (
+                <li key={f} className="flex items-baseline gap-3 text-[14.5px] leading-snug text-charcoal/80">
+                  <span className="w-3 h-px bg-gold/70 shrink-0 translate-y-[-3px]" aria-hidden="true" />
+                  {f}
+                </li>
+              ))}
+            </ul>
 
-              <div className="reveal mt-12 md:mt-14 flex items-end justify-between gap-6 flex-wrap max-w-3xl" style={{ '--d': '.14s' }}>
-                <div>
-                  <div className={`font-serif leading-none ${dark ? 'text-gold' : 'text-forest'}`}
-                       style={{ fontSize: 'clamp(28px, 3.2vw, 40px)', fontWeight: 500 }}>
-                    {apt.price}
-                  </div>
-                  <div className={`eyebrow mt-1.5 text-[10px] ${dark ? 'text-cream/65' : 'text-charcoal/65'}`}>za dobę</div>
+            <div className="reveal mt-12 md:mt-14 flex items-end justify-between gap-6 flex-wrap max-w-3xl" style={{ '--d': '.14s' }}>
+              <div>
+                <div className="font-serif leading-none text-forest"
+                     style={{ fontSize: 'clamp(28px, 3.2vw, 40px)', fontWeight: 500 }}>
+                  {apt.price}
                 </div>
-                <Button href="/kontakt" size="sm" variant={dark ? 'cream' : 'primary'}>Zapytaj o termin</Button>
+                <div className="eyebrow mt-1.5 text-[10px] text-charcoal/65">za dobę</div>
               </div>
+              <Button href="/kontakt" size="sm">Zapytaj o termin</Button>
+            </div>
 
-              <GalleryGrid photos={apt.photos} className="mt-14 md:mt-20" hideThumbLabels />
+            <GalleryGrid photos={apt.photos} className="mt-14 md:mt-20" hideThumbLabels />
 
-              {i === APARTMENTS.length - 1 && (
-                <p className={`reveal mt-12 text-[13.5px] max-w-2xl ${dark ? 'text-cream/70' : 'text-charcoal/70'}`}>
-                  Aktualną stawkę i dostępność potwierdzamy telefonicznie lub mailem — prosimy o kontakt.
-                  Zaliczka 30% w ciągu 2 dni od potwierdzenia rezerwacji.
-                </p>
-              )}
-            </Container>
-          </section>
-        )
-      })}
+            {i === APARTMENTS.length - 1 && (
+              <p className="reveal mt-12 text-[13.5px] max-w-2xl text-charcoal/70">
+                Aktualną stawkę i dostępność potwierdzamy telefonicznie lub mailem — prosimy o kontakt.
+                Zaliczka 30% w ciągu 2 dni od potwierdzenia rezerwacji.
+              </p>
+            )}
+          </Container>
+        </section>
+      ))}
 
       {/* Cross-link do pokoi */}
       <section className="relative bg-cream py-14 md:py-16">
