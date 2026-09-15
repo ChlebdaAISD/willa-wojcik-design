@@ -1,6 +1,5 @@
 // Jedno źródło prawdy dla danych obiektu (NAP, kontakt, oceny).
 // Dane zweryfikowane z Google Business Profile + nocowanie.pl (2026-07).
-// TODO(klient): potwierdzić e-mail (rezerwacja@willawojcik.pl — do założenia z domeną)
 //               oraz doby hotelowe/zasady przed publikacją.
 
 export const SITE = {
@@ -18,8 +17,8 @@ export const SITE = {
 
   phone: '+48 537 446 036',
   phoneHref: 'tel:+48537446036',
-  email: 'rezerwacja@willawojcik.pl',
-  emailHref: 'mailto:rezerwacja@willawojcik.pl',
+  email: 'willawojcik1@gmail.com',
+  emailHref: 'mailto:willawojcik1@gmail.com',
 
   geo: { lat: 49.3965931, lng: 20.4089415 },
   mapsEmbedQuery: 'Willa+Wójcik+Sobczańska+9a+Sromowce+Niżne',

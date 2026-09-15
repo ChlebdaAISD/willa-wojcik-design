@@ -22,7 +22,9 @@ function Logo({ dark, onClick }) {
            width="480" height="160" decoding="async"
            className="h-7 md:h-8 w-auto shrink-0 transition-[filter] duration-500"
            style={{ filter: dark ? 'brightness(0.72) saturate(1.25)' : 'none' }} />
-      <div className="leading-tight">
+      {/* Na telefonie zostaje sam sygnet — nazwa zabierała miejsce przyciskowi
+          „Zarezerwuj" i hamburgerowi, a i tak powtarza się w hero oraz w stopce. */}
+      <div className="hidden sm:block leading-tight">
         <div className={`font-serif text-lg ${dark ? 'text-charcoal' : 'text-cream'}`} style={{ fontWeight: 500 }}>Willa Wójcik</div>
         <div className={`hidden lg:block eyebrow ${dark ? 'text-charcoal/70' : 'text-cream/70'}`} style={{ fontSize: 9, letterSpacing: '0.25em' }}>Apartamenty i pokoje</div>
       </div>
@@ -93,6 +95,13 @@ export function Nav() {
 
   const dark = scrolled // ciemny tekst na kremowym pasku po scrollu
 
+  // Klik w link prowadzący do trasy, na której JUŻ jesteśmy, nie zmienia adresu,
+  // więc ScrollToTop w App.jsx się nie uruchamia i strona zostaje tam, gdzie była.
+  // Najbardziej bolało to przy „Zarezerwuj" na /kontakt — przycisk wyglądał na zepsuty.
+  const scrollTopIfSame = (href) => () => {
+    if (location === href) window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       <header
@@ -107,6 +116,7 @@ export function Nav() {
               const active = isActive(href)
               return (
                 <Link key={href} href={href}
+                      onClick={scrollTopIfSame(href)}
                       aria-current={active ? 'page' : undefined}
                       className={`group relative text-[14px] font-semibold tracking-wide transition-colors ${
                         dark
@@ -123,6 +133,7 @@ export function Nav() {
           {/* Right side */}
           <div className="flex items-center gap-3 shrink-0">
             <Link href="/kontakt"
+                  onClick={scrollTopIfSame('/kontakt')}
                   className={`inline-flex items-center min-h-12 px-5 rounded-full text-[13px] font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors duration-300 ${
                     dark ? 'bg-forest text-cream hover:bg-forest-2' : 'bg-cream text-forest hover:bg-white'
                   }`}>
@@ -161,7 +172,8 @@ export function Nav() {
               {NAV_LINKS.map(({ label, href }, i) => {
                 const active = isActive(href)
                 return (
-                  <Link key={href} href={href} onClick={() => setMenuOpen(false)}
+                  <Link key={href} href={href}
+                        onClick={() => { setMenuOpen(false); scrollTopIfSame(href)() }}
                         aria-current={active ? 'page' : undefined}
                         className="group flex items-baseline gap-4 py-3">
                     <span className="font-mono text-cream/55 text-[13px] w-7">{String(i + 1).padStart(2, '0')}</span>

@@ -16,7 +16,7 @@ const lodgingSchema = {
   description: 'Kameralny pensjonat w Sromowcach Niżnych, u podnóża Trzech Koron. Trzy apartamenty 35–60 m² dla 4–6 osób i osiem pokoi 21 m² dla 2–3 osób, z balkonem lub tarasem i widokiem na Pieniny.',
   url: DOMAIN,
   telephone: '+48537446036',
-  email: 'rezerwacja@willawojcik.pl',
+  email: 'willawojcik1@gmail.com',
   // Realne zdjęcia obiektu, nie ilustracja. Leżą w public/zdjecia/ pod stałymi
   // nazwami, bo Vite hashuje pliki z src/assets i URL-e by się zmieniały co build.
   image: [
