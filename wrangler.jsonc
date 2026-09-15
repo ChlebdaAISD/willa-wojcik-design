@@ -10,7 +10,12 @@
     // Strona prerenderowana (SSG) bez client-side routera — każda ścieżka ma
     // własny statyczny plik. "none" = prawdziwe 404 dla nieistniejących ścieżek
     // (unika soft-404). Przy dodaniu client-side routingu rozważ "404-page".
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    // Domyślnie Cloudflare dokleja ukośnik na końcu: /apartamenty -> 307 -> /apartamenty/.
+    // Nasze canonical i sitemap.xml podają adresy BEZ ukośnika, więc każdy reklamowany
+    // Google'owi adres byłby przekierowaniem tymczasowym. "drop-trailing-slash" odwraca
+    // zależność: /apartamenty oddaje 200, a /apartamenty/ przekierowuje na wersję bez.
+    "html_handling": "drop-trailing-slash"
   },
   "compatibility_flags": [
     "nodejs_compat"
