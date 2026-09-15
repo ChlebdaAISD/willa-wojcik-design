@@ -2,7 +2,7 @@ import ReactDOMServer from 'react-dom/server'
 import App from './App.jsx'
 
 // Kanoniczna domena — trafia do canonical / og:url / sitemap.
-const DOMAIN = 'https://www.willawojcik.pl'
+const DOMAIN = 'https://willawojcik.pl'
 export const DOMAIN_URL = DOMAIN
 
 // JSON-LD LodgingBusiness (strona główna). NAP zweryfikowany z Google Business Profile

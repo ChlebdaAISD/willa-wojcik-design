@@ -40,7 +40,7 @@ export const SITE = {
   // Social
   instagram: 'https://www.instagram.com/willawojcik/',
 
-  domain: 'https://www.willawojcik.pl',
+  domain: 'https://willawojcik.pl',
 }
 
 // Nawigacja główna (route-based)
