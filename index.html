@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Google Search dokumentuje wsparcie dla ICO/PNG/GIF/JPG; SVG nie jest tam
+         gwarantowany, więc trzymamy rastrowy wariant obok. apple-touch-icon jest
+         potrzebny, gdy ktoś doda stronę do ekranu głównego iPhone'a. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Willa Wójcik — Apartamenty i Pokoje · Sromowce Niżne, Pieniny</title>
     <meta name="description" content="Kameralny pensjonat w sercu Pienin. Apartamenty i pokoje u podnóża Trzech Koron — Sromowce Niżne." />
@@ -27,7 +33,14 @@
     <meta name="twitter:image" content="https://www.willawojcik.pl/opengraph.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- media="print" + onload: przeglądarka pobiera arkusz, ale nie blokuje nim
+         pierwszego renderu. <noscript> obsługuje wyłączony JavaScript. -->
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    <noscript>
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+    </noscript>
     <noscript><style>.reveal,.reveal-lg,.line-in{opacity:1!important;transform:none!important}</style></noscript>
   </head>
   <body>

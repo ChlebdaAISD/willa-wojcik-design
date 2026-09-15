@@ -6,9 +6,9 @@ import { FactTable, FAQ, InfoNote, RelatedLinks } from '../../components/ui/cont
 import { PHOTOS } from '../../data/content.js'
 
 const trasy = [
-  ['Kąty → Szczawnica (najpopularniejsza)', '~18 km · ok. 2 h 15 min'],
-  ['Kąty → Krościenko (najdłuższa)', '~23 km · ok. 2 h 45 min'],
-  ['Sromowce Niżne → Szczawnica (najkrótsza)', '~12 km · ok. 1 h 40 min'],
+  ['Kąty → Szczawnica (najpopularniejsza)', '~18 km, ok. 2 h 15 min'],
+  ['Kąty → Krościenko (najdłuższa)', '~23 km, ok. 2 h 45 min'],
+  ['Sromowce Niżne → Szczawnica (najkrótsza)', '~12 km, ok. 1 h 40 min'],
 ]
 
 const ceny = [
@@ -46,7 +46,7 @@ export default function SplywDunajcem() {
   return (
     <>
       <PageHero
-        eyebrow="Atrakcje · Sromowce Niżne"
+        eyebrow="Atrakcje — Sromowce Niżne"
         title="Spływ Dunajcem — prosto z naszej wsi"
         subtitle="Symbol Pienin i najlepszy sposób, żeby zobaczyć Przełom Dunajca od dołu. Willa Wójcik leży w Sromowcach Niżnych, przy jednej z dwóch przystani."
         image={PHOTOS.heroSplyw}
@@ -63,7 +63,7 @@ export default function SplywDunajcem() {
               </p>
               <div className="mt-8 space-y-4 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">
                 <p>
-                  To najspokojniejszy sposób, żeby zobaczyć pionowe skały wznoszące się na kilkadziesiąt metrów nad wodą. Flisak prowadzi tratwę i opowiada — Państwo tylko patrzą. Rzeka ma tu drugą, łagodną klasę trudności, więc nie trzeba umieć pływać ani nic wiosłować.
+                  To najspokojniejszy sposób, żeby zobaczyć pionowe skały wznoszące się na kilkadziesiąt metrów nad wodą. Flisak prowadzi tratwę i opowiada — Państwo tylko patrzą. Rzeka ma tu drugą, łagodną klasę trudności, więc nie trzeba umieć pływać ani wiosłować.
                 </p>
                 <p>
                   Największy atut naszej lokalizacji jest prosty: nie muszą Państwo daleko dojeżdżać. Główna przystań w Kątach to kilka kilometrów, a druga, ze Sromowiec Niżnych, leży w tej samej wsi co obiekt.
@@ -148,7 +148,7 @@ export default function SplywDunajcem() {
         items={[
           { href: '/okolica/trzy-korony', title: 'Trzy Korony', note: 'Najkrótszy szlak zaczyna się przy naszej ulicy' },
           { href: '/okolica/kladka-czerwony-klasztor', title: 'Kładka i Czerwony Klasztor', note: '250 m spacerem na Słowację' },
-          { href: '/pokoje', title: 'Pokoje 2–3 osobowe', note: 'Nocleg przy przystani spływu, od 210 zł' },
+          { href: '/pokoje', title: 'Pokoje 2–3 osobowe', note: 'Nocleg przy przystani spływu, od 250 zł' },
         ]}
       />
 

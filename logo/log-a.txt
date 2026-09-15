@@ -1,0 +1,12 @@
+  → serif-interlock          gpt-image-2      484db970-7b05-4bd1-b25c-b375e2a684cc
+
+Zlecone: 1, odrzucone: 0. Czekam…
+
+    … 403, czekam 20s
+
+Gotowe: 0 plików w out/
+Nieudane (1):
+  - serif-interlock / gpt-image-2: HTTP 403: Penalty Box for WAF
+
+Reference: 0.2dcf3617.1789412818.f6f1e36 
+My IP Address : 46.134.158.97

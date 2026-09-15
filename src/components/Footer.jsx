@@ -2,16 +2,18 @@ import { Link } from 'wouter'
 import { Container } from './ui/Container.jsx'
 import { IconInstagram } from './Icons.jsx'
 import { SITE } from '../data/site.js'
+import logoLockup from '../assets/logo-lockup.webp'
 
 export function Footer() {
   return (
     <footer className="relative bg-charcoal text-cream/80 pt-20 pb-10 overflow-hidden">
       <Container>
         <div className="reveal pb-16 border-b border-cream/10">
-          <div className="font-serif leading-[0.9] text-cream text-balance"
-               style={{ fontSize: 'clamp(56px, 11vw, 170px)', fontWeight: 400 }}>
-            Willa <span className="italic">Wójcik</span>
-          </div>
+          {/* Pełny lockup właściciela (sygnet + „Apartamenty i pokoje" + podpis),
+              wycięty z jego grafiki przez scripts/extract-logo.py */}
+          <img src={logoLockup} alt="Willa Wójcik — apartamenty i pokoje"
+               width="900" height="479" loading="lazy" decoding="async"
+               className="w-full max-w-[175px] md:max-w-[215px] h-auto" />
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 pt-14 pb-12">
@@ -53,7 +55,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-cream/75">
-          <div>© 2026 Willa Wójcik · {SITE.city}</div>
+          <div>© 2026 Willa Wójcik, {SITE.city}</div>
           <div className="flex gap-6">
             <Link href="/polityka-prywatnosci" className="hover:text-cream/80 transition-colors">Polityka prywatności</Link>
             <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-cream/80 transition-colors">Mapa dojazdu</a>

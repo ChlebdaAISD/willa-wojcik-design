@@ -33,8 +33,8 @@ export default function PolitykaPrywatnosci() {
             <P>
               Administratorem Państwa danych osobowych jest Willa Wójcik — Apartamenty i Pokoje,
               {' '}{SITE.street}, {SITE.postal} {SITE.city}. W sprawach dotyczących danych osobowych
-              prosimy o kontakt: telefon <a className="text-gold-2 underline underline-offset-2" href={SITE.phoneHref}>{SITE.phone}</a>,
-              e-mail <a className="text-gold-2 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a>.
+              prosimy o kontakt: telefon <a className="text-gold-3 underline underline-offset-2" href={SITE.phoneHref}>{SITE.phone}</a>,
+              e-mail <a className="text-gold-3 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a>.
             </P>
 
             <H2>2. Jakie dane zbieramy</H2>
@@ -81,9 +81,10 @@ export default function PolitykaPrywatnosci() {
 
             <H2>6. Pliki cookie i mapa Google</H2>
             <P>
-              Sama strona nie używa plików cookie do śledzenia ani do analityki. Wyjątkiem jest mapa Google Maps
-              na stronie kontaktu — po jej załadowaniu Google może zapisać własne pliki cookie. Mapa ładuje się
-              tylko na tej podstronie. Ustawienia plików cookie mogą Państwo zmienić w swojej przeglądarce.
+              Sama strona nie używa plików cookie do śledzenia ani do analityki. Wyjątkiem jest mapa Google Maps,
+              osadzona w sekcji „Lokalizacja" na stronie głównej oraz na stronie kontaktu — po jej załadowaniu
+              Google może zapisać własne pliki cookie. Na pozostałych podstronach mapa się nie pojawia.
+              Ustawienia plików cookie mogą Państwo zmienić w swojej przeglądarce.
             </P>
 
             <H2>7. Państwa prawa</H2>
@@ -98,7 +99,7 @@ export default function PolitykaPrywatnosci() {
             </ul>
             <P>
               Aby skorzystać z tych praw, wystarczy napisać do nas na
-              {' '}<a className="text-gold-2 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a> lub zadzwonić.
+              {' '}<a className="text-gold-3 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a> lub zadzwonić.
             </P>
 
             <P className="mt-10 text-charcoal/65 text-[13.5px]">

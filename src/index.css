@@ -11,6 +11,11 @@
   --color-dunajec: #3A5F7D;
   --color-gold: #B8864B;
   --color-gold-2: #a17738;
+  /* Złoto do tekstu NA JASNYM TLE. `gold` i `gold-2` są za jasne — na kremie dają
+     2,84:1 i 3,57:1 przy progu WCAG 4,5:1. Ten wariant daje 5,87:1 na kremie
+     i 4,90:1 na kartach Lokalizacji, zostając w rodzinie kolorystycznej marki.
+     Na ciemnych tłach (forest, charcoal) nadal używamy gold/gold-2. */
+  --color-gold-3: #795626;
 
   --font-serif: "Cormorant Garamond", "Fraunces", serif;
   --font-sans: "Manrope", system-ui, sans-serif;
@@ -227,12 +232,11 @@ select.inp-select {
 }
 input[type="range"].inp-range { accent-color: var(--color-forest); cursor: pointer; }
 
-/* FOUC prevention */
-.fouc { opacity: 0; }
-.fouc.ready { opacity: 1; transition: opacity .6s; }
-
 @media (prefers-reduced-motion: reduce) {
   .kenburns { animation: none; }
-  .fouc { opacity: 1; }
-  .fouc.ready { transition: none; }
+  /* Efekty hover też są ruchem — karty podnosiły się, a zdjęcia skalowały mimo
+     ustawienia „ogranicz ruch" w systemie. Zmiany koloru zostawiamy. */
+  .card-lift, .card-lift .zoom-img, .btn-prim, .btn-ghost { transition: none !important; }
+  .card-lift:hover, .btn-prim:hover, .btn-ghost:hover { transform: none !important; }
+  .card-lift:hover .zoom-img { transform: none !important; }
 }

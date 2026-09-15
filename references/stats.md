@@ -4,14 +4,36 @@
 - Adres: **Sobczańska 9a, 34-443 Sromowce Niżne** (powiat nowotarski, małopolskie). Geo: 49.3966, 20.4089.
 - Telefon: **+48 537 446 036**. E-mail: rezerwacja@willawojcik.pl (do założenia z domeną).
 - Rok powstania: **2019**. Prowadzony osobiście przez właścicieli.
-- **10 jednostek** = 2 apartamenty + 8 pokoi 2–3 os. (21 m²). Razem **35 miejsc**.
-  - **Apartament 1**: 38 m², osobna sypialnia + salon z aneksem, duży balkon z widokiem na Trzy Korony. Pojemność 2–4 os. (**do potwierdzenia z właścicielem**).
-  - **Apartament 3**: 60 m², **wolnostojący**, otwarta przestrzeń (jedno pomieszczenie) pod skosami, spanie dla **6 osób**, góralskie łóżko, brzozowa ścianka, marmurowa łazienka, balkon z widokiem na Trzy Korony.
-  - Realne zdjęcia obu w `public/images/apartament_1|3/` → zoptymalizowane WebP w `src/assets/ap1-*`, `ap3-*` (2026-07-15).
+- **11 jednostek** = 8 pokoi 2–3 os. (21 m²) + 3 apartamenty. Razem **do 38 miejsc**.
+  (Booking i portale znają tylko 10 jednostek — apartamentu 60 m² tam nie ma, zob. niżej.)
+  - **Pokoje 1–8**: 21 m², **250 zł/doba za 2 osoby, 280 zł za 3**. Wyposażenie identyczne w każdym:
+    łóżko małżeńskie 160 × 200, mała sofa rozkładana, mini lodówka, czajnik elektryczny, telewizor,
+    własna łazienka z ręcznikami i suszarką. **4 pokoje na piętrze z balkonem, 4 na parterze z tarasem.**
+  - **Apartament 1**: 38 m², **450 zł/doba**, do 4 os. Dwa pomieszczenia — osobna sypialnia i salon
+    z rozkładaną sofą oraz aneksem kuchennym. Duży balkon na Trzy Korony, wyjście z obu pomieszczeń.
+  - **Apartament 2**: 35 m², **450 zł/doba**, do 4 os. Sypialnia + salon z aneksem kuchennym
+    i rozkładaną sofą. Balkon na Trzy Korony, wyjście z salonu.
+  - **Apartament 3**: 60 m², **od 500 zł/doba**, do 6 os., **wolnostojący** (osobny budynek).
+    Jedno duże pomieszczenie: 1 łóżko + podwójna sofa rozkładana + 2 rozkładane fotele,
+    aneks w pełni wyposażony, balkon na Trzy Korony, łazienka z ręcznikami i suszarką.
 - Kuchnia wspólna **45 m²**, aneksy w apartamentach; jeden apartament z klimatyzacją.
+- **Śniadania: we własnym zakresie** (potwierdzone przez właścicielkę 14.09.2026) — do dyspozycji kuchnia wspólna.
 - Udogodnienia: altana z grillem, plac zabaw (trampolina, huśtawki), monitoring, **parking 10 miejsc**, gniazdo 230 V do ładowania EV, WiFi, wyposażenie dla dzieci (łóżeczko, krzesełko, wanienka).
 - Zasady: zameldowanie od 14:00, wymeldowanie do 10:00, bez zwierząt, obiekt dla niepalących, zaliczka 30%.
-- Ceny orientacyjne (nocowanie.pl, do potwierdzenia): pokój 3-os. od 210 zł, apartament od 350 zł.
+
+### Źródło danych o jednostkach
+Ceny, metraże, układ pomieszczeń i wyposażenie — **od właścicielki (Danuta), WhatsApp 14.09.2026**.
+Zastępują szacunki z portali („od 210 zł", „od 350 zł"), które były nieaktualne.
+
+### Zdjęcia (wrzesień 2026)
+Właściciele wrzucili na Google Drive (`Projekty/Willa Wójcik`) 343 pliki = **228 unikalnych zdjęć**
+(72 z nich leżą w kilku folderach naraz) + jeden film z drona 1,99 GB. Nazwy folderów są niewiarygodne
+— „Apartament 1" zawiera zdjęcia wszystkiego. **77 wybranych zdjęć** przekonwertowano HEIC → WebP
+(korekta orientacji EXIF, maks. 1800 px, ok. 200 KB) do `src/assets/`. Mapowanie jednostek ustalone
+ze zdjęć i potwierdzone opisem właścicielki: Ap1 = sofa morska/niebieska, Ap2 = sofa żółta,
+Ap3 = poddasze z brzozowymi pniami w osobnym budynku.
+Film z drona (05.09.2025, zmierzch): fragment 102–112 s → pętla 20 s (tam i z powrotem),
+`public/video/willa-wojcik-pieniny.{mp4,webm}` + plakat `src/assets/hero-video-poster.webp`.
 
 ## Oceny
 - **Google: 4,9 / 5 (135 opinii)** · Booking.com: **9,8 / 10** („Guest Choice") · nocowanie.pl: 10 / 10.
@@ -32,5 +54,13 @@
 - **Rozkład pokoi**: portale sugerują 7× 2-os. + 1× 3-os. — NIEPOTWIERDZONE.
 - Zameldowanie: 14:00–21:00 (większość) vs 14:00–23:30 (A-Hotel). Booking rating waha się 9,6–9,8 (71–117 opinii zależnie od crawl-date).
 
-## Do potwierdzenia z właścicielem
-Ceny per sezon (w tym cena apartamentu 60 m²!) · **czy istnieje „Apartament 2"?** (numeracja 1 i 3 sugeruje lukę; portale widzą 2 apartamenty 35–39 m²) · śniadanie (jest/na zamówienie/brak) · rozkład pokoi 2-os. vs 3-os. · która jednostka ma klimatyzację · godzina końca zameldowania (21:00 czy 23:30) · realne testimoniale · linki social · e-mail.
+## Potwierdzone przez właścicielkę 14.09.2026
+- **Apartament 2 ISTNIEJE** (35 m²) — luka w numeracji 1/3 wyjaśniona.
+- Ceny wszystkich jednostek (wyżej).
+- **Śniadania we własnym zakresie.**
+- Wyposażenie pokoi i podział balkon (piętro) / taras (parter).
+
+## Nadal do potwierdzenia z właścicielem
+Ceny sezonowe (czy 250/450/500 zł obowiązuje cały rok) · która jednostka ma klimatyzację ·
+godzina końca zameldowania (21:00 czy 23:30) · **realne opinie gości** (zmyślone cytaty usunięto 14.09.2026, `REVIEWS` = pusta tablica) · linki social · e-mail · **czy żółty budynek z drewnianą elewacją
+na zdjęciach z Drive należy do obiektu** (wygląda na sąsiada — wykluczony z galerii).

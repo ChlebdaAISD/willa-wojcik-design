@@ -51,7 +51,7 @@ export default function TrzyKorony() {
   return (
     <>
       <PageHero
-        eyebrow="Atrakcje · Pieniński Park Narodowy"
+        eyebrow="Atrakcje — Pieniński Park Narodowy"
         title="Trzy Korony — szlak spod naszego progu"
         subtitle="Najkrótsze wejście na najsłynniejszy szczyt Pienin zaczyna się przy tej samej ulicy co Willa Wójcik. Około 15 minut pieszo i są Państwo na szlaku — bez dojazdu autem."
         image={PHOTOS.heroTrzyKorony}

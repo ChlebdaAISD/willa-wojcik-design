@@ -51,7 +51,7 @@ export function InfoNote({ label = 'Dobrze wiedzieć', children, className = '' 
     <div className={`bg-cream border border-charcoal/12 rounded-sm p-6 ${className}`}>
       <div className="flex items-center gap-2.5 mb-2.5">
         <span className="w-5 h-px bg-gold shrink-0" aria-hidden="true" />
-        <span className="eyebrow text-gold-2 text-[10.5px]">{label}</span>
+        <span className="eyebrow text-gold-3 text-[10.5px]">{label}</span>
       </div>
       <div className="text-charcoal/75 text-[15px] leading-relaxed text-pretty">{children}</div>
     </div>

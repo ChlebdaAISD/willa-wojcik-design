@@ -29,24 +29,24 @@ const featured = [
     idx: '03',
     title: 'Spływ Dunajcem',
     note: 'Tratwą flisacką przez Przełom Dunajca — od 111 zł. Druga przystań działa w tej samej wsi.',
-    dist: 'Kąty · ~4–5 km',
+    dist: 'Kąty, ~4–5 km',
   },
 ]
 
 // Pozostałe atrakcje — w formie hubu z odległościami (bez osobnych podstron).
 const more = [
-  { icon: 'IconCastle', t: 'Zamek Dunajec w Niedzicy', d: '11 km · ~15 min autem', s: 'Najbardziej znany zamek okolicy, z legendą o skarbie Inków i tarasem nad jeziorem. Bilet od 35 zł.' },
+  { icon: 'IconCastle', t: 'Zamek Dunajec w Niedzicy', d: '11 km, ~15 min autem', s: 'Najbardziej znany zamek okolicy, z legendą o skarbie Inków i tarasem nad jeziorem. Bilet od 35 zł.' },
   { icon: 'IconRaft', t: 'Jezioro Czorsztyńskie i rejsy', d: '11–13 km', s: 'Rejs statkiem „Harnaś” (ok. 40 zł), przeprawa między zamkami Niedzica i Czorsztyn, plaża w Niedzicy.' },
-  { icon: 'IconSki', t: 'Czorsztyn-Ski, Kluszkowce', d: '~13–15 km · ~20 min', s: 'Stok na górze Wdżar: 8 tras, wyciągi krzesełkowe. Łagodne, niebieskie zjazdy — dobre dla rodzin i dzieci uczących się jeździć.' },
-  { icon: 'IconSpa', t: 'Termy Bania i inne baseny', d: '~30–35 km · ~45 min', s: 'Terma Bania w Białce, Gorący Potok w Szaflarach, Bukovina — ciepła woda o każdej porze roku. Plan na deszczowy dzień.' },
-  { icon: 'IconHome', t: 'Kościół św. Katarzyny', d: '467 m · spacer', s: 'Drewniany kościół z ok. 1513 roku na Szlaku Architektury Drewnianej — dziś galeria sztuki. Najbliższy zabytek, za rogiem.' },
-  { icon: 'IconMountain', t: 'Wąwóz Homole', d: '~25 km · ~35 min', s: 'Najbardziej efektowny łatwy szlak w okolicy — kładki, mostki i wodospad. Ok. 1 km spokojnym tempem, idealny z dziećmi.' },
+  { icon: 'IconSki', t: 'Czorsztyn-Ski, Kluszkowce', d: '~13–15 km, ~20 min', s: 'Stok na górze Wdżar: 8 tras, wyciągi krzesełkowe. Łagodne, niebieskie zjazdy — dobre dla rodzin i dzieci uczących się jeździć.' },
+  { icon: 'IconSpa', t: 'Termy Bania i inne baseny', d: '~30–35 km, ~45 min', s: 'Terma Bania w Białce, Gorący Potok w Szaflarach, Bukovina — ciepła woda o każdej porze roku. Plan na deszczowy dzień.' },
+  { icon: 'IconHome', t: 'Kościół św. Katarzyny', d: '467 m, spacer', s: 'Drewniany kościół z ok. 1513 roku na Szlaku Architektury Drewnianej — dziś galeria sztuki. Najbliższy zabytek, za rogiem.' },
+  { icon: 'IconMountain', t: 'Wąwóz Homole', d: '~25 km, ~35 min', s: 'Najbardziej efektowny łatwy szlak w okolicy — kładki, mostki i wodospad. Ok. 1 km spokojnym tempem, idealny z dziećmi.' },
 ]
 
 const distances = [
   ['Kładka na Słowację (Czerwony Klasztor)', '250 m'],
   ['Kościół św. Katarzyny', '467 m'],
-  ['Szlak na Trzy Korony (schronisko)', '~1 km · 15 min pieszo'],
+  ['Szlak na Trzy Korony (schronisko)', '~1 km, 15 min pieszo'],
   ['Przystań spływu — Kąty', '~4–5 km'],
   ['Zapora i elektrownia w Niedzicy', '10 km'],
   ['Zamek w Niedzicy', '11 km'],
@@ -76,10 +76,10 @@ export default function Okolica() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {featured.map((n, k) => (
               <Link key={n.href} href={n.href}
-                    className="reveal group flex flex-col justify-between rounded-sm border border-charcoal/20 bg-cream-2/60 p-6 md:p-8 min-h-[230px] transition-all duration-500 hover:bg-cream-2 hover:border-transparent hover:-translate-y-1 hover:shadow-[0_30px_50px_-30px_rgba(31,58,46,0.35)]"
+                    className="reveal group flex flex-col justify-between rounded-sm border border-charcoal/20 bg-cream-2/60 p-6 md:p-8 min-h-[230px] transition-[background-color,border-color,transform,box-shadow] duration-500 hover:bg-cream-2 hover:border-transparent hover:-translate-y-1 hover:shadow-[0_30px_50px_-30px_rgba(31,58,46,0.35)]"
                     style={{ '--d': `${k * 0.08}s` }}>
                 <div>
-                  <div className="font-mono text-gold-2 text-[12px]" aria-hidden="true">.{n.idx}</div>
+                  <div className="font-mono text-gold-3 text-[12px]" aria-hidden="true">.{n.idx}</div>
                   <div className="font-serif text-charcoal text-2xl md:text-3xl leading-tight mt-2" style={{ fontWeight: 500 }}>{n.title}</div>
                   <div className="text-charcoal/70 text-[14px] mt-3 leading-relaxed text-pretty">{n.note}</div>
                 </div>

@@ -1,0 +1,29 @@
+    … 403, czekam 20s
+    … 403, czekam 40s
+    … 403, czekam 80s
+  ✗ ridge-interlock          nano-banana-pro  HTTP 403: Penalty Box for WAF
+
+Reference: 0.35cf3617.1789412965.1bdb1293 
+My IP Address : 46.134.158.97
+    … 403, czekam 20s
+    … 403, czekam 40s
+    … 403, czekam 80s
+  ✗ ridge-interlock          gpt-image-2      HTTP 403: Penalty Box for WAF
+
+Reference: 0.2dcf3617.1789413110.f758364 
+My IP Address : 46.134.158.97
+    … 403, czekam 20s
+    … 403, czekam 40s
+    … 403, czekam 80s
+  ✗ ridge-interlock          seedream-v5-pro  HTTP 403: Penalty Box for WAF
+
+Reference: 0.2dcf3617.1789413255.f78c626 
+My IP Address : 46.134.158.97
+    … 403, czekam 20s
+    … 403, czekam 40s
+    … 403, czekam 80s
+  ✗ ridge-interlock          flux-2-pro       HTTP 403: Penalty Box for WAF
+
+Reference: 0.2dcf3617.1789413400.f7bc83a 
+My IP Address : 46.134.158.97
+    … 403, czekam 20s

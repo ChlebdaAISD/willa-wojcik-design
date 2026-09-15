@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { PHOTOS } from '../data/content.js'
+import { getApartment } from '../data/content.js'
 import { SITE } from '../data/site.js'
+
+const AP3 = getApartment('apartament-3')
 
 export function About() {
   const imgRef = useRef(null)
@@ -36,26 +38,20 @@ export function About() {
           <div className="hairline my-8 line-in"></div>
           <div className="space-y-5 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">
             <p>
-              Willa Wójcik to rodzinny pensjonat, zbudowany w 2019 roku u podnóża Trzech Koron.
-              Łączymy spokojną, pienińską autentyczność z nowoczesnym komfortem: jasne wnętrza,
-              zapach drewna, ciepłe światło o zmierzchu i ten jeden widok, dla którego warto
-              wstać wcześniej.
+              Willa Wójcik stoi w Sromowcach Niżnych, u podnóża Trzech Koron, i prowadzimy ją
+              osobiście. Osiem pokoi po 21 m² dzieli się na cztery z balkonem na piętrze i cztery
+              z tarasem na parterze. Do tego dochodzą dwa apartamenty w budynku głównym, 35 i 38 m²,
+              oraz wolnostojący apartament 60 m² dla sześciu osób. Tuż za drzwiami zaczyna się ogród
+              z altaną, trampoliną i placem zabaw.
             </p>
             <p>
-              Prowadzimy obiekt osobiście — polski, angielski, wiele serdeczności. Chętnie
-              podpowiemy Państwu szlaki, restauracje i nieoczywiste miejsca w okolicy.
+              Śniadanie przygotowują Państwo sami — do dyspozycji jest wspólna kuchnia o powierzchni
+              45 m², połączona z jadalnią i salonem. Czekają w niej lodówka, płyta z okapem,
+              mikrofalówka, ekspres do kawy i czajnik. Przy oknach wychodzących na ogród stoją
+              okrągłe stoły, obok urządziliśmy kącik dla najmłodszych.
             </p>
           </div>
 
-          <figure className="mt-12">
-            <div className="font-serif text-gold select-none" style={{ fontSize: '64px', fontWeight: 500, lineHeight: 0.35, marginBottom: '14px' }} aria-hidden="true">„</div>
-            <blockquote className="font-serif text-charcoal/80 text-xl md:text-2xl leading-snug text-balance" style={{ fontWeight: 500 }}>
-              Czysty, nowoczesny, ładnie urządzony pokój z&nbsp;przepięknym widokiem na Trzy Korony.
-            </blockquote>
-            <figcaption className="mt-4 eyebrow text-charcoal/70">
-              Gość · Booking.com · 10/10
-            </figcaption>
-          </figure>
         </div>
 
         <div className="lg:col-span-7 lg:col-start-6">
@@ -63,10 +59,10 @@ export function About() {
             <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '4/5' }}>
               <img
                 ref={imgRef}
-                src={PHOTOS.livingRoom}
-                alt="Salon apartamentu w Willi Wójcik — zielona sofa, ciepłe światło, widok na ogród"
+                src={AP3.cover}
+                alt="Apartament 3 — sypialnia, salon i jadalnia w jednej otwartej przestrzeni pod skosami, ze ścianką z brzozowych pni"
                 loading="lazy" decoding="async"
-                width="1920" height="1438"
+                width="1800" height="1013"
                 className="absolute inset-[-8%] w-[116%] h-[116%] object-cover will-change-transform"
               />
               <div className="absolute inset-0" style={{

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { usePageInert } from '../../lib/usePageInert.js'
 import { IconChevL, IconChevR, IconClose } from '../Icons.jsx'
 
 // Siatka zdjęć (masonry) + lightbox: klawiatura, swipe, focus-trap, blokada
@@ -14,6 +16,9 @@ export function GalleryGrid({ photos, className = '', hideThumbLabels = false })
   const closeBtnRef = useRef(null)
   const lastFocusedRef = useRef(null)
   const n = photos.length
+
+  // Reszta strony wycisza się na czas podglądu (patrz usePageInert)
+  usePageInert(open !== null)
 
   useEffect(() => {
     if (open === null) return
@@ -84,7 +89,7 @@ export function GalleryGrid({ photos, className = '', hideThumbLabels = false })
                 {/* mobile: stały gradient pod podpisem; desktop: przyciemnienie na hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent md:hidden" />
                 <div className="absolute inset-0 hidden md:block bg-charcoal/0 group-hover:bg-charcoal/30 transition-colors duration-500" />
-                <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 text-left">
+                <div className="absolute bottom-4 left-4 right-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-[opacity,transform] duration-500 text-left">
                   <div className="eyebrow text-cream/80 text-[10px]">{String(i + 1).padStart(2, '0')}</div>
                   <div className="font-serif text-cream text-lg leading-tight mt-1">{p.label}</div>
                 </div>
@@ -94,7 +99,10 @@ export function GalleryGrid({ photos, className = '', hideThumbLabels = false })
         ))}
       </div>
 
-      {open !== null && (
+      {/* Portal do <body>: lightbox musi być POZA <main>, które na czas podglądu
+          dostaje `inert`. Na serwerze `open` jest null, więc prerender portalu
+          nigdy nie dotyka — renderToString nie obsługuje portali. */}
+      {open !== null && createPortal(
         <div ref={dialogRef}
              role="dialog" aria-modal="true"
              aria-label={`Podgląd zdjęcia: ${photos[open].label}`}
@@ -119,29 +127,33 @@ export function GalleryGrid({ photos, className = '', hideThumbLabels = false })
           </button>
           <figure className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
             <div className="relative w-full" style={{ aspectRatio: '16/10' }}>
-              <img src={photos[open].src} alt={photos[open].label} decoding="async"
+              <img src={photos[open].src} alt="" decoding="async"
                    className="absolute inset-0 w-full h-full object-cover" />
             </div>
-            <figcaption className="mt-5 flex items-start justify-between gap-4">
+            {/* aria-live: strzałki i swipe zmieniają zdjęcie bez zmiany fokusu, więc bez
+                tego czytnik ekranu nie ogłosiłby, co się właśnie pojawiło */}
+            <figcaption className="mt-5 flex items-start justify-between gap-4"
+                        aria-live="polite" aria-atomic="true">
               <div className="font-serif text-cream text-base sm:text-xl min-w-0 leading-snug text-pretty">{photos[open].label}</div>
               <div className="flex items-center gap-3 shrink-0">
                 <div className="eyebrow text-cream/70">{String(open + 1).padStart(2, '0')} / {String(n).padStart(2, '0')}</div>
                 <div className="flex gap-2 sm:hidden">
                   <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o - 1 + n) % n) }}
                           aria-label="Poprzednie zdjęcie"
-                          className="w-9 h-9 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
+                          className="w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
                     <IconChevL size={16} />
                   </button>
                   <button onClick={(e) => { e.stopPropagation(); setOpen((o) => (o + 1) % n) }}
                           aria-label="Następne zdjęcie"
-                          className="w-9 h-9 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
+                          className="w-12 h-12 rounded-full border border-cream/30 text-cream hover:bg-cream/10 flex items-center justify-center">
                     <IconChevR size={16} />
                   </button>
                 </div>
               </div>
             </figcaption>
           </figure>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   )

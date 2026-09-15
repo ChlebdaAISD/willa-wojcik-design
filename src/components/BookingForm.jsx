@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { IconArrow, IconCheck, IconGlobe, IconMail, IconMapPin, IconPhone } from './Icons.jsx'
+import { SITE } from '../data/site.js'
+
+const WEBHOOK_URL = import.meta.env.VITE_WILLA_WEBHOOK
+const WEBHOOK_HEADER = import.meta.env.VITE_WILLA_WEBHOOK_HEADER
+const WEBHOOK_TOKEN = import.meta.env.VITE_WILLA_WEBHOOK_TOKEN
 
 export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
   const [f, setF] = useState({
@@ -8,20 +13,58 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
     guests: 2, type: 'Apartament 4–6 os.',
     message: ''
   })
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState('idle')
   const sentTimerRef = useRef(null)
   const today = new Date().toISOString().slice(0, 10)
 
   useEffect(() => () => clearTimeout(sentTimerRef.current), [])
 
-  // TODO(PRZED PUBLIKACJĄ — krytyczne): formularz to STUB — nic nie wysyła!
-  // Docelowo: POST na webhook n8n → Resend (wzorzec klimaTY/centrala/Bawisz).
-  // Do tego czasu strona nie może sugerować gościowi, że zapytanie dotarło.
-  const onSubmit = (e) => {
+  // POST na webhook n8n → Resend wysyła dwa maile: powiadomienie do właściciela
+  // i potwierdzenie do gościa. Wzorzec z klimaTY (autoryzacja nagłówkowa) plus
+  // bramka na brak e-maila z Góralskiej Willi.
+  //
+  // UWAGA: samo `response.ok` NIE wystarcza. Webhook n8n potrafi oddać 2xx, mimo że
+  // egzekucja workflow padła — zdarzyło się to już na tym koncie i zjadło leada.
+  // Dlatego sprawdzamy jeszcze pole `success` z treści odpowiedzi.
+  const onSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
-    clearTimeout(sentTimerRef.current)
-    sentTimerRef.current = setTimeout(() => setSent(false), 4500)
+    if (status === 'sending') return
+    setStatus('sending')
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(WEBHOOK_HEADER && WEBHOOK_TOKEN ? { [WEBHOOK_HEADER]: WEBHOOK_TOKEN } : {}),
+        },
+        body: JSON.stringify({
+          name: f.name.trim(),
+          email: f.email.trim(),
+          phone: f.phone.trim(),
+          arrive: f.arrive,
+          depart: f.depart,
+          guests: f.guests,
+          type: f.type,
+          message: f.message.trim(),
+          source: 'willawojcik.pl',
+          submittedAt: new Date().toISOString(),
+        }),
+      })
+      if (!res.ok) throw new Error(`Webhook odpowiedział ${res.status}`)
+      const data = await res.json().catch(() => null)
+      if (data && data.success === false) throw new Error('Workflow zgłosił błąd')
+
+      setStatus('sent')
+      setF({ name: '', email: '', phone: '', arrive: '', depart: '', guests: 2,
+             type: 'Apartament 4–6 os.', message: '' })
+      clearTimeout(sentTimerRef.current)
+      sentTimerRef.current = setTimeout(() => setStatus('idle'), 8000)
+    } catch (err) {
+      console.error('Nie udało się wysłać zapytania', err)
+      setStatus('error')
+      clearTimeout(sentTimerRef.current)
+      sentTimerRef.current = setTimeout(() => setStatus('idle'), 8000)
+    }
   }
   const fld = (label, children) => (
     <label className="block">
@@ -31,10 +74,10 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
   )
   // 16px — poniżej iOS przybliża stronę przy focusie; focus = zielony underline (box-shadow, bez skoku layoutu)
   // Pola jako wyraźne boxy (decyzja 2026-07-08): jasne wypełnienie + obrys, focus = zielona ramka.
-  const inp = "w-full bg-white/70 border border-charcoal/20 rounded-sm px-4 py-3.5 text-charcoal text-[16px] placeholder:text-charcoal/45 outline-none focus:bg-white focus:border-forest focus:shadow-[0_0_0_1px_var(--color-forest)] transition-[border-color,box-shadow,background-color] caret-forest"
+  const inp = "w-full bg-white/70 border border-charcoal/20 rounded-sm px-4 py-3.5 text-charcoal text-[16px] placeholder:text-charcoal/65 outline-none focus:bg-white focus:border-forest focus:shadow-[0_0_0_1px_var(--color-forest)] transition-[border-color,box-shadow,background-color] caret-forest"
 
   return (
-    <section id="kontakt" data-screen-label="09 Rezerwacja" className="relative bg-cream py-24 md:py-40">
+    <section id="kontakt" data-screen-label="09 Rezerwacja" className="relative bg-cream scroll-mt-24 py-24 md:py-40">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
           <div className="lg:col-span-7 reveal">
@@ -93,15 +136,29 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
                 <textarea rows="3" className={inp + ' resize-none'} placeholder="Coś, o czym powinniśmy wiedzieć?"
                           value={f.message} onChange={e => setF({...f, message: e.target.value})} />)}
 
+              {/* Osobny region status: zmiana napisu na przycisku nie jest
+                  wiarygodnie ogłaszana przez czytniki ekranu */}
+              <div role="status" aria-live="polite" className="sr-only">
+                {status === 'sent' && 'Zapytanie wysłane. Dziękujemy, odezwiemy się.'}
+                {status === 'error' && 'Nie udało się wysłać zapytania. Prosimy o telefon.'}
+              </div>
+
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-4">
-                <button type="submit"
-                        className="btn-prim inline-flex items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap shrink-0">
-                  {sent ? 'Dziękujemy — odezwiemy się!' : 'Wyślij zapytanie'}
-                  {!sent && <IconArrow size={16} />}
-                  {sent && <IconCheck size={16} />}
+                <button type="submit" disabled={status === 'sending'}
+                        className="btn-prim inline-flex items-center gap-3 px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap shrink-0 disabled:opacity-70">
+                  {status === 'sending' && 'Wysyłamy…'}
+                  {status === 'sent' && 'Dziękujemy — odezwiemy się!'}
+                  {status === 'error' && 'Nie udało się wysłać'}
+                  {status === 'idle' && 'Wyślij zapytanie'}
+                  {status === 'sent' ? <IconCheck size={16} /> : status === 'idle' ? <IconArrow size={16} /> : null}
                 </button>
                 <div className="text-charcoal/70 text-[13px]">
-                  Płatność w dniu przyjazdu · Pobyt bez prowizji
+                  {status === 'error' ? (
+                    <span className="text-gold-3">
+                      Coś poszło nie tak. Prosimy o telefon:{' '}
+                      <a href={SITE.phoneHref} className="underline underline-offset-2">{SITE.phone}</a>
+                    </span>
+                  ) : 'Płatność w dniu przyjazdu, pobyt bez prowizji'}
                 </div>
               </div>
             </form>
@@ -116,28 +173,28 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
                   <li className="flex items-start gap-4">
                     <IconMapPin size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
-                      <div className="text-cream text-[15px]">Sobczańska 9a</div>
-                      <div className="text-cream/75 text-[14px]">34-443 Sromowce Niżne, Polska</div>
+                      <div className="text-cream text-[15px]">{SITE.street}</div>
+                      <div className="text-cream/75 text-[14px]">{SITE.postal} {SITE.city}, {SITE.country}</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconPhone size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
-                      <a href="tel:+48537446036" className="text-cream text-[15px] hover:text-gold transition-colors">+48 537 446 036</a>
-                      <div className="text-cream/75 text-[14px]">Kontakt codziennie 8:00–22:00</div>
+                      <a href={SITE.phoneHref} className="text-cream text-[15px] hover:text-gold transition-colors">{SITE.phone}</a>
+                      <div className="text-cream/75 text-[14px]">Kontakt {SITE.contactHours}</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconMail size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
-                      <div className="text-cream text-[15px]">rezerwacja@willawojcik.pl</div>
+                      <a href={SITE.emailHref} className="text-cream text-[15px] hover:text-gold transition-colors">{SITE.email}</a>
                       <div className="text-cream/75 text-[14px]">Odpowiadamy tego samego dnia</div>
                     </div>
                   </li>
                   <li className="flex items-start gap-4">
                     <IconGlobe size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
                     <div>
-                      <div className="text-cream text-[15px]">Polski · English</div>
+                      <div className="text-cream text-[15px]">Polski i angielski</div>
                       <div className="text-cream/75 text-[14px]">Mówimy również po czesku</div>
                     </div>
                   </li>
@@ -147,8 +204,8 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
             </div>
 
             <div className="mt-6 text-charcoal/70 text-[13px] leading-relaxed">
-              Zaliczka 30% w terminie 3 dni od potwierdzenia.
-              Bezpłatne anulowanie do 7 dni przed przyjazdem.
+              Rezerwację potwierdza zaliczka 30% wartości pobytu.
+              Termin wpłaty i warunki anulowania ustalamy przy potwierdzeniu.
             </div>
           </aside>
         </div>

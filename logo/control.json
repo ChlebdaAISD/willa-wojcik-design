@@ -1,0 +1,9 @@
+[
+  {
+    "id": "control-serif-nest",
+    "name_pl": "Kontrola — szeryfowe zagnieżdżenie",
+    "concept_pl": "Prompt kontrolny napisany ręcznie, punkt odniesienia dla wariantów z workflow.",
+    "prompt_en": "Flat vector logo mark: a monogram built from exactly two letter W, one nested inside the other. The outer W is large, drawn in a high-contrast serif with thin hairline strokes and fine bracketed serifs, like Cormorant Garamond. The inner W is smaller, solid, and sits precisely inside the V-shaped valley of the outer W, its two peaks touching the outer W's middle apex. Four downstrokes total read clearly as W over W. Deep forest green (#1F3A2E) mark on a flat warm cream background (#F5F1E8), with one thin muted gold (#B8864B) hairline underscore beneath. Perfectly symmetrical, centered, generous empty margin, crisp edges, solid fills only.",
+    "negative_en": "any text, words, letters other than W, numbers, tagline, company name, watermark, signature, gradient, drop shadow, glow, bevel, 3d, embossing, photograph, texture, paper mockup, business card, frame, border box, multiple variations in one image, grid of logos, sketch lines, hand-drawn wobble"
+  }
+]

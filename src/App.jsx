@@ -23,14 +23,22 @@ function ScrollToTop() {
 
 export default function App({ ssrPath }) {
   useReveal()
-  useEffect(() => { document.body.classList.add('ready') }, [])
 
   return (
     <Router ssrPath={ssrPath}>
-      <div className="fouc ready">
+      <div>
+        {/* Pierwszy element w kolejności tabulacji: pozwala pominąć nagłówek
+            (logo + 6 linków + CTA + hamburger) i wejść prosto w treść strony.
+            Widoczny dopiero po sfokusowaniu klawiaturą. */}
+        <a href="#tresc"
+           className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100]
+                      focus:bg-cream focus:text-forest focus:px-5 focus:py-3 focus:rounded-full
+                      focus:text-[14px] focus:font-semibold focus:shadow-lg">
+          Przejdź do treści
+        </a>
         <ScrollToTop />
         <Nav />
-        <main>
+        <main id="tresc" tabIndex={-1}>
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/apartamenty" component={Apartamenty} />

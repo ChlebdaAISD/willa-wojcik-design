@@ -6,7 +6,7 @@ import { FactTable, FAQ, InfoNote, RelatedLinks } from '../../components/ui/cont
 import { PHOTOS } from '../../data/content.js'
 
 const kladka = [
-  ['Odległość od obiektu', '~250 m · 3–4 min pieszo'],
+  ['Odległość od obiektu', '~250 m, 3–4 min pieszo'],
   ['Rok otwarcia', '2006 (w 2026 mija 20 lat)'],
   ['Długość', 'ok. 150 m, przęsło główne 90 m'],
   ['Dla kogo', 'piesi i rowerzyści (bez ruchu aut)'],
@@ -45,7 +45,7 @@ export default function KladkaCzerwonyKlasztor() {
   return (
     <>
       <PageHero
-        eyebrow="Atrakcje · granica polsko-słowacka"
+        eyebrow="Atrakcje — granica polsko-słowacka"
         title="Kładka na Dunajcu i Czerwony Klasztor"
         subtitle="250 metrów od naszego progu do kładki, a stamtąd kilka minut na Słowację — pieszo lub rowerem, bez kontroli granicznych. To najbliższa i najbardziej niecodzienna atrakcja Sromowiec Niżnych."
         image={PHOTOS.heroKladka}
@@ -82,7 +82,7 @@ export default function KladkaCzerwonyKlasztor() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5">
-              <SectionHeading eyebrow="01 — Za kładką · Słowacja" title={<>Czerwony <span className="italic font-normal">Klasztor</span>.</>} />
+              <SectionHeading eyebrow="01 — Za kładką, Słowacja" title={<>Czerwony <span className="italic font-normal">Klasztor</span>.</>} />
               <div className="mt-6 space-y-4 text-charcoal/75 text-[16.5px] leading-[1.8] text-pretty">
                 <p>
                   Dawny klasztor Kartuzów, założony w 1330 roku, później zamieszkany przez Kamedułów. Dziś to muzeum z audioprzewodnikiem w cenie — i miejsce, w którym żył legendarny brat Cyprian, zielarz, który miał przelecieć na skrzydłach z Trzech Koron.

@@ -13,7 +13,7 @@ export const SITE = {
   postal: '34-443',
   city: 'Sromowce Niżne',
   cityLocative: 'Sromowcach Niżnych',
-  region: 'Powiat nowotarski · Małopolska',
+  region: 'Powiat nowotarski, Małopolska',
   country: 'Polska',
 
   phone: '+48 537 446 036',

@@ -8,3 +8,8 @@ dist
 .wrangler
 .dev.vars
 .dev.vars.*
+
+# Zmienne środowiskowe (klucz Google Maps Embed, webhook n8n)
+.env
+.env.local
+.env.*.local

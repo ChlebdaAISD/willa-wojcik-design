@@ -11,8 +11,9 @@ const VARIANTS = {
   ghostDark: 'btn-dark-ghost',  // ciemna ramka, na jasnym tle
 }
 
+// min-h-12 = 48 px: próg celu dotykowego. Sam padding przy 13 px foncie dawał ~40 px.
 const SIZES = {
-  sm: 'px-6 py-3 text-[13px]',
+  sm: 'px-6 py-3 min-h-12 text-[13px]',
   md: 'px-8 py-4 text-[14px]',
   lg: 'px-9 py-[18px] text-[15px]',
 }

@@ -19,13 +19,13 @@ export function AmenityVariantMarquee() {
           </p>
           <figure className="mt-9 hidden lg:block">
             <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '4/3' }}>
-              <img src={PHOTOS.buildingDusk}
-                   alt="Altana z grillem w ogrodzie Willi Wójcik — obok domek zabaw i zjeżdżalnia dla dzieci"
-                   loading="lazy" decoding="async" width="1920" height="1441"
+              <img src={PHOTOS.obiektDroneZmierzch}
+                   alt="Willa Wójcik w Sromowcach Niżnych o zmierzchu, ujęcie z drona — rozświetlone balkony i tarasy, ogród z placem zabaw, w tle pienińskie grzbiety"
+                   loading="lazy" decoding="async" width="1800" height="1013"
                    className="absolute inset-0 w-full h-full object-cover" />
             </div>
             <figcaption className="mt-3 text-charcoal/65 text-[12.5px]">
-              Altana z grillem i plac zabaw — w głębi ogrodu
+              Zmierzch nad Willą Wójcik — balkony, tarasy i ogród z placem zabaw
             </figcaption>
           </figure>
         </div>
@@ -34,7 +34,7 @@ export function AmenityVariantMarquee() {
         <div className="space-y-1">
           {AMENITIES.map((a, i) => (
             <article key={i}
-                     className="reveal group grid grid-cols-[auto_1fr] items-baseline gap-6 md:gap-10 py-6 md:py-7 border-b border-charcoal/15 transition-all hover:pl-4 hover:border-forest/40"
+                     className="reveal group grid grid-cols-[auto_1fr] items-baseline gap-6 md:gap-10 py-6 md:py-7 border-b border-charcoal/15 transition-[padding,border-color] hover:pl-4 hover:border-forest/40"
                      style={{ '--d': `${(i % 3) * 0.07}s` }}>
               <div className="font-serif text-forest/60 tabular-nums leading-none group-hover:text-forest transition-colors"
                    style={{ fontSize: 'clamp(28px, 3.2vw, 44px)', fontWeight: 400 }}>

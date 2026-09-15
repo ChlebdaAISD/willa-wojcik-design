@@ -1,5 +1,4 @@
-import heroMountain from '../assets/hero.webp'
-import heroIllustration from '../assets/hero-trzy-korony-illustration.webp'
+// Ilustracje hero (serigrafia w stylu „willawojcik"; źródła w public/images/hero/)
 import heroPokoje from '../assets/hero-pokoje-illustration.webp'
 import heroApartamenty from '../assets/hero-apartamenty-illustration.webp'
 import heroGaleria from '../assets/hero-galeria-illustration.webp'
@@ -8,120 +7,293 @@ import heroSplyw from '../assets/hero-splyw-illustration.webp'
 import heroTrzyKorony from '../assets/hero-3-korony-illustration.webp'
 import heroKladka from '../assets/hero-kladka-illustration.webp'
 import heroKontakt from '../assets/hero-kontakt-illustration.webp'
-import buildingDusk from '../assets/screenshot-16-10-09.webp'
-import buildingWinter from '../assets/screenshot-15-40-49.webp'
-import apartment from '../assets/screenshot-15-41-20.webp'
-import livingRoom from '../assets/screenshot-15-40-04.webp'
-import livingRoom2 from '../assets/screenshot-15-41-35.webp'
-import commonArea from '../assets/screenshot-15-40-11.webp'
-import roomBirch from '../assets/room-interior-1.webp'
-import terrace from '../assets/screenshot-16-10-50.webp'
-import bathroom from '../assets/screenshot-15-41-03.webp'
-import balconyView from '../assets/screenshot-15-40-31.webp'
-// Realne zdjęcia apartamentów (dostarczone przez klienta 2026-07, źródła w public/images/apartament_1|3)
-import ap1SalonAneks from '../assets/ap1-salon-aneks.webp'
+
+// ---------------------------------------------------------------------------
+// REALNE ZDJĘCIA OBIEKTU (dostarczone przez właścicieli 09.2026, Google Drive:
+// Projekty/Willa Wójcik). Konwersja HEIC → WebP z korektą orientacji EXIF,
+// maks. 1800 px, ok. 200 KB. Wszystkie placeholdery `screenshot-*.webp` usunięte.
+// ---------------------------------------------------------------------------
+
+// Obiekt z zewnątrz
+import obiektDroneZmierzch from '../assets/obiekt-drone-zmierzch.webp'
+import obiektDronePanorama from '../assets/obiekt-drone-panorama.webp'
+import obiektDroneElewacja from '../assets/obiekt-drone-elewacja.webp'
+import obiektOdOgrodu from '../assets/obiekt-od-ogrodu.webp'
+import obiektPodjazd from '../assets/obiekt-podjazd.webp'
+import obiektFront from '../assets/obiekt-front.webp'
+import obiektSzyld from '../assets/obiekt-szyld.webp'
+import obiektElewacjaOgrod from '../assets/obiekt-elewacja-ogrod.webp'
+import pokojeParterTarasy from '../assets/pokoje-parter-tarasy.webp'
+
+// Ogród, plac zabaw, altana
+import ogrodPlacZabaw from '../assets/ogrod-plac-zabaw.webp'
+import ogrodAltana from '../assets/ogrod-altana.webp'
+import ogrodAltanaKwiaty from '../assets/ogrod-altana-kwiaty.webp'
+import ogrodAltanaTrawnik from '../assets/ogrod-altana-trawnik.webp'
+import ogrodHortensje from '../assets/ogrod-hortensje.webp'
+import ogrodTarasTrampolina from '../assets/ogrod-taras-trampolina.webp'
+import placZabawTrampolina from '../assets/plac-zabaw-trampolina.webp'
+
+// Taras i widok na Trzy Korony
+import tarasOgrodTrzyKorony from '../assets/taras-ogrod-trzy-korony.webp'
+import tarasWidokTrzyKorony from '../assets/taras-widok-trzy-korony.webp'
+import tarasMebleWidok from '../assets/taras-meble-widok.webp'
+import tarasKwiatyWidok from '../assets/taras-kwiaty-widok.webp'
+import tarasDrzewkaWidok from '../assets/taras-drzewka-widok.webp'
+import widokTrzyKoronyOgrod from '../assets/widok-trzy-korony-ogrod.webp'
+import widokTrzyKoronyZzaTui from '../assets/widok-trzy-korony-zza-tui.webp'
+import widokTrzyKoronyBlisko from '../assets/widok-trzy-korony-blisko.webp'
+import ogrodWidokTrzyKorony from '../assets/ogrod-widok-trzy-korony.webp'
+import trzyKoronyNadDachami from '../assets/trzy-korony-nad-dachami.webp'
+
+// Apartament 1 (38 m², osobna sypialnia + salon)
+import ap1SalonSofa from '../assets/ap1-salon-sofa.webp'
+import ap1SalonTv from '../assets/ap1-salon-tv.webp'
+import ap1SalonWejscie from '../assets/ap1-salon-wejscie.webp'
+import ap1SalonJadalnia from '../assets/ap1-salon-jadalnia.webp'
+import ap1SalonSypialnia from '../assets/ap1-salon-sypialnia.webp'
+import ap1SypialniaLozko from '../assets/ap1-sypialnia-lozko.webp'
 import ap1SalonWidok from '../assets/ap1-salon-widok.webp'
-import ap1Sypialnia from '../assets/ap1-sypialnia.webp'
-import ap3Antresola from '../assets/ap3-wnetrze-antresola.webp'
-import ap3SalonJadalnia from '../assets/ap3-salon-jadalnia.webp'
-import ap3JadalniaTv from '../assets/ap3-jadalnia-tv.webp'
-import ap3SypialniaGoralska from '../assets/ap3-sypialnia-goralska.webp'
-import ap3WidokTrzyKorony from '../assets/ap3-widok-trzy-korony.webp'
-import ap3Lazienka from '../assets/ap3-lazienka.webp'
-import ap3BudynekZewnatrz from '../assets/ap3-budynek-zewnatrz.webp'
+
+// Apartament 2 (35 m², osobna sypialnia + salon z aneksem)
+import ap2SalonAneks from '../assets/ap2-salon-aneks.webp'
+import ap2SalonTv from '../assets/ap2-salon-tv.webp'
+import ap2SalonOkno from '../assets/ap2-salon-okno.webp'
+import ap2SalonJadalnia from '../assets/ap2-salon-jadalnia.webp'
+import ap2Sypialnia from '../assets/ap2-sypialnia.webp'
+import ap2SypialniaLozko from '../assets/ap2-sypialnia-lozko.webp'
+import ap2BalkonTrzyKorony from '../assets/ap2-balkon-trzy-korony.webp'
+
+// Apartament 3 (60 m², jedno duże pomieszczenie, wolnostojący)
+import ap3JadalniaAneks from '../assets/ap3-jadalnia-aneks.webp'
+import ap3SypialniaBrzozy from '../assets/ap3-sypialnia-brzozy.webp'
+import ap3WnetrzePanorama from '../assets/ap3-wnetrze-panorama.webp'
+import ap3JadalniaStrefaTv from '../assets/ap3-jadalnia-strefa-tv.webp'
+import ap3Taras from '../assets/ap3-taras.webp'
+import ap3BalkonTrzyKorony from '../assets/ap3-balkon-trzy-korony.webp'
+import ap3LazienkaMarmur from '../assets/ap3-lazienka-marmur.webp'
+
+// Pokoje 1–8 (21 m², 4 na piętrze z balkonem, 4 na parterze z tarasem)
+import pokojPietroBalkon from '../assets/pokoj-pietro-balkon.webp'
+import pokojPietroTv from '../assets/pokoj-pietro-tv.webp'
+import pokojPietroWidok from '../assets/pokoj-pietro-widok.webp'
+import pokojLozkoSofa from '../assets/pokoj-lozko-sofa.webp'
+import pokojParterTaras from '../assets/pokoj-parter-taras.webp'
+import pokojBiurkoTv from '../assets/pokoj-biurko-tv.webp'
+import pokojTarasWyjscie from '../assets/pokoj-taras-wyjscie.webp'
+
+// Łazienki w pokojach
+import lazienkaPrysznic from '../assets/lazienka-prysznic.webp'
+import lazienkaUmywalka from '../assets/lazienka-umywalka.webp'
+import lazienkaDrewno from '../assets/lazienka-drewno.webp'
+import lazienkaPokoj from '../assets/lazienka-pokoj.webp'
+
+// Części wspólne
+import wspolneJadalniaOgrod from '../assets/wspolne-jadalnia-ogrod.webp'
+import wspolneSalonSchody from '../assets/wspolne-salon-schody.webp'
+import wspolneKuchnia from '../assets/wspolne-kuchnia.webp'
+import wspolneJadalnia from '../assets/wspolne-jadalnia.webp'
+import wspolneKacikDzieciecy from '../assets/wspolne-kacik-dzieciecy.webp'
+import wspolneStrefaWypoczynku from '../assets/wspolne-strefa-wypoczynku.webp'
+import wspolneWejscie from '../assets/wspolne-wejscie.webp'
+import wspolneHol from '../assets/wspolne-hol.webp'
+import wspolneSalon from '../assets/wspolne-salon.webp'
+import wspolneKorytarz from '../assets/wspolne-korytarz.webp'
 
 export const PHOTOS = {
-  heroMountain,
-  // Hero strony głównej: ilustracja vintage Trzech Koron (wybrana przez klienta 2026-07-07);
-  // źródło: public/images/hero/, zoptymalizowana kopia w src/assets/
-  heroIllustration,
-  // Hero /pokoje: pokój brzozowy jako ilustracja (Seedream, styl willawojcik)
+  // Hero strony głównej: ilustracja vintage Trzech Koron (wybrana przez klienta 2026-07-07).
+  // Od 09.2026 służy też jako plakat (poster) dla wideo z drona — zob. components/Hero.jsx.
   heroPokoje,
-  // Hero /apartamenty: ilustracja wnętrza Apartamentu 3 w stylu willawojcik
-  // (Freepik wg prompta, 2026-07-15; źródło: public/images/hero/apartamenty_new.png)
   heroApartamenty,
-  // Heroes podstron — ilustracje w stylu willawojcik (źródła: public/images/hero/)
   heroGaleria,
   heroOkolica,
   heroSplyw,
   heroTrzyKorony,
   heroKladka,
   heroKontakt,
-  // Prawdziwe ujęcie z drona: budynek + Trzy Korony w tle (zima)
-  exteriorWinter: balconyView,
-  buildingDusk,
-  buildingWinter,
-  apartment,
-  livingRoom,
-  livingRoom2,
-  commonArea,
-  roomBirch,
-  terrace,
-  garden: terrace,
-  kitchen: commonArea,
-  bathroom,
-  balconyView,
-  dunajec: buildingWinter,
-  forestWalk: terrace,
-  snow: buildingWinter,
-  thermal: buildingDusk,
-  zakopane: balconyView,
-  pienin1: livingRoom,
-  pienin2: livingRoom2,
+
+  // Obiekt
+  obiektDroneZmierzch,
+  obiektDronePanorama,
+  obiektDroneElewacja,
+  obiektOdOgrodu,
+  obiektPodjazd,
+  obiektFront,
+  obiektSzyld,
+  obiektElewacjaOgrod,
+  pokojeParterTarasy,
+
+  // Ogród i plac zabaw
+  ogrodPlacZabaw,
+  ogrodAltana,
+  ogrodAltanaKwiaty,
+  ogrodAltanaTrawnik,
+  ogrodHortensje,
+  ogrodTarasTrampolina,
+  placZabawTrampolina,
+
+  // Taras i widok
+  tarasOgrodTrzyKorony,
+  tarasWidokTrzyKorony,
+  tarasMebleWidok,
+  tarasKwiatyWidok,
+  tarasDrzewkaWidok,
+  widokTrzyKoronyOgrod,
+  widokTrzyKoronyZzaTui,
+  widokTrzyKoronyBlisko,
+  ogrodWidokTrzyKorony,
+  trzyKoronyNadDachami,
+
+  // Pokoje i łazienki
+  pokojPietroBalkon,
+  pokojPietroTv,
+  pokojPietroWidok,
+  pokojLozkoSofa,
+  pokojParterTaras,
+  pokojBiurkoTv,
+  pokojTarasWyjscie,
+  lazienkaPrysznic,
+  lazienkaUmywalka,
+  lazienkaDrewno,
+  lazienkaPokoj,
+
+  // Części wspólne
+  wspolneJadalniaOgrod,
+  wspolneSalonSchody,
+  wspolneKuchnia,
+  wspolneJadalnia,
+  wspolneKacikDzieciecy,
+  wspolneStrefaWypoczynku,
+  wspolneWejscie,
+  wspolneHol,
+  wspolneSalon,
+  wspolneKorytarz,
+
+  // Apartament 3 — budynek
 }
 
-// Dwa apartamenty z realnymi zdjęciami. Ceny = placeholder „od XXXX zł" —
-// klient nie podał stawek (do uzupełnienia). Pojemność Apartamentu 1 (2–4 os.)
-// wynika ze zdjęć/opisu — do potwierdzenia z właścicielem.
+// ---------------------------------------------------------------------------
+// JEDNOSTKI
+// Dane od właścicielki (Danuta, 14.09.2026, WhatsApp) — ceny, metraże,
+// wyposażenie i układ pomieszczeń. Zastępują szacunki z portali.
+// Siatka zdjęć: 4 kolumny, wzór [2×2, 2w, 1, 1, 2w, 1, 1] = 7 zdjęć bez dziur.
+// ---------------------------------------------------------------------------
+
+// Wyszukiwanie po id, nie po indeksie — kolejność w APARTMENTS bywa zmieniana.
+// Rzucamy wyjątek zamiast oddawać undefined: strona jest budowana statycznie, więc
+// literówka w id wywaliłaby prerender komunikatem „Cannot read properties of
+// undefined" bez wskazania przyczyny. Tu od razu widać, czego brakuje i gdzie.
+export function getApartment(id) {
+  const found = APARTMENTS.find((a) => a.id === id)
+  if (!found) throw new Error(`content.js: brak wpisu APARTMENTS o id '${id}'`)
+  return found
+}
+
 export const APARTMENTS = [
   {
     id: 'apartament-1',
     name: 'Apartament 1',
-    // Pojemność wg portali (Booking/nocowanie): 4 os. + możliwość dostawki
-    meta: '38 m² · do 4 osób',
-    price: 'od XXXX zł',
+    meta: '38 m², do 4 osób',
+    price: '450 zł za dobę',
     intro:
-      'Osobna sypialnia i salon z w pełni wyposażonym aneksem kuchennym — razem 38 m² dla czterech osób. Poranną kawę piją Państwo na dużym balkonie, z widokiem na Trzy Korony.',
+      'Dwa osobne pomieszczenia: sypialnia z łóżkiem małżeńskim i salon z rozkładaną sofą oraz aneksem kuchennym. Z obu wychodzą Państwo na duży balkon zwrócony w stronę Trzech Koron.',
     features: [
-      'Sypialnia z podwójnym łóżkiem, w salonie możliwość dostawki',
-      'Aneks kuchenny: płyta indukcyjna, lodówka, czajnik, naczynia',
-      'Własna łazienka z prysznicem, TV-SAT, szybkie WiFi',
-      'Duży balkon od strony Trzech Koron',
+      'Osobna sypialnia z łóżkiem małżeńskim',
+      'Salon z rozkładaną sofą — razem do 4 osób',
+      'Aneks kuchenny w salonie, w pełni wyposażony',
+      'Duży balkon z widokiem na Trzy Korony, wyjście z obu pomieszczeń',
+      'Własna łazienka z ręcznikami i suszarką do włosów',
     ],
-    cover: ap1SalonWidok,
+    cover: ap1SalonSofa,
     photos: [
-      { src: ap1SalonWidok, label: 'Salon z aneksem kuchennym i oknem z widokiem na góry — Apartament 1', span: 'col-span-2 row-span-2' },
-      { src: ap1SalonAneks, label: 'Salon z zieloną sofą i w pełni wyposażony aneks kuchenny — Apartament 1', span: 'col-span-2' },
-      { src: ap1Sypialnia, label: 'Osobna sypialnia z podwójnym łóżkiem i wyjściem na balkon — Apartament 1', span: 'col-span-2' },
+      { src: ap1SalonSofa, label: 'Salon z rozkładaną sofą, aneksem kuchennym i telewizorem — Apartament 1', span: 'col-span-2 row-span-2' },
+      { src: ap1SypialniaLozko, label: 'Osobna sypialnia z łóżkiem małżeńskim i wyjściem na balkon — Apartament 1', span: 'col-span-2' },
+      { src: ap1SalonTv, label: 'Salon od strony jadalni, z telewizorem i aneksem — Apartament 1' },
+      { src: ap1SalonJadalnia, label: 'Część jadalna salonu i przejście do sypialni — Apartament 1' },
+      { src: ap1SalonWejscie, label: 'Salon od strony okna, z wejściem do sypialni — Apartament 1', span: 'col-span-2' },
+      { src: ap1SalonWidok, label: 'Salon z oknem wychodzącym na góry — Apartament 1' },
+      { src: ap1SalonSypialnia, label: 'Widok z salonu na osobną sypialnię — Apartament 1' },
+    ],
+  },
+  {
+    id: 'apartament-2',
+    name: 'Apartament 2',
+    meta: '35 m², do 4 osób',
+    price: '450 zł za dobę',
+    intro:
+      'Sypialnia i salon z aneksem kuchennym — 35 m² dla czterech osób. W salonie stoi rozkładana sofa, a drzwi balkonowe otwierają się wprost na masyw Trzech Koron.',
+    features: [
+      'Osobna sypialnia z łóżkiem małżeńskim',
+      'Salon z aneksem kuchennym i rozkładaną sofą',
+      'Balkon z widokiem na Trzy Korony, wyjście z salonu',
+      'Własna łazienka z ręcznikami i suszarką do włosów',
+    ],
+    cover: ap2SalonAneks,
+    photos: [
+      { src: ap2SalonAneks, label: 'Salon z żółtą rozkładaną sofą i aneksem kuchennym — Apartament 2', span: 'col-span-2 row-span-2' },
+      { src: ap2BalkonTrzyKorony, label: 'Balkon z widokiem na masyw Trzech Koron — Apartament 2', span: 'col-span-2' },
+      { src: ap2Sypialnia, label: 'Sypialnia z łóżkiem małżeńskim — Apartament 2' },
+      { src: ap2SalonTv, label: 'Strefa wypoczynkowa z telewizorem i fotelem — Apartament 2' },
+      { src: ap2SalonJadalnia, label: 'Salon z jadalnią i aneksem kuchennym — Apartament 2', span: 'col-span-2' },
+      { src: ap2SypialniaLozko, label: 'Łóżko małżeńskie z tapicerowanym zagłówkiem — Apartament 2' },
+      { src: ap2SalonOkno, label: 'Salon z aneksem kuchennym i oknem na góry — Apartament 2' },
     ],
   },
   {
     id: 'apartament-3',
     name: 'Apartament 3',
-    meta: '60 m² · wolnostojący · do 6 osób',
-    price: 'od XXXX zł',
+    meta: '60 m², wolnostojący, do 6 osób',
+    price: 'od 500 zł za dobę',
     intro:
-      'Wolnostojący apartament 60 m² — cały budynek tylko dla Państwa. Jedna otwarta przestrzeń pod skosami: sypialnia za ścianką z brzozowych pni, salon, jadalnia i aneks. Śpi tu wygodnie sześć osób, a z balkonu widać Trzy Korony.',
+      'Jedno duże pomieszczenie o powierzchni 60 m² w osobnym budynku — cały dla Państwa. Pod skosami mieści się część sypialna za ścianką z brzozowych pni, salon, jadalnia i aneks kuchenny. Śpi tu sześć osób, a z balkonu widać Trzy Korony.',
     features: [
-      'Miejsca do spania dla 6 osób',
-      'Góralskie rzeźbione łóżko i ścianka z brzozowych pni',
-      'W pełni wyposażony aneks kuchenny i duża jadalnia',
-      'Marmurowa łazienka z prysznicem',
+      'Jedno otwarte pomieszczenie o powierzchni 60 m², osobny budynek',
+      'Łóżko, podwójna sofa rozkładana i dwa rozkładane fotele — do 6 osób',
+      'Aneks kuchenny w pełni wyposażony i duża jadalnia',
+      'Balkon z widokiem na Trzy Korony',
+      'Łazienka z ręcznikami i suszarką do włosów',
     ],
-    cover: ap3Antresola,
-    // 7 zdjęć = pełna siatka bez dziur (2x2 + 2w | 1 + 1 | 2w + 1 + 1).
-    // Wycięte (za gęsto na stronie): przedpokój, balkon od ogrodu.
+    cover: ap3WnetrzePanorama,
     photos: [
-      { src: ap3Antresola, label: 'Otwarte wnętrze pod skosami z brzozową ścianką i częścią sypialną — Apartament 3', span: 'col-span-2 row-span-2' },
-      { src: ap3WidokTrzyKorony, label: 'Widok na masyw Trzech Koron z balkonu apartamentu — Apartament 3', span: 'col-span-2' },
-      { src: ap3SypialniaGoralska, label: 'Góralskie rzeźbione łóżko przy ściance z brzozowych pni — Apartament 3' },
-      { src: ap3JadalniaTv, label: 'Jadalnia dla sześciu osób i strefa TV ze ścianą z plastrów drewna — Apartament 3' },
-      { src: ap3SalonJadalnia, label: 'Salon z szarą sofą i jadalnia w jednej przestrzeni — Apartament 3', span: 'col-span-2' },
-      { src: ap3Lazienka, label: 'Marmurowa łazienka ze złotymi dodatkami — Apartament 3' },
-      { src: ap3BudynekZewnatrz, label: 'Wolnostojący budynek apartamentu o zmierzchu — Apartament 3' },
+      { src: ap3WnetrzePanorama, label: 'Sypialnia, salon i jadalnia w jednej otwartej przestrzeni — Apartament 3', span: 'col-span-2 row-span-2' },
+      { src: ap3BalkonTrzyKorony, label: 'Balkon z widokiem na masyw Trzech Koron — Apartament 3', span: 'col-span-2' },
+      { src: ap3SypialniaBrzozy, label: 'Łóżko przy ściance z brzozowych pni — Apartament 3' },
+      { src: ap3JadalniaStrefaTv, label: 'Jadalnia dla sześciu osób i strefa telewizyjna — Apartament 3' },
+      { src: ap3JadalniaAneks, label: 'Jadalnia i w pełni wyposażony aneks kuchenny pod skosami — Apartament 3', span: 'col-span-2' },
+      { src: ap3LazienkaMarmur, label: 'Marmurowa łazienka ze złotymi dodatkami — Apartament 3' },
+      { src: ap3Taras, label: 'Wyjście z części sypialnej na taras — Apartament 3' },
     ],
   },
 ]
+
+// Pokoje 1–8. Wyposażenie identyczne w każdym; różni je tylko balkon (piętro)
+// albo taras (parter). Dane od właścicielki 14.09.2026.
+export const ROOMS = {
+  id: 'pokoje',
+  name: 'Pokoje 1–8',
+  meta: '21 m², 2–3 osoby',
+  price: '250 zł za dobę',
+  priceNote: '250 zł dla dwóch osób, 280 zł dla trzech',
+  intro:
+    'Osiem pokoi o tym samym wyposażeniu: łóżko małżeńskie 160 × 200, mała sofa rozkładana i własna łazienka. Cztery pokoje na piętrze mają balkon, cztery na parterze — taras wychodzący na ogród.',
+  features: [
+    'Łóżko małżeńskie 160 × 200 i mała sofa rozkładana',
+    'Mini lodówka, czajnik elektryczny i telewizor',
+    'Własna łazienka z ręcznikami i suszarką do włosów',
+    'Cztery pokoje na piętrze z balkonem, cztery na parterze z tarasem',
+    'Dostęp do wspólnej kuchni o powierzchni 45 m²',
+  ],
+  cover: pokojPietroBalkon,
+  photos: [
+    { src: pokojPietroBalkon, label: 'Pokój na piętrze z łóżkiem małżeńskim, biurkiem i wyjściem na balkon', span: 'col-span-2 row-span-2' },
+    { src: pokojParterTaras, label: 'Pokój na parterze z wyjściem na prywatny taras', span: 'col-span-2' },
+    { src: pokojLozkoSofa, label: 'Pokój z łóżkiem małżeńskim, rozkładaną sofą i telewizorem' },
+    { src: pokojBiurkoTv, label: 'Pokój z biurkiem, czajnikiem elektrycznym i telewizorem' },
+    { src: pokojPietroTv, label: 'Pokój na piętrze — telewizor, biurko i balkon z widokiem', span: 'col-span-2' },
+    { src: lazienkaPrysznic, label: 'Łazienka w pokoju — kabina prysznicowa, umywalka i suszarka' },
+    { src: pokojTarasWyjscie, label: 'Pokój z przeszklonym wyjściem na taras' },
+  ],
+}
 
 export const AMENITIES = [
   { icon: 'IconMountain', title: 'Widok na Trzy Korony', note: 'Z balkonu każdego apartamentu' },
@@ -135,36 +307,31 @@ export const AMENITIES = [
   { icon: 'IconTowel', title: 'Pościel i ręczniki', note: 'Świeże, wysokiej jakości' },
 ]
 
+// Wyłącznie odległości pokryte przez references/stats.md. Wcześniejsze wpisy
+// „Stok Polana Sosny 4 km", „Termy Bania 22 km", „Centrum Zakopanego 38 km"
+// i „Szlak na Sokolicę 1,5 km" były zmyślone i sprzeczne ze stats.md — usunięte 14.09.2026.
 export const ATTRACTIONS = [
-  { title: 'Pieniński Park Narodowy', dist: '1,1 km', time: '15 min pieszo' },
+  { title: 'Szlak na Trzy Korony', dist: '~1 km', time: '15 min pieszo' },
   { title: 'Kładka pieszo-rowerowa na Słowację', dist: '250 m', time: '3 min pieszo' },
+  { title: 'Kościół św. Katarzyny', dist: '467 m', time: '6 min pieszo' },
   { title: 'Przystań spływu — Kąty', dist: '~4–5 km', time: '5–7 min autem' },
-  { title: 'Zamek w Niedzicy', dist: '11 km', time: '15 min autem' },
-  { title: 'Stok Polana Sosny', dist: '4 km', time: '5 min autem' },
-  { title: 'Termy Bania (Białka Tatrzańska)', dist: '22 km', time: '20 min autem' },
-  { title: 'Centrum Zakopanego', dist: '38 km', time: '35 min autem' },
-  { title: 'Szlak na Sokolicę', dist: '1,5 km', time: 'Od recepcji' },
+  { title: 'Zapora w Niedzicy', dist: '10 km', time: '15 min autem' },
+  { title: 'Zamek Dunajec w Niedzicy', dist: '11 km', time: '15 min autem' },
+  { title: 'Czorsztyn-Ski, Kluszkowce', dist: '~13–15 km', time: '~20 min autem' },
+  { title: 'Termy Bania (Białka Tatrzańska)', dist: '~30–33 km', time: '~45 min autem' },
 ]
 
-export const REVIEWS = [
-  {
-    q: 'Czysty, nowoczesny, ładnie urządzony pokój z przepięknym widokiem na Trzy Korony. Gospodarze niezwykle mili i pomocni.',
-    a: 'Katarzyna', origin: 'Warszawa', date: 'Październik 2025', stars: 10,
-  },
-  {
-    q: 'Cisza, spokój i ten widok. Wstajesz, otwierasz balkon — i rozumiesz, po co tu przyjechałeś. Na pewno wrócimy.',
-    a: 'Michał & Anna', origin: 'Kraków', date: 'Sierpień 2025', stars: 10,
-  },
-  {
-    q: 'Dzieci zakochały się w placu zabaw, a my w altanie z grillem. Idealna baza na zwiedzanie Pienin i Tatr.',
-    a: 'Rodzina Kowalskich', origin: 'Wrocław', date: 'Lipiec 2025', stars: 9,
-  },
-  {
-    q: 'Apartament przestronny, świetnie wyposażony, bardzo czysty. Gospodarze służyli radą i świetnymi wskazówkami.',
-    a: 'Tomasz', origin: 'Poznań', date: 'Wrzesień 2025', stars: 10,
-  },
-  {
-    q: 'Wyjątkowe miejsce. Stylowe wnętrza, zapach drewna, o poranku mgła w dolinie. Polecamy całym sercem.',
-    a: 'Joanna', origin: 'Gdańsk', date: 'Maj 2025', stars: 10,
-  },
-]
+// Opinie gości. PUSTE CELOWO od 14.09.2026.
+//
+// Wcześniej stało tu pięć wymyślonych cytatów z imionami, miastami i datami
+// (m.in. „Rodzina Kowalskich, Wrocław"), które renderowały się w karuzeli na
+// stronie głównej i lądowały w prerenderowanym HTML-u. Właściciele nie przekazali
+// żadnej opinii — prezentowanie tych cytatów jako wypowiedzi gości było
+// fabrykowaniem referencji (nieuczciwa praktyka rynkowa).
+//
+// Prawdziwe oceny zbiorcze (Google 4,9/5 ze 135 opinii, Booking 9,8/10,
+// nocowanie.pl 10/10) są w `src/data/site.js` i pokazuje je components/Reviews.jsx.
+//
+// Aby przywrócić cytaty: wstawić tu realne wpisy od właścicieli albo pobrane
+// z Places API (max 5, z imieniem, datą i oceną bez edycji) i odtworzyć karuzelę.
+export const REVIEWS = []

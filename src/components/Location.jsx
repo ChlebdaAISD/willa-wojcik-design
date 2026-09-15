@@ -9,7 +9,7 @@ export function Location() {
   const nearby = [
     { idx: '01', title: 'Trzy Korony', sub: 'Najkrótszy szlak na szczyt zaczyna się 15 minut pieszo od furtki', dist: '~1 km', href: '/okolica/trzy-korony' },
     { idx: '02', title: 'Kładka na Słowację', sub: 'Spacerem do Czerwonego Klasztoru i na Drogę Pienińską', dist: '250 m', href: '/okolica/kladka-czerwony-klasztor' },
-    { idx: '03', title: 'Spływ Dunajcem', sub: 'Tratwą flisacką przez Przełom Dunajca — przystań w tej samej wsi', dist: '2,5 km', href: '/okolica/splyw-dunajcem' },
+    { idx: '03', title: 'Spływ Dunajcem', sub: 'Tratwą flisacką przez Przełom Dunajca — przystań flisacka w Kątach', dist: '~4–5 km', href: '/okolica/splyw-dunajcem' },
   ]
 
   return (
@@ -26,7 +26,7 @@ export function Location() {
               W sercu <span className="italic font-normal">Pienin</span>.
             </h2>
             <p className="mt-6 text-charcoal/70 text-[17px] leading-[1.8] text-pretty">
-              Pięć kroków do Dunajca, kwadrans od zamku w Niedzicy, pół godziny od Zakopanego.
+              Pięć kroków do Dunajca, kwadrans autem od zamku w Niedzicy.
               Dobra baza wypadowa — choć najczęściej goście zostają na miejscu, bo nie chce im
               się wyjeżdżać.
             </p>
@@ -56,10 +56,10 @@ export function Location() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                 {nearby.map((n, k) => (
                   <Link key={n.title} href={n.href}
-                        className="reveal group flex flex-col justify-between rounded-sm border border-charcoal/20 bg-cream/40 p-5 md:p-6 min-h-[190px] transition-all duration-500 hover:bg-cream hover:border-transparent hover:-translate-y-1 hover:shadow-[0_30px_50px_-30px_rgba(31,58,46,0.35)]"
+                        className="reveal group flex flex-col justify-between rounded-sm border border-charcoal/20 bg-cream/40 p-5 md:p-6 min-h-[190px] transition-[background-color,border-color,transform,box-shadow] duration-500 hover:bg-cream hover:border-transparent hover:-translate-y-1 hover:shadow-[0_30px_50px_-30px_rgba(31,58,46,0.35)]"
                         style={{ '--d': `${k * 0.08}s` }}>
                     <div>
-                      <div className="font-mono text-gold-2 text-[12px]">.{n.idx}</div>
+                      <div className="font-mono text-gold-3 text-[12px]">.{n.idx}</div>
                       <div className="font-serif text-charcoal text-2xl leading-tight mt-2">{n.title}</div>
                       <div className="text-charcoal/70 text-[13px] mt-2 leading-relaxed">{n.sub}</div>
                     </div>

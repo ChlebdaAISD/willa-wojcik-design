@@ -9,8 +9,8 @@ export function TrustStrip({ tone = 'dark', className = '' }) {
   const line = isLight ? 'bg-cream/20' : 'bg-charcoal/15'
 
   const stats = [
-    { big: SITE.ratingGoogle, small: '★', label: `Google · ${SITE.reviewsGoogle} opinii` },
-    { big: SITE.ratingBooking, small: '/10', label: 'Booking · „Guest Choice”' },
+    { big: SITE.ratingGoogle, small: '★', label: `Google, ${SITE.reviewsGoogle} opinii` },
+    { big: SITE.ratingBooking, small: '/10', label: 'Booking, „Guest Choice”' },
     { big: SITE.ratingNocowanie, small: '/10', label: 'nocowanie.pl' },
   ]
 
