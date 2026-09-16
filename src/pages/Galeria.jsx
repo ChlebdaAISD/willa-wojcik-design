@@ -7,6 +7,16 @@ import { PHOTOS, getApartment, ROOMS } from '../data/content.js'
 // Wszystkie zdjęcia są realne (dostarczone przez właścicieli 09.2026, content.js).
 // Apartamenty i pokoje bierzemy z APARTMENTS / ROOMS, żeby podpisy nie rozjechały
 // się z podstronami jednostek. Resztę składamy bezpośrednio z PHOTOS.
+// Sięganie po zdjęcia PO POZYCJI jest kruche: usunięcie jednego kadru w content.js
+// przesuwa wszystkie kolejne indeksy, a brakujący element wywala prerender
+// komunikatem „Cannot read properties of undefined". Zdarzyło się 16.09.2026 przy
+// usuwaniu zdjęcia na prośbę właścicielki. Ten helper mówi wprost, czego brakuje.
+function foto(grupa, i) {
+  const f = grupa.photos?.[i]
+  if (!f) throw new Error(`content.js: brak zdjęcia o indeksie ${i} w „${grupa.name ?? 'ROOMS'}" (ma ${grupa.photos?.length ?? 0})`)
+  return f
+}
+
 const AP1 = getApartment('apartament-1')
 const AP2 = getApartment('apartament-2')
 const AP3 = getApartment('apartament-3')
@@ -39,7 +49,6 @@ const CATEGORIES = [
       { src: PHOTOS.obiektFront, label: 'Front willi od strony drogi dojazdowej', span: SPAN_2x2 },
       { src: PHOTOS.obiektElewacjaOgrod, label: 'Drewniana elewacja i trawnik przed pokojami na parterze', span: SPAN_2 },
       { src: PHOTOS.obiektPodjazd, label: 'Podjazd i bezpłatny parking na terenie obiektu' },
-      { src: PHOTOS.obiektSzyld, label: 'Szyld Willi Wójcik przed budynkiem' },
     ],
   },
   {
@@ -53,7 +62,6 @@ const CATEGORIES = [
       { src: PHOTOS.ogrodAltanaTrawnik, label: 'Altana i trawnik od strony budynku' },
       { src: PHOTOS.ogrodTarasTrampolina, label: 'Taras przy ogrodzie z widokiem na trampolinę', span: SPAN_2 },
       { src: PHOTOS.ogrodHortensje, label: 'Hortensje kwitnące w ogrodzie' },
-      { src: PHOTOS.placZabawTrampolina, label: 'Trampolina na placu zabaw dla dzieci' },
     ],
   },
   {
@@ -64,7 +72,6 @@ const CATEGORIES = [
       { src: PHOTOS.tarasOgrodTrzyKorony, label: 'Taras i ogród z masywem Trzech Koron w tle', span: SPAN_2x2 },
       { src: PHOTOS.tarasWidokTrzyKorony, label: 'Widok na Trzy Korony prosto z tarasu', span: SPAN_2 },
       { src: PHOTOS.tarasMebleWidok, label: 'Meble tarasowe ustawione w stronę gór' },
-      { src: PHOTOS.tarasKwiatyWidok, label: 'Kwiaty przy tarasie, w tle pienińskie szczyty' },
       { src: PHOTOS.widokTrzyKoronyOgrod, label: 'Trzy Korony widziane znad ogrodu', span: SPAN_2 },
       { src: PHOTOS.tarasDrzewkaWidok, label: 'Drzewka przy tarasie i panorama pienińskich szczytów' },
       { src: PHOTOS.widokTrzyKoronyZzaTui, label: 'Masyw Trzech Koron zza szpaleru tui' },
@@ -79,15 +86,15 @@ const CATEGORIES = [
     desc: 'Apartament 1 ma 38 m², apartament 2 ma 35 m², oba z osobną sypialnią i salonem z aneksem kuchennym. Apartament 3 zajmuje 60 m² w osobnym budynku — jedno otwarte pomieszczenie z miejscami do spania dla sześciu osób. Każdy ma balkon zwrócony w stronę Trzech Koron, a doba kosztuje od 450 zł.',
     // Spany JAWNIE przez tile() — patrz komentarz przy helperze.
     photos: [
-      tile(AP1.photos[0], SPAN_2x2), // AP1: salon z rozkładaną sofą i aneksem
-      tile(AP1.photos[1]),           // AP1: osobna sypialnia
-      tile(AP1.photos[5]),           // AP1: salon z oknem na góry
-      tile(AP2.photos[0], SPAN_2),   // AP2: salon z aneksem kuchennym
-      tile(AP2.photos[1], SPAN_2),   // AP2: balkon na Trzy Korony
-      tile(AP2.photos[2], SPAN_2),   // AP2: sypialnia
-      tile(AP3.photos[0], SPAN_2x2), // AP3: cała otwarta przestrzeń 60 m²
-      tile(AP3.photos[1], SPAN_2),   // AP3: balkon na Trzy Korony
-      tile(AP3.photos[4], SPAN_2),   // AP3: jadalnia i aneks kuchenny
+      tile(foto(AP1, 0), SPAN_2x2), // AP1: salon z rozkładaną sofą i aneksem
+      tile(foto(AP1, 1)),           // AP1: osobna sypialnia
+      tile(foto(AP1, 5)),           // AP1: salon z oknem na góry
+      tile(foto(AP2, 0), SPAN_2),   // AP2: salon z aneksem kuchennym
+      tile(foto(AP2, 1), SPAN_2),   // AP2: balkon na Trzy Korony
+      tile(foto(AP2, 2), SPAN_2),   // AP2: sypialnia
+      tile(foto(AP3, 0), SPAN_2x2), // AP3: cała otwarta przestrzeń 60 m²
+      tile(foto(AP3, 1), SPAN_2),   // AP3: balkon na Trzy Korony
+      tile(foto(AP3, 4), SPAN_2),   // AP3: jadalnia i aneks kuchenny
     ],
   },
   {
@@ -95,13 +102,12 @@ const CATEGORIES = [
     label: 'Pokoje',
     desc: 'Każdy z ośmiu pokoi ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną i własną łazienkę. Cztery pokoje na piętrze mają balkon, cztery na parterze — taras. Doba kosztuje 250 zł dla dwóch osób i 280 zł dla trzech.',
     photos: [
-      tile(ROOMS.photos[0], SPAN_2x2), // pokój na piętrze z balkonem
-      tile(ROOMS.photos[1], SPAN_2),   // pokój na parterze z tarasem
-      tile(ROOMS.photos[2]),           // łóżko małżeńskie i sofa rozkładana
-      tile(ROOMS.photos[3]),           // biurko, czajnik, telewizor
-      tile(ROOMS.photos[4], SPAN_2),   // pokój na piętrze, telewizor i balkon
-      tile(ROOMS.photos[5]),           // łazienka z kabiną prysznicową
-      tile(ROOMS.photos[6]),           // przeszklone wyjście na taras
+      tile(foto(ROOMS, 0), SPAN_2x2), // pokój na piętrze z balkonem
+      tile(foto(ROOMS, 1), SPAN_2),   // pokój na parterze z tarasem
+      tile(foto(ROOMS, 2)),           // łóżko małżeńskie i sofa rozkładana
+      tile(foto(ROOMS, 3)),           // biurko, czajnik, telewizor
+      tile(foto(ROOMS, 4), SPAN_2),   // łazienka z kabiną prysznicową
+      tile(foto(ROOMS, 5)),           // przeszklone wyjście na taras
       { src: PHOTOS.pokojeParterTarasy, label: 'Tarasy pokoi na parterze z wyjściem wprost do ogrodu', span: SPAN_2 },
       { src: PHOTOS.lazienkaUmywalka, label: 'Łazienka w pokoju: umywalka, lustro i świeże ręczniki' },
       { src: PHOTOS.lazienkaDrewno, label: 'Łazienka wykończona drewnem, prysznic i suszarka do włosów' },
@@ -120,7 +126,6 @@ const CATEGORIES = [
       { src: PHOTOS.wspolneKacikDzieciecy, label: 'Kącik dziecięcy w części wspólnej' },
       { src: PHOTOS.wspolneSalon, label: 'Salon z kanapami w części wspólnej' },
       { src: PHOTOS.wspolneHol, label: 'Hol wejściowy na parterze', span: SPAN_2 },
-      { src: PHOTOS.wspolneWejscie, label: 'Wejście główne do willi' },
       { src: PHOTOS.wspolneKorytarz, label: 'Korytarz prowadzący do pokoi' },
     ],
   },

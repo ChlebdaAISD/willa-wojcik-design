@@ -93,7 +93,11 @@ export function Nav() {
   const isActive = (href) =>
     href === '/' ? location === '/' : (location === href || location.startsWith(href + '/'))
 
-  const dark = scrolled // ciemny tekst na kremowym pasku po scrollu
+  // Strona główna ma od 15.09.2026 JASNE hero, więc napisy w nawigacji muszą być
+  // ciemne od samej góry. Podstrony nadal stoją na ciemnych ilustracjach (PageHero),
+  // tam kremowe napisy zostają aż do scrolla.
+  const lightHero = location === '/'
+  const dark = scrolled || lightHero
 
   // Klik w link prowadzący do trasy, na której JUŻ jesteśmy, nie zmienia adresu,
   // więc ScrollToTop w App.jsx się nie uruchamia i strona zostaje tam, gdzie była.
@@ -107,7 +111,7 @@ export function Nav() {
       <header
               className={`fixed top-0 inset-x-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-500 ${scrolled ? 'bg-cream/90 backdrop-blur-md border-b border-charcoal/10' : 'bg-transparent'}`}>
         <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between gap-4"
-             style={{ textShadow: scrolled ? 'none' : '0 1px 16px rgba(0,0,0,0.35)' }}>
+             style={{ textShadow: dark ? 'none' : '0 1px 16px rgba(0,0,0,0.35)' }}>
           <Logo dark={dark} />
 
           {/* Desktop links */}

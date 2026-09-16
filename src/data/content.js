@@ -21,7 +21,6 @@ import obiektDroneElewacja from '../assets/obiekt-drone-elewacja.webp'
 import obiektOdOgrodu from '../assets/obiekt-od-ogrodu.webp'
 import obiektPodjazd from '../assets/obiekt-podjazd.webp'
 import obiektFront from '../assets/obiekt-front.webp'
-import obiektSzyld from '../assets/obiekt-szyld.webp'
 import obiektElewacjaOgrod from '../assets/obiekt-elewacja-ogrod.webp'
 import pokojeParterTarasy from '../assets/pokoje-parter-tarasy.webp'
 
@@ -32,13 +31,11 @@ import ogrodAltanaKwiaty from '../assets/ogrod-altana-kwiaty.webp'
 import ogrodAltanaTrawnik from '../assets/ogrod-altana-trawnik.webp'
 import ogrodHortensje from '../assets/ogrod-hortensje.webp'
 import ogrodTarasTrampolina from '../assets/ogrod-taras-trampolina.webp'
-import placZabawTrampolina from '../assets/plac-zabaw-trampolina.webp'
 
 // Taras i widok na Trzy Korony
 import tarasOgrodTrzyKorony from '../assets/taras-ogrod-trzy-korony.webp'
 import tarasWidokTrzyKorony from '../assets/taras-widok-trzy-korony.webp'
 import tarasMebleWidok from '../assets/taras-meble-widok.webp'
-import tarasKwiatyWidok from '../assets/taras-kwiaty-widok.webp'
 import tarasDrzewkaWidok from '../assets/taras-drzewka-widok.webp'
 import widokTrzyKoronyOgrod from '../assets/widok-trzy-korony-ogrod.webp'
 import widokTrzyKoronyZzaTui from '../assets/widok-trzy-korony-zza-tui.webp'
@@ -74,8 +71,8 @@ import ap3BalkonTrzyKorony from '../assets/ap3-balkon-trzy-korony.webp'
 import ap3LazienkaMarmur from '../assets/ap3-lazienka-marmur.webp'
 
 // Pokoje 1–8 (21 m², 4 na piętrze z balkonem, 4 na parterze z tarasem)
+import pokojLazienkaBiurko from '../assets/pokoj-lazienka-biurko.webp'
 import pokojPietroBalkon from '../assets/pokoj-pietro-balkon.webp'
-import pokojPietroTv from '../assets/pokoj-pietro-tv.webp'
 import pokojPietroWidok from '../assets/pokoj-pietro-widok.webp'
 import pokojLozkoSofa from '../assets/pokoj-lozko-sofa.webp'
 import pokojParterTaras from '../assets/pokoj-parter-taras.webp'
@@ -95,7 +92,6 @@ import wspolneKuchnia from '../assets/wspolne-kuchnia.webp'
 import wspolneJadalnia from '../assets/wspolne-jadalnia.webp'
 import wspolneKacikDzieciecy from '../assets/wspolne-kacik-dzieciecy.webp'
 import wspolneStrefaWypoczynku from '../assets/wspolne-strefa-wypoczynku.webp'
-import wspolneWejscie from '../assets/wspolne-wejscie.webp'
 import wspolneHol from '../assets/wspolne-hol.webp'
 import wspolneSalon from '../assets/wspolne-salon.webp'
 import wspolneKorytarz from '../assets/wspolne-korytarz.webp'
@@ -119,7 +115,6 @@ export const PHOTOS = {
   obiektOdOgrodu,
   obiektPodjazd,
   obiektFront,
-  obiektSzyld,
   obiektElewacjaOgrod,
   pokojeParterTarasy,
 
@@ -130,13 +125,11 @@ export const PHOTOS = {
   ogrodAltanaTrawnik,
   ogrodHortensje,
   ogrodTarasTrampolina,
-  placZabawTrampolina,
 
   // Taras i widok
   tarasOgrodTrzyKorony,
   tarasWidokTrzyKorony,
   tarasMebleWidok,
-  tarasKwiatyWidok,
   tarasDrzewkaWidok,
   widokTrzyKoronyOgrod,
   widokTrzyKoronyZzaTui,
@@ -145,8 +138,8 @@ export const PHOTOS = {
   trzyKoronyNadDachami,
 
   // Pokoje i łazienki
+  pokojLazienkaBiurko,
   pokojPietroBalkon,
-  pokojPietroTv,
   pokojPietroWidok,
   pokojLozkoSofa,
   pokojParterTaras,
@@ -164,7 +157,6 @@ export const PHOTOS = {
   wspolneJadalnia,
   wspolneKacikDzieciecy,
   wspolneStrefaWypoczynku,
-  wspolneWejscie,
   wspolneHol,
   wspolneSalon,
   wspolneKorytarz,
@@ -287,9 +279,9 @@ export const ROOMS = {
   photos: [
     { src: pokojPietroBalkon, label: 'Pokój na piętrze z łóżkiem małżeńskim, biurkiem i wyjściem na balkon', span: 'col-span-2 row-span-2' },
     { src: pokojParterTaras, label: 'Pokój na parterze z wyjściem na prywatny taras', span: 'col-span-2' },
+    { src: pokojLazienkaBiurko, label: 'Pokój z własną łazienką, biurkiem i wyjściem na balkon', span: 'col-span-2' },
     { src: pokojLozkoSofa, label: 'Pokój z łóżkiem małżeńskim, rozkładaną sofą i telewizorem' },
     { src: pokojBiurkoTv, label: 'Pokój z biurkiem, czajnikiem elektrycznym i telewizorem' },
-    { src: pokojPietroTv, label: 'Pokój na piętrze — telewizor, biurko i balkon z widokiem', span: 'col-span-2' },
     { src: lazienkaPrysznic, label: 'Łazienka w pokoju — kabina prysznicowa, umywalka i suszarka' },
     { src: pokojTarasWyjscie, label: 'Pokój z przeszklonym wyjściem na taras' },
   ],
