@@ -23,6 +23,16 @@ import obiektPodjazd from '../assets/obiekt-podjazd.webp'
 import obiektFront from '../assets/obiekt-front.webp'
 import obiektElewacjaOgrod from '../assets/obiekt-elewacja-ogrod.webp'
 import pokojeParterTarasy from '../assets/pokoje-parter-tarasy.webp'
+// Dosłane przez właścicieli 16.09.2026 (WhatsApp) — patrz raporty/.
+import obiektFrontKwiaty from '../assets/obiekt-front-kwiaty.webp'
+import obiektNaroznikHortensje from '../assets/obiekt-naroznik-hortensje.webp'
+import obiektTarasSchody from '../assets/obiekt-taras-schody.webp'
+import obiektDroneWiesZmierzch from '../assets/obiekt-drone-wies-zmierzch.webp'
+// Budynek o żółtej elewacji. Bryła jest inna niż główny budynek willi (ten jest
+// biały, ze szklanymi balustradami), więc zapytaliśmy właścicieli. Potwierdzili
+// 17.09.2026, że to część obiektu — stąd podpisy „drugi z budynków obiektu".
+import obiektDomZoltyPodjazd from '../assets/obiekt-dom-zolty-podjazd.webp'
+import obiektDomZoltyFront from '../assets/obiekt-dom-zolty-front.webp'
 
 // Ogród, plac zabaw, altana
 import ogrodPlacZabaw from '../assets/ogrod-plac-zabaw.webp'
@@ -31,6 +41,7 @@ import ogrodAltanaKwiaty from '../assets/ogrod-altana-kwiaty.webp'
 import ogrodAltanaTrawnik from '../assets/ogrod-altana-trawnik.webp'
 import ogrodHortensje from '../assets/ogrod-hortensje.webp'
 import ogrodTarasTrampolina from '../assets/ogrod-taras-trampolina.webp'
+import ogrodHortensjeAltana from '../assets/ogrod-hortensje-altana.webp'
 
 // Taras i widok na Trzy Korony
 import tarasOgrodTrzyKorony from '../assets/taras-ogrod-trzy-korony.webp'
@@ -42,6 +53,9 @@ import widokTrzyKoronyZzaTui from '../assets/widok-trzy-korony-zza-tui.webp'
 import widokTrzyKoronyBlisko from '../assets/widok-trzy-korony-blisko.webp'
 import ogrodWidokTrzyKorony from '../assets/ogrod-widok-trzy-korony.webp'
 import trzyKoronyNadDachami from '../assets/trzy-korony-nad-dachami.webp'
+import balkonWidokChmury from '../assets/balkon-widok-chmury.webp'
+import balkonWidokHustawka from '../assets/balkon-widok-hustawka.webp'
+import widokTrzyKoronyPelargonie from '../assets/widok-trzy-korony-pelargonie.webp'
 
 // Apartament 1 (38 m², osobna sypialnia + salon)
 import ap1SalonSofa from '../assets/ap1-salon-sofa.webp'
@@ -69,6 +83,8 @@ import ap3JadalniaStrefaTv from '../assets/ap3-jadalnia-strefa-tv.webp'
 import ap3Taras from '../assets/ap3-taras.webp'
 import ap3BalkonTrzyKorony from '../assets/ap3-balkon-trzy-korony.webp'
 import ap3LazienkaMarmur from '../assets/ap3-lazienka-marmur.webp'
+import ap3SypialniaSkosy from '../assets/ap3-sypialnia-skosy.webp'
+import ap3Przedpokoj from '../assets/ap3-przedpokoj.webp'
 
 // Pokoje 1–8 (21 m², 4 na piętrze z balkonem, 4 na parterze z tarasem)
 import pokojLazienkaBiurko from '../assets/pokoj-lazienka-biurko.webp'
@@ -78,6 +94,12 @@ import pokojLozkoSofa from '../assets/pokoj-lozko-sofa.webp'
 import pokojParterTaras from '../assets/pokoj-parter-taras.webp'
 import pokojBiurkoTv from '../assets/pokoj-biurko-tv.webp'
 import pokojTarasWyjscie from '../assets/pokoj-taras-wyjscie.webp'
+import pokojLazienkaSofa from '../assets/pokoj-lazienka-sofa.webp'
+import pokojJasneDrewno from '../assets/pokoj-jasne-drewno.webp'
+import pokojLozkoBiurko from '../assets/pokoj-lozko-biurko.webp'
+import pokojSofaBiurko from '../assets/pokoj-sofa-biurko.webp'
+import pokojOdWejscia from '../assets/pokoj-od-wejscia.webp'
+import pokojWejscieWaski from '../assets/pokoj-wejscie-waski.webp'
 
 // Łazienki w pokojach
 import lazienkaPrysznic from '../assets/lazienka-prysznic.webp'
@@ -95,6 +117,12 @@ import wspolneStrefaWypoczynku from '../assets/wspolne-strefa-wypoczynku.webp'
 import wspolneHol from '../assets/wspolne-hol.webp'
 import wspolneSalon from '../assets/wspolne-salon.webp'
 import wspolneKorytarz from '../assets/wspolne-korytarz.webp'
+import wspolneKorytarzPietro from '../assets/wspolne-korytarz-pietro.webp'
+import wspolneKuchniaSchody from '../assets/wspolne-kuchnia-schody.webp'
+import wspolneStrefaFototapeta from '../assets/wspolne-strefa-fototapeta.webp'
+import wspolneSalonJadalnia from '../assets/wspolne-salon-jadalnia.webp'
+import wspolneHolZGory from '../assets/wspolne-hol-z-gory.webp'
+import wspolneJadalniaWidok from '../assets/wspolne-jadalnia-widok.webp'
 
 export const PHOTOS = {
   // Hero strony głównej: ilustracja vintage Trzech Koron (wybrana przez klienta 2026-07-07).
@@ -117,6 +145,12 @@ export const PHOTOS = {
   obiektFront,
   obiektElewacjaOgrod,
   pokojeParterTarasy,
+  obiektFrontKwiaty,
+  obiektNaroznikHortensje,
+  obiektTarasSchody,
+  obiektDroneWiesZmierzch,
+  obiektDomZoltyPodjazd,
+  obiektDomZoltyFront,
 
   // Ogród i plac zabaw
   ogrodPlacZabaw,
@@ -125,6 +159,7 @@ export const PHOTOS = {
   ogrodAltanaTrawnik,
   ogrodHortensje,
   ogrodTarasTrampolina,
+  ogrodHortensjeAltana,
 
   // Taras i widok
   tarasOgrodTrzyKorony,
@@ -136,6 +171,9 @@ export const PHOTOS = {
   widokTrzyKoronyBlisko,
   ogrodWidokTrzyKorony,
   trzyKoronyNadDachami,
+  balkonWidokChmury,
+  balkonWidokHustawka,
+  widokTrzyKoronyPelargonie,
 
   // Pokoje i łazienki
   pokojLazienkaBiurko,
@@ -145,6 +183,12 @@ export const PHOTOS = {
   pokojParterTaras,
   pokojBiurkoTv,
   pokojTarasWyjscie,
+  pokojLazienkaSofa,
+  pokojJasneDrewno,
+  pokojLozkoBiurko,
+  pokojSofaBiurko,
+  pokojOdWejscia,
+  pokojWejscieWaski,
   lazienkaPrysznic,
   lazienkaUmywalka,
   lazienkaDrewno,
@@ -160,6 +204,12 @@ export const PHOTOS = {
   wspolneHol,
   wspolneSalon,
   wspolneKorytarz,
+  wspolneKorytarzPietro,
+  wspolneKuchniaSchody,
+  wspolneStrefaFototapeta,
+  wspolneSalonJadalnia,
+  wspolneHolZGory,
+  wspolneJadalniaWidok,
 
   // Apartament 3 — budynek
 }
@@ -246,14 +296,21 @@ export const APARTMENTS = [
       'Łazienka z ręcznikami i suszarką do włosów',
     ],
     cover: ap3WnetrzePanorama,
+    // Kolejność i spany dobrane pod auto-placement siatki — patrz komentarz
+    // „UKŁAD SIATKI" w pages/Galeria.jsx. Dwa bloki 2×2 + dwa kwadraty + szeroki.
     photos: [
+      // BLOK A
       { src: ap3WnetrzePanorama, label: 'Sypialnia, salon i jadalnia w jednej otwartej przestrzeni — Apartament 3', span: 'col-span-2 row-span-2' },
-      { src: ap3BalkonTrzyKorony, label: 'Balkon z widokiem na masyw Trzech Koron — Apartament 3', span: 'col-span-2' },
       { src: ap3SypialniaBrzozy, label: 'Łóżko przy ściance z brzozowych pni — Apartament 3' },
-      { src: ap3JadalniaStrefaTv, label: 'Jadalnia dla sześciu osób i strefa telewizyjna — Apartament 3' },
-      { src: ap3JadalniaAneks, label: 'Jadalnia i w pełni wyposażony aneks kuchenny pod skosami — Apartament 3', span: 'col-span-2' },
       { src: ap3LazienkaMarmur, label: 'Marmurowa łazienka ze złotymi dodatkami — Apartament 3' },
-      { src: ap3Taras, label: 'Wyjście z części sypialnej na taras — Apartament 3' },
+      { src: ap3BalkonTrzyKorony, label: 'Balkon z widokiem na masyw Trzech Koron — Apartament 3', span: 'col-span-2' },
+      // BLOK C
+      { src: ap3JadalniaAneks, label: 'Jadalnia i w pełni wyposażony aneks kuchenny pod skosami — Apartament 3', span: 'col-span-2' },
+      { src: ap3SypialniaSkosy, label: 'Część sypialna pod skosami: ścianka z brzozowych pni i okna dachowe — Apartament 3' },
+      { src: ap3Przedpokoj, label: 'Przedpokój z wejściem do części dziennej — Apartament 3' },
+      // BLOK B
+      { src: ap3JadalniaStrefaTv, label: 'Jadalnia dla sześciu osób i strefa telewizyjna — Apartament 3', span: 'col-span-2' },
+      { src: ap3Taras, label: 'Wyjście z części sypialnej na taras — Apartament 3', span: 'col-span-2' },
     ],
   },
 ]
@@ -284,6 +341,12 @@ export const ROOMS = {
     { src: pokojBiurkoTv, label: 'Pokój z biurkiem, czajnikiem elektrycznym i telewizorem' },
     { src: lazienkaPrysznic, label: 'Łazienka w pokoju — kabina prysznicowa, umywalka i suszarka' },
     { src: pokojTarasWyjscie, label: 'Pokój z przeszklonym wyjściem na taras' },
+    { src: pokojLazienkaSofa, label: 'Pokój z łóżkiem, sofą i własną łazienką z kabiną prysznicową', span: 'col-span-2' },
+    { src: pokojJasneDrewno, label: 'Pokój z jasną podłogą, biurkiem i wyjściem na balkon' },
+    { src: pokojLozkoBiurko, label: 'Przestronny pokój z łóżkiem małżeńskim i miejscem do pracy' },
+    { src: pokojSofaBiurko, label: 'Pokój z rozkładaną sofą, biurkiem i wyjściem na balkon', span: 'col-span-2' },
+    { src: pokojOdWejscia, label: 'Pokój widziany od strony wejścia' },
+    { src: pokojWejscieWaski, label: 'Pokój z telewizorem i biurkiem przy oknie' },
   ],
 }
 

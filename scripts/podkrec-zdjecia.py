@@ -38,6 +38,18 @@ ZIELEN = 1.22        # dodatkowy mnożnik nasycenia dla odcieni zieleni
 CIEPLO = 1.022       # mnożnik kanału R (B odwrotnie) — zdejmuje niebieski nalot
 CZERN_PCT = 0.4      # percentyl, który ma trafić w zero
 
+# Profil łagodny (--lagodnie). Powstał 16.09.2026 przy zdjęciach dosłanych przez
+# właścicieli: ustawienia domyślne wywindowały nasycenie do 100-120 (reszta galerii
+# trzyma 86-93), żywopłot robił się neonowy, a OCIEPLENIE zamieniało białą elewację
+# i jasną kostkę w kremowe — ten sam objaw, przez który we wrześniu wycofaliśmy
+# korektę ze zdjęć wnętrz.
+#
+# Kiedy użyć: kadr ma niskie ZMIERZONE nasycenie, ale nie jest szary — niskie
+# nasycenie bierze się z dużej połaci jasnej kostki, betonu albo nieba, a nie
+# z wyblakłej zieleni. Wtedy zostaje samo odzyskanie czerni i delikatna zieleń,
+# bez ocieplenia. Profil domyślny jest do kadrów faktycznie płaskich i zimnych.
+LAGODNIE = dict(VIBRANCE=0.84, ZIELEN=1.10, CIEPLO=1.0)
+
 
 def rgb_na_hsv(a):
     return np.asarray(Image.fromarray(a.astype(np.uint8), "RGB").convert("HSV")).astype(np.float32)
@@ -88,7 +100,12 @@ def main():
     ap.add_argument("--lista", action="store_true")
     ap.add_argument("--podglad", metavar="PLIK")
     ap.add_argument("--kopia", metavar="KATALOG", help="gdzie zapisać oryginały przed nadpisaniem")
+    ap.add_argument("--lagodnie", action="store_true",
+                    help="profil bez ocieplenia, dla kadrów jasnych a nie szarych (patrz LAGODNIE)")
     a = ap.parse_args()
+
+    if a.lagodnie:
+        globals().update(LAGODNIE)
 
     if a.lista:
         rows = sorted(((nasycenie(p), p.name) for p in ASSETS.glob("*.webp")), key=lambda r: r[0])

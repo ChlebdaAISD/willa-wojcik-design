@@ -21,13 +21,24 @@ const AP1 = getApartment('apartament-1')
 const AP2 = getApartment('apartament-2')
 const AP3 = getApartment('apartament-3')
 
-// Siatka: grid-cols-2 / md:grid-cols-4, auto-placement bez `dense`. Sumaryczna
-// liczba komórek w kategorii MUSI dzielić się przez 4, inaczej ostatni rząd
-// zostaje dziurawy. Sprawdzone wzory (komórki: 2×2 = 4, col-span-2 = 2, zwykły = 1):
-//   7 zdjęć  → [2×2, 2w, 1, 1, 2w, 1, 1]                  = 12 komórek / 3 rzędy
-//   8 zdjęć  → [2×2, 2w, 1, 1, 2×2, 2w, 1, 1]             = 16 komórek / 4 rzędy
-//   9 zdjęć  → [2×2, 1, 1, 2w, 2w, 2w, 2×2, 2w, 2w]       = 20 komórek / 5 rzędów
-//  10 zdjęć  → [2×2, 2w, 1, 1, 2w, 1, 1, 2w, 1, 1]        = 16 komórek / 4 rzędy
+// UKŁAD SIATKI: grid-cols-2 / md:grid-cols-4, auto-placement bez `dense`.
+//
+// Sama suma komórek podzielna przez 4 NIE WYSTARCZA — to był błąd poprzedniej
+// wersji tego komentarza i realna przyczyna dziur na /galeria (16.09.2026).
+// Przy `dense: false` kursor układania nigdy się nie cofa, więc kafelek 2×2
+// blokuje dwa rzędy w swoich kolumnach, a to, co po nim idzie, musi domknąć
+// OBA te rzędy w pozostałych dwóch kolumnach. Inaczej zostaje pusty prostokąt,
+// którego późniejsze zdjęcia już nie zapełnią.
+//
+// Bezpieczne klocki (komórki: 2×2 = 4, col-span-2 = 2, zwykły = 1):
+//   BLOK A (2 rzędy):  2×2, potem (2w | 1+1), potem (2w | 1+1)
+//   BLOK B (1 rząd):   2w + 2w
+//   BLOK C (1 rząd):   2w + 1 + 1     (albo 1 + 1 + 2w)
+//   BLOK D (1 rząd):   1 + 1 + 1 + 1
+// Kategoria = sklejka takich klocków. Weryfikacja: scripts/sprawdz-siatke.py
+//
+// Do tego kadrowanie: zdjęcie PIONOWE wolno wstawić tylko w kafelek kwadratowy
+// (1×1 albo 2×2). W kafelku 2w (szeroki) pion jest obcinany po bokach.
 const SPAN_2x2 = 'col-span-2 row-span-2'
 const SPAN_2 = 'col-span-2'
 
@@ -40,15 +51,25 @@ const CATEGORIES = [
   {
     id: 'obiekt',
     label: 'Obiekt',
-    desc: 'Willę pokazujemy w trzech ujęciach z drona i pięciu z poziomu ziemi: podjazd, front, szyld i elewacja od strony ogrodu. Osiem pokoi i dwa apartamenty mieszczą się w głównym budynku, trzeci apartament stoi osobno.',
+    desc: 'Willę pokazujemy w czterech ujęciach z drona i dziewięciu z poziomu ziemi: podjazd, front od drogi i od strony kwiatów, taras z wejściem na piętro oraz elewacja od ogrodu. Osiem pokoi i dwa apartamenty mieszczą się w głównym budynku, trzeci apartament stoi osobno. Dwa ostatnie kadry pokazują drugi z budynków obiektu.',
     photos: [
+      // BLOK A
       { src: PHOTOS.obiektDroneZmierzch, label: 'Willa Wójcik o zmierzchu, ujęcie z drona nad Sromowcami Niżnymi', span: SPAN_2x2 },
       { src: PHOTOS.obiektDronePanorama, label: 'Panorama z drona: willa, ogród i okolica Sromowiec Niżnych', span: SPAN_2 },
-      { src: PHOTOS.obiektDroneElewacja, label: 'Elewacja willi z lotu ptaka, balkony pokoi na piętrze' },
-      { src: PHOTOS.obiektOdOgrodu, label: 'Budynek od strony ogrodu, tarasy pokoi na parterze' },
+      { src: PHOTOS.obiektDroneElewacja, label: 'Elewacja willi z lotu ptaka, balkony pokoi na piętrze', span: SPAN_2 },
+      // BLOK A — oba kwadraty to zdjęcia pionowe
       { src: PHOTOS.obiektFront, label: 'Front willi od strony drogi dojazdowej', span: SPAN_2x2 },
+      { src: PHOTOS.obiektTarasSchody, label: 'Taras z meblami wypoczynkowymi i schody na piętro' },
+      { src: PHOTOS.obiektNaroznikHortensje, label: 'Narożnik budynku z przeszkleniem jadalni, hortensje w ogrodzie' },
+      { src: PHOTOS.obiektFrontKwiaty, label: 'Front willi z pelargoniami w skrzynkach okiennych', span: SPAN_2 },
+      // BLOK C
       { src: PHOTOS.obiektElewacjaOgrod, label: 'Drewniana elewacja i trawnik przed pokojami na parterze', span: SPAN_2 },
       { src: PHOTOS.obiektPodjazd, label: 'Podjazd i bezpłatny parking na terenie obiektu' },
+      { src: PHOTOS.obiektOdOgrodu, label: 'Budynek od strony ogrodu, tarasy pokoi na parterze' },
+      // BLOK C
+      { src: PHOTOS.obiektDroneWiesZmierzch, label: 'Willa i Sromowce Niżne o zmierzchu, szerokie ujęcie z drona', span: SPAN_2 },
+      { src: PHOTOS.obiektDomZoltyPodjazd, label: 'Drugi z budynków obiektu, widok od podjazdu' },
+      { src: PHOTOS.obiektDomZoltyFront, label: 'Drugi z budynków obiektu, widok od strony drogi' },
     ],
   },
   {
@@ -60,24 +81,32 @@ const CATEGORIES = [
       { src: PHOTOS.ogrodAltana, label: 'Drewniana altana z grillem', span: SPAN_2 },
       { src: PHOTOS.ogrodAltanaKwiaty, label: 'Altana otoczona rabatami kwiatowymi' },
       { src: PHOTOS.ogrodAltanaTrawnik, label: 'Altana i trawnik od strony budynku' },
-      { src: PHOTOS.ogrodTarasTrampolina, label: 'Taras przy ogrodzie z widokiem na trampolinę', span: SPAN_2 },
+      { src: PHOTOS.ogrodTarasTrampolina, label: 'Taras przy ogrodzie z widokiem na trampolinę' },
       { src: PHOTOS.ogrodHortensje, label: 'Hortensje kwitnące w ogrodzie' },
+      { src: PHOTOS.ogrodHortensjeAltana, label: 'Rabata hortensji wzdłuż budynku, w głębi altana', span: SPAN_2 },
     ],
   },
   {
     id: 'widok',
     label: 'Taras i widok na Trzy Korony',
-    desc: 'Masyw Trzech Koron widać z tarasu, z ogrodu i z balkonów apartamentów. Zebraliśmy dziesięć kadrów z różnych miejsc na działce, żeby ocenili Państwo widok jeszcze przed rezerwacją.',
+    desc: 'Masyw Trzech Koron widać z tarasu, z ogrodu i z balkonów apartamentów. Zebraliśmy dwanaście kadrów z różnych miejsc na działce, żeby ocenili Państwo widok jeszcze przed rezerwacją.',
     photos: [
+      // BLOK A
       { src: PHOTOS.tarasOgrodTrzyKorony, label: 'Taras i ogród z masywem Trzech Koron w tle', span: SPAN_2x2 },
       { src: PHOTOS.tarasWidokTrzyKorony, label: 'Widok na Trzy Korony prosto z tarasu', span: SPAN_2 },
-      { src: PHOTOS.tarasMebleWidok, label: 'Meble tarasowe ustawione w stronę gór' },
       { src: PHOTOS.widokTrzyKoronyOgrod, label: 'Trzy Korony widziane znad ogrodu', span: SPAN_2 },
+      // BLOK A — kafelek 2×2 to zdjęcie pionowe, więc kwadrat mu służy
+      { src: PHOTOS.widokTrzyKoronyPelargonie, label: 'Trzy Korony zza przeszklenia, pelargonie w skrzynce', span: SPAN_2x2 },
+      { src: PHOTOS.tarasMebleWidok, label: 'Meble tarasowe ustawione w stronę gór' },
       { src: PHOTOS.tarasDrzewkaWidok, label: 'Drzewka przy tarasie i panorama pienińskich szczytów' },
+      { src: PHOTOS.balkonWidokChmury, label: 'Trzy Korony znad balkonowej balustrady, po przejściu chmur', span: SPAN_2 },
+      // BLOK C
+      { src: PHOTOS.balkonWidokHustawka, label: 'Widok z balkonu na ogród z huśtawką i pienińskie szczyty', span: SPAN_2 },
       { src: PHOTOS.widokTrzyKoronyZzaTui, label: 'Masyw Trzech Koron zza szpaleru tui' },
-      { src: PHOTOS.ogrodWidokTrzyKorony, label: 'Ogród willi z Trzema Koronami na horyzoncie', span: SPAN_2 },
       { src: PHOTOS.widokTrzyKoronyBlisko, label: 'Trzy Korony w zbliżeniu, widok z terenu obiektu' },
-      { src: PHOTOS.trzyKoronyNadDachami, label: 'Szczyty Trzech Koron nad dachami Sromowiec Niżnych' },
+      // BLOK B
+      { src: PHOTOS.ogrodWidokTrzyKorony, label: 'Ogród willi z Trzema Koronami na horyzoncie', span: SPAN_2 },
+      { src: PHOTOS.trzyKoronyNadDachami, label: 'Szczyty Trzech Koron nad dachami Sromowiec Niżnych', span: SPAN_2 },
     ],
   },
   {
@@ -86,15 +115,19 @@ const CATEGORIES = [
     desc: 'Apartament 1 ma 38 m², apartament 2 ma 35 m², oba z osobną sypialnią i salonem z aneksem kuchennym. Apartament 3 zajmuje 60 m² w osobnym budynku — jedno otwarte pomieszczenie z miejscami do spania dla sześciu osób. Każdy ma balkon zwrócony w stronę Trzech Koron, a doba kosztuje od 450 zł.',
     // Spany JAWNIE przez tile() — patrz komentarz przy helperze.
     photos: [
+      // BLOK A
       tile(foto(AP1, 0), SPAN_2x2), // AP1: salon z rozkładaną sofą i aneksem
-      tile(foto(AP1, 1)),           // AP1: osobna sypialnia
-      tile(foto(AP1, 5)),           // AP1: salon z oknem na góry
-      tile(foto(AP2, 0), SPAN_2),   // AP2: salon z aneksem kuchennym
-      tile(foto(AP2, 1), SPAN_2),   // AP2: balkon na Trzy Korony
-      tile(foto(AP2, 2), SPAN_2),   // AP2: sypialnia
+      tile(foto(AP1, 1), SPAN_2),   // AP1: osobna sypialnia
+      tile(foto(AP1, 5), SPAN_2),   // AP1: salon z oknem na góry
+      // BLOK A — oba kwadraty to zdjęcia pionowe
       tile(foto(AP3, 0), SPAN_2x2), // AP3: cała otwarta przestrzeń 60 m²
-      tile(foto(AP3, 1), SPAN_2),   // AP3: balkon na Trzy Korony
-      tile(foto(AP3, 4), SPAN_2),   // AP3: jadalnia i aneks kuchenny
+      tile(foto(AP2, 2)),           // AP2: sypialnia
+      tile(foto(AP3, 5)),           // AP3: część sypialna pod skosami (nowe, 16.09.2026)
+      tile(foto(AP2, 0), SPAN_2),   // AP2: salon z aneksem kuchennym
+      // BLOK C
+      tile(foto(AP2, 1), SPAN_2),   // AP2: balkon na Trzy Korony
+      tile(foto(AP3, 3)),           // AP3: balkon na Trzy Korony
+      tile(foto(AP3, 4)),           // AP3: jadalnia i aneks kuchenny
     ],
   },
   {
@@ -104,13 +137,20 @@ const CATEGORIES = [
     photos: [
       tile(foto(ROOMS, 0), SPAN_2x2), // pokój na piętrze z balkonem
       tile(foto(ROOMS, 1), SPAN_2),   // pokój na parterze z tarasem
-      tile(foto(ROOMS, 2)),           // łóżko małżeńskie i sofa rozkładana
-      tile(foto(ROOMS, 3)),           // biurko, czajnik, telewizor
-      tile(foto(ROOMS, 4), SPAN_2),   // łazienka z kabiną prysznicową
-      tile(foto(ROOMS, 5)),           // przeszklone wyjście na taras
+      tile(foto(ROOMS, 2), SPAN_2),   // pokój z łazienką i biurkiem
+      tile(foto(ROOMS, 3)),           // łóżko małżeńskie i sofa rozkładana
+      tile(foto(ROOMS, 4), SPAN_2),   // biurko, czajnik, telewizor
+      tile(foto(ROOMS, 5)),           // łazienka z kabiną prysznicową
       { src: PHOTOS.pokojeParterTarasy, label: 'Tarasy pokoi na parterze z wyjściem wprost do ogrodu', span: SPAN_2 },
       { src: PHOTOS.lazienkaUmywalka, label: 'Łazienka w pokoju: umywalka, lustro i świeże ręczniki' },
       { src: PHOTOS.lazienkaDrewno, label: 'Łazienka wykończona drewnem, prysznic i suszarka do włosów' },
+      tile(foto(ROOMS, 7), SPAN_2),   // pokój z widoczną łazienką (nowe, 16.09.2026)
+      tile(foto(ROOMS, 8)),           // pokój z jasną podłogą
+      tile(foto(ROOMS, 9)),           // przestronny pokój z miejscem do pracy
+      // BLOK C
+      tile(foto(ROOMS, 10), SPAN_2),  // pokój z sofą i biurkiem
+      tile(foto(ROOMS, 11)),          // pokój od strony wejścia
+      tile(foto(ROOMS, 12)),          // pokój z telewizorem przy oknie
     ],
   },
   {
@@ -118,15 +158,26 @@ const CATEGORIES = [
     label: 'Części wspólne',
     desc: 'Na parterze czekają wspólna kuchnia o powierzchni 45 m² połączona z jadalnią, salon i kącik dla dzieci. Śniadania przygotowują Państwo we własnym zakresie. Naczynia, garnki i sprzęt kuchenny są na miejscu.',
     photos: [
+      // BLOK A — oba kwadraty to zdjęcia pionowe
       { src: PHOTOS.wspolneKuchnia, label: 'Wspólna kuchnia o powierzchni 45 m², w pełni wyposażona', span: SPAN_2x2 },
-      { src: PHOTOS.wspolneJadalniaOgrod, label: 'Jadalnia z przeszkleniem wychodzącym na ogród', span: SPAN_2 },
-      { src: PHOTOS.wspolneJadalnia, label: 'Stoły w jadalni połączonej z kuchnią' },
-      { src: PHOTOS.wspolneStrefaWypoczynku, label: 'Strefa wypoczynku z fotelami na parterze' },
-      { src: PHOTOS.wspolneSalonSchody, label: 'Salon i drewniane schody na piętro', span: SPAN_2 },
-      { src: PHOTOS.wspolneKacikDzieciecy, label: 'Kącik dziecięcy w części wspólnej' },
       { src: PHOTOS.wspolneSalon, label: 'Salon z kanapami w części wspólnej' },
-      { src: PHOTOS.wspolneHol, label: 'Hol wejściowy na parterze', span: SPAN_2 },
+      { src: PHOTOS.wspolneHol, label: 'Hol wejściowy na parterze' },
+      { src: PHOTOS.wspolneJadalniaOgrod, label: 'Jadalnia z przeszkleniem wychodzącym na ogród', span: SPAN_2 },
+      // BLOK C
+      { src: PHOTOS.wspolneSalonSchody, label: 'Salon i drewniane schody na piętro', span: SPAN_2 },
+      { src: PHOTOS.wspolneJadalnia, label: 'Stoły w jadalni połączonej z kuchnią' },
       { src: PHOTOS.wspolneKorytarz, label: 'Korytarz prowadzący do pokoi' },
+      // BLOK B
+      { src: PHOTOS.wspolneStrefaWypoczynku, label: 'Strefa wypoczynku z fotelami na parterze', span: SPAN_2 },
+      { src: PHOTOS.wspolneKacikDzieciecy, label: 'Kącik dziecięcy w części wspólnej', span: SPAN_2 },
+      // BLOK C — oba kwadraty to zdjęcia pionowe
+      { src: PHOTOS.wspolneKorytarzPietro, label: 'Korytarz na piętrze i klatka schodowa', span: SPAN_2 },
+      { src: PHOTOS.wspolneHolZGory, label: 'Część wspólna widziana z półpiętra' },
+      { src: PHOTOS.wspolneJadalniaWidok, label: 'Stolik w jadalni z widokiem na Trzy Korony' },
+      // BLOK C
+      { src: PHOTOS.wspolneKuchniaSchody, label: 'Kuchnia i jadalnia od strony schodów', span: SPAN_2 },
+      { src: PHOTOS.wspolneStrefaFototapeta, label: 'Strefa wypoczynku przy fototapecie z Tatrami' },
+      { src: PHOTOS.wspolneSalonJadalnia, label: 'Salon i jadalnia z przeszkleniem na ogród' },
     ],
   },
 ]
