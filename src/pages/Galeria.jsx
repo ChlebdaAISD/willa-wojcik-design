@@ -51,25 +51,27 @@ const CATEGORIES = [
   {
     id: 'obiekt',
     label: 'Obiekt',
-    desc: 'Willę pokazujemy w czterech ujęciach z drona i dziewięciu z poziomu ziemi: podjazd, front od drogi i od strony kwiatów, taras z wejściem na piętro oraz elewacja od ogrodu. Osiem pokoi i dwa apartamenty mieszczą się w głównym budynku, trzeci apartament stoi osobno. Dwa ostatnie kadry pokazują drugi z budynków obiektu.',
+    desc: 'Willę pokazujemy w czterech ujęciach z drona i dziesięciu z poziomu ziemi: podjazd, front od drogi i od strony kwiatów, taras z wejściem na piętro oraz elewacja od ogrodu. Osiem pokoi i dwa apartamenty mieszczą się w głównym budynku, trzeci apartament stoi osobno. Dwa kadry pokazują drugi z budynków obiektu.',
     photos: [
       // BLOK A
       { src: PHOTOS.obiektDroneZmierzch, label: 'Willa Wójcik o zmierzchu, ujęcie z drona nad Sromowcami Niżnymi', span: SPAN_2x2 },
       { src: PHOTOS.obiektDronePanorama, label: 'Panorama z drona: willa, ogród i okolica Sromowiec Niżnych', span: SPAN_2 },
       { src: PHOTOS.obiektDroneElewacja, label: 'Elewacja willi z lotu ptaka, balkony pokoi na piętrze', span: SPAN_2 },
+      // BLOK B — kadr panoramiczny, więc kafelek szeroki, nie kwadrat
+      { src: PHOTOS.obiektTrzyKorony, label: 'Willa Wójcik pod masywem Trzech Koron', span: SPAN_2 },
+      { src: PHOTOS.obiektElewacjaOgrod, label: 'Drewniana elewacja i trawnik przed pokojami na parterze', span: SPAN_2 },
       // BLOK A — oba kwadraty to zdjęcia pionowe
       { src: PHOTOS.obiektFront, label: 'Front willi od strony drogi dojazdowej', span: SPAN_2x2 },
       { src: PHOTOS.obiektTarasSchody, label: 'Taras z meblami wypoczynkowymi i schody na piętro' },
       { src: PHOTOS.obiektNaroznikHortensje, label: 'Narożnik budynku z przeszkleniem jadalni, hortensje w ogrodzie' },
       { src: PHOTOS.obiektFrontKwiaty, label: 'Front willi z pelargoniami w skrzynkach okiennych', span: SPAN_2 },
       // BLOK C
-      { src: PHOTOS.obiektElewacjaOgrod, label: 'Drewniana elewacja i trawnik przed pokojami na parterze', span: SPAN_2 },
-      { src: PHOTOS.obiektPodjazd, label: 'Podjazd i bezpłatny parking na terenie obiektu' },
-      { src: PHOTOS.obiektOdOgrodu, label: 'Budynek od strony ogrodu, tarasy pokoi na parterze' },
-      // BLOK C
       { src: PHOTOS.obiektDroneWiesZmierzch, label: 'Willa i Sromowce Niżne o zmierzchu, szerokie ujęcie z drona', span: SPAN_2 },
-      { src: PHOTOS.obiektDomZoltyPodjazd, label: 'Drugi z budynków obiektu, widok od podjazdu' },
       { src: PHOTOS.obiektDomZoltyFront, label: 'Drugi z budynków obiektu, widok od strony drogi' },
+      { src: PHOTOS.obiektPodjazd, label: 'Podjazd i bezpłatny parking na terenie obiektu' },
+      // BLOK B
+      { src: PHOTOS.obiektDomZoltyPodjazd, label: 'Drugi z budynków obiektu, widok od podjazdu', span: SPAN_2 },
+      { src: PHOTOS.obiektOdOgrodu, label: 'Budynek od strony ogrodu, tarasy pokoi na parterze', span: SPAN_2 },
     ],
   },
   {

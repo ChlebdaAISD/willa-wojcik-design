@@ -28,6 +28,11 @@ import obiektFrontKwiaty from '../assets/obiekt-front-kwiaty.webp'
 import obiektNaroznikHortensje from '../assets/obiekt-naroznik-hortensje.webp'
 import obiektTarasSchody from '../assets/obiekt-taras-schody.webp'
 import obiektDroneWiesZmierzch from '../assets/obiekt-drone-wies-zmierzch.webp'
+// Realne zdjęcie budynku na tle Trzech Koron — o nie prosił Pan Wójcik 17.09.2026.
+// Źródło: Dysk Google, Zdjęcia/Willa budynek/IMG_8364.heic. Z kadru usunięto słup
+// energetyczny z osprzętem, napowietrzne przewody i talerz anteny (scripts/magnific-edit.py
+// na wycinku + retusz miejscowy). To NIE jest grafika z ChatGPT, tylko fotografia.
+import obiektTrzyKorony from '../assets/obiekt-trzy-korony.webp'
 // Budynek o żółtej elewacji. Bryła jest inna niż główny budynek willi (ten jest
 // biały, ze szklanymi balustradami), więc zapytaliśmy właścicieli. Potwierdzili
 // 17.09.2026, że to część obiektu — stąd podpisy „drugi z budynków obiektu".
@@ -149,6 +154,7 @@ export const PHOTOS = {
   obiektNaroznikHortensje,
   obiektTarasSchody,
   obiektDroneWiesZmierzch,
+  obiektTrzyKorony,
   obiektDomZoltyPodjazd,
   obiektDomZoltyFront,
 
