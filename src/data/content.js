@@ -29,7 +29,7 @@ import obiektNaroznikHortensje from '../assets/obiekt-naroznik-hortensje.webp'
 import obiektTarasSchody from '../assets/obiekt-taras-schody.webp'
 import obiektDroneWiesZmierzch from '../assets/obiekt-drone-wies-zmierzch.webp'
 // Realne zdjęcie budynku na tle Trzech Koron — o nie prosił Pan Wójcik 17.09.2026.
-// Źródło: Dysk Google, Zdjęcia/Willa budynek/IMG_8364.heic. Z kadru usunięto słup
+// Źródło: Dysk Google, Zdjęcia/Willa budynek/IMG_8350.heic. Z kadru usunięto słup
 // energetyczny z osprzętem, napowietrzne przewody i talerz anteny (scripts/magnific-edit.py
 // na wycinku + retusz miejscowy). To NIE jest grafika z ChatGPT, tylko fotografia.
 import obiektTrzyKorony from '../assets/obiekt-trzy-korony.webp'
