@@ -122,6 +122,17 @@ def main():
                 pary.append((grupy[alias[m.group(1)]][int(m.group(2))][0], linia))
         sprawdz(kat, pary)
 
+    print('\nSTRONA GŁÓWNA (sekcja Willa w obrazach)')
+    home = (ROOT / "src/components/Gallery.jsx").read_text()
+    blok = re.search(r"const GALLERY_PHOTOS = \[\n([\s\S]*?)\n\]", home).group(1)
+    pary = []
+    for linia in (l.strip() for l in blok.split("\n")):
+        if m := re.match(r"\{ src: PHOTOS\.(\w+)", linia):
+            pary.append((m.group(1), linia))
+        elif m := re.match(r"\{ src: AP3\.cover", linia):
+            pary.append((grupy["apartament-3"][0][0], linia))   # cover = pierwsze zdjęcie AP3
+    sprawdz("home", pary)
+
     print("\nPODSTRONY JEDNOSTEK")
     for nazwa, pary in grupy.items():
         sprawdz(nazwa, pary)
