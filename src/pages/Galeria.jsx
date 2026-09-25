@@ -120,7 +120,7 @@ const CATEGORIES = [
       // BLOK A
       tile(foto(AP1, 0), SPAN_2x2), // AP1: salon z rozkładaną sofą i aneksem
       tile(foto(AP1, 1), SPAN_2),   // AP1: sypialnia z wyjściem na taras
-      tile(foto(AP1, 5), SPAN_2),   // AP1: salon od strony okna
+      tile(foto(AP1, 5), SPAN_2),   // AP1: jadalnia i strefa telewizyjna
       // BLOK A — oba kwadraty to zdjęcia pionowe
       tile(foto(AP3, 0), SPAN_2x2), // AP3: część sypialna przy ściance z bali
       tile(foto(AP2, 2)),           // AP2: sypialnia z szafą z lustrem
@@ -136,23 +136,21 @@ const CATEGORIES = [
     id: 'pokoje',
     label: 'Pokoje',
     desc: 'Każdy z ośmiu pokoi ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną i własną łazienkę. Cztery pokoje na piętrze mają balkon, cztery na parterze — taras. Doba kosztuje 250 zł dla dwóch osób i 280 zł dla trzech.',
+    // BLOK A + dwa rzędy kwadratów. Większość kadrów pokoi jest pionowa, więc
+    // poza jednym panoramicznym ujęciem tarasów nie używamy tu kafelków szerokich.
     photos: [
       tile(foto(ROOMS, 0), SPAN_2x2), // pokój na piętrze z balkonem
-      tile(foto(ROOMS, 1), SPAN_2),   // pokój na parterze z tarasem
-      tile(foto(ROOMS, 2), SPAN_2),   // pokój z łazienką i biurkiem
-      tile(foto(ROOMS, 3)),           // pokój z wejściem do łazienki
-      tile(foto(ROOMS, 4), SPAN_2),   // pokój z biurkiem i wyjściem na balkon
-      tile(foto(ROOMS, 5)),           // łazienka z kabiną prysznicową
+      tile(foto(ROOMS, 1)),           // łazienka z kabiną prysznicową
+      tile(foto(ROOMS, 2)),           // pokój z jasną podłogą
       { src: PHOTOS.pokojeParterTarasy, label: 'Tarasy pokoi na parterze z wyjściem wprost do ogrodu', span: SPAN_2 },
+      tile(foto(ROOMS, 3)),           // przestronny pokój z miejscem do pracy
+      tile(foto(ROOMS, 4)),           // pokój z lustrem
+      tile(foto(ROOMS, 5)),           // pokój z rozkładaną sofą
+      tile(foto(ROOMS, 6)),           // pokój z wejściem do łazienki
+      tile(foto(ROOMS, 7)),           // pokój z biurkiem i wyjściem na balkon
+      tile(foto(ROOMS, 8)),           // pokój z fotelami
       { src: PHOTOS.lazienkaUmywalka, label: 'Łazienka w pokoju: umywalka, lustro i świeże ręczniki' },
       { src: PHOTOS.lazienkaDrewno, label: 'Łazienka wykończona drewnem, prysznic i suszarka do włosów' },
-      tile(foto(ROOMS, 7), SPAN_2),   // pokój z widoczną łazienką (nowe, 16.09.2026)
-      tile(foto(ROOMS, 8)),           // pokój z jasną podłogą
-      tile(foto(ROOMS, 9)),           // przestronny pokój z miejscem do pracy
-      // BLOK C
-      tile(foto(ROOMS, 10), SPAN_2),  // pokój z sofą i biurkiem
-      tile(foto(ROOMS, 11)),          // pokój z lustrem i miejscem do pracy
-      tile(foto(ROOMS, 12)),          // pokój z fotelami i wyjściem na balkon
     ],
   },
   {

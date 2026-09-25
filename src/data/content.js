@@ -80,14 +80,11 @@ import ap1SalonAneks from '../assets/ap1-salon-aneks.webp'
 import ap1SalonOkno from '../assets/ap1-salon-okno.webp'
 import ap1SalonJadalniaTv from '../assets/ap1-salon-jadalnia-tv.webp'
 import ap1SypialniaTaras from '../assets/ap1-sypialnia-taras.webp'
-import ap1SypialniaLawka from '../assets/ap1-sypialnia-lawka.webp'
 
 // Apartament 2 (35 m², osobna sypialnia + salon z aneksem) — sofa ŻÓŁTA, sypialnia na piętrze
 import ap2SalonZoltaSofa from '../assets/ap2-salon-zolta-sofa.webp'
-import ap2SalonTv from '../assets/ap2-salon-tv.webp'
 import ap2SalonAneks from '../assets/ap2-salon-aneks.webp'
 import ap2SalonBiurko from '../assets/ap2-salon-biurko.webp'
-import ap2SalonWejscie from '../assets/ap2-salon-wejscie.webp'
 import ap2SypialniaBalkon from '../assets/ap2-sypialnia-balkon.webp'
 import ap2SypialniaSzafa from '../assets/ap2-sypialnia-szafa.webp'
 
@@ -100,14 +97,10 @@ import ap3JadalniaSkosy from '../assets/ap3-jadalnia-skosy.webp'
 import ap3StolAneks from '../assets/ap3-stol-aneks.webp'
 
 // Pokoje 1–8 (21 m², 4 na piętrze z balkonem, 4 na parterze z tarasem)
-import pokojLazienkaBiurko from '../assets/pokoj-lazienka-biurko.webp'
 import pokojPietroBalkon from '../assets/pokoj-pietro-balkon.webp'
 import pokojPietroWidok from '../assets/pokoj-pietro-widok.webp'
 import pokojLozkoLazienka from '../assets/pokoj-lozko-lazienka.webp'
-import pokojParterTaras from '../assets/pokoj-parter-taras.webp'
 import pokojLozkoBiurkoBalkon from '../assets/pokoj-lozko-biurko-balkon.webp'
-import pokojTarasWyjscie from '../assets/pokoj-taras-wyjscie.webp'
-import pokojLazienkaSofa from '../assets/pokoj-lazienka-sofa.webp'
 import pokojJasneDrewno from '../assets/pokoj-jasne-drewno.webp'
 import pokojLozkoBiurko from '../assets/pokoj-lozko-biurko.webp'
 import pokojSofaBiurko from '../assets/pokoj-sofa-biurko.webp'
@@ -190,14 +183,10 @@ export const PHOTOS = {
   widokTrzyKoronyPelargonie,
 
   // Pokoje i łazienki
-  pokojLazienkaBiurko,
   pokojPietroBalkon,
   pokojPietroWidok,
   pokojLozkoLazienka,
-  pokojParterTaras,
   pokojLozkoBiurkoBalkon,
-  pokojTarasWyjscie,
-  pokojLazienkaSofa,
   pokojJasneDrewno,
   pokojLozkoBiurko,
   pokojSofaBiurko,
@@ -266,11 +255,10 @@ export const APARTMENTS = [
     photos: [
       { src: ap1SalonZielonaSofa, label: 'Salon z dużą rozkładaną sofą, ławą i aneksem kuchennym — Apartament 1', span: 'col-span-2 row-span-2' },
       { src: ap1SypialniaTaras, label: 'Osobna sypialnia z wyjściem na taras — Apartament 1' },
-      { src: ap1SypialniaLawka, label: 'Sypialnia z łóżkiem małżeńskim i ławką — Apartament 1' },
+      { src: ap1SalonOkno, label: 'Salon od strony okna, z fotelem i jadalnią — Apartament 1' },
       { src: ap1SalonTvStol, label: 'Salon z telewizorem i stołem jadalnym — Apartament 1', span: 'col-span-2' },
       { src: ap1SalonAneks, label: 'Aneks kuchenny w salonie, w pełni wyposażony — Apartament 1', span: 'col-span-2' },
-      { src: ap1SalonOkno, label: 'Salon od strony okna, z fotelem i jadalnią — Apartament 1' },
-      { src: ap1SalonJadalniaTv, label: 'Jadalnia i strefa telewizyjna w salonie — Apartament 1' },
+      { src: ap1SalonJadalniaTv, label: 'Jadalnia i strefa telewizyjna w salonie — Apartament 1', span: 'col-span-2' },
     ],
   },
   {
@@ -291,10 +279,8 @@ export const APARTMENTS = [
       { src: ap2SalonZoltaSofa, label: 'Salon z żółtą rozkładaną sofą, ławą i jadalnią — Apartament 2', span: 'col-span-2 row-span-2' },
       { src: ap2SypialniaBalkon, label: 'Osobna sypialnia z wyjściem na balkon — Apartament 2' },
       { src: ap2SypialniaSzafa, label: 'Sypialnia z szafą z lustrem i przejściem do salonu — Apartament 2' },
-      { src: ap2SalonTv, label: 'Salon z telewizorem i aneksem kuchennym — Apartament 2', span: 'col-span-2' },
-      { src: ap2SalonAneks, label: 'Aneks kuchenny w salonie, w pełni wyposażony — Apartament 2', span: 'col-span-2' },
+      { src: ap2SalonAneks, label: 'Aneks kuchenny w salonie, w pełni wyposażony — Apartament 2' },
       { src: ap2SalonBiurko, label: 'Salon z miejscem do pracy i strefą wypoczynkową — Apartament 2' },
-      { src: ap2SalonWejscie, label: 'Salon od strony wejścia, z jadalnią i aneksem — Apartament 2' },
     ],
   },
   {
@@ -342,19 +328,19 @@ export const ROOMS = {
     'Dostęp do wspólnej kuchni o powierzchni 45 m²',
   ],
   cover: pokojPietroBalkon,
+  // 9 kadrów: BLOK A (2×2 + cztery kwadraty) + BLOK D (rząd kwadratów).
+  // Bez kafelków szerokich — pięć z tych zdjęć jest pionowych, a szeroki kafelek
+  // obciąłby im boki. Cztery powtarzające się ujęcia zdjęte 25.09.2026 na prośbę
+  // właścicielki (pozycje 2, 3, 7 i 8 w dotychczasowej siatce).
   photos: [
     { src: pokojPietroBalkon, label: 'Pokój na piętrze z łóżkiem małżeńskim, biurkiem i wyjściem na balkon', span: 'col-span-2 row-span-2' },
-    { src: pokojParterTaras, label: 'Pokój na parterze z wyjściem na prywatny taras', span: 'col-span-2' },
-    { src: pokojLazienkaBiurko, label: 'Pokój z własną łazienką, biurkiem i wyjściem na balkon', span: 'col-span-2' },
-    { src: pokojLozkoLazienka, label: 'Pokój z łóżkiem małżeńskim i wejściem do własnej łazienki' },
-    { src: pokojLozkoBiurkoBalkon, label: 'Pokój z biurkiem, czajnikiem i wyjściem na balkon' },
     { src: lazienkaPrysznic, label: 'Łazienka w pokoju — kabina prysznicowa, umywalka i suszarka' },
-    { src: pokojTarasWyjscie, label: 'Pokój z przeszklonym wyjściem na taras' },
-    { src: pokojLazienkaSofa, label: 'Pokój z łóżkiem, sofą i własną łazienką z kabiną prysznicową', span: 'col-span-2' },
     { src: pokojJasneDrewno, label: 'Pokój z jasną podłogą, biurkiem i wyjściem na balkon' },
     { src: pokojLozkoBiurko, label: 'Przestronny pokój z łóżkiem małżeńskim i miejscem do pracy' },
-    { src: pokojSofaBiurko, label: 'Pokój z rozkładaną sofą, biurkiem i wyjściem na balkon', span: 'col-span-2' },
     { src: pokojLozkoLustro, label: 'Pokój z lustrem i miejscem do pracy' },
+    { src: pokojSofaBiurko, label: 'Pokój z rozkładaną sofą, biurkiem i wyjściem na balkon' },
+    { src: pokojLozkoLazienka, label: 'Pokój z łóżkiem małżeńskim i wejściem do własnej łazienki' },
+    { src: pokojLozkoBiurkoBalkon, label: 'Pokój z biurkiem, czajnikiem i wyjściem na balkon' },
     { src: pokojLozkoFotele, label: 'Pokój z łóżkiem, fotelami i wyjściem na balkon' },
   ],
 }
