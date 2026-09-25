@@ -119,17 +119,17 @@ const CATEGORIES = [
     photos: [
       // BLOK A
       tile(foto(AP1, 0), SPAN_2x2), // AP1: salon z rozkładaną sofą i aneksem
-      tile(foto(AP1, 1), SPAN_2),   // AP1: osobna sypialnia
-      tile(foto(AP1, 5), SPAN_2),   // AP1: salon z oknem na góry
+      tile(foto(AP1, 1), SPAN_2),   // AP1: sypialnia z wyjściem na taras
+      tile(foto(AP1, 5), SPAN_2),   // AP1: salon od strony okna
       // BLOK A — oba kwadraty to zdjęcia pionowe
-      tile(foto(AP3, 0), SPAN_2x2), // AP3: cała otwarta przestrzeń 60 m²
-      tile(foto(AP2, 2)),           // AP2: sypialnia
-      tile(foto(AP3, 5)),           // AP3: część sypialna pod skosami (nowe, 16.09.2026)
-      tile(foto(AP2, 0), SPAN_2),   // AP2: salon z aneksem kuchennym
+      tile(foto(AP3, 0), SPAN_2x2), // AP3: część sypialna przy ściance z bali
+      tile(foto(AP2, 2)),           // AP2: sypialnia z szafą z lustrem
+      tile(foto(AP3, 5)),           // AP3: stół dla sześciu osób i aneks
+      tile(foto(AP2, 0), SPAN_2),   // AP2: salon z żółtą sofą
       // BLOK C
-      tile(foto(AP2, 1), SPAN_2),   // AP2: balkon na Trzy Korony
-      tile(foto(AP3, 3)),           // AP3: balkon na Trzy Korony
-      tile(foto(AP3, 4)),           // AP3: jadalnia i aneks kuchenny
+      tile(foto(AP2, 1), SPAN_2),   // AP2: sypialnia z wyjściem na balkon
+      tile(foto(AP3, 3)),           // AP3: sypialnia przy ścianie z mchem
+      tile(foto(AP3, 4)),           // AP3: jadalnia pod skosami
     ],
   },
   {
@@ -140,8 +140,8 @@ const CATEGORIES = [
       tile(foto(ROOMS, 0), SPAN_2x2), // pokój na piętrze z balkonem
       tile(foto(ROOMS, 1), SPAN_2),   // pokój na parterze z tarasem
       tile(foto(ROOMS, 2), SPAN_2),   // pokój z łazienką i biurkiem
-      tile(foto(ROOMS, 3)),           // łóżko małżeńskie i sofa rozkładana
-      tile(foto(ROOMS, 4), SPAN_2),   // biurko, czajnik, telewizor
+      tile(foto(ROOMS, 3)),           // pokój z wejściem do łazienki
+      tile(foto(ROOMS, 4), SPAN_2),   // pokój z biurkiem i wyjściem na balkon
       tile(foto(ROOMS, 5)),           // łazienka z kabiną prysznicową
       { src: PHOTOS.pokojeParterTarasy, label: 'Tarasy pokoi na parterze z wyjściem wprost do ogrodu', span: SPAN_2 },
       { src: PHOTOS.lazienkaUmywalka, label: 'Łazienka w pokoju: umywalka, lustro i świeże ręczniki' },
@@ -151,8 +151,8 @@ const CATEGORIES = [
       tile(foto(ROOMS, 9)),           // przestronny pokój z miejscem do pracy
       // BLOK C
       tile(foto(ROOMS, 10), SPAN_2),  // pokój z sofą i biurkiem
-      tile(foto(ROOMS, 11)),          // pokój od strony wejścia
-      tile(foto(ROOMS, 12)),          // pokój z telewizorem przy oknie
+      tile(foto(ROOMS, 11)),          // pokój z lustrem i miejscem do pracy
+      tile(foto(ROOMS, 12)),          // pokój z fotelami i wyjściem na balkon
     ],
   },
   {
