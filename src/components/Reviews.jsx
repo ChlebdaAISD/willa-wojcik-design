@@ -4,11 +4,9 @@ import { IconArrow, IconStarFill } from './Icons.jsx'
 // Opinie: WYŁĄCZNIE policzalne, prawdziwe oceny z portali — Google prowadzi
 // (4,9/5 ze 135 opinii), Booking i nocowanie.pl obok.
 //
-// Karuzela cytatów została usunięta 14.09.2026. Stało w niej pięć zmyślonych
-// opinii z imionami, miastami i datami („Rodzina Kowalskich, Wrocław"), które
-// trafiały do prerenderowanego HTML-a. Właściciele nie przekazali ani jednego
-// cytatu, więc prezentowanie ich jako opinii gości było fabrykowaniem referencji.
-// Cytaty wracają dopiero z realnymi wpisami od klienta albo pobrane z Places API.
+// Karuzela cytatów usunięta 14.09.2026 — na stronie pokazujemy tylko oceny
+// zbiorcze z portali. Cytaty mogą wrócić wyłącznie jako prawdziwe wpisy gości
+// (przekazane przez właścicieli albo pobrane z Google Places API).
 export function Reviews() {
   const portale = [
     // Przecinek dziesiętny, nie kropka — polska konwencja zapisu liczb
@@ -77,6 +75,7 @@ export function Reviews() {
               </span>
               <IconArrow size={15} />
             </a>
+            <p className="mt-4 text-cream/65 text-[12.5px]">Oceny z portali, stan na {SITE.ratingsAsOf}.</p>
           </div>
         </div>
       </div>

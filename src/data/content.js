@@ -1,4 +1,4 @@
-// Ilustracje hero (serigrafia w stylu „willawojcik"; źródła w public/images/hero/)
+// Ilustracje hero (serigrafia w stylu „willawojcik")
 import heroPokoje from '../assets/hero-pokoje-illustration.webp'
 import heroApartamenty from '../assets/hero-apartamenty-illustration.webp'
 import heroGaleria from '../assets/hero-galeria-illustration.webp'
@@ -23,15 +23,14 @@ import obiektPodjazd from '../assets/obiekt-podjazd.webp'
 import obiektFront from '../assets/obiekt-front.webp'
 import obiektElewacjaOgrod from '../assets/obiekt-elewacja-ogrod.webp'
 import pokojeParterTarasy from '../assets/pokoje-parter-tarasy.webp'
-// Dosłane przez właścicieli 16.09.2026 (WhatsApp) — patrz raporty/.
+// Dosłane przez właścicieli 16.09.2026 (WhatsApp).
 import obiektFrontKwiaty from '../assets/obiekt-front-kwiaty.webp'
 import obiektNaroznikHortensje from '../assets/obiekt-naroznik-hortensje.webp'
 import obiektTarasSchody from '../assets/obiekt-taras-schody.webp'
 import obiektDroneWiesZmierzch from '../assets/obiekt-drone-wies-zmierzch.webp'
 // Realne zdjęcie budynku na tle Trzech Koron — o nie prosił Pan Wójcik 17.09.2026.
-// Źródło: Dysk Google, Zdjęcia/Willa budynek/IMG_8350.heic. Z kadru usunięto słup
-// energetyczny z osprzętem, napowietrzne przewody i talerz anteny (scripts/magnific-edit.py
-// na wycinku + retusz miejscowy). To NIE jest grafika z ChatGPT, tylko fotografia.
+// Źródło: Dysk Google, Zdjęcia/Willa budynek/IMG_8350.heic. W retuszu usunięto z kadru
+// słup energetyczny z osprzętem, napowietrzne przewody i talerz anteny.
 import obiektTrzyKorony from '../assets/obiekt-trzy-korony.webp'
 // Budynek o żółtej elewacji. Bryła jest inna niż główny budynek willi (ten jest
 // biały, ze szklanymi balustradami), więc zapytaliśmy właścicieli. Potwierdzili
@@ -257,7 +256,7 @@ export const APARTMENTS = [
       'Własna łazienka z ręcznikami i suszarką do włosów',
     ],
     cover: ap1SalonZielonaSofa,
-    // BLOK A + BLOK C (patrz scripts/sprawdz-siatke.py). Kadry są poziome 16:9,
+    // BLOK A + BLOK C (zasady w komentarzu nad siatką w pages/Galeria.jsx). Kadry są poziome 16:9,
     // więc trafiają w kafelki 2×2 i 1×1 — te przycinają je najmniej.
     photos: [
       { src: ap1SalonZielonaSofa, label: 'Salon z dużą rozkładaną sofą, ławą i aneksem kuchennym — Apartament 1', span: 'col-span-2 row-span-2' },
@@ -369,9 +368,8 @@ export const AMENITIES = [
   { icon: 'IconTowel', title: 'Pościel i ręczniki', note: 'Świeże, wysokiej jakości' },
 ]
 
-// Wyłącznie odległości pokryte przez references/stats.md. Wcześniejsze wpisy
-// „Stok Polana Sosny 4 km", „Termy Bania 22 km", „Centrum Zakopanego 38 km"
-// i „Szlak na Sokolicę 1,5 km" były zmyślone i sprzeczne ze stats.md — usunięte 14.09.2026.
+// Odległości sprawdzone 14.09.2026. Dopisując nową pozycję, podawać tylko
+// odległość zweryfikowaną w mapie.
 export const ATTRACTIONS = [
   { title: 'Szlak na Trzy Korony', dist: '~1 km', time: '15 min pieszo' },
   { title: 'Kładka pieszo-rowerowa na Słowację', dist: '250 m', time: '3 min pieszo' },
@@ -385,11 +383,7 @@ export const ATTRACTIONS = [
 
 // Opinie gości. PUSTE CELOWO od 14.09.2026.
 //
-// Wcześniej stało tu pięć wymyślonych cytatów z imionami, miastami i datami
-// (m.in. „Rodzina Kowalskich, Wrocław"), które renderowały się w karuzeli na
-// stronie głównej i lądowały w prerenderowanym HTML-u. Właściciele nie przekazali
-// żadnej opinii — prezentowanie tych cytatów jako wypowiedzi gości było
-// fabrykowaniem referencji (nieuczciwa praktyka rynkowa).
+// Wpisywać tu wyłącznie prawdziwe opinie gości, za zgodą właścicieli.
 //
 // Prawdziwe oceny zbiorcze (Google 4,9/5 ze 135 opinii, Booking 9,8/10,
 // nocowanie.pl 10/10) są w `src/data/site.js` i pokazuje je components/Reviews.jsx.

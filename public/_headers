@@ -17,6 +17,7 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000
 
 # Zasoby z odciskiem w nazwie (Vite hashuje) — mogą leżeć w cache rok
 /assets/*

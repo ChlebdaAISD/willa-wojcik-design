@@ -93,7 +93,8 @@ export default function TrzyKorony() {
                 Sam szlak i wstęp do Pienińskiego Parku Narodowego są bezpłatne. Opłatę pobiera się tylko za wejście na platformę widokową na samym szczycie — od 1 kwietnia do 15 listopada.
               </p>
               <InfoNote label="Ważne" className="mt-8">
-                Na szczycie zapłacą Państwo <strong className="text-charcoal">wyłącznie gotówką</strong> — nie ma tam terminala ani bankomatu. Warto wziąć kilka złotych na osobę. Ceny podajemy według stanu na 2026 rok; park aktualizuje cennik co roku, więc prosimy sprawdzić przed wyjściem.
+                Na szczycie zapłacą Państwo <strong className="text-charcoal">wyłącznie gotówką</strong> — nie ma tam terminala ani bankomatu. Warto wziąć kilka złotych na osobę. Ceny podajemy według stanu na 2026 rok; park aktualizuje cennik co roku, więc prosimy sprawdzić przed wyjściem na{' '}
+                <a href="https://piepn.gov.pl/" target="_blank" rel="noopener noreferrer" className="text-gold-3 underline underline-offset-2 hover:text-forest">stronie Pienińskiego Parku Narodowego</a>.
               </InfoNote>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">

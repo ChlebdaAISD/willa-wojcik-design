@@ -7,8 +7,7 @@ import { ICONS, IconArrow } from '../components/Icons.jsx'
 import { PHOTOS } from '../data/content.js'
 
 // Trzy główne atrakcje — mają własne, szczegółowe podstrony.
-// Karty typograficzne (wzorzec z home) — bez zdjęć-zapchajdziur;
-// ilustracje per atrakcja wskoczą tu po dostarczeniu (public/images/hero/).
+// Karty typograficzne (wzorzec z home) — bez zdjęć-zapchajdziur.
 const featured = [
   {
     href: '/okolica/trzy-korony',

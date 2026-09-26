@@ -1,5 +1,7 @@
 import { APARTMENTS, ROOMS } from '../data/content.js'
+import { obraz } from '../lib/obrazy.js'
 import { Button } from './ui/Button.jsx'
+import { SITE } from '../data/site.js'
 
 // Metraże, pojemność i ceny mają jedno źródło: src/data/content.js (dane od
 // właścicielki z 14.09.2026). W tym pliku nie powtarzamy żadnej z tych liczb.
@@ -55,8 +57,8 @@ export function Apartments() {
             <article key={u.id} className="reveal-lg card-lift group bg-cream rounded-sm overflow-hidden flex flex-col"
                      style={{ '--d': `${i * 0.1}s` }}>
               <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
-                <img src={u.cover} alt={coverAlt(u)} loading="lazy" decoding="async"
-                     width="1800" height="1013"
+                <img {...obraz(u.cover, '(min-width: 1280px) 330px, (min-width: 640px) 50vw, 100vw')}
+                     alt={coverAlt(u)} loading="lazy" decoding="async"
                      className="absolute inset-0 w-full h-full object-cover zoom-img" />
               </div>
               <div className="p-7 md:p-8 flex flex-col flex-1">
@@ -75,7 +77,7 @@ export function Apartments() {
                         {u.price}
                       </div>
                       {u.priceNote && (
-                        <div className="text-charcoal/60 text-[12.5px] leading-snug mt-2">{u.priceNote}</div>
+                        <div className="text-charcoal/70 text-[12.5px] leading-snug mt-2">{u.priceNote}</div>
                       )}
                     </div>
                     <Button href={u.href} size="sm" variant="ghostDark">Szczegóły</Button>
@@ -88,7 +90,8 @@ export function Apartments() {
 
         <div className="reveal mt-10 md:mt-14 flex items-end justify-between gap-6 flex-wrap">
           <p className="text-charcoal/65 text-[13px] leading-[1.8] max-w-xl">
-            Śniadania we własnym zakresie. Rezerwację potwierdza zaliczka 30%.
+            Śniadania we własnym zakresie. Rezerwację potwierdza zaliczka 30%, resztę płacą Państwo
+            w dniu przyjazdu. Do ceny doliczamy opłatę miejscową: {SITE.localFee}.
           </p>
           <Button href="#kontakt" size="sm">Zapytaj o termin</Button>
         </div>

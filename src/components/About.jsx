@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { getApartment } from '../data/content.js'
+import { obraz } from '../lib/obrazy.js'
 import { SITE } from '../data/site.js'
 
 const AP3 = getApartment('apartament-3')
@@ -59,10 +60,9 @@ export function About() {
             <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '4/5' }}>
               <img
                 ref={imgRef}
-                src={AP3.cover}
+                {...obraz(AP3.cover, '(min-width: 1024px) 800px, 100vw')}
                 alt="Apartament 3 — sypialnia, salon i jadalnia w jednej otwartej przestrzeni pod skosami, ze ścianką z brzozowych pni"
                 loading="lazy" decoding="async"
-                width="1800" height="1013"
                 className="absolute inset-[-8%] w-[116%] h-[116%] object-cover will-change-transform"
               />
               <div className="absolute inset-0" style={{

@@ -9,6 +9,7 @@ import { GalleryLink } from '../components/ui/GalleryLink.jsx'
 import { AmenitiesSection, RulesSection } from '../components/StaySections.jsx'
 import { IconArrowUp } from '../components/Icons.jsx'
 import { PHOTOS, APARTMENTS, ROOMS } from '../data/content.js'
+import { SITE } from '../data/site.js'
 
 export default function Apartamenty() {
   return (
@@ -103,7 +104,8 @@ export default function Apartamenty() {
               {i === APARTMENTS.length - 1 && (
                 <p className="reveal mt-12 text-[13.5px] max-w-2xl text-charcoal/70">
                   Stawkę na wybrany termin i dostępność potwierdzamy telefonicznie albo mailem —
-                  prosimy o kontakt. Rezerwację potwierdza zaliczka 30% wartości pobytu.
+                  prosimy o kontakt. Rezerwację potwierdza zaliczka 30% wartości pobytu, resztę płacą
+                  Państwo w dniu przyjazdu. Do ceny doliczamy opłatę miejscową: {SITE.localFee}.
                 </p>
               )}
             </Container>

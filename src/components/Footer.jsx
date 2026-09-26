@@ -10,7 +10,7 @@ export function Footer() {
       <Container>
         <div className="reveal pb-16 border-b border-cream/10">
           {/* Pełny lockup właściciela (sygnet + „Apartamenty i pokoje" + podpis),
-              wycięty z jego grafiki przez scripts/extract-logo.py */}
+              wycięty z jego grafiki */}
           <img src={logoLockup} alt="Willa Wójcik — apartamenty i pokoje"
                width="900" height="479" loading="lazy" decoding="async"
                className="w-full max-w-[175px] md:max-w-[215px] h-auto" />
@@ -55,9 +55,16 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between gap-4 text-[12px] text-cream/75">
-          <div>© 2026 Willa Wójcik, {SITE.city}</div>
-          <div className="flex gap-6">
+          <div className="space-y-1">
+            <div>© 2026 Willa Wójcik, {SITE.city}</div>
+            {/* Dane usługodawcy — art. 5 ustawy o świadczeniu usług drogą elektroniczną */}
+            <div className="text-cream/60">
+              {SITE.owner.name}, {SITE.street}, {SITE.postal} {SITE.city}, NIP {SITE.owner.nip}, REGON {SITE.owner.regon}
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/polityka-prywatnosci" className="hover:text-cream/80 transition-colors">Polityka prywatności</Link>
+            <Link href="/regulamin" className="hover:text-cream/80 transition-colors">Regulamin</Link>
             <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-cream/80 transition-colors">Mapa dojazdu</a>
           </div>
         </div>

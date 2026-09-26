@@ -18,7 +18,7 @@ export function WelcomeStrip() {
               </div>
               <div>
                 <div className="font-serif text-charcoal text-2xl leading-tight">{it.t}</div>
-                <div className="text-charcoal/60 text-[15px] mt-2 leading-relaxed">{it.s}</div>
+                <div className="text-charcoal/70 text-[15px] mt-2 leading-relaxed">{it.s}</div>
               </div>
             </div>
           )

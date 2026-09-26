@@ -15,7 +15,7 @@ function Logo({ dark, onClick }) {
   }
   return (
     <Link href="/" onClick={handleClick} className="flex items-center gap-3 group shrink-0" aria-label="Willa Wójcik — strona główna">
-      {/* Sygnet właściciela wycięty z jego grafiki (scripts/extract-logo.py).
+      {/* Sygnet właściciela wycięty z jego grafiki.
           Złoto jest jasne — na kremowym pasku po scrollu przygaszamy je filtrem,
           bo w oryginale znak był projektowany na ciemne niebo. */}
       <img src={logoMark} alt="" aria-hidden="true"

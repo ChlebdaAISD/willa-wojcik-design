@@ -14,6 +14,8 @@ import TrzyKorony from './pages/okolica/TrzyKorony.jsx'
 import KladkaCzerwonyKlasztor from './pages/okolica/KladkaCzerwonyKlasztor.jsx'
 import Kontakt from './pages/Kontakt.jsx'
 import PolitykaPrywatnosci from './pages/PolitykaPrywatnosci.jsx'
+import Regulamin from './pages/Regulamin.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function ScrollToTop() {
   const [location] = useLocation()
@@ -50,8 +52,9 @@ export default function App({ ssrPath }) {
             <Route path="/okolica/kladka-czerwony-klasztor" component={KladkaCzerwonyKlasztor} />
             <Route path="/kontakt" component={Kontakt} />
             <Route path="/polityka-prywatnosci" component={PolitykaPrywatnosci} />
-            {/* 404 → strona główna */}
-            <Route component={Home} />
+            <Route path="/regulamin" component={Regulamin} />
+            {/* Każdy inny adres (także /404 przy prerenderze) → strona błędu */}
+            <Route component={NotFound} />
           </Switch>
         </main>
         <Footer />

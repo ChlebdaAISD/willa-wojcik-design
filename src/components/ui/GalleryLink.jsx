@@ -5,7 +5,7 @@ import { Link } from 'wouter'
 // (components/Gallery.jsx), tylko w wersji na jasne tło (cream-2 / stone).
 //
 // Anchor text niesie nazwę obiektu zamiast „kliknij tutaj" — link wewnętrzny
-// ma wskazywać encję, zob. .claude/rules/on-page-seo.md (Internal Graph).
+// ma wskazywać encję (dobra praktyka SEO dla linków wewnętrznych).
 export function GalleryLink({ label = 'Zobacz pełną galerię Willi Wójcik', className = '' }) {
   return (
     <div className={`reveal mt-10 ${className}`}>

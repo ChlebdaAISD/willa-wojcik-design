@@ -12,22 +12,13 @@ import heroOwnerMobile from '../assets/hero-owner-clean-mobile.webp'
 // zasłona robiła z niego szarą breję zamiast rozjaśnić. Wideo i przełącznik usunięte,
 // pliki `public/video/` skasowane.
 //
-// GRAFIKA, NIE ZDJĘCIE — decyzja właściciela z 15.09.2026, podjęta świadomie po tym,
-// jak pokazałem zestawienie z jego realnymi zdjęciami. Obraz wygenerował sam w ChatGPT;
-// logotyp z nieba zdjęty modelem edycyjnym (Magnific/nano-banana-pro), szyld na ścianie
-// został, bo istnieje naprawdę.
+// GRAFIKA, NIE ZDJĘCIE — obraz dostarczony przez właściciela i wybrany przez niego
+// 15.09.2026. Logotyp z nieba usunięto w retuszu, szyld na ścianie został.
+// Kadru nie podpisujemy jako fotografii — dlatego nie ma podpisu „Widok z balkonu".
 //
-// Budynek na grafice NIE odpowiada rzeczywistemu: jest długi i niski, z ośmioma lukarnami
-// w rzędzie i ciągiem balkonów przez całą fasadę. Realna Willa Wójcik to zwarta bryła
-// dwukondygnacyjna z dachem kopertowym (por. `obiekt-front.webp`, `obiekt-drone-zmierzch.webp`).
-// Ryzyko („nie wyglądało jak na zdjęciach", art. o praktykach wprowadzających w błąd)
-// zostało zgłoszone i przyjęte przez właściciela. NIE podpisujemy tego kadru jako
-// fotografii — dlatego zniknął podpis „Widok z balkonu apartamentu".
-//
-// Alternatywa bez tego ryzyka, gdyby ktoś wracał do tematu: właściciel ma drona (ujęcie
-// zmierzchowe jest z drona), więc jedna klatka w dzień daje ten sam kadr naprawdę.
-// Jasne kadry realnego obiektu, gotowe do podmiany: `hero-balkon-widok.webp`
-// (balkon + Trzy Korony), `obiekt-front.webp`, `obiekt-od-ogrodu.webp`.
+// Gdyby hero miało wrócić do zdjęcia: jasne kadry realnego obiektu to
+// `obiekt-front.webp` i `obiekt-od-ogrodu.webp`, a z drona da się zrobić
+// dzienne ujęcie w tym samym kadrze co grafika.
 //
 // Tekst jest CIEMNY na jasnym tle — to odwrotnie niż w PageHero na podstronach, które
 // nadal stoją na ciemnych ilustracjach. Dlatego Nav rozpoznaje stronę główną osobno
@@ -68,9 +59,14 @@ export function Hero() {
         <div className="max-w-3xl">
           <h1 className="font-serif text-charcoal text-balance leading-[0.98] font-medium"
               style={{ fontSize: 'clamp(44px, 6.1vw, 86px)' }}>
-            <span className="hero-el block" style={{ '--d': '.08s' }}>Balkon z widokiem</span>
+            <span className="hero-el block" style={{ '--d': '.08s' }}>Balkon z widokiem</span>{' '}
             <span className="hero-el block italic font-normal text-forest" style={{ '--d': '.16s' }}>
               na Trzy Korony.
+            </span>{' '}
+            {/* Fraza i miejscowość w H1 (SEO), wizualnie jako mały wiersz pod hasłem —
+                w jasnej strefie zasłony, nad skałami byłby nieczytelny */}
+            <span className="hero-el eyebrow block leading-normal text-charcoal/80 mt-6 md:mt-7" style={{ '--d': '.22s' }}>
+              Noclegi w Sromowcach Niżnych, Pieniny
             </span>
           </h1>
 
@@ -91,14 +87,14 @@ export function Hero() {
               zajmowały jedną trzecią wysokości hero i konkurowały z nagłówkiem.
               Logotypy dostawców świadomie POMINIĘTE — Google i Booking.com mają
               wytyczne ograniczające użycie znaków w sposób sugerujący rekomendację;
-              gwiazdka plus nazwa serwisu niosą tę samą informację bez tego ryzyka. */}
+              gwiazdka plus nazwa serwisu niosą tę samą informację. */}
           <div className="hero-el mt-7 md:mt-9 flex flex-wrap items-center gap-x-5 gap-y-2 pt-5 border-t border-charcoal/15 max-w-xl"
                style={{ '--d': '.38s' }}>
             {[['4,9', 'Google'], ['9,8', 'Booking.com'], ['10', 'nocowanie.pl']].map(([ocena, serwis]) => (
               <div key={serwis} className="flex items-center gap-1.5">
                 <IconStarFill size={12} className="text-gold-3 shrink-0" />
                 <span className="text-[13px] font-semibold text-charcoal leading-none">{ocena}</span>
-                <span className="text-[11px] text-charcoal/60 leading-none">{serwis}</span>
+                <span className="text-[11px] text-charcoal/70 leading-none">{serwis}</span>
               </div>
             ))}
           </div>

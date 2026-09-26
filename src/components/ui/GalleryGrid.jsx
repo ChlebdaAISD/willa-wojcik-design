@@ -2,6 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { usePageInert } from '../../lib/usePageInert.js'
 import { IconChevL, IconChevR, IconClose } from '../Icons.jsx'
+import { obraz } from '../../lib/obrazy.js'
+
+// Szerokość kafelka na ekranie (siatka 2 kolumny na telefonie, 4 od md, kontener do 1344 px).
+// Kafelek szeroki (col-span-2) zajmuje dwie kolumny.
+const SIZES_KAFELEK = '(min-width: 768px) 336px, 50vw'
+const SIZES_KAFELEK_SZEROKI = '(min-width: 768px) 672px, 100vw'
+// Lightbox: figure max-w-6xl (1152 px) z paddingiem p-6.
+const SIZES_LIGHTBOX = '(min-width: 1200px) 1152px, calc(100vw - 48px)'
 
 // Siatka zdjęć (masonry) + lightbox: klawiatura, swipe, focus-trap, blokada
 // scrolla, powrót fokusa. photos: [{ src, label, span? }]. Reużywana na home
@@ -79,7 +87,8 @@ export function GalleryGrid({ photos, className = '', hideThumbLabels = false })
                   aria-label={`Powiększ zdjęcie: ${p.label}`}
                   className={`reveal relative group overflow-hidden cursor-plus ${p.span || ''}`}
                   style={{ '--d': `${(i % 4) * 0.06}s` }}>
-            <img src={p.src} alt={p.label} loading="lazy" decoding="async"
+            <img {...obraz(p.src, p.span?.includes('col-span-2') ? SIZES_KAFELEK_SZEROKI : SIZES_KAFELEK)}
+                 alt={p.label} loading="lazy" decoding="async"
                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" />
             {hideThumbLabels ? (
               // Bez podpisu — sam delikatny cień na hover (desktop) dla afordancji klikalności
@@ -127,7 +136,7 @@ export function GalleryGrid({ photos, className = '', hideThumbLabels = false })
           </button>
           <figure className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
             <div className="relative w-full" style={{ aspectRatio: '16/10' }}>
-              <img src={photos[open].src} alt="" decoding="async"
+              <img key={open} {...obraz(photos[open].src, SIZES_LIGHTBOX, { pelny: true })} alt="" decoding="async"
                    className="absolute inset-0 w-full h-full object-cover" />
             </div>
             {/* aria-live: strzałki i swipe zmieniają zdjęcie bez zmiany fokusu, więc bez

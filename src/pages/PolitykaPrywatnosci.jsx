@@ -22,18 +22,19 @@ export default function PolitykaPrywatnosci() {
     <>
       <PageHero
         title="Polityka prywatności"
-        subtitle="Kto przetwarza Państwa dane, w jakim celu i na jakiej podstawie. Ostatnia aktualizacja: 7 lipca 2026."
         crumbs={[{ label: 'Strona główna', href: '/' }, { label: 'Polityka prywatności' }]}
       />
 
       <section className="relative bg-cream py-16 md:py-24">
         <Container>
           <div className="max-w-3xl">
+            <P>Ostatnia aktualizacja: 26 września 2026 roku.</P>
+
             <H2>1. Administrator danych</H2>
             <P>
-              Administratorem Państwa danych osobowych jest Willa Wójcik — Apartamenty i Pokoje,
-              {' '}{SITE.street}, {SITE.postal} {SITE.city}. W sprawach dotyczących danych osobowych
-              prosimy o kontakt: telefon <a className="text-gold-3 underline underline-offset-2" href={SITE.phoneHref}>{SITE.phone}</a>,
+              Administratorem Państwa danych osobowych jest {SITE.owner.name}, właścicielka Willi Wójcik,
+              {' '}{SITE.street}, {SITE.postal} {SITE.city}, NIP {SITE.owner.nip}, REGON {SITE.owner.regon}.
+              W sprawach dotyczących danych osobowych prosimy o kontakt: telefon <a className="text-gold-3 underline underline-offset-2" href={SITE.phoneHref}>{SITE.phone}</a>,
               e-mail <a className="text-gold-3 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a>.
             </P>
 
@@ -48,30 +49,46 @@ export default function PolitykaPrywatnosci() {
               <LI>termin i szczegóły planowanego pobytu (daty, liczba osób, wybrany pokój lub apartament),</LI>
               <LI>treść Państwa wiadomości.</LI>
             </ul>
-            <P>Nie zbieramy danych wrażliwych i nie profilujemy Państwa danych.</P>
+            <P>
+              Serwer strony automatycznie zapisuje też dane techniczne: adres IP, typ przeglądarki
+              i czas wizyty. Nie zbieramy danych wrażliwych i nie profilujemy Państwa danych.
+            </P>
 
             <H2>3. Cel i podstawa prawna</H2>
-            <P>
-              Dane przetwarzamy, aby odpowiedzieć na zapytanie, sprawdzić dostępność terminu i przygotować rezerwację —
-              czyli w celu podjęcia działań przed zawarciem umowy na Państwa żądanie (art. 6 ust. 1 lit. b RODO)
-              oraz w celu kontaktu i obsługi zapytania, co stanowi nasz prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO).
-            </P>
+            <ul className="mb-4">
+              <LI>
+                Odpowiedź na zapytanie, sprawdzenie dostępności i przygotowanie rezerwacji — działania
+                przed zawarciem umowy na Państwa żądanie (art. 6 ust. 1 lit. b RODO).
+              </LI>
+              <LI>
+                Realizacja pobytu po potwierdzeniu rezerwacji (art. 6 ust. 1 lit. b RODO) oraz obowiązki
+                wynikające z przepisów, m.in. podatkowych i dotyczących opłaty miejscowej (art. 6 ust. 1 lit. c RODO).
+              </LI>
+              <LI>
+                Kontakt w sprawie zapytania oraz bezpieczeństwo strony (dane techniczne) — nasz prawnie
+                uzasadniony interes (art. 6 ust. 1 lit. f RODO).
+              </LI>
+            </ul>
 
             <H2>4. Jak długo przechowujemy dane</H2>
             <P>
               Dane z zapytań, które nie zakończyły się rezerwacją, usuwamy najpóźniej po zakończeniu sezonu, którego dotyczyły.
               Dane związane z rezerwacją i pobytem przechowujemy przez okres wymagany przepisami (m.in. podatkowymi).
+              Kopie techniczne u dostawców (logi serwera, historia wysyłki wiadomości) są usuwane najpóźniej po 30 dniach.
             </P>
 
             <H2>5. Komu powierzamy dane</H2>
             <P>
-              Aby strona działała i aby dotarła do nas Państwa wiadomość, korzystamy z zaufanych dostawców.
+              Wiadomość z formularza trafia do nas przez serwer automatyzacji i serwis wysyłki poczty.
               W niezbędnym zakresie Państwa dane mogą trafić do:
             </P>
             <ul className="mb-4">
-              <LI><strong className="text-charcoal">Cloudflare, Inc.</strong> (USA) — hosting strony (Cloudflare Pages).</LI>
-              <LI><strong className="text-charcoal">Resend</strong> (USA) — dostarczenie do nas wiadomości e-mail wysłanej z formularza.</LI>
-              <LI><strong className="text-charcoal">Google Ireland Ltd / Google LLC</strong> — mapa Google Maps osadzona na stronie kontaktu.</LI>
+              <LI><strong className="text-charcoal">Firma obsługująca stronę technicznie</strong> (Nowy Targ) — utrzymanie strony i formularza, na podstawie umowy powierzenia przetwarzania danych.</LI>
+              <LI><strong className="text-charcoal">Cloudflare, Inc.</strong> (USA) — hosting strony i ochrona przed atakami, logi serwera.</LI>
+              <LI><strong className="text-charcoal">Railway Corporation</strong> (serwer w Unii Europejskiej, Amsterdam) — serwer automatyzacji, który przekazuje wiadomość z formularza.</LI>
+              <LI><strong className="text-charcoal">Resend, Inc.</strong> (USA) — wysyłka wiadomości e-mail do nas oraz potwierdzenia do Państwa; treść jest przechowywana do 30 dni.</LI>
+              <LI><strong className="text-charcoal">Google Ireland Ltd / Google LLC</strong> — skrzynka pocztowa, na którą przychodzą zapytania.</LI>
+              <LI>Dostawcy narzędzi informatycznych, z których korzysta firma obsługująca stronę — wyłącznie w zakresie niezbędnym do jej utrzymania.</LI>
             </ul>
             <P>
               Część z tych podmiotów ma siedzibę poza Europejskim Obszarem Gospodarczym (USA). Przekazanie danych
@@ -81,10 +98,16 @@ export default function PolitykaPrywatnosci() {
 
             <H2>6. Pliki cookie i mapa Google</H2>
             <P>
-              Sama strona nie używa plików cookie do śledzenia ani do analityki. Wyjątkiem jest mapa Google Maps,
-              osadzona w sekcji „Lokalizacja" na stronie głównej oraz na stronie kontaktu — po jej załadowaniu
-              Google może zapisać własne pliki cookie. Na pozostałych podstronach mapa się nie pojawia.
-              Ustawienia plików cookie mogą Państwo zmienić w swojej przeglądarce.
+              Strona nie używa plików cookie ani narzędzi analitycznych. Czcionki ładują się z naszego
+              serwera, bez łączenia z Google.
+            </P>
+            <P>
+              Mapa Google na stronie głównej i na stronie kontaktu ładuje się dopiero wtedy, gdy klikną Państwo
+              „Pokaż mapę". Wtedy Google otrzymuje adres IP Państwa urządzenia i może zapisać własne pliki cookie.
+              Google działa w tym zakresie jako odrębny administrator, zgodnie ze swoją{' '}
+              <a className="text-gold-3 underline underline-offset-2" href="https://policies.google.com/privacy?hl=pl" target="_blank" rel="noopener noreferrer">polityką prywatności</a>.
+              Kliknięcie oznacza zgodę na załadowanie mapy (art. 6 ust. 1 lit. a RODO). Przy kolejnej wizycie
+              mapa znów jest wyłączona, a zapisane pliki cookie mogą Państwo usunąć w ustawieniach przeglądarki.
             </P>
 
             <H2>7. Państwa prawa</H2>
@@ -95,6 +118,7 @@ export default function PolitykaPrywatnosci() {
               <LI>usunięcia danych lub ograniczenia przetwarzania,</LI>
               <LI>wniesienia sprzeciwu wobec przetwarzania,</LI>
               <LI>przenoszenia danych,</LI>
+              <LI>wycofania zgody na załadowanie mapy w dowolnym momencie, bez wpływu na wcześniejsze przetwarzanie,</LI>
               <LI>wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).</LI>
             </ul>
             <P>
@@ -102,7 +126,7 @@ export default function PolitykaPrywatnosci() {
               {' '}<a className="text-gold-3 underline underline-offset-2" href={SITE.emailHref}>{SITE.email}</a> lub zadzwonić.
             </P>
 
-            <P className="mt-10 text-charcoal/65 text-[13.5px]">
+            <P>
               Podanie danych jest dobrowolne, ale niezbędne, aby odpowiedzieć na zapytanie i przygotować rezerwację.
             </P>
           </div>

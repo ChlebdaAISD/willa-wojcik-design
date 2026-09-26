@@ -5,7 +5,7 @@ import { IconStar } from '../Icons.jsx'
 export function TrustStrip({ tone = 'dark', className = '' }) {
   const isLight = tone === 'light'
   const big = isLight ? 'text-cream' : 'text-charcoal'
-  const lab = isLight ? 'text-cream/60' : 'text-charcoal/55'
+  const lab = isLight ? 'text-cream/60' : 'text-charcoal/70'
   const line = isLight ? 'bg-cream/20' : 'bg-charcoal/15'
 
   const stats = [

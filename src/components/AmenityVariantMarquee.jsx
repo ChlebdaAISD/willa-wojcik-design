@@ -1,4 +1,5 @@
 import { AMENITIES, PHOTOS } from '../data/content.js'
+import { obraz } from '../lib/obrazy.js'
 
 export function AmenityVariantMarquee() {
   return (
@@ -19,9 +20,9 @@ export function AmenityVariantMarquee() {
           </p>
           <figure className="mt-9 hidden lg:block">
             <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '4/3' }}>
-              <img src={PHOTOS.obiektDroneZmierzch}
+              <img {...obraz(PHOTOS.obiektDroneZmierzch, '420px')}
                    alt="Willa Wójcik w Sromowcach Niżnych o zmierzchu, ujęcie z drona — rozświetlone balkony i tarasy, ogród z placem zabaw, w tle pienińskie grzbiety"
-                   loading="lazy" decoding="async" width="1800" height="1013"
+                   loading="lazy" decoding="async"
                    className="absolute inset-0 w-full h-full object-cover" />
             </div>
             <figcaption className="mt-3 text-charcoal/65 text-[12.5px]">

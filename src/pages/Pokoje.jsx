@@ -9,6 +9,8 @@ import { GalleryLink } from '../components/ui/GalleryLink.jsx'
 import { AmenitiesSection, RulesSection } from '../components/StaySections.jsx'
 import { IconArrowUp } from '../components/Icons.jsx'
 import { PHOTOS, ROOMS } from '../data/content.js'
+import { obraz } from '../lib/obrazy.js'
+import { SITE } from '../data/site.js'
 
 // Pokoje 1–8 — realne zdjęcia i dane od właścicielki (14.09.2026): 21 m²,
 // 250 zł za dobę dla dwóch osób, 280 zł dla trzech, cztery pokoje na piętrze
@@ -123,7 +125,8 @@ export default function Pokoje() {
 
           <p className="reveal mt-12 text-[13.5px] max-w-2xl text-charcoal/70">
             Wolne terminy potwierdzamy telefonicznie lub mailem, bez prowizji portali.
-            Rezerwację potwierdza zaliczka 30% wartości pobytu.
+            Rezerwację potwierdza zaliczka 30% wartości pobytu, resztę płacą Państwo w dniu przyjazdu.
+            Do ceny doliczamy opłatę miejscową: {SITE.localFee}.
           </p>
         </Container>
       </section>
@@ -140,8 +143,8 @@ export default function Pokoje() {
             {FLOORS.map((f, i) => (
               <article key={f.key} className="reveal card-lift group bg-cream-2 rounded-sm overflow-hidden" style={{ '--d': `${i * 0.08}s` }}>
                 <div className="relative overflow-hidden" style={{ aspectRatio: '16/9' }}>
-                  <img src={f.photo} alt={f.alt} loading="lazy" decoding="async"
-                       width="1800" height="1013"
+                  <img {...obraz(f.photo, '(min-width: 768px) 660px, 100vw')}
+                       alt={f.alt} loading="lazy" decoding="async"
                        className="absolute inset-0 w-full h-full object-cover zoom-img" />
                 </div>
                 <div className="p-8 md:p-10">
@@ -176,8 +179,8 @@ export default function Pokoje() {
             <div className="lg:col-span-7 grid grid-cols-3 gap-3 md:gap-4">
               {BATHROOM_PHOTOS.map((p, i) => (
                 <div key={p.src} className="reveal relative overflow-hidden rounded-sm" style={{ aspectRatio: '3/4', '--d': `${i * 0.07}s` }}>
-                  <img src={p.src} alt={p.alt} loading="lazy" decoding="async"
-                       width="1013" height="1800"
+                  <img {...obraz(p.src, '(min-width: 1024px) 250px, 33vw')}
+                       alt={p.alt} loading="lazy" decoding="async"
                        className="absolute inset-0 w-full h-full object-cover" />
                 </div>
               ))}
@@ -192,8 +195,8 @@ export default function Pokoje() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             <div className="lg:col-span-5 reveal">
               <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '16/9' }}>
-                <img src={PHOTOS.wspolneKuchnia} alt="Wspólna kuchnia Willi Wójcik połączona z jadalnią i kanapami, z fototapetą tatrzańskiej hali na ścianie" loading="lazy" decoding="async"
-                     width="1800" height="1013"
+                <img {...obraz(PHOTOS.wspolneKuchnia, '(min-width: 1024px) 560px, 100vw')}
+                     alt="Wspólna kuchnia Willi Wójcik połączona z jadalnią i kanapami, z fototapetą tatrzańskiej hali na ścianie" loading="lazy" decoding="async"
                      className="absolute inset-0 w-full h-full object-cover" />
               </div>
             </div>

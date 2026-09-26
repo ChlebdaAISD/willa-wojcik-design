@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { IconArrow, IconCheck, IconGlobe, IconMail, IconMapPin, IconPhone } from './Icons.jsx'
+import { Link } from 'wouter'
 import { SITE } from '../data/site.js'
 
 const WEBHOOK_URL = import.meta.env.VITE_WILLA_WEBHOOK
@@ -158,9 +159,18 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
                       Coś poszło nie tak. Prosimy o telefon:{' '}
                       <a href={SITE.phoneHref} className="underline underline-offset-2">{SITE.phone}</a>
                     </span>
-                  ) : 'Płatność w dniu przyjazdu, pobyt bez prowizji'}
+                  ) : 'Zaliczka 30%, reszta w dniu przyjazdu. Bez prowizji portali.'}
                 </div>
               </div>
+
+              {/* Informacja z art. 13 RODO w chwili zbierania danych. Checkbox zgody nie jest
+                  potrzebny: podstawą jest odpowiedź na zapytanie (art. 6 ust. 1 lit. b i f). */}
+              <p className="text-charcoal/70 text-[12.5px] leading-relaxed max-w-xl">
+                Administratorem danych z formularza jest {SITE.owner.name}, właścicielka Willi Wójcik.
+                Dane wykorzystamy wyłącznie do odpowiedzi na zapytanie i przygotowania rezerwacji.
+                Szczegóły i Państwa prawa opisuje{' '}
+                <Link href="/polityka-prywatnosci" className="underline underline-offset-2 hover:text-forest">polityka prywatności</Link>.
+              </p>
             </form>
           </div>
 
@@ -204,8 +214,9 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
             </div>
 
             <div className="mt-6 text-charcoal/70 text-[13px] leading-relaxed">
-              Rezerwację potwierdza zaliczka 30% wartości pobytu.
-              Termin wpłaty i warunki anulowania ustalamy przy potwierdzeniu.
+              Rezerwację potwierdza zaliczka 30% wartości pobytu, resztę płacą Państwo w dniu przyjazdu.
+              Termin wpłaty i warunki anulowania ustalamy przy potwierdzeniu. Do ceny doliczamy
+              opłatę miejscową: {SITE.localFee}.
             </div>
           </aside>
         </div>

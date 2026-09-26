@@ -20,7 +20,7 @@ export function FactTable({ rows, className = '' }) {
   )
 }
 
-// FAQ jako <div> (nie <details>) — lepsze dla SEO/AI-search. Opcjonalnie generuje FAQPage schema.
+// FAQ jako <div> (nie <details>) — treść widoczna od razu, lepsza dla wyszukiwarek. Opcjonalnie generuje FAQPage schema.
 export function FAQ({ items, withSchema = true }) {
   const schema = {
     '@context': 'https://schema.org',

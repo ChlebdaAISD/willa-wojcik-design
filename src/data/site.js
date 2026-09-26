@@ -40,6 +40,21 @@ export const SITE = {
   instagram: 'https://www.instagram.com/willawojcik/',
 
   domain: 'https://willawojcik.pl',
+
+  // Usługodawca i administrator danych (CEIDG / wykaz VAT, stan 09.2026).
+  // Wymagane na stronie: art. 5 ustawy o świadczeniu usług drogą elektroniczną.
+  owner: {
+    name: 'Danuta Wójcik',
+    nip: '7352462364',
+    regon: '492812030',
+  },
+
+  // Opłata miejscowa w gminie Czorsztyn — uchwała Rady Gminy nr XII/102/2025 z 24.06.2025
+  localFee: '2 zł za osobę za dobę',
+  localFeeSource: 'https://czorsztyn.pl/pl/1154/0/oplata-miejscowa.html',
+
+  // Data, na którą podajemy oceny z portali (aktualizować raz na sezon)
+  ratingsAsOf: 'wrzesień 2026',
 }
 
 // Nawigacja główna (route-based)

@@ -35,7 +35,7 @@ const AP3 = getApartment('apartament-3')
 //   BLOK B (1 rząd):   2w + 2w
 //   BLOK C (1 rząd):   2w + 1 + 1     (albo 1 + 1 + 2w)
 //   BLOK D (1 rząd):   1 + 1 + 1 + 1
-// Kategoria = sklejka takich klocków. Weryfikacja: scripts/sprawdz-siatke.py
+// Kategoria = sklejka takich klocków. Po każdej zmianie sprawdzić zrzut całej strony.
 //
 // Do tego kadrowanie: zdjęcie PIONOWE wolno wstawić tylko w kafelek kwadratowy
 // (1×1 albo 2×2). W kafelku 2w (szeroki) pion jest obcinany po bokach.
@@ -200,7 +200,10 @@ export default function Galeria() {
               <div key={c.id}>
                 <div className="reveal flex items-center gap-3 mb-3">
                   <span className="w-8 h-px bg-gold" />
-                  <span className="eyebrow text-cream/75">{String(i + 1).padStart(2, '0')} — {c.label}</span>
+                  {/* h2 zamiast span: kategorie są nagłówkami sekcji (wygląd bez zmian, styl z .eyebrow) */}
+                  <h2 className="eyebrow text-cream/75">
+                    <span aria-hidden="true">{String(i + 1).padStart(2, '0')} — </span>{c.label}
+                  </h2>
                 </div>
                 <p className="reveal text-cream/70 text-[16px] leading-relaxed max-w-2xl mb-8">{c.desc}</p>
                 <GalleryGrid photos={c.photos} hideThumbLabels />

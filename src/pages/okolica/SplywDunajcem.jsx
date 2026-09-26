@@ -95,7 +95,8 @@ export default function SplywDunajcem() {
             <div className="lg:col-span-6 lg:col-start-7">
               <FactTable rows={ceny} />
               <p className="mt-5 text-charcoal/70 text-[13px] leading-relaxed">
-                Ceny orientacyjne, według cennika flisaków na 2026 rok — prosimy potwierdzić przed wyjściem. Bilety kupuje się w kasie na miejscu; rezerwacja z wyprzedzeniem nie jest potrzebna (poza grupami).
+                Ceny orientacyjne, według cennika flisaków na 2026 rok — prosimy potwierdzić przed wyjściem na{' '}
+                <a href="https://flisacy.pl/" target="_blank" rel="noopener noreferrer" className="text-gold-3 underline underline-offset-2 hover:text-forest">stronie Polskiego Stowarzyszenia Flisaków Pienińskich</a>. Bilety kupuje się w kasie na miejscu; rezerwacja z wyprzedzeniem nie jest potrzebna (poza grupami).
               </p>
             </div>
           </div>

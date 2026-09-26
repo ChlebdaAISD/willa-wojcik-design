@@ -8,7 +8,7 @@ const AP3 = getApartment('apartament-3')
 
 // Skrót całego obiektu w ośmiu realnych zdjęciach: budynek, widok, pokój, kuchnia,
 // ogród, apartament. Układ to dwa bloki [2×2, 1, 1, 2w] = 16 komórek w 4 rzędach,
-// bez dziur (zasady i weryfikacja: scripts/sprawdz-siatke.py).
+// bez dziur (zasady w komentarzu nad siatką w pages/Galeria.jsx).
 //
 // 21.09.2026 wypadło `ogrodPlacZabaw`: pokazywało tę samą altanę, huśtawkę i trawnik
 // co `ogrodAltana`, tylko z paru kroków dalej. Plac zabaw został na /galeria.

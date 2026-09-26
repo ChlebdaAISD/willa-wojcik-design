@@ -99,7 +99,8 @@ export default function KladkaCzerwonyKlasztor() {
               <div className="eyebrow text-charcoal/65 mb-4">Muzeum — bilety i godziny 2026</div>
               <FactTable rows={muzeum} />
               <p className="mt-5 text-charcoal/70 text-[14px] leading-relaxed">
-                Muzeum czynne przez cały rok, siedem dni w tygodniu. Ceny i godziny według oficjalnych danych na 2026 rok — prosimy potwierdzić przed wizytą.
+                Muzeum czynne przez cały rok, siedem dni w tygodniu. Ceny i godziny według oficjalnych danych na 2026 rok — prosimy potwierdzić przed wizytą na{' '}
+                <a href="https://muzeumcervenyklastor.sk/" target="_blank" rel="noopener noreferrer" className="text-gold-3 underline underline-offset-2 hover:text-forest">stronie muzeum Červený Kláštor</a>.
               </p>
             </div>
           </div>
