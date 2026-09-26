@@ -120,16 +120,16 @@ const CATEGORIES = [
       // BLOK A
       tile(foto(AP1, 0), SPAN_2x2), // AP1: salon z rozkładaną sofą i aneksem
       tile(foto(AP1, 1), SPAN_2),   // AP1: sypialnia z wyjściem na taras
-      tile(foto(AP1, 5), SPAN_2),   // AP1: jadalnia i strefa telewizyjna
+      tile(foto(AP1, 5), SPAN_2),   // AP1: salon od strony okna
       // BLOK A — oba kwadraty to zdjęcia pionowe
       tile(foto(AP3, 0), SPAN_2x2), // AP3: część sypialna przy ściance z bali
-      tile(foto(AP2, 2)),           // AP2: sypialnia z szafą z lustrem
-      tile(foto(AP3, 5)),           // AP3: stół dla sześciu osób i aneks
+      tile(foto(AP2, 2)),           // AP2: łazienka
+      tile(foto(AP3, 2)),           // AP3: marmurowa łazienka (pion — kafelek kwadratowy)
       tile(foto(AP2, 0), SPAN_2),   // AP2: salon z żółtą sofą
       // BLOK C
       tile(foto(AP2, 1), SPAN_2),   // AP2: sypialnia z wyjściem na balkon
-      tile(foto(AP3, 3)),           // AP3: sypialnia przy ścianie z mchem
-      tile(foto(AP3, 4)),           // AP3: jadalnia pod skosami
+      tile(foto(AP3, 5)),           // AP3: łóżko pod skosami, przy oknie
+      tile(foto(AP3, 3)),           // AP3: jadalnia pod skosami
     ],
   },
   {

@@ -80,6 +80,11 @@ import ap1SalonAneks from '../assets/ap1-salon-aneks.webp'
 import ap1SalonOkno from '../assets/ap1-salon-okno.webp'
 import ap1SalonJadalniaTv from '../assets/ap1-salon-jadalnia-tv.webp'
 import ap1SypialniaTaras from '../assets/ap1-sypialnia-taras.webp'
+// Łazienki: nowa sesja ich nie obejmowała, a właściciel chciał je z wcześniejszych
+// zdjęć (26.09.2026). Te same pliki leżą na Dysku w kilku folderach naraz, więc
+// apartament rozstrzyga godzina wykonania: IMG_8296 zrobiono o 12:07, zaraz po
+// salonie AP1, a IMG_8307–8308 o 12:14–12:15, w środku sesji AP2.
+import ap1LazienkaPrysznic from '../assets/ap1-lazienka-prysznic.webp'
 
 // Apartament 2 (35 m², osobna sypialnia + salon z aneksem) — sofa ŻÓŁTA, sypialnia na piętrze
 import ap2SalonZoltaSofa from '../assets/ap2-salon-zolta-sofa.webp'
@@ -87,6 +92,7 @@ import ap2SalonAneks from '../assets/ap2-salon-aneks.webp'
 import ap2SalonBiurko from '../assets/ap2-salon-biurko.webp'
 import ap2SypialniaBalkon from '../assets/ap2-sypialnia-balkon.webp'
 import ap2SypialniaSzafa from '../assets/ap2-sypialnia-szafa.webp'
+import ap2LazienkaUmywalka from '../assets/ap2-lazienka-umywalka.webp'
 
 // Apartament 3 (60 m², jedno duże pomieszczenie, wolnostojący)
 import ap3BaleLozko from '../assets/ap3-bale-lozko.webp'
@@ -95,6 +101,7 @@ import ap3LozkoZaslony from '../assets/ap3-lozko-zaslony.webp'
 import ap3LozkoMech from '../assets/ap3-lozko-mech.webp'
 import ap3JadalniaSkosy from '../assets/ap3-jadalnia-skosy.webp'
 import ap3StolAneks from '../assets/ap3-stol-aneks.webp'
+import ap3LazienkaMarmurLustro from '../assets/ap3-lazienka-marmur-lustro.webp'
 
 // Pokoje 1–8 (21 m², 4 na piętrze z balkonem, 4 na parterze z tarasem)
 import pokojPietroBalkon from '../assets/pokoj-pietro-balkon.webp'
@@ -255,10 +262,11 @@ export const APARTMENTS = [
     photos: [
       { src: ap1SalonZielonaSofa, label: 'Salon z dużą rozkładaną sofą, ławą i aneksem kuchennym — Apartament 1', span: 'col-span-2 row-span-2' },
       { src: ap1SypialniaTaras, label: 'Osobna sypialnia z wyjściem na taras — Apartament 1' },
-      { src: ap1SalonOkno, label: 'Salon od strony okna, z fotelem i jadalnią — Apartament 1' },
+      { src: ap1LazienkaPrysznic, label: 'Łazienka z kabiną prysznicową i umywalką na drewnianym blacie — Apartament 1' },
       { src: ap1SalonTvStol, label: 'Salon z telewizorem i stołem jadalnym — Apartament 1', span: 'col-span-2' },
       { src: ap1SalonAneks, label: 'Aneks kuchenny w salonie, w pełni wyposażony — Apartament 1', span: 'col-span-2' },
-      { src: ap1SalonJadalniaTv, label: 'Jadalnia i strefa telewizyjna w salonie — Apartament 1', span: 'col-span-2' },
+      { src: ap1SalonOkno, label: 'Salon od strony okna, z fotelem i jadalnią — Apartament 1' },
+      { src: ap1SalonJadalniaTv, label: 'Jadalnia i strefa telewizyjna w salonie — Apartament 1' },
     ],
   },
   {
@@ -278,9 +286,10 @@ export const APARTMENTS = [
     photos: [
       { src: ap2SalonZoltaSofa, label: 'Salon z żółtą rozkładaną sofą, ławą i jadalnią — Apartament 2', span: 'col-span-2 row-span-2' },
       { src: ap2SypialniaBalkon, label: 'Osobna sypialnia z wyjściem na balkon — Apartament 2' },
-      { src: ap2SypialniaSzafa, label: 'Sypialnia z szafą z lustrem i przejściem do salonu — Apartament 2' },
-      { src: ap2SalonAneks, label: 'Aneks kuchenny w salonie, w pełni wyposażony — Apartament 2' },
-      { src: ap2SalonBiurko, label: 'Salon z miejscem do pracy i strefą wypoczynkową — Apartament 2' },
+      { src: ap2LazienkaUmywalka, label: 'Łazienka z umywalką na drewnianym blacie i kabiną prysznicową — Apartament 2' },
+      { src: ap2SalonAneks, label: 'Aneks kuchenny w salonie, w pełni wyposażony — Apartament 2', span: 'col-span-2' },
+      { src: ap2SypialniaSzafa, label: 'Sypialnia z szafą z lustrem i przejściem do salonu — Apartament 2', span: 'col-span-2' },
+      { src: ap2SalonBiurko, label: 'Salon z miejscem do pracy i strefą wypoczynkową — Apartament 2', span: 'col-span-2' },
     ],
   },
   {
@@ -298,14 +307,17 @@ export const APARTMENTS = [
       'Łazienka z ręcznikami i suszarką do włosów',
     ],
     cover: ap3BaleLozko,
-    // BLOK A + BLOK B. Przedpokój to jedyny kadr pionowy — stąd kafelek kwadratowy.
+    // BLOK A + BLOK C. Piony (przedpokój, łazienka) w kafelkach kwadratowych.
+    // Łazienka jedna — dwa ujęcia marmurowej łazienki w kwadratach wyglądały
+    // prawie identycznie, a właściciele właśnie prosili o usuwanie powtórzeń.
     photos: [
       { src: ap3BaleLozko, label: 'Część sypialna przy ściance z bali i strefa wypoczynkowa — Apartament 3', span: 'col-span-2 row-span-2' },
       { src: ap3PrzedpokojWejscie, label: 'Wejście i przedpokój — Apartament 3' },
-      { src: ap3LozkoZaslony, label: 'Łóżko małżeńskie pod skosami, przy oknie — Apartament 3' },
-      { src: ap3LozkoMech, label: 'Sypialnia przy ścianie z mchem i bali brzozowych — Apartament 3', span: 'col-span-2' },
+      { src: ap3LazienkaMarmurLustro, label: 'Marmurowa łazienka z okrągłym lustrem i kabiną prysznicową — Apartament 3' },
       { src: ap3JadalniaSkosy, label: 'Jadalnia i aneks kuchenny pod skosami — Apartament 3', span: 'col-span-2' },
-      { src: ap3StolAneks, label: 'Stół dla sześciu osób i w pełni wyposażony aneks — Apartament 3', span: 'col-span-2' },
+      { src: ap3LozkoMech, label: 'Sypialnia przy ścianie z mchem i bali brzozowych — Apartament 3', span: 'col-span-2' },
+      { src: ap3LozkoZaslony, label: 'Łóżko małżeńskie pod skosami, przy oknie — Apartament 3' },
+      { src: ap3StolAneks, label: 'Stół dla sześciu osób i w pełni wyposażony aneks — Apartament 3' },
     ],
   },
 ]
