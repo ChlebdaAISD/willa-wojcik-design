@@ -281,7 +281,9 @@ export const APARTMENTS = [
       'Balkon z widokiem na Trzy Korony, wyjście z salonu',
       'Własna łazienka z ręcznikami i suszarką do włosów',
     ],
-    cover: ap2SalonZoltaSofa,
+    // Okładka karty na stronie głównej: salon z kuchnią i zapalonymi ledami pod szafkami —
+    // wybór właścicielki 28.09.2026 (wcześniej ap2SalonZoltaSofa).
+    cover: ap2SalonAneks,
     photos: [
       { src: ap2SalonZoltaSofa, label: 'Salon z żółtą rozkładaną sofą, ławą i jadalnią — Apartament 2', span: 'col-span-2 row-span-2' },
       { src: ap2SypialniaBalkon, label: 'Osobna sypialnia z wyjściem na balkon — Apartament 2' },
