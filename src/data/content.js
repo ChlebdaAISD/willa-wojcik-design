@@ -305,7 +305,9 @@ export const APARTMENTS = [
       'Balkon z widokiem na Trzy Korony',
       'Łazienka z ręcznikami i suszarką do włosów',
     ],
-    cover: ap3BaleLozko,
+    // Okładka karty na stronie głównej: jadalnia z aneksem pod skosami — wybór właścicielki
+    // 28.09.2026 (wcześniej ap3BaleLozko, które zostało pierwszym zdjęciem galerii apartamentu).
+    cover: ap3JadalniaSkosy,
     // BLOK A + BLOK C. Piony (przedpokój, łazienka) w kafelkach kwadratowych.
     // Łazienka jedna — dwa ujęcia marmurowej łazienki w kwadratach wyglądały
     // prawie identycznie, a właściciele właśnie prosili o usuwanie powtórzeń.

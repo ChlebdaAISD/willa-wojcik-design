@@ -1,0 +1,78 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Porównanie kolorów</title><style>
+body{margin:0;background:#1c1c1c;color:#f5f1e8;font:15px/1.5 -apple-system,system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 60px} h1{font-size:22px;margin:0 0 4px} p{color:#cfc8b8;margin:0 0 20px}
+h2{font-size:16px;font-weight:600;margin:28px 0 8px}
+.cmp{position:relative;overflow:hidden;border-radius:4px;user-select:none}
+.cmp img{display:block;width:100%;height:auto}
+.before{position:absolute;inset:0;width:var(--pos);overflow:hidden;border-right:2px solid #fff}
+.before img{width:calc(100% * 100 / var(--p,50));max-width:none}
+.lab{position:absolute;top:10px;background:rgba(0,0,0,.55);padding:3px 9px;border-radius:3px;font-size:12px;letter-spacing:.08em}
+.l{left:10px} .r{right:10px}
+input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+</style></head><body><main>
+<h1>Korekta kolorów zdjęć — przed i po</h1>
+<p>Przesuń suwak po zdjęciu. Lewa strona to wersja sprzed korekty, prawa — obecna na stronie.</p>
+
+<section><h2>Pokój z lampą (okładka pokoi)</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/pokoj-lozko-fotele.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/pokoj-lozko-fotele.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Apartament 3: bale i mech (sekcja 01)</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/ap3-lozko-mech.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/ap3-lozko-mech.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Apartament 3: jadalnia (karta na głównej)</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/ap3-jadalnia-skosy.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/ap3-jadalnia-skosy.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Apartament 1: salon</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/ap1-salon-zielona-sofa.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/ap1-salon-zielona-sofa.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Apartament 2: salon</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/ap2-salon-zolta-sofa.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/ap2-salon-zolta-sofa.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Wspólna kuchnia</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/wspolne-kuchnia.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/wspolne-kuchnia.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Willa pod Trzema Koronami</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/obiekt-trzy-korony.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/obiekt-trzy-korony.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+<section><h2>Pokój z lustrem</h2>
+<div class="cmp" style="--pos:50%">
+  <img src="../../src/assets/pokoj-lozko-lustro.webp" alt="po">
+  <div class="before"><img src="../zdjecia-przed-korekta-kolorow-2026-09-28/pokoj-lozko-lustro.webp" alt="przed"></div>
+  <span class="lab l">PRZED</span><span class="lab r">PO</span>
+  <input type="range" min="0" max="100" value="50" aria-label="Suwak przed/po">
+</div></section>
+</main><script>
+document.querySelectorAll('.cmp').forEach(c=>{const r=c.querySelector('input'),b=c.querySelector('.before img');
+const set=v=>{c.style.setProperty('--pos',v+'%');b.style.width=(c.clientWidth)+'px'};
+r.addEventListener('input',()=>set(r.value));window.addEventListener('resize',()=>set(r.value));
+c.querySelector('img').addEventListener('load',()=>set(r.value));set(50)});
+</script></body></html>

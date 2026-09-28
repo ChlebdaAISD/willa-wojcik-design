@@ -23,7 +23,9 @@ const GALLERY_PHOTOS = [
   { src: PHOTOS.obiektTrzyKorony, label: 'Willa Wójcik pod masywem Trzech Koron', span: 'col-span-2 row-span-2' },
   { src: PHOTOS.ogrodAltana, label: 'Altana z grillem w ogrodzie' },
   { src: PHOTOS.obiektOdOgrodu, label: 'Willa od strony ogrodu' },
-  { src: AP3.cover, label: 'Apartament 3, 60 m² w jednym pomieszczeniu', span: 'col-span-2' },
+  // Pierwsze zdjęcie galerii Apartamentu 3 (bale i łóżko), nie okładka karty — żeby na
+  // stronie głównej nie powtarzało się zdjęcie z karty „Apartament 3”.
+  { src: AP3.photos[0].src, label: 'Apartament 3, 60 m² w jednym pomieszczeniu', span: 'col-span-2' },
 ]
 
 export function Gallery() {

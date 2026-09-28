@@ -1,8 +1,17 @@
-import { Link } from 'wouter'
+import { Link, useLocation } from 'wouter'
 import { Container } from './ui/Container.jsx'
 import { IconInstagram } from './Icons.jsx'
 import { SITE } from '../data/site.js'
 import logoLockup from '../assets/logo-lockup.webp'
+
+// Klik w link do trasy, na której już jesteśmy, nie zmienia adresu, więc
+// ScrollToTop w App.jsx się nie uruchamia — przewijamy ręcznie (jak w Nav).
+// `replace`, żeby taki klik nie dokładał duplikatu w historii przeglądarki.
+function FooterLink({ href, ...props }) {
+  const [location] = useLocation()
+  const onClick = () => { if (location === href) window.scrollTo({ top: 0, behavior: 'smooth' }) }
+  return <Link {...props} href={href} onClick={onClick} replace={location === href} />
+}
 
 export function Footer() {
   return (
@@ -20,19 +29,19 @@ export function Footer() {
           <div>
             <div className="eyebrow text-cream/70 mb-5">Nocleg</div>
             <ul className="space-y-3 text-[14px]">
-              <li><Link href="/apartamenty" className="hover:text-cream transition-colors">Apartamenty</Link></li>
-              <li><Link href="/pokoje" className="hover:text-cream transition-colors">Pokoje</Link></li>
-              <li><Link href="/galeria" className="hover:text-cream transition-colors">Galeria</Link></li>
-              <li><Link href="/kontakt" className="hover:text-cream transition-colors">Rezerwacja</Link></li>
+              <li><FooterLink href="/apartamenty" className="hover:text-cream transition-colors">Apartamenty</FooterLink></li>
+              <li><FooterLink href="/pokoje" className="hover:text-cream transition-colors">Pokoje</FooterLink></li>
+              <li><FooterLink href="/galeria" className="hover:text-cream transition-colors">Galeria</FooterLink></li>
+              <li><FooterLink href="/kontakt" className="hover:text-cream transition-colors">Rezerwacja</FooterLink></li>
             </ul>
           </div>
           <div>
             <div className="eyebrow text-cream/70 mb-5">Okolica</div>
             <ul className="space-y-3 text-[14px]">
-              <li><Link href="/okolica/splyw-dunajcem" className="hover:text-cream transition-colors">Spływ Dunajcem</Link></li>
-              <li><Link href="/okolica/trzy-korony" className="hover:text-cream transition-colors">Trzy Korony</Link></li>
-              <li><Link href="/okolica/kladka-czerwony-klasztor" className="hover:text-cream transition-colors">Czerwony Klasztor</Link></li>
-              <li><Link href="/okolica" className="hover:text-cream transition-colors">Wszystkie atrakcje</Link></li>
+              <li><FooterLink href="/okolica/splyw-dunajcem" className="hover:text-cream transition-colors">Spływ Dunajcem</FooterLink></li>
+              <li><FooterLink href="/okolica/trzy-korony" className="hover:text-cream transition-colors">Trzy Korony</FooterLink></li>
+              <li><FooterLink href="/okolica/kladka-czerwony-klasztor" className="hover:text-cream transition-colors">Czerwony Klasztor</FooterLink></li>
+              <li><FooterLink href="/okolica" className="hover:text-cream transition-colors">Wszystkie atrakcje</FooterLink></li>
             </ul>
           </div>
           <div>
@@ -63,8 +72,8 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/polityka-prywatnosci" className="hover:text-cream/80 transition-colors">Polityka prywatności</Link>
-            <Link href="/regulamin" className="hover:text-cream/80 transition-colors">Regulamin</Link>
+            <FooterLink href="/polityka-prywatnosci" className="hover:text-cream/80 transition-colors">Polityka prywatności</FooterLink>
+            <FooterLink href="/regulamin" className="hover:text-cream/80 transition-colors">Regulamin</FooterLink>
             <a href={SITE.mapsLink} target="_blank" rel="noopener noreferrer" className="hover:text-cream/80 transition-colors">Mapa dojazdu</a>
           </div>
         </div>

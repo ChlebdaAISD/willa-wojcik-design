@@ -63,7 +63,9 @@ export function About() {
 
         <div className="lg:col-span-7 lg:col-start-6">
           <div className="relative reveal-lg">
-            <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '1/1' }}>
+            {/* Adres jest dolną częścią karty, pod zdjęciem — nie zasłania kadru
+                (prośba właścicielki 28.09.2026; wcześniej leżał na zdjęciu). */}
+            <div className="relative overflow-hidden rounded-t-sm" style={{ aspectRatio: '1/1' }}>
               <img
                 ref={imgRef}
                 {...obraz(AP3_ZDJECIE, '(min-width: 1024px) 800px, 100vw')}
@@ -72,14 +74,13 @@ export function About() {
                 style={{ objectPosition: '45% center' }}
                 className="absolute inset-[-8%] w-[116%] h-[116%] max-w-none object-cover will-change-transform"
               />
-              <div className="absolute inset-0" style={{
-                background: 'linear-gradient(180deg, transparent 55%, rgba(28,28,28,0.32) 100%)'
-              }} />
             </div>
-            <div className="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-xs bg-cream/95 backdrop-blur-sm p-5 rounded-sm">
-              <div className="eyebrow text-charcoal/65 mb-1">{SITE.street}</div>
-              <div className="font-serif text-charcoal text-lg leading-tight">{SITE.city}, {SITE.postal}</div>
-              <div className="text-charcoal/70 text-sm mt-1">{SITE.region}</div>
+            <div className="bg-cream-2 rounded-b-sm px-6 py-5 md:px-7 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-x-6 gap-y-1">
+              <div>
+                <div className="eyebrow text-charcoal/70 mb-1">{SITE.street}</div>
+                <div className="font-serif text-charcoal text-lg leading-tight">{SITE.city}, {SITE.postal}</div>
+              </div>
+              <div className="text-charcoal/70 text-sm">{SITE.region}</div>
             </div>
             <div className="absolute -top-6 -right-6 md:-right-10 w-28 h-28 rounded-full bg-forest text-cream flex items-center justify-center rotate-[-8deg] shadow-[0_24px_50px_-24px_rgba(31,58,46,0.7)]">
               <div className="text-center">

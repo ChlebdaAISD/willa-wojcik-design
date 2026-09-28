@@ -52,7 +52,16 @@ treści podstrony warto przestawić `DEFAULT_UPDATED` w `src/entry-server.jsx` �
 
 ## Dodawanie zdjęć
 
-1. Zdjęcie w formacie WebP, dłuższy bok do 2400 px, do `src/assets/`.
+1. Zdjęcie w formacie WebP, dłuższy bok do 2400 px, do `src/assets/`. **Kolory muszą być w sRGB.**
+   Zdjęcia z iPhone'a (HEIC) są zapisane w Display P3 — przy konwersji trzeba je przeliczyć,
+   inaczej na stronie wyjdą blade i chłodne:
+
+   ```bash
+   sips -s format jpeg -s formatOptions 95 --matchTo "/System/Library/ColorSync/Profiles/sRGB Profile.icc" IMG_1234.heic --out zdjecie.jpg
+   cwebp -q 86 -m 6 zdjecie.jpg -o src/assets/nazwa-zdjecia.webp
+   ```
+
+   Zdjęcia wysłane przez WhatsApp są już w sRGB — tych nie przeliczać.
 2. Import i wpis w `src/data/content.js` (albo w `src/pages/Galeria.jsx`).
 3. Wygenerować miniatury (wymaga Pythona 3 i `pip install Pillow`):
 

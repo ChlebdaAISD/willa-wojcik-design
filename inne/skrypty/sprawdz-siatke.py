@@ -129,8 +129,8 @@ def main():
     for linia in (l.strip() for l in blok.split("\n")):
         if m := re.match(r"\{ src: PHOTOS\.(\w+)", linia):
             pary.append((m.group(1), linia))
-        elif m := re.match(r"\{ src: AP3\.cover", linia):
-            pary.append((grupy["apartament-3"][0][0], linia))   # cover = pierwsze zdjęcie AP3
+        elif m := re.match(r"\{ src: AP3\.(cover|photos\[0\]\.src)", linia):
+            pary.append((grupy["apartament-3"][0][0], linia))   # pierwsze zdjęcie AP3 (od 28.09.2026 zapis photos[0])
     sprawdz("home", pary)
 
     print("\nPODSTRONY JEDNOSTEK")
