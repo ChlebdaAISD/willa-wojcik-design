@@ -59,6 +59,7 @@ export function Apartments() {
               <div className="relative overflow-hidden" style={{ aspectRatio: '4/3' }}>
                 <img {...obraz(u.cover, '(min-width: 1280px) 330px, (min-width: 640px) 50vw, 100vw')}
                      alt={coverAlt(u)} loading="lazy" decoding="async"
+                     style={u.coverPosition ? { objectPosition: u.coverPosition } : undefined}
                      className="absolute inset-0 w-full h-full object-cover zoom-img" />
               </div>
               <div className="p-7 md:p-8 flex flex-col flex-1">

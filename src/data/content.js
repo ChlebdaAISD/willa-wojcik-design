@@ -338,13 +338,17 @@ export const ROOMS = {
     'Cztery pokoje na piętrze z balkonem, cztery na parterze z tarasem',
     'Dostęp do wspólnej kuchni o powierzchni 45 m²',
   ],
-  cover: pokojPietroBalkon,
+  // Okładka wybrana przez Pana Wójcika 28.09.2026 (wcześniejsza, pokój z balkonem na piętrze,
+  // uznana za starą). Zdjęcie jest pionowe, a karta na stronie głównej ma 4:3 — wycinek
+  // na 40% wysokości pokazuje lampę, obrazki, łóżko i stolik.
+  cover: pokojLozkoFotele,
+  coverPosition: 'center 40%',
   // 9 kadrów: BLOK A (2×2 + cztery kwadraty) + BLOK D (rząd kwadratów).
   // Bez kafelków szerokich — pięć z tych zdjęć jest pionowych, a szeroki kafelek
   // obciąłby im boki. Cztery powtarzające się ujęcia zdjęte 25.09.2026 na prośbę
   // właścicielki (pozycje 2, 3, 7 i 8 w dotychczasowej siatce).
   photos: [
-    { src: pokojPietroBalkon, label: 'Pokój na piętrze z łóżkiem małżeńskim, biurkiem i wyjściem na balkon', span: 'col-span-2 row-span-2' },
+    { src: pokojLozkoFotele, label: 'Pokój na parterze z łóżkiem małżeńskim, sofą i wyjściem na taras', span: 'col-span-2 row-span-2' },
     { src: lazienkaPrysznic, label: 'Łazienka w pokoju — kabina prysznicowa, umywalka i suszarka' },
     { src: pokojJasneDrewno, label: 'Pokój z jasną podłogą, biurkiem i wyjściem na balkon' },
     { src: pokojLozkoBiurko, label: 'Przestronny pokój z łóżkiem małżeńskim i miejscem do pracy' },
@@ -352,7 +356,7 @@ export const ROOMS = {
     { src: pokojSofaBiurko, label: 'Pokój z rozkładaną sofą, biurkiem i wyjściem na balkon' },
     { src: pokojLozkoLazienka, label: 'Pokój z łóżkiem małżeńskim i wejściem do własnej łazienki' },
     { src: pokojLozkoBiurkoBalkon, label: 'Pokój z biurkiem, czajnikiem i wyjściem na balkon' },
-    { src: pokojLozkoFotele, label: 'Pokój z łóżkiem, fotelami i wyjściem na balkon' },
+    { src: pokojPietroBalkon, label: 'Pokój na piętrze z łóżkiem małżeńskim, biurkiem i wyjściem na balkon' },
   ],
 }
 

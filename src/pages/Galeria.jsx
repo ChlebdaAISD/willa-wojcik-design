@@ -139,7 +139,7 @@ const CATEGORIES = [
     // BLOK A + dwa rzędy kwadratów. Większość kadrów pokoi jest pionowa, więc
     // poza jednym panoramicznym ujęciem tarasów nie używamy tu kafelków szerokich.
     photos: [
-      tile(foto(ROOMS, 0), SPAN_2x2), // pokój na piętrze z balkonem
+      tile(foto(ROOMS, 0), SPAN_2x2), // pokój na parterze z sofą (pion w kafelku 2×2)
       tile(foto(ROOMS, 1)),           // łazienka z kabiną prysznicową
       tile(foto(ROOMS, 2)),           // pokój z jasną podłogą
       { src: PHOTOS.pokojeParterTarasy, label: 'Tarasy pokoi na parterze z wyjściem wprost do ogrodu', span: SPAN_2 },
@@ -148,7 +148,7 @@ const CATEGORIES = [
       tile(foto(ROOMS, 5)),           // pokój z rozkładaną sofą
       tile(foto(ROOMS, 6)),           // pokój z wejściem do łazienki
       tile(foto(ROOMS, 7)),           // pokój z biurkiem i wyjściem na balkon
-      tile(foto(ROOMS, 8)),           // pokój z fotelami
+      tile(foto(ROOMS, 8)),           // pokój na piętrze z balkonem
       { src: PHOTOS.lazienkaUmywalka, label: 'Łazienka w pokoju: umywalka, lustro i świeże ręczniki' },
       { src: PHOTOS.lazienkaDrewno, label: 'Łazienka wykończona drewnem, prysznic i suszarka do włosów' },
     ],
