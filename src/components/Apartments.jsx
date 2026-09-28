@@ -5,7 +5,7 @@ import { SITE } from '../data/site.js'
 
 // Metraże, pojemność i ceny mają jedno źródło: src/data/content.js (dane od
 // właścicielki z 14.09.2026). W tym pliku nie powtarzamy żadnej z tych liczb.
-// Pokoje 1–8 idą jako jedna karta — wszystkie mają identyczne wyposażenie,
+// Pokoje idą jako jedna karta — wszystkie mają identyczne wyposażenie,
 // różni je tylko balkon (piętro) albo taras (parter).
 const UNITS = [
   ...APARTMENTS.map((apt) => ({ ...apt, href: '/apartamenty' })),
@@ -40,15 +40,15 @@ export function Apartments() {
               Apartamenty <span className="italic font-normal">i pokoje</span>.
             </h2>
             <p className="mt-6 text-charcoal/70 text-[17px] leading-[1.8] text-pretty max-w-lg">
-              Do wyboru są trzy apartamenty z własnym aneksem kuchennym i osiem pokoi dla dwóch
+              Do wyboru są trzy apartamenty z własnym aneksem kuchennym i pokoje dla dwóch
               albo trzech osób. Każda jednostka ma balkon albo taras i własną łazienkę. Śniadania
               przygotowują Państwo we własnym zakresie — w aneksie albo we wspólnej kuchni
               o powierzchni 45 m².
             </p>
           </div>
-          {/* 8 = pokoje 1–8 z ROOMS; liczba apartamentów wprost z danych */}
+          {/* Liczba apartamentów wprost z danych; liczby pokoi nie podajemy (prośba właścicielki 28.09.2026) */}
           <div className="reveal eyebrow text-charcoal/65 hidden md:block" style={{ '--d': '.15s' }}>
-            {APARTMENTS.length} apartamenty, 8 pokoi
+            {APARTMENTS.length} apartamenty i pokoje
           </div>
         </div>
 

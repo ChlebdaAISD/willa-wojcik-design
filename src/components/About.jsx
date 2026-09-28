@@ -46,8 +46,8 @@ export function About() {
           <div className="space-y-5 text-charcoal/75 text-[17px] leading-[1.8] text-pretty">
             <p>
               Willa Wójcik stoi w Sromowcach Niżnych, u podnóża Trzech Koron, i prowadzimy ją
-              osobiście. Osiem pokoi po 21 m² dzieli się na cztery z balkonem na piętrze i cztery
-              z tarasem na parterze. Do tego dochodzą dwa apartamenty w budynku głównym, 35 i 38 m²,
+              osobiście. Pokoje mają po 21 m² — te na piętrze z balkonem, te na parterze
+              z tarasem. Do tego dochodzą dwa apartamenty w budynku głównym, 35 i 38 m²,
               oraz wolnostojący apartament 60 m² dla sześciu osób. Tuż za drzwiami zaczyna się ogród
               z altaną, trampoliną i placem zabaw.
             </p>

@@ -51,7 +51,7 @@ const CATEGORIES = [
   {
     id: 'obiekt',
     label: 'Obiekt',
-    desc: 'Willę pokazujemy w czterech ujęciach z drona i dziesięciu z poziomu ziemi: podjazd, front od drogi i od strony kwiatów, taras z wejściem na piętro oraz elewacja od ogrodu. Osiem pokoi i dwa apartamenty mieszczą się w głównym budynku, trzeci apartament stoi osobno. Dwa kadry pokazują drugi z budynków obiektu.',
+    desc: 'Willę pokazujemy w czterech ujęciach z drona i dziesięciu z poziomu ziemi: podjazd, front od drogi i od strony kwiatów, taras z wejściem na piętro oraz elewacja od ogrodu. Pokoje i dwa apartamenty mieszczą się w głównym budynku, trzeci apartament stoi osobno. Dwa kadry pokazują drugi z budynków obiektu.',
     photos: [
       // BLOK A
       { src: PHOTOS.obiektDroneZmierzch, label: 'Willa Wójcik o zmierzchu, ujęcie z drona nad Sromowcami Niżnymi', span: SPAN_2x2 },
@@ -135,7 +135,7 @@ const CATEGORIES = [
   {
     id: 'pokoje',
     label: 'Pokoje',
-    desc: 'Każdy z ośmiu pokoi ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną i własną łazienkę. Cztery pokoje na piętrze mają balkon, cztery na parterze — taras. Doba kosztuje 250 zł dla dwóch osób i 280 zł dla trzech.',
+    desc: 'Każdy pokój ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną i własną łazienkę. Pokoje na piętrze mają balkon, na parterze — taras. Doba kosztuje 250 zł dla dwóch osób i 280 zł dla trzech.',
     // BLOK A + dwa rzędy kwadratów. Większość kadrów pokoi jest pionowa, więc
     // poza jednym panoramicznym ujęciem tarasów nie używamy tu kafelków szerokich.
     photos: [

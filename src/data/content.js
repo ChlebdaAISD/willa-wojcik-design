@@ -102,7 +102,7 @@ import ap3JadalniaSkosy from '../assets/ap3-jadalnia-skosy.webp'
 import ap3StolAneks from '../assets/ap3-stol-aneks.webp'
 import ap3LazienkaMarmurLustro from '../assets/ap3-lazienka-marmur-lustro.webp'
 
-// Pokoje 1–8 (21 m², 4 na piętrze z balkonem, 4 na parterze z tarasem)
+// Pokoje (21 m², na piętrze z balkonem, na parterze z tarasem)
 import pokojPietroBalkon from '../assets/pokoj-pietro-balkon.webp'
 import pokojPietroWidok from '../assets/pokoj-pietro-widok.webp'
 import pokojLozkoLazienka from '../assets/pokoj-lozko-lazienka.webp'
@@ -325,21 +325,21 @@ export const APARTMENTS = [
   },
 ]
 
-// Pokoje 1–8. Wyposażenie identyczne w każdym; różni je tylko balkon (piętro)
+// Pokoje — liczby pokoi nie podajemy na stronie (prośba właścicielki 28.09.2026). Wyposażenie identyczne w każdym; różni je tylko balkon (piętro)
 // albo taras (parter). Dane od właścicielki 14.09.2026.
 export const ROOMS = {
   id: 'pokoje',
-  name: 'Pokoje 1–8',
+  name: 'Pokoje',
   meta: '21 m², 2–3 osoby',
   price: '250 zł za dobę',
   priceNote: '250 zł dla dwóch osób, 280 zł dla trzech',
   intro:
-    'Osiem pokoi o tym samym wyposażeniu: łóżko małżeńskie 160 × 200, mała sofa rozkładana i własna łazienka. Cztery pokoje na piętrze mają balkon, cztery na parterze — taras wychodzący na ogród.',
+    'Pokoje o tym samym wyposażeniu: łóżko małżeńskie 160 × 200, mała sofa rozkładana i własna łazienka. Pokoje na piętrze mają balkon, na parterze — taras wychodzący na ogród.',
   features: [
     'Łóżko małżeńskie 160 × 200 i mała sofa rozkładana',
     'Mini lodówka, czajnik elektryczny i telewizor',
     'Własna łazienka z ręcznikami i suszarką do włosów',
-    'Cztery pokoje na piętrze z balkonem, cztery na parterze z tarasem',
+    'Pokoje na piętrze z balkonem, na parterze z tarasem',
     'Dostęp do wspólnej kuchni o powierzchni 45 m²',
   ],
   // Okładka wybrana przez Pana Wójcika 28.09.2026 (wcześniejsza, pokój z balkonem na piętrze,

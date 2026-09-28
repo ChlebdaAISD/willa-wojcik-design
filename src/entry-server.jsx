@@ -13,7 +13,7 @@ const lodgingSchema = {
   '@type': 'LodgingBusiness',
   '@id': `${DOMAIN}/#lodging`,
   name: 'Willa Wójcik — Apartamenty i Pokoje',
-  description: 'Kameralny pensjonat w Sromowcach Niżnych, u podnóża Trzech Koron. Trzy apartamenty 35–60 m² dla 4–6 osób i osiem pokoi 21 m² dla 2–3 osób, z balkonem lub tarasem i widokiem na Pieniny.',
+  description: 'Kameralny pensjonat w Sromowcach Niżnych, u podnóża Trzech Koron. Trzy apartamenty 35–60 m² dla 4–6 osób oraz pokoje 21 m² dla 2–3 osób, z balkonem lub tarasem i widokiem na Pieniny.',
   url: DOMAIN,
   telephone: '+48537446036',
   email: 'willawojcik1@gmail.com',
@@ -25,7 +25,6 @@ const lodgingSchema = {
     `${DOMAIN}/zdjecia/taras-trzy-korony.jpg`,
   ],
   priceRange: '250–500 zł',
-  numberOfRooms: 11,
   petsAllowed: false,
   smokingAllowed: false,
   checkinTime: '14:00',
@@ -93,8 +92,8 @@ const apartmentsSchema = {
 }
 const roomsSchema = {
   '@context': 'https://schema.org',
-  ...unit({ id: 'pokoj', type: 'HotelRoom', name: 'Pokój dwu- lub trzyosobowy (pokoje 1–8)', page: '/pokoje',
-    description: 'Pokój 21 m² z łóżkiem małżeńskim 160 × 200, małą sofą rozkładaną i własną łazienką; cztery pokoje z balkonem, cztery z tarasem.',
+  ...unit({ id: 'pokoj', type: 'HotelRoom', name: 'Pokój dwu- lub trzyosobowy', page: '/pokoje',
+    description: 'Pokój 21 m² z łóżkiem małżeńskim 160 × 200, małą sofą rozkładaną i własną łazienką; pokoje na piętrze mają balkon, na parterze taras.',
     m2: 21, maxGuests: 3, rooms: 1, price: 250 }),
   bed: { '@type': 'BedDetails', typeOfBed: 'łóżko małżeńskie 160 × 200', numberOfBeds: 1 },
 }
@@ -108,7 +107,7 @@ const og = (name) => `${DOMAIN}/og/${name}.jpg`
 const routesMeta = {
   '/': {
     title: 'Noclegi Sromowce Niżne — apartamenty i pokoje | Willa Wójcik',
-    description: 'Noclegi w Sromowcach Niżnych u podnóża Trzech Koron: trzy apartamenty i osiem pokoi. Pokoje od 250 zł, apartamenty od 450 zł. Ocena 4,9 w Google.',
+    description: 'Noclegi w Sromowcach Niżnych u podnóża Trzech Koron: apartamenty i pokoje z własnymi łazienkami. Pokoje od 250 zł, apartamenty od 450 zł. Ocena 4,9 w Google.',
     canonical: `${DOMAIN}/`,
     ogImage: og('strona-glowna'),
     breadcrumb: [],
@@ -125,7 +124,7 @@ const routesMeta = {
   },
   '/pokoje': {
     title: 'Pokoje Sromowce Niżne, 21 m² od 250 zł — Willa Wójcik',
-    description: 'Osiem pokoi 21 m² w Sromowcach Niżnych: łóżko 160 × 200, własna łazienka, balkon albo taras. 250 zł za dobę dla dwóch osób, 280 zł dla trzech.',
+    description: 'Pokoje 21 m² w Sromowcach Niżnych: łóżko 160 × 200, własna łazienka, balkon albo taras. 250 zł za dobę dla dwóch osób, 280 zł dla trzech.',
     canonical: `${DOMAIN}/pokoje`,
     ogImage: og('pokoje'),
     breadcrumb: [crumbHome, { name: 'Pokoje', url: `${DOMAIN}/pokoje` }],
@@ -133,7 +132,7 @@ const routesMeta = {
   },
   '/galeria': {
     title: 'Galeria zdjęć — Willa Wójcik, Sromowce Niżne, Pieniny',
-    description: 'Zdjęcia trzech apartamentów, ośmiu pokoi i ogrodu Willi Wójcik w Sromowcach Niżnych: widok na Trzy Korony, jasne wnętrza, altana z grillem i plac zabaw.',
+    description: 'Zdjęcia apartamentów, pokoi i ogrodu Willi Wójcik w Sromowcach Niżnych: widok na Trzy Korony, jasne wnętrza, altana z grillem i plac zabaw.',
     canonical: `${DOMAIN}/galeria`,
     ogImage: og('galeria'),
     breadcrumb: [crumbHome, { name: 'Galeria', url: `${DOMAIN}/galeria` }],

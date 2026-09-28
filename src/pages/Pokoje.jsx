@@ -12,9 +12,9 @@ import { PHOTOS, ROOMS } from '../data/content.js'
 import { obraz } from '../lib/obrazy.js'
 import { SITE } from '../data/site.js'
 
-// Pokoje 1–8 — realne zdjęcia i dane od właścicielki (14.09.2026): 21 m²,
-// 250 zł za dobę dla dwóch osób, 280 zł dla trzech, cztery pokoje na piętrze
-// z balkonem i cztery na parterze z tarasem. Treść i liczby żyją w ROOMS
+// Pokoje — realne zdjęcia i dane od właścicielki (14.09.2026): 21 m²,
+// 250 zł za dobę dla dwóch osób, 280 zł dla trzech, pokoje na piętrze z balkonem
+// i na parterze z tarasem. Liczby pokoi nie podajemy (prośba właścicielki 28.09.2026). Treść i liczby żyją w ROOMS
 // (src/data/content.js) — ta strona ich nie duplikuje.
 
 // Podział piętro/parter: jedyna rzecz, która różni pokoje między sobą.
@@ -23,7 +23,7 @@ const FLOORS = [
     key: 'pietro',
     photo: PHOTOS.pokojPietroWidok,
     alt: 'Pokój na piętrze — łóżko, biurko z czajnikiem, telewizor i przeszklone drzwi na balkon',
-    eyebrow: 'Cztery pokoje',
+    eyebrow: '21 m², 2–3 osoby',
     title: 'Piętro, balkon',
     text: 'Na balkonie stoją krzesła i stolik. Widać z niego ogród i wzgórza nad Sromowcami Niżnymi, a z części pokoi masyw Trzech Koron — o konkretną stronę prosimy pytać przy rezerwacji.',
   },
@@ -31,13 +31,13 @@ const FLOORS = [
     key: 'parter',
     photo: PHOTOS.pokojeParterTarasy,
     alt: 'Tarasy pokoi na parterze — wyłożone kostką, z fotelami, wychodzące wprost na trawnik',
-    eyebrow: 'Cztery pokoje',
+    eyebrow: '21 m², 2–3 osoby',
     title: 'Parter, taras',
     text: 'Z pokoju wychodzą Państwo przeszklonymi drzwiami na własny taras z fotelami, a z tarasu prosto na trawnik. Do placu zabaw i altany z grillem jest stamtąd kilkanaście kroków.',
   },
 ]
 
-// Łazienka: układ powtarzalny w każdym z ośmiu pokoi (zdjęcia z trzech różnych).
+// Łazienka: układ powtarzalny w każdym pokoju (zdjęcia z trzech różnych).
 const BATHROOM_PHOTOS = [
   { src: PHOTOS.lazienkaUmywalka, alt: 'Łazienka w pokoju — kabina prysznicowa, umywalka nablatowa i suszarka do włosów przy lustrze' },
   { src: PHOTOS.lazienkaDrewno, alt: 'Łazienka w pokoju — drewnopodobne płytki, kabina z deszczownicą i ręczniki pod umywalką' },
@@ -59,14 +59,14 @@ export default function Pokoje() {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-7 reveal">
-              <SectionHeading eyebrow="01 — Dla par i mniejszych ekip" title={<>Osiem pokoi, każdy <span className="italic font-normal">z własną łazienką</span>.</>} />
+              <SectionHeading eyebrow="01 — Dla par i mniejszych ekip" title={<>Każdy pokój <span className="italic font-normal">z własną łazienką</span>.</>} />
               <div className="mt-6 space-y-4 text-charcoal/75 text-[17px] leading-[1.8] text-pretty max-w-xl">
                 <p>
                   Każdy pokój ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną
                   i łazienkę tylko dla Państwa. Dwie osoby płacą 250 zł za dobę, trzy — 280 zł.
                 </p>
                 <p>
-                  Cztery pokoje na piętrze mają balkon, cztery na parterze taras wychodzący
+                  Pokoje na piętrze mają balkon, te na parterze — taras wychodzący
                   na ogród. Poza tym wyposażenie jest identyczne, więc nie ma tu droższych
                   i tańszych wariantów tego samego.
                 </p>
@@ -94,7 +94,7 @@ export default function Pokoje() {
       <section id={ROOMS.id} className="relative scroll-mt-24 bg-cream-2 py-20 md:py-28">
         <Container>
           <div className="max-w-3xl reveal">
-            <SectionHeading eyebrow="02 — Pokoje 1–8" title={<>Ten sam standard <span className="italic font-normal">w każdym z ośmiu</span>.</>} />
+            <SectionHeading eyebrow="02 — Wyposażenie" title={<>Ten sam standard <span className="italic font-normal">w każdym pokoju</span>.</>} />
             <p className="mt-7 text-[17px] leading-[1.85] text-pretty text-charcoal/75">
               {ROOMS.intro}
             </p>
@@ -131,12 +131,12 @@ export default function Pokoje() {
         </Container>
       </section>
 
-      {/* Piętro czy parter — realny podział ośmiu pokoi */}
+      {/* Piętro czy parter — realny podział pokoi */}
       <section className="relative bg-cream py-20 md:py-28">
         <Container>
           <SectionHeading
             eyebrow="03 — Piętro czy parter"
-            title={<>Cztery z balkonem, <span className="italic font-normal">cztery z tarasem</span>.</>}
+            title={<>Na piętrze balkon, <span className="italic font-normal">na parterze taras</span>.</>}
             className="max-w-2xl mb-14 reveal"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
@@ -166,7 +166,7 @@ export default function Pokoje() {
               <SectionHeading eyebrow="04 — Łazienka" title={<>Łazienka <span className="italic font-normal">przy pokoju</span>, nie na korytarzu.</>} />
               <div className="mt-6 space-y-4 text-charcoal/75 text-[16px] leading-[1.8] text-pretty">
                 <p>
-                  Każda z ośmiu łazienek ma kabinę z deszczownicą, umywalkę na drewnianym
+                  Każda łazienka ma kabinę z deszczownicą, umywalkę na drewnianym
                   blacie, lustro z oświetleniem i suszarkę do włosów przykręconą do ściany.
                   Ręczniki czekają na półce pod umywalką, świeże na każdy pobyt.
                 </p>

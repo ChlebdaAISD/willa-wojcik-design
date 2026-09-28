@@ -118,7 +118,7 @@ export default function Apartamenty() {
         <Container>
           <div className="reveal flex items-baseline justify-between gap-6 flex-wrap">
             <p className="text-charcoal/75 text-[16px] max-w-xl text-pretty">
-              Podróżują Państwo we dwoje albo we troje? Każdy z ośmiu pokoi ma 21 m²,
+              Podróżują Państwo we dwoje albo we troje? Każdy pokój ma 21 m²,
               własną łazienkę i wyjście na balkon albo taras. Doba kosztuje {ROOMS.priceNote}.
             </p>
             <Link href="/pokoje" className="inline-flex items-center gap-1.5 text-forest text-[14px] font-semibold group/l whitespace-nowrap hover:text-forest-2 transition-colors">
