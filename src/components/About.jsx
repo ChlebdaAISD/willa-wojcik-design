@@ -4,6 +4,12 @@ import { obraz } from '../lib/obrazy.js'
 import { SITE } from '../data/site.js'
 
 const AP3 = getApartment('apartament-3')
+// Zdjęcie sekcji wybrał Pan Wójcik 28.09.2026: ściana z bali, panel z mchu i łóżko.
+// Kadr jest poziomy, więc ramka kwadratowa (wcześniej 4:5 — mieściła albo łóżko, albo ścianę
+// z mchem). Wycinek na 45% szerokości pokazuje bale, mech, fotele, brzozy i łóżko naraz.
+// max-w-none: bez tego preflight Tailwinda (img max-width: 100%) ścina szerokość 116%
+// do 100% i przy prawej krawędzi ramki zostaje pusty pas.
+const AP3_ZDJECIE = AP3.photos.find((p) => p.src.includes('ap3-lozko-mech'))?.src ?? AP3.cover
 
 export function About() {
   const imgRef = useRef(null)
@@ -57,13 +63,14 @@ export function About() {
 
         <div className="lg:col-span-7 lg:col-start-6">
           <div className="relative reveal-lg">
-            <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '4/5' }}>
+            <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: '1/1' }}>
               <img
                 ref={imgRef}
-                {...obraz(AP3.cover, '(min-width: 1024px) 800px, 100vw')}
-                alt="Apartament 3 — sypialnia, salon i jadalnia w jednej otwartej przestrzeni pod skosami, ze ścianką z brzozowych pni"
+                {...obraz(AP3_ZDJECIE, '(min-width: 1024px) 800px, 100vw')}
+                alt="Apartament 3 — ściana z drewnianych bali z panelem z mchu, fotele i łóżko pod skosami"
                 loading="lazy" decoding="async"
-                className="absolute inset-[-8%] w-[116%] h-[116%] object-cover will-change-transform"
+                style={{ objectPosition: '45% center' }}
+                className="absolute inset-[-8%] w-[116%] h-[116%] max-w-none object-cover will-change-transform"
               />
               <div className="absolute inset-0" style={{
                 background: 'linear-gradient(180deg, transparent 55%, rgba(28,28,28,0.32) 100%)'
