@@ -5,7 +5,8 @@ import { SITE } from '../data/site.js'
 
 // Regulamin świadczenia usług drogą elektroniczną (art. 8 ustawy o świadczeniu usług
 // drogą elektroniczną) + ogólne zasady rezerwacji. Warunki rezygnacji i zwrotu
-// zaliczki celowo NIE są tu opisane — właściciele ustalają je przy potwierdzeniu.
+// przedpłaty celowo NIE są tu opisane — właściciele ustalają je przy potwierdzeniu,
+// a przy rezerwacji online obowiązują warunki pokazane w widżecie RoomAdmin.
 function H2({ children }) {
   return <h2 className="font-serif text-charcoal text-2xl md:text-3xl leading-tight mt-12 mb-4" style={{ fontWeight: 500 }}>{children}</h2>
 }
@@ -36,7 +37,7 @@ export default function Regulamin() {
       <section className="relative bg-cream py-16 md:py-24">
         <Container>
           <div className="max-w-3xl">
-            <P>Obowiązuje od 26 września 2026 roku.</P>
+            <P>Obowiązuje od 13 października 2026 roku.</P>
 
             <H2>1. Usługodawca</H2>
             <P>
@@ -46,39 +47,46 @@ export default function Regulamin() {
               e-mail <a className={link} href={SITE.emailHref}>{SITE.email}</a>.
             </P>
             <P>
-              Regulamin opisuje zasady korzystania ze strony i formularza zapytania o termin
-              oraz ogólne zasady rezerwacji pobytu.
+              Regulamin opisuje zasady korzystania ze strony, rezerwacji online i formularza
+              zapytania o termin oraz ogólne zasady rezerwacji pobytu.
             </P>
 
             <H2>2. Co oferuje strona</H2>
-            <P>Za pośrednictwem strony świadczymy nieodpłatnie dwie usługi:</P>
+            <P>Za pośrednictwem strony świadczymy nieodpłatnie trzy usługi:</P>
             <ul className="mb-4">
               <LI>przeglądanie informacji o obiekcie, cenach i okolicy,</LI>
+              <LI>sprawdzenie wolnych terminów i rezerwację online w systemie RoomAdmin,</LI>
               <LI>wysłanie zapytania o wolny termin przez formularz.</LI>
             </ul>
             <P>
               Do korzystania ze strony wystarczy urządzenie z dostępem do internetu i aktualna
               przeglądarka. Wysłanie formularza wymaga włączonej obsługi JavaScriptu i podania
-              adresu e-mail. Zabronione jest przesyłanie treści bezprawnych.
+              adresu e-mail. Rezerwacja online wymaga też obsługi JavaScriptu i plików cookie, bo system
+              RoomAdmin zapamiętuje w nich kolejne kroki rezerwacji. Zabronione jest przesyłanie
+              treści bezprawnych.
             </P>
             <P>
               Umowa o przeglądanie strony trwa od wejścia na stronę do jej opuszczenia. Umowa
               o skorzystanie z formularza zostaje zawarta z chwilą wysłania zapytania i wygasa
               z chwilą udzielenia odpowiedzi. Z formularza można w każdej chwili zrezygnować,
-              po prostu go nie wysyłając.
+              po prostu go nie wysyłając. Umowa o pobyt przy rezerwacji online zostaje zawarta
+              w systemie RoomAdmin, na warunkach pokazanych w formularzu rezerwacji.
             </P>
 
             <H2>3. Zapytanie i rezerwacja</H2>
             <ul className="mb-4">
-              <LI>Wysłanie formularza jest zapytaniem o dostępność, a nie rezerwacją.</LI>
+              <LI>Pobyt można zarezerwować online na stronie „Rezerwacja” (system RoomAdmin) albo wysłać zapytanie przez formularz kontaktowy.</LI>
+              <LI>Przy rezerwacji online cenę pobytu, wysokość i termin przedpłaty oraz warunki rezygnacji widać w formularzu rezerwacji przed jej złożeniem. Obowiązują warunki zaakceptowane w tym formularzu.</LI>
+              <LI>Wysłanie formularza kontaktowego jest zapytaniem o dostępność, a nie rezerwacją.</LI>
               <LI>Odpowiadamy telefonicznie albo e-mailem, zwykle tego samego dnia, z informacją o dostępności i cenie pobytu.</LI>
-              <LI><strong className="text-charcoal">Rezerwację potwierdza wpłata zaliczki w wysokości 30% wartości pobytu.</strong> Termin wpłaty i dane do przelewu podajemy w odpowiedzi na zapytanie.</LI>
+              <LI><strong className="text-charcoal">Rezerwację potwierdza przedpłata w wysokości 30% wartości pobytu.</strong> Termin wpłaty i dane do przelewu podajemy w odpowiedzi na zapytanie.</LI>
               <LI>Pozostałą kwotę płacą Państwo w dniu przyjazdu.</LI>
-              <LI>Warunki rezygnacji z pobytu i zwrotu zaliczki ustalamy przy potwierdzeniu rezerwacji.</LI>
+              <LI>Warunki rezygnacji z pobytu i zwrotu przedpłaty ustalamy przy potwierdzeniu rezerwacji.</LI>
             </ul>
             <P>
-              Ceny na stronie są cenami za dobę za cały pokój lub apartament. Nie obejmują opłaty
-              miejscowej (punkt 4).
+              Ceny „od” na stronie to stawki wyjściowe za dobę za cały pokój lub apartament. Cenę pobytu
+              w wybranym terminie pokazuje rezerwacja online albo podajemy ją w odpowiedzi na zapytanie.
+              Ceny nie obejmują opłaty miejscowej (punkt 4).
             </P>
             <P>
               Prawo odstąpienia od umowy zawartej na odległość nie przysługuje przy usługach
@@ -88,7 +96,7 @@ export default function Regulamin() {
 
             <H2>4. Pobyt</H2>
             <ul className="mb-4">
-              <LI>Zameldowanie od 14:00, wymeldowanie do 10:00.</LI>
+              <LI>Zameldowanie w godzinach {SITE.checkIn}, wymeldowanie {SITE.checkOut}.</LI>
               <LI>Obiekt jest w całości dla niepalących. Nie przyjmujemy zwierząt.</LI>
               <LI>
                 Do ceny pobytu doliczamy opłatę miejscową: {SITE.localFee}, zgodnie z uchwałą

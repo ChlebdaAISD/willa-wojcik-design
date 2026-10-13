@@ -13,6 +13,7 @@ import SplywDunajcem from './pages/okolica/SplywDunajcem.jsx'
 import TrzyKorony from './pages/okolica/TrzyKorony.jsx'
 import KladkaCzerwonyKlasztor from './pages/okolica/KladkaCzerwonyKlasztor.jsx'
 import Kontakt from './pages/Kontakt.jsx'
+import Rezerwacja from './pages/Rezerwacja.jsx'
 import PolitykaPrywatnosci from './pages/PolitykaPrywatnosci.jsx'
 import Regulamin from './pages/Regulamin.jsx'
 import NotFound from './pages/NotFound.jsx'
@@ -51,6 +52,7 @@ export default function App({ ssrPath }) {
             <Route path="/okolica/trzy-korony" component={TrzyKorony} />
             <Route path="/okolica/kladka-czerwony-klasztor" component={KladkaCzerwonyKlasztor} />
             <Route path="/kontakt" component={Kontakt} />
+            <Route path="/rezerwacja" component={Rezerwacja} />
             <Route path="/polityka-prywatnosci" component={PolitykaPrywatnosci} />
             <Route path="/regulamin" component={Regulamin} />
             {/* Każdy inny adres (także /404 przy prerenderze) → strona błędu */}

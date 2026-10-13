@@ -3,10 +3,10 @@ import { Button } from './Button.jsx'
 import { SITE } from '../../data/site.js'
 import { IconPhone } from '../Icons.jsx'
 
-// Końcowy blok CTA — spójny na każdej podstronie. Dwa kanały: zapytanie + telefon.
+// Końcowy blok CTA — spójny na każdej podstronie. Dwa kanały: rezerwacja online + telefon.
 export function CTASection({
   title = 'Sprawdzą Państwo wolny termin?',
-  text = 'Odpowiadamy tego samego dnia. Rezerwując bezpośrednio, płacą Państwo mniej niż przez portale — bez prowizji.',
+  text = 'Wolne terminy i ceny widać od razu. Rezerwując bezpośrednio, płacą Państwo mniej niż przez portale — bez prowizji.',
 }) {
   return (
     <section className="relative bg-forest text-cream py-20 md:py-28 overflow-hidden">
@@ -20,7 +20,7 @@ export function CTASection({
         </h2>
         {text && <p className="mt-5 text-cream/75 text-lg max-w-xl text-pretty">{text}</p>}
         <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-          <Button href="/kontakt" variant="cream" size="lg">Zapytaj o wolny termin</Button>
+          <Button href="/rezerwacja" variant="cream" size="lg">Sprawdź wolne terminy</Button>
           <Button href={SITE.phoneHref} variant="ghost" size="lg" icon={<IconPhone size={16} />}>
             {SITE.phone}
           </Button>

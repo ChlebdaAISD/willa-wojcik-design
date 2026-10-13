@@ -96,14 +96,24 @@ export function Nav() {
   // Strona główna ma od 15.09.2026 JASNE hero, więc napisy w nawigacji muszą być
   // ciemne od samej góry. Podstrony nadal stoją na ciemnych ilustracjach (PageHero),
   // tam kremowe napisy zostają aż do scrolla.
-  const lightHero = location === '/'
+  // /rezerwacja (od 13.10.2026) też zaczyna się od jasnej sekcji zamiast PageHero.
+  // Ukośnik na końcu ścinamy: serwer statyczny potrafi dopisać „/rezerwacja/", a wtedy
+  // porównanie nie trafiało i kremowe napisy lądowały na kremowym tle.
+  const path = location.length > 1 ? location.replace(/\/+$/, '') : location
+  const lightHero = path === '/' || path === '/rezerwacja'
   const dark = scrolled || lightHero
 
   // Klik w link prowadzący do trasy, na której JUŻ jesteśmy, nie zmienia adresu,
   // więc ScrollToTop w App.jsx się nie uruchamia i strona zostaje tam, gdzie była.
-  // Najbardziej bolało to przy „Zarezerwuj" na /kontakt — przycisk wyglądał na zepsuty.
-  const scrollTopIfSame = (href) => () => {
-    if (location === href) window.scrollTo({ top: 0, behavior: 'smooth' })
+  // Najbardziej bolało to przy „Zarezerwuj" na stronie, do której prowadzi — przycisk wyglądał na zepsuty.
+  // Od 13.10.2026 klik dodatkowo NIE nawiguje (preventDefault — wouter wtedy odpuszcza):
+  // na /rezerwacja?przyjazd=… nawigacja zrzucała parametry i przeładowywała widżet,
+  // więc gość w trakcie wpisywania danych tracił rezerwację po dotknięciu „Zarezerwuj".
+  const scrollTopIfSame = (href) => (e) => {
+    if (path !== href) return
+    e?.preventDefault()
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
   }
 
   return (
@@ -136,8 +146,9 @@ export function Nav() {
 
           {/* Right side */}
           <div className="flex items-center gap-3 shrink-0">
-            <Link href="/kontakt"
-                  onClick={scrollTopIfSame('/kontakt')}
+            <Link href="/rezerwacja"
+                  onClick={scrollTopIfSame('/rezerwacja')}
+                  aria-current={path === '/rezerwacja' ? 'page' : undefined}
                   className={`inline-flex items-center min-h-12 px-5 rounded-full text-[13px] font-semibold tracking-wide whitespace-nowrap shrink-0 transition-colors duration-300 ${
                     dark ? 'bg-forest text-cream hover:bg-forest-2' : 'bg-cream text-forest hover:bg-white'
                   }`}>
@@ -177,7 +188,7 @@ export function Nav() {
                 const active = isActive(href)
                 return (
                   <Link key={href} href={href}
-                        onClick={() => { setMenuOpen(false); scrollTopIfSame(href)() }}
+                        onClick={(e) => { setMenuOpen(false); scrollTopIfSame(href)(e) }}
                         aria-current={active ? 'page' : undefined}
                         className="group flex items-baseline gap-4 py-3">
                     <span className="font-mono text-cream/55 text-[13px] w-7">{String(i + 1).padStart(2, '0')}</span>
@@ -191,6 +202,12 @@ export function Nav() {
             </nav>
 
             <div className="pb-10 pt-6 border-t border-cream/15 flex flex-col gap-4">
+              {/* Menu zasłania przycisk „Zarezerwuj" z nagłówka — powtarzamy go tutaj */}
+              <Link href="/rezerwacja"
+                    onClick={(e) => { setMenuOpen(false); scrollTopIfSame('/rezerwacja')(e) }}
+                    className="self-start inline-flex items-center min-h-12 px-6 rounded-full bg-cream text-forest text-[14px] font-semibold tracking-wide hover:bg-white transition-colors">
+                Zarezerwuj online
+              </Link>
               <a href={SITE.phoneHref} className="flex items-center gap-3 text-cream">
                 <IconPhone size={20} className="text-gold" />
                 <span className="text-lg" style={{ fontWeight: 500 }}>{SITE.phone}</span>

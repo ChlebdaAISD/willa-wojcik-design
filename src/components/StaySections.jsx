@@ -1,6 +1,7 @@
 import { Container } from './ui/Container.jsx'
 import { SectionHeading } from './ui/SectionHeading.jsx'
 import { ICONS } from './Icons.jsx'
+import { SITE } from '../data/site.js'
 
 // Sekcje wspólne dla /apartamenty i /pokoje (udogodnienia obiektu + zasady pobytu).
 // `number` = numer eyebrow w sekwencji danej strony (np. "04").
@@ -48,7 +49,7 @@ export function RulesSection() {
       <Container>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            ['Zameldowanie', 'od 14:00'],
+            ['Zameldowanie', SITE.checkIn],
             ['Wymeldowanie', 'do 10:00'],
             ['Zwierzęta', 'niestety nie przyjmujemy'],
             ['Palenie', 'obiekt w całości dla niepalących'],

@@ -13,7 +13,7 @@ import { obraz } from '../lib/obrazy.js'
 import { SITE } from '../data/site.js'
 
 // Pokoje — realne zdjęcia i dane od właścicielki (14.09.2026): 21 m²,
-// 250 zł za dobę dla dwóch osób, 280 zł dla trzech, pokoje na piętrze z balkonem
+// od 250 zł za dobę dla dwóch osób, od 280 zł dla trzech, pokoje na piętrze z balkonem
 // i na parterze z tarasem. Liczby pokoi nie podajemy (prośba właścicielki 28.09.2026). Treść i liczby żyją w ROOMS
 // (src/data/content.js) — ta strona ich nie duplikuje.
 
@@ -63,7 +63,7 @@ export default function Pokoje() {
               <div className="mt-6 space-y-4 text-charcoal/75 text-[17px] leading-[1.8] text-pretty max-w-xl">
                 <p>
                   Każdy pokój ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną
-                  i łazienkę tylko dla Państwa. Dwie osoby płacą 250 zł za dobę, trzy — 280 zł.
+                  i łazienkę tylko dla Państwa. Dwie osoby płacą od 250 zł za dobę, trzy — od 280 zł.
                 </p>
                 <p>
                   Pokoje na piętrze mają balkon, te na parterze — taras wychodzący
@@ -117,15 +117,15 @@ export default function Pokoje() {
               </div>
               <div className="mt-2 text-[13.5px] leading-snug text-charcoal/65">{ROOMS.priceNote}</div>
             </div>
-            <Button href="/kontakt" size="sm">Zapytaj o termin</Button>
+            <Button href="/rezerwacja" size="sm">Sprawdź wolne terminy</Button>
           </div>
 
           <GalleryGrid photos={ROOMS.photos} className="mt-14 md:mt-20" hideThumbLabels />
           <GalleryLink />
 
           <p className="reveal mt-12 text-[13.5px] max-w-2xl text-charcoal/70">
-            Wolne terminy potwierdzamy telefonicznie lub mailem, bez prowizji portali.
-            Rezerwację potwierdza zaliczka 30% wartości pobytu, resztę płacą Państwo w dniu przyjazdu.
+            Wolne terminy i cenę na wybrane daty pokazuje rezerwacja online, bez prowizji portali.
+            Rezerwację potwierdza przedpłata 30% wartości pobytu, resztę płacą Państwo w dniu przyjazdu.
             Do ceny doliczamy opłatę miejscową: {SITE.localFee}.
           </p>
         </Container>

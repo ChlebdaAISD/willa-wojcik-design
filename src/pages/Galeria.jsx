@@ -135,7 +135,7 @@ const CATEGORIES = [
   {
     id: 'pokoje',
     label: 'Pokoje',
-    desc: 'Każdy pokój ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną i własną łazienkę. Pokoje na piętrze mają balkon, na parterze — taras. Doba kosztuje 250 zł dla dwóch osób i 280 zł dla trzech.',
+    desc: 'Każdy pokój ma 21 m², łóżko małżeńskie 160 × 200, małą sofę rozkładaną i własną łazienkę. Pokoje na piętrze mają balkon, na parterze — taras. Doba kosztuje od 250 zł dla dwóch osób i od 280 zł dla trzech.',
     // BLOK A + dwa rzędy kwadratów. Większość kadrów pokoi jest pionowa, więc
     // poza jednym panoramicznym ujęciem tarasów nie używamy tu kafelków szerokich.
     photos: [

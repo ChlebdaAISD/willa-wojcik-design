@@ -245,7 +245,7 @@ export const APARTMENTS = [
     id: 'apartament-1',
     name: 'Apartament 1',
     meta: '38 m², do 4 osób',
-    price: '450 zł za dobę',
+    price: 'od 450 zł za dobę',
     intro:
       'Dwa osobne pomieszczenia: sypialnia z łóżkiem małżeńskim i salon z rozkładaną sofą oraz aneksem kuchennym. Z obu wychodzą Państwo na duży balkon zwrócony w stronę Trzech Koron.',
     features: [
@@ -272,7 +272,7 @@ export const APARTMENTS = [
     id: 'apartament-2',
     name: 'Apartament 2',
     meta: '35 m², do 4 osób',
-    price: '450 zł za dobę',
+    price: 'od 450 zł za dobę',
     intro:
       'Sypialnia i salon z aneksem kuchennym — 35 m² dla czterech osób. W salonie stoi rozkładana sofa, a drzwi balkonowe otwierają się wprost na masyw Trzech Koron.',
     features: [
@@ -331,8 +331,8 @@ export const ROOMS = {
   id: 'pokoje',
   name: 'Pokoje',
   meta: '21 m², 2–3 osoby',
-  price: '250 zł za dobę',
-  priceNote: '250 zł dla dwóch osób, 280 zł dla trzech',
+  price: 'od 250 zł za dobę',
+  priceNote: 'od 250 zł dla dwóch osób, od 280 zł dla trzech',
   intro:
     'Pokoje o tym samym wyposażeniu: łóżko małżeńskie 160 × 200, mała sofa rozkładana i własna łazienka. Pokoje na piętrze mają balkon, na parterze — taras wychodzący na ogród.',
   features: [

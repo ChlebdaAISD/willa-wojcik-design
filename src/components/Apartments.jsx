@@ -91,10 +91,10 @@ export function Apartments() {
 
         <div className="reveal mt-10 md:mt-14 flex items-end justify-between gap-6 flex-wrap">
           <p className="text-charcoal/65 text-[13px] leading-[1.8] max-w-xl">
-            Śniadania we własnym zakresie. Rezerwację potwierdza zaliczka 30%, resztę płacą Państwo
+            Śniadania we własnym zakresie. Rezerwację potwierdza przedpłata 30%, resztę płacą Państwo
             w dniu przyjazdu. Do ceny doliczamy opłatę miejscową: {SITE.localFee}.
           </p>
-          <Button href="#kontakt" size="sm">Zapytaj o termin</Button>
+          <Button href="/rezerwacja" size="sm">Sprawdź wolne terminy</Button>
         </div>
       </div>
     </section>

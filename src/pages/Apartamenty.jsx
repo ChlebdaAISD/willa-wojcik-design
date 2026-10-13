@@ -63,7 +63,7 @@ export default function Apartamenty() {
           cena z przyciskiem, na końcu galeria. Tła naprzemienne cream-2 / stone —
           ten sam rytm co na pozostałych podstronach pobytu. */}
       {APARTMENTS.map((apt, i) => {
-        // W danych cena brzmi „450 zł za dobę" — podpis „za dobę" niesie osobny wiersz,
+        // W danych cena brzmi „od 450 zł za dobę" — podpis „za dobę" niesie osobny wiersz,
         // więc ucinamy końcówkę, żeby nie powtórzyć jej dwa razy pod sobą.
         const perNight = apt.price.replace(/\s*za dobę\s*$/i, '')
         return (
@@ -95,7 +95,7 @@ export default function Apartamenty() {
                   </div>
                   <div className="eyebrow mt-1.5 text-[10px] text-charcoal/65">za dobę</div>
                 </div>
-                <Button href="/kontakt" size="sm">Zapytaj o termin</Button>
+                <Button href="/rezerwacja" size="sm">Sprawdź wolne terminy</Button>
               </div>
 
               <GalleryGrid photos={apt.photos} className="mt-14 md:mt-20" hideThumbLabels />
@@ -103,8 +103,8 @@ export default function Apartamenty() {
 
               {i === APARTMENTS.length - 1 && (
                 <p className="reveal mt-12 text-[13.5px] max-w-2xl text-charcoal/70">
-                  Stawkę na wybrany termin i dostępność potwierdzamy telefonicznie albo mailem —
-                  prosimy o kontakt. Rezerwację potwierdza zaliczka 30% wartości pobytu, resztę płacą
+                  Stawkę i dostępność na wybrany termin pokazuje rezerwacja online, a w razie pytań
+                  prosimy o telefon. Rezerwację potwierdza przedpłata 30% wartości pobytu, resztę płacą
                   Państwo w dniu przyjazdu. Do ceny doliczamy opłatę miejscową: {SITE.localFee}.
                 </p>
               )}

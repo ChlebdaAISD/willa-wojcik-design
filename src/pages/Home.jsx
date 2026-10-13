@@ -5,7 +5,7 @@ import { Amenities } from '../components/Amenities.jsx'
 import { Gallery } from '../components/Gallery.jsx'
 import { Location } from '../components/Location.jsx'
 import { Reviews } from '../components/Reviews.jsx'
-import { BookingForm } from '../components/BookingForm.jsx'
+import { HomeReservation } from '../components/HomeReservation.jsx'
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <Gallery />
       <Location />
       <Reviews />
-      <BookingForm />
+      <HomeReservation />
     </>
   )
 }

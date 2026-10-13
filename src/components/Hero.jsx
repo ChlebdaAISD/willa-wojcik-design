@@ -72,7 +72,7 @@ export function Hero() {
 
           <div className="hero-el mt-8 md:mt-11 flex flex-row flex-wrap items-center gap-3 md:gap-4"
                style={{ '--d': '.28s' }}>
-            <a href="#kontakt"
+            <a href="#rezerwacja"
                className="btn-prim inline-flex shrink-0 items-center gap-2 md:gap-3 px-6 md:px-8 py-4 rounded-full text-[14px] font-semibold tracking-wide whitespace-nowrap text-cream">
               Sprawdź dostępność
               <IconArrow size={16} />

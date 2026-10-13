@@ -11,11 +11,11 @@ import { SITE } from '../data/site.js'
 const faq = [
   {
     q: 'Jak zarezerwować pobyt w Willi Wójcik?',
-    a: `Wystarczy wysłać zapytanie przez formularz na tej stronie albo zadzwonić pod numer ${SITE.phone}. Odpowiadamy tego samego dnia z informacją o dostępności i cenie. Rezerwację potwierdza zaliczka 30% wartości pobytu, a resztę płacą Państwo w dniu przyjazdu.`,
+    a: `Najszybciej przez rezerwację online na stronie willawojcik.pl/rezerwacja: po wybraniu dat widać wolne pokoje i apartamenty z ceną za cały pobyt. Można też wysłać zapytanie przez formularz na tej stronie albo zadzwonić pod numer ${SITE.phone}. Rezerwację potwierdza przedpłata 30% wartości pobytu, a resztę płacą Państwo w dniu przyjazdu.`,
   },
   {
     q: 'O której godzinie jest zameldowanie i wymeldowanie?',
-    a: 'Zameldowanie od 14:00, wymeldowanie do 10:00.',
+    a: `Zameldowanie w godzinach ${SITE.checkIn}, wymeldowanie ${SITE.checkOut}.`,
   },
   {
     q: 'Czy przy obiekcie jest parking?',
@@ -51,7 +51,7 @@ export default function Kontakt() {
       />
 
       {/* Formularz zapytania + dane kontaktowe (współdzielony z home) */}
-      <BookingForm eyebrow="01 — Rezerwacja" />
+      <BookingForm eyebrow="01 — Zapytanie" />
 
       {/* Mapa i dojazd */}
       <section className="relative bg-stone py-20 md:py-28">
@@ -68,7 +68,7 @@ export default function Kontakt() {
           </div>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-[15px]">
             {[
-              ['Zameldowanie', 'od 14:00'],
+              ['Zameldowanie', SITE.checkIn],
               ['Wymeldowanie', 'do 10:00'],
               ['Parking', 'bezpłatny, 10 miejsc na terenie'],
             ].map(([k, v], i) => (

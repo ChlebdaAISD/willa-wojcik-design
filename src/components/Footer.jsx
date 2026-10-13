@@ -6,11 +6,18 @@ import logoLockup from '../assets/logo-lockup.webp'
 
 // Klik w link do trasy, na której już jesteśmy, nie zmienia adresu, więc
 // ScrollToTop w App.jsx się nie uruchamia — przewijamy ręcznie (jak w Nav).
-// `replace`, żeby taki klik nie dokładał duplikatu w historii przeglądarki.
+// preventDefault zamiast nawigacji: bez duplikatu w historii, a na /rezerwacja?przyjazd=…
+// widżet nie przeładowuje się i gość nie traci rozpoczętej rezerwacji.
 function FooterLink({ href, ...props }) {
   const [location] = useLocation()
-  const onClick = () => { if (location === href) window.scrollTo({ top: 0, behavior: 'smooth' }) }
-  return <Link {...props} href={href} onClick={onClick} replace={location === href} />
+  const path = location.length > 1 ? location.replace(/\/+$/, '') : location
+  const onClick = (e) => {
+    if (path !== href) return
+    e.preventDefault()
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
+  }
+  return <Link {...props} href={href} onClick={onClick} />
 }
 
 export function Footer() {
@@ -32,7 +39,7 @@ export function Footer() {
               <li><FooterLink href="/apartamenty" className="hover:text-cream transition-colors">Apartamenty</FooterLink></li>
               <li><FooterLink href="/pokoje" className="hover:text-cream transition-colors">Pokoje</FooterLink></li>
               <li><FooterLink href="/galeria" className="hover:text-cream transition-colors">Galeria</FooterLink></li>
-              <li><FooterLink href="/kontakt" className="hover:text-cream transition-colors">Rezerwacja</FooterLink></li>
+              <li><FooterLink href="/rezerwacja" className="hover:text-cream transition-colors">Rezerwacja online</FooterLink></li>
             </ul>
           </div>
           <div>

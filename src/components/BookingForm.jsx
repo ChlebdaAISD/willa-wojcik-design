@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { IconArrow, IconCheck, IconGlobe, IconMail, IconMapPin, IconPhone } from './Icons.jsx'
 import { Link } from 'wouter'
 import { SITE } from '../data/site.js'
+import { inputClass } from '../lib/formClasses.js'
 
 const WEBHOOK_URL = import.meta.env.VITE_WILLA_WEBHOOK
 const WEBHOOK_HEADER = import.meta.env.VITE_WILLA_WEBHOOK_HEADER
@@ -73,9 +74,7 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
       {children}
     </label>
   )
-  // 16px — poniżej iOS przybliża stronę przy focusie; focus = zielony underline (box-shadow, bez skoku layoutu)
-  // Pola jako wyraźne boxy (decyzja 2026-07-08): jasne wypełnienie + obrys, focus = zielona ramka.
-  const inp = "w-full bg-white/70 border border-charcoal/20 rounded-sm px-4 py-3.5 text-charcoal text-[16px] placeholder:text-charcoal/65 outline-none focus:bg-white focus:border-forest focus:shadow-[0_0_0_1px_var(--color-forest)] transition-[border-color,box-shadow,background-color] caret-forest"
+  const inp = inputClass
 
   return (
     <section id="kontakt" data-screen-label="09 Rezerwacja" className="relative bg-cream scroll-mt-24 py-24 md:py-40">
@@ -91,8 +90,12 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
               Zapraszamy<br/><span className="italic font-normal">w Pieniny</span>.
             </h2>
             <p className="mt-6 text-charcoal/70 text-[17px] leading-[1.8] max-w-xl text-pretty">
-              Prosimy o kontakt — odpowiemy tego samego dnia. Potwierdzenie po wpłacie zaliczki,
-              pozostała kwota płatna w dniu przyjazdu.
+              Prosimy o kontakt — odpowiemy tego samego dnia. Rezerwację potwierdza przedpłata 30%,
+              pozostała kwota jest płatna w dniu przyjazdu.
+            </p>
+            <p className="mt-4 text-charcoal/70 text-[15px] leading-[1.7] max-w-xl text-pretty">
+              Wolne terminy i ceny widać od razu w{' '}
+              <Link href="/rezerwacja" className="text-forest font-semibold underline underline-offset-4 decoration-gold hover:decoration-forest">rezerwacji online</Link>.
             </p>
 
             <form onSubmit={onSubmit} className="mt-14 space-y-10">
@@ -159,7 +162,7 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
                       Coś poszło nie tak. Prosimy o telefon:{' '}
                       <a href={SITE.phoneHref} className="underline underline-offset-2">{SITE.phone}</a>
                     </span>
-                  ) : 'Zaliczka 30%, reszta w dniu przyjazdu. Bez prowizji portali.'}
+                  ) : 'Przedpłata 30%, reszta w dniu przyjazdu. Bez prowizji portali.'}
                 </div>
               </div>
 
@@ -175,46 +178,10 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
           </div>
 
           <aside className="lg:col-span-5 lg:col-start-8 reveal-lg">
-            <div className="bg-forest text-cream p-8 md:p-10 rounded-sm relative overflow-hidden">
-              <div className="absolute inset-0 grain opacity-50 pointer-events-none"/>
-              <div className="relative">
-                <div className="eyebrow text-cream/75 mb-6">Dane kontaktowe</div>
-                <ul className="space-y-6">
-                  <li className="flex items-start gap-4">
-                    <IconMapPin size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
-                    <div>
-                      <div className="text-cream text-[15px]">{SITE.street}</div>
-                      <div className="text-cream/75 text-[14px]">{SITE.postal} {SITE.city}, {SITE.country}</div>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <IconPhone size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
-                    <div>
-                      <a href={SITE.phoneHref} className="text-cream text-[15px] hover:text-gold transition-colors">{SITE.phone}</a>
-                      <div className="text-cream/75 text-[14px]">Kontakt {SITE.contactHours}</div>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <IconMail size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
-                    <div>
-                      <a href={SITE.emailHref} className="text-cream text-[15px] hover:text-gold transition-colors">{SITE.email}</a>
-                      <div className="text-cream/75 text-[14px]">Odpowiadamy tego samego dnia</div>
-                    </div>
-                  </li>
-                  <li className="flex items-start gap-4">
-                    <IconGlobe size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
-                    <div>
-                      <div className="text-cream text-[15px]">Polski i angielski</div>
-                      <div className="text-cream/75 text-[14px]">Mówimy również po czesku</div>
-                    </div>
-                  </li>
-                </ul>
-
-              </div>
-            </div>
+            <ContactAside />
 
             <div className="mt-6 text-charcoal/70 text-[13px] leading-relaxed">
-              Rezerwację potwierdza zaliczka 30% wartości pobytu, resztę płacą Państwo w dniu przyjazdu.
+              Rezerwację potwierdza przedpłata 30% wartości pobytu, resztę płacą Państwo w dniu przyjazdu.
               Termin wpłaty i warunki anulowania ustalamy przy potwierdzeniu. Do ceny doliczamy
               opłatę miejscową: {SITE.localFee}.
             </div>
@@ -222,5 +189,48 @@ export function BookingForm({ eyebrow = '07 — Rezerwacja' }) {
         </div>
       </div>
     </section>
+  )
+}
+
+// Dane kontaktowe na zielonej karcie — formularz zapytania (/kontakt) i rezerwacja na home.
+export function ContactAside() {
+  return (
+    <div className="bg-forest text-cream p-8 md:p-10 rounded-sm relative overflow-hidden">
+      <div className="absolute inset-0 grain opacity-50 pointer-events-none"/>
+      <div className="relative">
+        <div className="eyebrow text-cream/75 mb-6">Dane kontaktowe</div>
+        <ul className="space-y-6">
+          <li className="flex items-start gap-4">
+            <IconMapPin size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
+            <div>
+              <div className="text-cream text-[15px]">{SITE.street}</div>
+              <div className="text-cream/75 text-[14px]">{SITE.postal} {SITE.city}, {SITE.country}</div>
+            </div>
+          </li>
+          <li className="flex items-start gap-4">
+            <IconPhone size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
+            <div>
+              <a href={SITE.phoneHref} className="text-cream text-[15px] hover:text-gold transition-colors">{SITE.phone}</a>
+              <div className="text-cream/75 text-[14px]">Kontakt {SITE.contactHours}</div>
+            </div>
+          </li>
+          <li className="flex items-start gap-4">
+            <IconMail size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
+            <div>
+              <a href={SITE.emailHref} className="text-cream text-[15px] hover:text-gold transition-colors">{SITE.email}</a>
+              <div className="text-cream/75 text-[14px]">Odpowiadamy tego samego dnia</div>
+            </div>
+          </li>
+          <li className="flex items-start gap-4">
+            <IconGlobe size={20} stroke={1.3} className="mt-0.5 text-gold shrink-0" />
+            <div>
+              <div className="text-cream text-[15px]">Polski i angielski</div>
+              <div className="text-cream/75 text-[14px]">Mówimy również po czesku</div>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
   )
 }

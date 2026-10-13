@@ -28,7 +28,7 @@ export default function PolitykaPrywatnosci() {
       <section className="relative bg-cream py-16 md:py-24">
         <Container>
           <div className="max-w-3xl">
-            <P>Ostatnia aktualizacja: 26 września 2026 roku.</P>
+            <P>Ostatnia aktualizacja: 13 października 2026 roku.</P>
 
             <H2>1. Administrator danych</H2>
             <P>
@@ -40,8 +40,8 @@ export default function PolitykaPrywatnosci() {
 
             <H2>2. Jakie dane zbieramy</H2>
             <P>
-              Zbieramy tylko te dane, które Państwo sami podają, wypełniając formularz zapytania o termin
-              lub kontaktując się z nami telefonicznie albo mailowo:
+              Zbieramy tylko te dane, które Państwo sami podają, rezerwując pobyt online, wypełniając
+              formularz zapytania o termin lub kontaktując się z nami telefonicznie albo mailowo:
             </P>
             <ul className="mb-4">
               <LI>imię i nazwisko,</LI>
@@ -88,6 +88,7 @@ export default function PolitykaPrywatnosci() {
               <LI><strong className="text-charcoal">Railway Corporation</strong> (serwer w Unii Europejskiej, Amsterdam) — serwer automatyzacji, który przekazuje wiadomość z formularza.</LI>
               <LI><strong className="text-charcoal">Resend, Inc.</strong> (USA) — wysyłka wiadomości e-mail do nas oraz potwierdzenia do Państwa; treść jest przechowywana do 30 dni.</LI>
               <LI><strong className="text-charcoal">Google Ireland Ltd / Google LLC</strong> — skrzynka pocztowa, na którą przychodzą zapytania.</LI>
+              <LI><strong className="text-charcoal">System rezerwacji RoomAdmin</strong> (roomadmin.pl) — rezerwacje online na stronie „Rezerwacja”. Dane wpisane w formularzu rezerwacji trafiają bezpośrednio do tego systemu, w którym prowadzimy rezerwacje.</LI>
               <LI>Dostawcy narzędzi informatycznych, z których korzysta firma obsługująca stronę — wyłącznie w zakresie niezbędnym do jej utrzymania.</LI>
             </ul>
             <P>
@@ -96,10 +97,15 @@ export default function PolitykaPrywatnosci() {
               oraz — tam gdzie ma to zastosowanie — programu Data Privacy Framework.
             </P>
 
-            <H2>6. Pliki cookie i mapa Google</H2>
+            <H2>6. Pliki cookie, rezerwacja online i mapa Google</H2>
             <P>
               Strona nie używa plików cookie ani narzędzi analitycznych. Czcionki ładują się z naszego
               serwera, bez łączenia z Google.
+            </P>
+            <P>
+              Wyjątkiem jest strona „Rezerwacja”: działa na niej formularz systemu RoomAdmin, który zapisuje
+              plik cookie z identyfikatorem sesji. Bez niego nie da się przejść przez kolejne kroki rezerwacji,
+              dlatego ten plik nie wymaga zgody. Formularz nie zawiera narzędzi analitycznych ani reklamowych.
             </P>
             <P>
               Mapa Google na stronie głównej i na stronie kontaktu ładuje się dopiero wtedy, gdy klikną Państwo

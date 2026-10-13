@@ -24,7 +24,7 @@ const lodgingSchema = {
     `${DOMAIN}/zdjecia/willa-front.jpg`,
     `${DOMAIN}/zdjecia/taras-trzy-korony.jpg`,
   ],
-  priceRange: '250–500 zł',
+  priceRange: 'od 250 zł',
   petsAllowed: false,
   smokingAllowed: false,
   checkinTime: '14:00',
@@ -47,6 +47,17 @@ const lodgingSchema = {
   ],
   logo: `${DOMAIN}/logo.png`,
   hasMap: 'https://maps.google.com/?cid=3949048437519423849',
+  // Rezerwacja online (widżet RoomAdmin na /rezerwacja, od 13.10.2026)
+  potentialAction: {
+    '@type': 'ReserveAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${DOMAIN}/rezerwacja`,
+      inLanguage: 'pl',
+      actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform'],
+    },
+    result: { '@type': 'LodgingReservation', name: 'Rezerwacja pobytu w Willi Wójcik' },
+  },
   amenityFeature: [
     'Bezpłatne WiFi', 'Bezpłatny parking na terenie obiektu', 'Altana z grillem',
     'Plac zabaw dla dzieci', 'Wspólna kuchnia 45 m²', 'Balkony i tarasy',
@@ -71,7 +82,8 @@ function unit({ id, type, name, description, m2, maxGuests, rooms, price, page }
       '@type': 'Offer',
       priceCurrency: 'PLN',
       priceSpecification: {
-        '@type': 'UnitPriceSpecification', price, priceCurrency: 'PLN', unitText: 'doba',
+        // minPrice, nie price: na stronie podajemy ceny „od", a widżet RoomAdmin liczy stawkę na termin
+        '@type': 'UnitPriceSpecification', minPrice: price, priceCurrency: 'PLN', unitText: 'doba',
       },
     },
   }
@@ -112,23 +124,26 @@ const routesMeta = {
     ogImage: og('strona-glowna'),
     breadcrumb: [],
     additionalSchema: lodgingSchema,
+    updated: '2026-10-13',
   },
   '/apartamenty': {
     title: 'Apartamenty Sromowce Niżne z balkonem na Trzy Korony',
-    description: 'Trzy apartamenty w Sromowcach Niżnych: 38 i 35 m² dla 4 osób po 450 zł, wolnostojący 60 m² dla 6 osób od 500 zł. Aneks kuchenny, balkon na Trzy Korony.',
+    description: 'Trzy apartamenty w Sromowcach Niżnych: 38 i 35 m² dla 4 osób od 450 zł, wolnostojący 60 m² dla 6 osób od 500 zł. Aneks kuchenny, balkon na Trzy Korony.',
     canonical: `${DOMAIN}/apartamenty`,
     ogImage: og('apartamenty'),
     breadcrumb: [crumbHome, { name: 'Apartamenty', url: `${DOMAIN}/apartamenty` }],
     // lodgingSchema obok: containedInPlace jednostek wskazuje na jego @id
     additionalSchema: [lodgingSchema, apartmentsSchema],
+    updated: '2026-10-13',
   },
   '/pokoje': {
     title: 'Pokoje Sromowce Niżne, 21 m² od 250 zł — Willa Wójcik',
-    description: 'Pokoje 21 m² w Sromowcach Niżnych: łóżko 160 × 200, własna łazienka, balkon albo taras. 250 zł za dobę dla dwóch osób, 280 zł dla trzech.',
+    description: 'Pokoje 21 m² w Sromowcach Niżnych: łóżko 160 × 200, własna łazienka, balkon albo taras. Od 250 zł za dobę dla dwóch osób, od 280 zł dla trzech.',
     canonical: `${DOMAIN}/pokoje`,
     ogImage: og('pokoje'),
     breadcrumb: [crumbHome, { name: 'Pokoje', url: `${DOMAIN}/pokoje` }],
     additionalSchema: [lodgingSchema, roomsSchema],
+    updated: '2026-10-13',
   },
   '/galeria': {
     title: 'Galeria zdjęć — Willa Wójcik, Sromowce Niżne, Pieniny',
@@ -172,18 +187,30 @@ const routesMeta = {
     ogImage: og('kontakt'),
     breadcrumb: [crumbHome, { name: 'Kontakt', url: `${DOMAIN}/kontakt` }],
     additionalSchema: lodgingSchema,
+    updated: '2026-10-13',
+  },
+  '/rezerwacja': {
+    title: 'Rezerwacja online — Willa Wójcik, Sromowce Niżne',
+    description: 'Rezerwacja online w Willi Wójcik w Sromowcach Niżnych: wolne terminy i ceny pokoi oraz apartamentów od razu po wybraniu dat, bez prowizji portali. Przedpłata 30%.',
+    canonical: `${DOMAIN}/rezerwacja`,
+    ogImage: og('kontakt'),
+    breadcrumb: [crumbHome, { name: 'Rezerwacja', url: `${DOMAIN}/rezerwacja` }],
+    additionalSchema: lodgingSchema,
+    updated: '2026-10-13',
   },
   '/polityka-prywatnosci': {
     title: 'Polityka prywatności — Willa Wójcik, Sromowce Niżne',
     description: 'Jak Willa Wójcik przetwarza dane osobowe z formularza zapytania: administrator, cele, podstawy prawne, dostawcy usług, okres przechowywania i Państwa prawa.',
     canonical: `${DOMAIN}/polityka-prywatnosci`,
     breadcrumb: [crumbHome, { name: 'Polityka prywatności', url: `${DOMAIN}/polityka-prywatnosci` }],
+    updated: '2026-10-13',
   },
   '/regulamin': {
     title: 'Regulamin strony i rezerwacji — Willa Wójcik, Sromowce Niżne',
-    description: 'Regulamin korzystania ze strony willawojcik.pl i formularza zapytania oraz zasady rezerwacji w Willi Wójcik: zaliczka 30%, doba, opłata miejscowa.',
+    description: 'Regulamin korzystania ze strony willawojcik.pl i formularza zapytania oraz zasady rezerwacji w Willi Wójcik: przedpłata 30%, doba, opłata miejscowa.',
     canonical: `${DOMAIN}/regulamin`,
     breadcrumb: [crumbHome, { name: 'Regulamin', url: `${DOMAIN}/regulamin` }],
+    updated: '2026-10-13',
   },
   // Strona błędu: prerender zapisuje ją jako 404.html, poza sitemapą, z noindex.
   '/404': {

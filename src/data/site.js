@@ -26,9 +26,9 @@ export const SITE = {
 
   // Kontakt / doba
   contactHours: 'codziennie 8:00–22:00',
-  checkIn: '14:00–21:00',
+  checkIn: '14:00–23:30', // jak w warunkach widżetu RoomAdmin (13.10.2026)
   checkOut: 'do 10:00',
-  deposit: 'zaliczka 30%',
+  deposit: 'przedpłata 30%',
 
   // Dowód społeczny
   ratingGoogle: '4.9',
